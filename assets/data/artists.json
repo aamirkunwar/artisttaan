@@ -1,0 +1,393 @@
+{
+  "artists": [
+    {
+      "id": "abir",
+      "name": "Abir",
+      "role": "Pop / RnB",
+      "bio": "Singer/songwriter from Agra, India. His music reflects soul and pop depth. 103K+ monthly listeners on Spotify.",
+      "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir has carved out a unique space in India's independent music scene. His tracks like 'Pehle Jaisa' and 'Na Mila' resonate with listeners who crave authenticity and emotional honesty in their music. Drawing inspiration from both Indian classical influences and contemporary pop and RnB, Abir creates a sound that is distinctly his own.",
+      "photo": "assets/images/artists/abir.jpg",
+      "banner": "assets/images/artists/abir-banner.jpg",
+      "deck_pdf": "assets/decks/abir-deck.pdf",
+      "spotify_url": "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO",
+      "apple_music_url": "https://music.apple.com/in/artist/abir/",
+      "youtube_url": "https://youtube.com/watch?v=U7AdDdqJWUg",
+      "instagram": "https://instagram.com/luvabiirr",
+      "twitter": "https://twitter.com/abir",
+      "soundcloud": "https://soundcloud.com/abir",
+      "featured": true,
+      "monthly_listeners": "103,560",
+      "total_streams": "2.1M+",
+      "top_cities": [
+        "Delhi",
+        "Mumbai",
+        "Bangalore",
+        "Pune"
+      ],
+      "genres": [
+        "Pop",
+        "R&B"
+      ],
+      "contact_email": "abir@artisttaan.com",
+      "youtube": "https://youtube.com/results?search_query=Abir+artisttaan",
+      "square_photo": "assets/images/artists/abir-square.jpg"
+    },
+    {
+      "id": "shrey",
+      "name": "Shrey",
+      "role": "Hip-Hop",
+      "bio": "Layered soundscapes and hard-hitting bars. Known for tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag'.",
+      "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following that appreciates his introspective lyricism and atmospheric production. His music is a journey through emotions — melancholic yet hopeful, personal yet universal. Shrey's approach to songwriting is deeply personal, often drawing from his own experiences of love, loss, and self-discovery.",
+      "photo": "assets/images/artists/shrey.jpg",
+      "banner": "assets/images/artists/shrey-banner.jpg",
+      "deck_pdf": "assets/decks/shrey-deck.pdf",
+      "spotify_url": "https://open.spotify.com/artist/760KQ4PXRrEyJW9SU44ABS",
+      "apple_music_url": "https://music.apple.com/in/artist/shrey/",
+      "youtube_url": "https://youtube.com/watch?v=ZYln3iWRxDk",
+      "instagram": "https://instagram.com/shrey0000001",
+      "twitter": "https://twitter.com/shrey",
+      "soundcloud": "https://soundcloud.com/shrey",
+      "featured": true,
+      "monthly_listeners": "—",
+      "total_streams": "800K+",
+      "top_cities": [
+        "Delhi",
+        "Chandigarh",
+        "Jaipur"
+      ],
+      "genres": [
+        "Hip-Hop"
+      ],
+      "contact_email": "shrey@artisttaan.com",
+      "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
+      "square_photo": "assets/images/artists/shrey-square.jpg"
+    },
+    {
+      "id": "slay",
+      "name": "Slay",
+      "role": "Hip-Hop",
+      "bio": "Born to perform. Slay brings relentless energy and precision lyricism. Latest drop: 'Namaskar' (2026).",
+      "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop. His lyrics cut deep, his flow is relentless, and his stage presence is electrifying. Slay doesn't just perform — he commands the room. Every verse is a statement, every beat a takeover. His music speaks to a generation that refuses to be silenced.",
+      "photo": "assets/images/artists/slay.jpg",
+      "banner": "assets/images/artists/slay-banner.jpg",
+      "deck_pdf": "assets/decks/slay-deck.pdf",
+      "spotify_url": "https://open.spotify.com/artist/2E1ceqTF8kEm7UDucwGosW",
+      "apple_music_url": "https://music.apple.com/in/artist/slay/",
+      "youtube_url": "https://youtube.com/watch?v=bLTVqTJ1hUQ",
+      "instagram": "https://instagram.com/slaywav",
+      "twitter": "https://twitter.com/slay",
+      "soundcloud": "https://soundcloud.com/slay",
+      "featured": false,
+      "monthly_listeners": "—",
+      "total_streams": "500K+",
+      "top_cities": [
+        "Mumbai",
+        "Delhi",
+        "Hyderabad"
+      ],
+      "genres": [
+        "Hip-Hop"
+      ],
+      "contact_email": "slay@artisttaan.com",
+      "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
+      "square_photo": "assets/images/artists/slay-square.jpg"
+    },
+    {
+      "id": "apoorvv",
+      "name": "Apoorvv",
+      "role": "Pop / Indie",
+      "bio": "Independent artist blending stories, emotion, and smooth vibes. 22K+ monthly listeners. Known for 'Ishq Adhoora'.",
+      "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating the complexities of modern love. Apoorvv's music is characterized by its emotional honesty, smooth production, and lyrics that feel like pages from a personal diary. He represents the new wave of Indian pop and indie artists who are building careers on their own terms, one heartfelt song at a time.",
+      "photo": "assets/images/artists/apoorvv.jpg",
+      "banner": "assets/images/artists/apoorvv-banner.jpg",
+      "deck_pdf": "assets/decks/apoorvv-deck.pdf",
+      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/",
+      "youtube_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "instagram": "https://instagram.com/apoorvvwho",
+      "twitter": "https://twitter.com/apoorvv",
+      "soundcloud": "https://soundcloud.com/apoorvv",
+      "featured": false,
+      "monthly_listeners": "22,656",
+      "total_streams": "350K+",
+      "top_cities": [
+        "Delhi",
+        "Lucknow",
+        "Kanpur"
+      ],
+      "genres": [
+        "Pop",
+        "Indie"
+      ],
+      "contact_email": "apoorvv@artisttaan.com",
+      "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
+      "square_photo": "assets/images/artists/apoorvv-square.jpg"
+    },
+    {
+      "id": "faraz",
+      "name": "Faraz",
+      "role": "Producer / Singer / RnB",
+      "bio": "Producer, singer and RnB artist from Agra. Faraz brings a unique blend of production excellence, vocal artistry and RnB flavor to ARTISTTAAN.",
+      "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between soulful RnB and commercial appeal. His work behind the boards has shaped the sound of numerous ARTISTTAAN releases, while his own vocal performances showcase a rare versatility.",
+      "photo": "assets/images/artists/faraz.jpg",
+      "square_photo": "assets/images/artists/faraz-square.jpg",
+      "deck_pdf": "assets/decks/faraz-deck.pdf",
+      "spotify_url": "https://open.spotify.com/artist/5v97XScMyk02FNVZhHX2TR",
+      "apple_music_url": "",
+      "youtube_url": "https://youtube.com/@artisttaan",
+      "instagram": "https://instagram.com/faraz",
+      "twitter": "",
+      "soundcloud": "",
+      "featured": false,
+      "monthly_listeners": "—",
+      "total_streams": "—",
+      "top_cities": [
+        "Agra",
+        "Delhi"
+      ],
+      "genres": [
+        "Production",
+        "R&B",
+        "Vocal"
+      ],
+      "contact_email": "faraz@artisttaan.com"
+    }
+  ],
+  "releases": [
+    {
+      "title": "Kaagaz aur Daag",
+      "artist": "Shrey",
+      "artist_id": "shrey",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/track/7x8fG5kY3mN2pQ1rS4tU6v",
+      "spotify_embed": "https://open.spotify.com/embed/track/7x8fG5kY3mN2pQ1rS4tU6v",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Sifarishein",
+      "artist": "Shrey",
+      "artist_id": "shrey",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/track/196x0S8IsX40sd3KB12v84",
+      "spotify_embed": "https://open.spotify.com/embed/track/196x0S8IsX40sd3KB12v84",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Thoughts are poison",
+      "artist": "Shrey",
+      "artist_id": "shrey",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/track/3mIODPjKQ_GySYpeIZOTWA",
+      "spotify_embed": "https://open.spotify.com/embed/track/3mIODPjKQ_GySYpeIZOTWA",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Thoda Aur",
+      "artist": "Shrey",
+      "artist_id": "shrey",
+      "year": "2024",
+      "spotify_url": "https://open.spotify.com/track/760KQ4PXRrEyJW9SU44ABS",
+      "spotify_embed": "https://open.spotify.com/embed/track/760KQ4PXRrEyJW9SU44ABS",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Namaskar",
+      "artist": "Slay",
+      "artist_id": "slay",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
+      "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Smack",
+      "artist": "Slay",
+      "artist_id": "slay",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/track/2E1ceqTF8kEm7UDucwGosW",
+      "spotify_embed": "https://open.spotify.com/embed/track/2E1ceqTF8kEm7UDucwGosW",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Wassup",
+      "artist": "Slay",
+      "artist_id": "slay",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/track/2E1ceqTF8kEm7UDucwGosW",
+      "spotify_embed": "https://open.spotify.com/embed/track/2E1ceqTF8kEm7UDucwGosW",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Kya Se Kya Hue",
+      "artist": "Slay",
+      "artist_id": "slay",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/track/2E1ceqTF8kEm7UDucwGosW",
+      "spotify_embed": "https://open.spotify.com/embed/track/2E1ceqTF8kEm7UDucwGosW",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Marz",
+      "artist": "Abir",
+      "artist_id": "abir",
+      "year": "2024",
+      "spotify_url": "https://open.spotify.com/track/0XHapa0VH6XHwA3wlqextO",
+      "spotify_embed": "https://open.spotify.com/embed/track/0XHapa0VH6XHwA3wlqextO",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Pehle Jaisa",
+      "artist": "Abir",
+      "artist_id": "abir",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5",
+      "spotify_embed": "https://open.spotify.com/embed/album/0guvOjewHtC0Pv6uk0pID5",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Kaho Na",
+      "artist": "Abir",
+      "artist_id": "abir",
+      "year": "2023",
+      "spotify_url": "https://open.spotify.com/track/0XHapa0VH6XHwA3wlqextO",
+      "spotify_embed": "https://open.spotify.com/embed/track/0XHapa0VH6XHwA3wlqextO",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Ishq Adhoora",
+      "artist": "Apoorvv",
+      "artist_id": "apoorvv",
+      "year": "2020",
+      "spotify_url": "https://open.spotify.com/album/3uHiCYURE3PnJkKdAl1YYl",
+      "spotify_embed": "https://open.spotify.com/embed/album/3uHiCYURE3PnJkKdAl1YYl",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Recent Release 1",
+      "artist": "Apoorvv",
+      "artist_id": "apoorvv",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "spotify_embed": "https://open.spotify.com/embed/artist/4E0fJNDzJG3ROUPKaztyis",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Recent Release 2",
+      "artist": "Apoorvv",
+      "artist_id": "apoorvv",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "spotify_embed": "https://open.spotify.com/embed/artist/4E0fJNDzJG3ROUPKaztyis",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    },
+    {
+      "title": "Recent Release 3",
+      "artist": "Apoorvv",
+      "artist_id": "apoorvv",
+      "year": "2025",
+      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "spotify_embed": "https://open.spotify.com/embed/artist/4E0fJNDzJG3ROUPKaztyis",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273",
+      "type": "single"
+    }
+  ],
+  "socials": [
+    {
+      "platform": "Instagram",
+      "handle": "@artisttaan",
+      "url": "https://instagram.com/artisttaan",
+      "icon": "instagram"
+    },
+    {
+      "platform": "YouTube",
+      "handle": "@artisttaan",
+      "url": "https://youtube.com/@artisttaan",
+      "icon": "youtube"
+    },
+    {
+      "platform": "Spotify",
+      "handle": "ARTISTTAAN",
+      "url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb",
+      "icon": "spotify"
+    },
+    {
+      "platform": "Twitter",
+      "handle": "@artisttaan",
+      "url": "https://twitter.com/artisttaan",
+      "icon": "twitter"
+    },
+    {
+      "platform": "SoundCloud",
+      "handle": "ARTISTTAAN",
+      "url": "https://soundcloud.com/artisttaan",
+      "icon": "soundcloud"
+    }
+  ],
+  "team": [
+    {
+      "id": "aamir-kunwar",
+      "name": "Aamir Kunwar",
+      "role": "Founder & A&R",
+      "photo": "assets/images/team/aamir-kunwar.jpg",
+      "bio": "Founder of ARTISTTAAN and the driving force behind its roster. Aamir built the label from the streets of East Delhi in 2016 and now leads A&R — scouting, signing, and developing the artists who define the ARTISTTAAN sound.",
+      "instagram_handle": "@aamirkunwar",
+      "instagram": "https://instagram.com/aamirkunwar"
+    },
+    {
+      "id": "shashank-sharma",
+      "name": "Shashank Sharma",
+      "role": "Video Director & A&R",
+      "photo": "assets/images/team/shashank-sharma.jpg",
+      "bio": "Video Director and A&R at ARTISTTAAN, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists from demo to release, guiding their sound and direction.",
+      "instagram_handle": "@shshank.here",
+      "instagram": "https://instagram.com/shshank.here"
+    },
+    {
+      "id": "nino-rawat",
+      "name": "Nino Rawat",
+      "role": "Head A&R",
+      "photo": "assets/images/team/nino-rawat.jpg",
+      "bio": "Head of A&R at ARTISTTAAN, Nino leads the search for new talent and the development of the label's roster — discovering artists, shaping their sound, and guiding projects from first demo to final release.",
+      "instagram_handle": "@ninorawat",
+      "instagram": "https://instagram.com/ninorawat"
+    }
+  ],
+  "upcoming": [
+    {
+      "id": "slay-flavours",
+      "title": "Flavours",
+      "artist": "Slay",
+      "type": "EP Poster",
+      "image": "assets/images/upcoming/slay-flavours.jpg",
+      "status": "Coming Soon",
+      "release_date": "2026-06-05T14:00:00+05:30",
+      "description": "The upcoming EP from Slay. Poster out now — full project dropping soon."
+    }
+  ],
+  "settings": {
+    "site_title": "ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label",
+    "site_description": "ARTISTTAAN is India's premier hip-hop and indie music label, founded in 2016. Discover artists like Abir, Shrey, Slay, Apoorvv & Faraz. Stream music, watch videos, and submit demos.",
+    "hero_tagline": "India's Hip-Hop & Indie Powerhouse",
+    "hero_cta_primary": "Listen on Spotify",
+    "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb",
+    "hero_cta_secondary": "Watch on YouTube",
+    "hero_cta_secondary_url": "https://youtube.com/@artisttaan",
+    "youtube_embed": "https://www.youtube.com/embed/ZYln3iWRxDk",
+    "formspree_endpoint": "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT",
+    "footer_year": "2026"
+  }
+}

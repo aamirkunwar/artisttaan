@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Artists | ARTISTTAAN - India's Hip-Hop & Indie Music Label</title>
+  <meta name="description" id="meta-description" content="Explore the roster of talented hip-hop, pop, R&B, and indie artists signed to ARTISTTAAN, India's leading independent music label." />
+  <meta name="keywords" id="meta-keywords" content="ARTISTTAAN artists, Indian hip-hop artists, indie music India, independent musicians" />
+  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="ARTISTTAAN" />
+  <meta property="og:url" id="og-url" content="https://artisttaanmusic.com/artist/" />
+  <meta property="og:image" id="og-image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <meta property="og:title" id="og-title" content="Artists | ARTISTTAAN - India's Hip-Hop & Indie Music Label" />
+  <meta property="og:description" id="og-description" content="Explore the roster of talented hip-hop, pop, R&B, and indie artists signed to ARTISTTAAN." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="twitter-title" content="Artists | ARTISTTAAN - India's Hip-Hop & Indie Music Label" />
+  <meta name="twitter:description" id="twitter-description" content="Explore the roster of talented hip-hop, pop, R&B, and indie artists signed to ARTISTTAAN." />
+  <meta name="twitter:image" id="twitter-image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .artist-hero { padding-top: 120px; padding-bottom: 60px; }
+    .artist-photo-main { width: 240px; aspect-ratio: 3/4; border-radius: 4px; object-fit: cover; }
+    .platform-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; transition: all 0.3s ease; text-decoration: none; }
+    .platform-btn:hover { transform: translateY(-2px); }
+    .platform-spotify { background: #1DB954; color: white; }
+    .platform-apple { background: #FA243C; color: white; }
+    .platform-youtube { background: #FF0000; color: white; }
+    .platform-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+    .platform-twitter { background: #000000; color: white; }
+    .platform-soundcloud { background: #FF5500; color: white; }
+    .stat-card { text-align: center; padding: 1.5rem; background: #f5f5f5; border-radius: 12px; }
+    .genre-tag { display: inline-block; padding: 0.375rem 1rem; background: #000; color: #fff; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+    .city-tag { display: inline-block; padding: 0.375rem 1rem; border: 1px solid #e5e5e5; font-size: 0.75rem; font-weight: 500; border-radius: 9999px; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+    .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: #000; color: #fff; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.05em; border-radius: 8px; transition: all 0.3s ease; text-decoration: none; }
+    .download-btn:hover { background: #333; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #666; transition: color 0.3s; text-decoration: none; }
+    .back-link:hover { color: #000; }
+    .spotify-player { border-radius: 12px; overflow: hidden; margin-top: 1rem; }
+    .spotify-player iframe { border: none; width: 100%; height: 380px; }
+    @media (max-width: 768px) {
+      .artist-photo-main { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2">
+        <img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="../index.html#about" class="text-sm font-medium text-secondary hover:text-primary transition">About</a>
+        <a href="../index.html#roster" class="text-sm font-medium text-secondary hover:text-primary transition">Roster</a>
+        <a href="../index.html#releases" class="text-sm font-medium text-secondary hover:text-primary transition">Releases</a>
+        <a href="../upcoming/" class="text-sm font-medium text-secondary hover:text-primary transition">Upcoming</a>
+        <a href="../team/" class="text-sm font-medium text-secondary hover:text-primary transition">Our Team</a>
+        <a href="../index.html#demo" class="text-sm font-medium text-secondary hover:text-primary transition">Submit Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOADING -->
+  <div id="loading" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <div class="skeleton w-48 h-6 mx-auto mb-4 rounded"></div>
+      <div class="skeleton w-32 h-4 mx-auto rounded"></div>
+    </div>
+  </div>
+
+  <!-- ARTIST CONTENT -->
+  <div id="artist-content" class="hidden">
+
+    <!-- PROFILE HEADER -->
+    <div class="artist-hero max-w-5xl mx-auto px-6">
+      <div class="flex flex-col items-center text-center">
+        <img id="artist-photo" src="" alt="" class="artist-photo-main shadow-2xl mb-8" />
+        <h1 id="artist-name" class="text-4xl md:text-6xl font-black tracking-tight"></h1>
+        <p id="artist-role" class="text-caption mt-3"></p>
+        <p id="artist-listeners" class="text-sm text-green-600 font-semibold mt-2"></p>
+
+        <!-- Platform Links -->
+        <div class="flex flex-wrap gap-3 justify-center mt-8" id="platform-links"></div>
+
+        <!-- Download Deck -->
+        <div class="mt-10">
+          <a id="deck-download" href="" download class="download-btn">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Download Artist Deck (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-3xl mx-auto">
+        <div class="stat-card">
+          <p id="stat-monthly" class="text-2xl font-black"></p>
+          <p class="text-caption mt-1">Monthly Listeners</p>
+        </div>
+        <div class="stat-card">
+          <p id="stat-streams" class="text-2xl font-black"></p>
+          <p class="text-caption mt-1">Total Streams</p>
+        </div>
+        <div class="stat-card">
+          <p id="stat-releases" class="text-2xl font-black"></p>
+          <p class="text-caption mt-1">Releases</p>
+        </div>
+        <div class="stat-card">
+          <p id="stat-featured" class="text-2xl font-black"></p>
+          <p class="text-caption mt-1">Status</p>
+        </div>
+      </div>
+
+      <!-- BIO -->
+      <div class="mt-16 max-w-3xl mx-auto text-center">
+        <p class="text-caption mb-4">About</p>
+        <p id="artist-bio" class="text-lg leading-relaxed text-secondary"></p>
+      </div>
+
+      <!-- GENRES -->
+      <div class="mt-12 max-w-3xl mx-auto text-center">
+        <p class="text-caption mb-4">Genres</p>
+        <div id="artist-genres" class="flex flex-wrap justify-center"></div>
+      </div>
+
+      <!-- TOP CITIES -->
+      <div class="mt-12 max-w-3xl mx-auto text-center">
+        <p class="text-caption mb-4">Top Cities</p>
+        <div id="artist-cities" class="flex flex-wrap justify-center"></div>
+      </div>
+
+      <!-- SPOTIFY PLAYER -->
+      <div class="mt-16 max-w-3xl mx-auto">
+        <p class="text-caption mb-4 text-center">Listen on Spotify</p>
+        <div id="spotify-player" class="spotify-player"></div>
+      </div>
+
+      <!-- RELEASES -->
+      <div class="mt-16">
+        <p class="text-caption mb-4 text-center">Releases</p>
+        <div id="artist-releases" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="mt-16 text-center py-12 border-t border-subtle">
+        <p class="text-caption mb-4">Booking & Press</p>
+        <a id="contact-email" href="" class="text-lg font-semibold hover:underline"></a>
+        <p class="text-sm text-muted mt-2">For bookings, collaborations, and press inquiries</p>
+      </div>
+
+      <!-- BACK -->
+      <div class="mt-12 text-center pb-16">
+        <a href="../index.html#roster" class="back-link">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back to All Artists
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <img src="../assets/images/logo/logo-white.png" alt="ARTISTTAAN" class="h-8 w-auto mx-auto mb-4" />
+      <p class="text-sm text-gray-400 mb-6">India's hip-hop & indie powerhouse. Founded in 2016 by Aamir Kunwar.</p>
+      <div class="flex justify-center gap-6">
+        <a href="https://instagram.com/artisttaan" target="_blank" class="text-sm text-gray-400 hover:text-white transition">Instagram</a>
+        <a href="https://youtube.com/@artisttaan" target="_blank" class="text-sm text-gray-400 hover:text-white transition">YouTube</a>
+        <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" class="text-sm text-gray-400 hover:text-white transition">Spotify</a>
+      </div>
+      <p class="text-xs text-gray-600 mt-8">&copy; 2026 ARTISTTAAN. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const artistId = params.get('artist');
+    let siteData = null;
+
+    async function loadData() {
+      try {
+        const res = await fetch('../assets/data/artists.json');
+        siteData = await res.json();
+        renderArtist();
+      } catch (err) {
+        console.error('Failed to load data:', err);
+        document.getElementById('loading').innerHTML = '<p class="text-red-500">Error loading artist data.</p>';
+      }
+    }
+
+    function renderArtist() {
+      if (!siteData || !artistId) {
+        document.getElementById('loading').innerHTML = '<p class="text-red-500">Artist not found.</p>';
+        return;
+      }
+      const artist = siteData.artists.find(a => a.id === artistId);
+      if (!artist) {
+        document.getElementById('loading').innerHTML = '<p class="text-red-500">Artist not found.</p>';
+        return;
+      }
+
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('artist-content').classList.remove('hidden');
+
+      document.getElementById('page-title').textContent = artist.name + ' | ' + artist.role + ' Artist - ARTISTTAAN';
+      const seoDescription = artist.bio + ' Listen to ' + artist.name + ' on Spotify, Apple Music & more. Part of ARTISTTAAN, India\'s leading indie music label.';
+      document.querySelector('meta[name="description"]').content = seoDescription;
+      document.getElementById('meta-keywords').content = artist.name + ', ' + artist.role + ', ARTISTTAAN, Indian ' + artist.role.toLowerCase() + ' artist, ' + artist.name + ' music, ' + artist.name + ' songs';
+      document.getElementById('og-title').content = artist.name + ' | ' + artist.role + ' Artist - ARTISTTAAN';
+      document.getElementById('og-description').content = seoDescription;
+      document.getElementById('og-url').content = 'https://artisttaanmusic.com/artist/?artist=' + artist.id;
+      if (artist.square_photo) {
+        document.getElementById('og-image').content = 'https://artisttaanmusic.com/' + artist.square_photo;
+        document.getElementById('twitter-image').content = 'https://artisttaanmusic.com/' + artist.square_photo;
+      }
+      document.getElementById('twitter-title').content = artist.name + ' | ' + artist.role + ' Artist - ARTISTTAAN';
+      document.getElementById('twitter-description').content = seoDescription;
+
+      document.getElementById('artist-photo').src = '../' + artist.photo;
+      document.getElementById('artist-photo').alt = artist.name;
+
+      document.getElementById('artist-name').textContent = artist.name;
+      document.getElementById('artist-role').textContent = artist.role;
+
+      if (artist.monthly_listeners && artist.monthly_listeners !== '—') {
+        document.getElementById('artist-listeners').textContent = artist.monthly_listeners + ' monthly listeners on Spotify';
+      } else {
+        document.getElementById('artist-listeners').classList.add('hidden');
+      }
+
+      const platforms = [];
+      if (artist.spotify_url) platforms.push({ name: 'Spotify', url: artist.spotify_url, class: 'platform-spotify', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02z"/></svg>' });
+      if (artist.apple_music_url) platforms.push({ name: 'Apple Music', url: artist.apple_music_url, class: 'platform-apple', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.002-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.238.233a6.76 6.76 0 00-1.974.616 4.812 4.812 0 00-1.686 1.26c-.62.71-1.002 1.538-1.15 2.496-.074.48-.11.964-.14 1.45-.01.154-.017.307-.026.46V17.88c.01.154.017.307.026.46.03.486.066.97.14 1.45.148.958.53 1.786 1.15 2.496.465.53 1.012.956 1.686 1.26.63.29 1.286.49 1.974.616.748.11 1.49.19 2.238.233.152.01.303.017.455.026h12.823c.04-.003.083-.01.124-.014.521-.01 1.042-.05 1.564-.15.66-.12 1.274-.34 1.877-.725 1.118-.733 1.863-1.733 2.18-3.043.14-.58.2-1.175.24-2.19V6.124z"/></svg>' });
+      if (artist.youtube_url) platforms.push({ name: 'YouTube', url: artist.youtube_url, class: 'platform-youtube', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>' });
+      if (artist.instagram) platforms.push({ name: 'Instagram', url: artist.instagram, class: 'platform-instagram', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>' });
+      if (artist.twitter) platforms.push({ name: 'Twitter', url: artist.twitter, class: 'platform-twitter', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' });
+      if (artist.soundcloud) platforms.push({ name: 'SoundCloud', url: artist.soundcloud, class: 'platform-soundcloud', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1z"/></svg>' });
+
+      document.getElementById('platform-links').innerHTML = platforms.map(p => 
+        `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="platform-btn ${p.class}">${p.icon} ${p.name}</a>`
+      ).join('');
+
+      document.getElementById('deck-download').href = '../' + artist.deck_pdf;
+
+      document.getElementById('stat-monthly').textContent = artist.monthly_listeners || '—';
+      document.getElementById('stat-streams').textContent = artist.total_streams || '—';
+
+      const artistReleases = siteData.releases.filter(r => r.artist_id === artist.id);
+      document.getElementById('stat-releases').textContent = artistReleases.length;
+      document.getElementById('stat-featured').textContent = artist.featured ? 'Featured' : 'Artist';
+
+      document.getElementById('artist-bio').textContent = artist.full_bio || artist.bio;
+
+      if (artist.genres) {
+        document.getElementById('artist-genres').innerHTML = artist.genres.map(g => 
+          `<span class="genre-tag">${g}</span>`
+        ).join('');
+      }
+
+      if (artist.top_cities) {
+        document.getElementById('artist-cities').innerHTML = artist.top_cities.map(c => 
+          `<span class="city-tag">${c}</span>`
+        ).join('');
+      }
+
+      const embedUrl = artist.spotify_url ? artist.spotify_url.replace('open.spotify.com', 'open.spotify.com/embed') : '';
+      if (embedUrl) {
+        document.getElementById('spotify-player').innerHTML = `<iframe src="${embedUrl}" allow="encrypted-media" loading="lazy"></iframe>`;
+      }
+
+      if (artistReleases.length > 0) {
+        document.getElementById('artist-releases').innerHTML = artistReleases.map(r => `
+          <div class="spotify-embed">
+            <iframe src="${r.spotify_embed}" height="352" allow="encrypted-media" loading="lazy"></iframe>
+            <p class="font-semibold mt-2">${r.title}</p>
+            <p class="text-caption">${r.year}</p>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('artist-releases').innerHTML = '<p class="text-muted col-span-3 text-center py-8">No releases yet.</p>';
+      }
+
+      if (artist.contact_email) {
+        document.getElementById('contact-email').href = 'mailto:' + artist.contact_email;
+        document.getElementById('contact-email').textContent = artist.contact_email;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
