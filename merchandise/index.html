@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merchandise | ARTISTTAAN - India's Hip-Hop & Indie Music Label</title>
+  <meta name="description" content="Shop official ARTISTTAAN merchandise. T-shirts, hoodies, caps, and more featuring your favorite artists from India's leading independent music label." />
+  <meta name="keywords" content="ARTISTTAAN merchandise, artist merch, Indian hip-hop merchandise, band shirts, music apparel" />
+  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ARTISTTAAN" />
+  <meta property="og:url" content="https://artisttaanmusic.com/merchandise/" />
+  <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <meta property="og:title" content="Merchandise | ARTISTTAAN" />
+  <meta property="og:description" content="Shop official ARTISTTAAN merchandise and support the artists." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Merchandise | ARTISTTAAN" />
+  <meta name="twitter:description" content="Shop official ARTISTTAAN merchandise." />
+  <meta name="twitter:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .merch-hero { padding-top: 120px; padding-bottom: 60px; }
+    .product-card { transition: all 0.3s ease; }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-image { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+    .product-title { font-size: 1.125rem; font-weight: 600; margin-top: 1rem; }
+    .product-price { font-size: 1.25rem; font-weight: 700; color: #000; margin-top: 0.5rem; }
+    .product-size { display: inline-block; padding: 0.5rem 1rem; border: 1px solid #e5e5e5; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: all 0.2s; }
+    .product-size:hover { border-color: #000; background: #f5f5f5; }
+    .product-size.active { background: #000; color: #fff; border-color: #000; }
+    .add-to-cart-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: #000; color: #fff; font-size: 0.875rem; font-weight: 700; border-radius: 4px; transition: all 0.3s; text-decoration: none; border: none; cursor: pointer; }
+    .add-to-cart-btn:hover { background: #333; transform: translateY(-2px); }
+    .add-to-cart-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+    .filter-btn { padding: 0.5rem 1rem; border: 1px solid #e5e5e5; background: #fff; border-radius: 4px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover { border-color: #000; }
+    .filter-btn.active { background: #000; color: #fff; border-color: #000; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #666; transition: color 0.3s; text-decoration: none; }
+    .back-link:hover { color: #000; }
+    .cart-badge { position: absolute; top: 20px; right: 30px; background: #000; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+    .empty-state { text-align: center; padding: 3rem 1rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2">
+        <img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="../index.html#about" class="text-sm font-medium text-secondary hover:text-primary transition">About</a>
+        <a href="../index.html#roster" class="text-sm font-medium text-secondary hover:text-primary transition">Roster</a>
+        <a href="../index.html#releases" class="text-sm font-medium text-secondary hover:text-primary transition">Releases</a>
+        <a href="../upcoming/" class="text-sm font-medium text-secondary hover:text-primary transition">Upcoming</a>
+        <a href="../team/" class="text-sm font-medium text-secondary hover:text-primary transition">Our Team</a>
+        <a href="../merchandise/" class="text-sm font-medium text-primary transition">Merchandise</a>
+      </div>
+      <div class="relative">
+        <button id="cartBtn" class="text-sm font-medium text-secondary hover:text-primary transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </button>
+        <div id="cartBadge" class="cart-badge hidden">0</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="merch-hero">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-caption mb-3">Official Drops</p>
+      <h1 class="text-hero font-display mb-6">ARTISTTAAN Merch</h1>
+      <p class="text-body max-w-lg mx-auto">Wear the movement. Shop exclusive ARTISTTAAN merchandise and support the artists directly.</p>
+    </div>
+  </section>
+
+  <div class="divider max-w-7xl mx-auto"></div>
+
+  <!-- MERCHANDISE SECTION -->
+  <section class="section-pad">
+    <div class="max-w-7xl mx-auto">
+      <!-- Filters -->
+      <div class="mb-12 flex flex-wrap gap-3">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="apparel">Apparel</button>
+        <button class="filter-btn" data-filter="accessories">Accessories</button>
+        <button class="filter-btn" data-filter="limited">Limited Edition</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="products-container">
+        <div class="skeleton rounded-none aspect-square"></div>
+        <div class="skeleton rounded-none aspect-square"></div>
+        <div class="skeleton rounded-none aspect-square"></div>
+        <div class="skeleton rounded-none aspect-square"></div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state hidden">
+        <p class="text-muted text-lg">No products available yet.</p>
+        <a href="../index.html" class="back-link mt-6 justify-center">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-7xl mx-auto"></div>
+
+  <!-- CART MODAL -->
+  <div id="cartModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="sticky top-0 bg-white border-b border-subtle p-6 flex items-center justify-between">
+        <h2 class="text-2xl font-black">Shopping Cart</h2>
+        <button id="closeCartBtn" class="text-2xl font-light text-muted hover:text-primary">&times;</button>
+      </div>
+      
+      <div id="cartItems" class="p-6 space-y-6">
+        <!-- Cart items will be rendered here -->
+      </div>
+
+      <div class="border-t border-subtle p-6">
+        <div class="flex justify-between items-center mb-6">
+          <span class="text-lg font-semibold">Total:</span>
+          <span id="cartTotal" class="text-2xl font-black">₹0</span>
+        </div>
+        <button id="checkoutBtn" class="btn-primary w-full">Proceed to Checkout</button>
+        <p class="text-xs text-muted text-center mt-4">Checkout integration coming soon</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider max-w-7xl mx-auto"></div>
+
+  <!-- INFO SECTION -->
+  <section class="section-pad bg-secondary">
+    <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <p class="text-caption mb-2">Shipping</p>
+          <p class="text-body">Fast delivery across India</p>
+        </div>
+        <div>
+          <p class="text-caption mb-2">Quality</p>
+          <p class="text-body">Premium materials & printing</p>
+        </div>
+        <div>
+          <p class="text-caption mb-2">Support</p>
+          <p class="text-body">Direct support to artists</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-7xl mx-auto"></div>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <img src="../assets/images/logo/logo-white.png" alt="ARTISTTAAN" class="h-8 w-auto mb-4" />
+          <p class="text-sm text-gray-400">India's hip-hop & indie powerhouse. Founded in 2016 by Aamir Kunwar.</p>
+        </div>
+        <div>
+          <h4 class="text-caption text-gray-400 mb-4">Links</h4>
+          <div class="space-y-2">
+            <a href="../index.html#about" class="block text-sm hover:text-gray-300 transition">About</a>
+            <a href="../index.html#roster" class="block text-sm hover:text-gray-300 transition">Roster</a>
+            <a href="../index.html#releases" class="block text-sm hover:text-gray-300 transition">Releases</a>
+            <a href="../upcoming/" class="block text-sm hover:text-gray-300 transition">Upcoming</a>
+            <a href="../team/" class="block text-sm hover:text-gray-300 transition">Our Team</a>
+            <a href="../merchandise/" class="block text-sm hover:text-gray-300 transition">Merchandise</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-caption text-gray-400 mb-4">Social</h4>
+          <div class="space-y-2">
+            <a href="https://instagram.com/artisttaan" target="_blank" rel="noopener noreferrer" class="block text-sm hover:text-gray-300 transition">Instagram</a>
+            <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" class="block text-sm hover:text-gray-300 transition">YouTube</a>
+            <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" class="block text-sm hover:text-gray-300 transition">Spotify</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-500">&copy; 2026 ARTISTTAAN. All rights reserved.</p>
+        <p class="text-xs text-gray-500">Founded by Aamir Kunwar</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sample merchandise data - can be replaced with API data later
+    const merchandiseData = [
+      {
+        id: 1,
+        name: 'ARTISTTAAN Logo T-Shirt',
+        price: 599,
+        category: 'apparel',
+        image: 'https://via.placeholder.com/400?text=ARTISTTAAN+Tee',
+        sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        colors: ['Black', 'White'],
+        description: 'Classic black t-shirt with embroidered ARTISTTAAN logo.'
+      },
+      {
+        id: 2,
+        name: 'ARTISTTAAN Hoodie',
+        price: 1299,
+        category: 'apparel',
+        image: 'https://via.placeholder.com/400?text=ARTISTTAAN+Hoodie',
+        sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        colors: ['Black', 'Charcoal'],
+        description: 'Premium hoodie with printed logo and kangaroo pockets.'
+      },
+      {
+        id: 3,
+        name: 'Artist Series Cap',
+        price: 399,
+        category: 'accessories',
+        image: 'https://via.placeholder.com/400?text=Artist+Cap',
+        sizes: ['One Size'],
+        colors: ['Black', 'White'],
+        description: 'Adjustable cap featuring artist names.'
+      },
+      {
+        id: 4,
+        name: 'Limited Edition Vinyl Sticker Pack',
+        price: 149,
+        category: 'limited',
+        image: 'https://via.placeholder.com/400?text=Sticker+Pack',
+        sizes: ['One Size'],
+        colors: ['Multi'],
+        description: 'Set of 5 limited edition vinyl stickers.'
+      },
+      {
+        id: 5,
+        name: 'ARTISTTAAN Tote Bag',
+        price: 499,
+        category: 'accessories',
+        image: 'https://via.placeholder.com/400?text=Tote+Bag',
+        sizes: ['One Size'],
+        colors: ['Black', 'Natural'],
+        description: 'Durable canvas tote bag with screen-printed design.'
+      },
+      {
+        id: 6,
+        name: 'Limited Collab Jacket',
+        price: 2499,
+        category: 'limited',
+        image: 'https://via.placeholder.com/400?text=Collab+Jacket',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: ['Black'],
+        description: 'Exclusive limited edition collaboration jacket. Only 200 pieces.'
+      }
+    ];
+
+    let cart = [];
+    let currentFilter = 'all';
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      setupEventListeners();
+      loadCart();
+    });
+
+    function setupEventListeners() {
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          currentFilter = e.target.dataset.filter;
+          renderProducts();
+        });
+      });
+
+      // Cart button
+      document.getElementById('cartBtn').addEventListener('click', toggleCart);
+      document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
+      document.getElementById('cartModal').addEventListener('click', (e) => {
+        if (e.target.id === 'cartModal') toggleCart();
+      });
+
+      // Checkout button
+      document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length > 0) {
+          alert('Thank you for your order! Checkout integration coming soon.');
+          cart = [];
+          saveCart();
+          updateCartBadge();
+          renderCart();
+          toggleCart();
+        }
+      });
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('products-container');
+      const emptyState = document.getElementById('empty-state');
+
+      const filtered = currentFilter === 'all' 
+        ? merchandiseData 
+        : merchandiseData.filter(p => p.category === currentFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      container.innerHTML = filtered.map(product => `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover rounded" loading="lazy" />
+          </div>
+          <h3 class="product-title">${product.name}</h3>
+          <p class="text-caption mt-2">${product.description}</p>
+          <p class="product-price">₹${product.price}</p>
+          
+          <div class="mt-4">
+            <p class="text-xs text-secondary mb-2 font-medium">Color:</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              ${product.colors.map(color => `
+                <span class="color-option text-xs px-2 py-1 border border-subtle rounded cursor-pointer hover:border-primary" data-color="${color}">
+                  ${color}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <p class="text-xs text-secondary mb-2 font-medium">Size:</p>
+            <div class="flex flex-wrap gap-2">
+              ${product.sizes.map(size => `
+                <button class="product-size" data-size="${size}" data-product-id="${product.id}">
+                  ${size}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <button class="add-to-cart-btn mt-6 w-full justify-center" data-product-id="${product.id}">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            Add to Cart
+          </button>
+        </div>
+      `).join('');
+
+      // Add event listeners to size buttons and add to cart buttons
+      document.querySelectorAll('.product-size').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const productCard = e.target.closest('.product-card');
+          productCard.querySelectorAll('.product-size').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+        });
+      });
+
+      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const productCard = e.target.closest('.product-card');
+          const productId = parseInt(e.target.dataset.productId);
+          const selectedSize = productCard.querySelector('.product-size.active');
+
+          if (!selectedSize) {
+            alert('Please select a size');
+            return;
+          }
+
+          addToCart(productId, selectedSize.textContent.trim());
+        });
+      });
+    }
+
+    function addToCart(productId, size) {
+      const product = merchandiseData.find(p => p.id === productId);
+      if (!product) return;
+
+      const cartItem = cart.find(item => item.id === productId && item.size === size);
+      
+      if (cartItem) {
+        cartItem.quantity++;
+      } else {
+        cart.push({
+          id: productId,
+          name: product.name,
+          price: product.price,
+          size: size,
+          quantity: 1
+        });
+      }
+
+      saveCart();
+      updateCartBadge();
+      alert(`${product.name} (${size}) added to cart!`);
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-center text-muted py-8">Your cart is empty</p>';
+        document.getElementById('checkoutBtn').disabled = true;
+        return;
+      }
+
+      document.getElementById('checkoutBtn').disabled = false;
+      container.innerHTML = cart.map((item, index) => `
+        <div class="flex justify-between items-start pb-6 border-b border-subtle">
+          <div class="flex-1">
+            <h3 class="font-semibold">${item.name}</h3>
+            <p class="text-sm text-muted mt-1">Size: ${item.size}</p>
+            <p class="text-sm text-muted">Qty: ${item.quantity}</p>
+          </div>
+          <div class="text-right">
+            <p class="font-semibold">₹${item.price * item.quantity}</p>
+            <button class="text-sm text-red-500 hover:text-red-700 mt-2" onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      document.getElementById('cartTotal').textContent = '₹' + total;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+      updateCartBadge();
+      renderCart();
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cartBadge');
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (count > 0) {
+        badge.classList.remove('hidden');
+        badge.textContent = count;
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden')) {
+        renderCart();
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem('artisttaanCart', JSON.stringify(cart));
+    }
+
+    function loadCart() {
+      const saved = localStorage.getItem('artisttaanCart');
+      if (saved) {
+        cart = JSON.parse(saved);
+        updateCartBadge();
+      }
+    }
+
+    // Make removeFromCart available globally
+    window.removeFromCart = removeFromCart;
+  </script>
+</body>
+</html>
