@@ -250,9 +250,10 @@
         <h2 class="text-section mb-4">Submit Your Demo</h2>
         <p class="text-body max-w-lg mx-auto">Think you've got what it takes? Send us your best work and our team will get back to you within 48 hours.</p>
       </div>
-      <form id="demoForm" action="https://formspree.io/f/meedywzn" method="POST" enctype="multipart/form-data" class="space-y-8">
-        <input type="hidden" name="_subject" value="New Demo Submission - ARTISTTAAN" />
-        <input type="hidden" name="_template" value="table" />
+      <form id="demoForm" name="demo" action="/" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" class="space-y-8">
+        <input type="hidden" name="form-name" value="demo" />
+        <input type="hidden" name="subject" value="New Demo Submission - ARTISTTAAN" />
+        <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
         <div class="grid md:grid-cols-2 gap-8">
           <div>
             <label class="text-caption block mb-2">Artist Name *</label>
@@ -279,7 +280,7 @@
           <div class="relative border border-subtle p-8 text-center hover:border-dark transition cursor-pointer group" id="fileDropZone">
             <input type="file" name="attachment" accept=".mp3,.wav,.zip,audio/mpeg,audio/wav" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="demoFile" />
             <p class="text-sm text-secondary group-hover:text-primary transition"><span class="font-medium underline underline-offset-4">Click to upload</span> or drag and drop</p>
-            <p class="text-xs text-muted mt-2">MP3, WAV, or ZIP (max 10MB)</p>
+            <p class="text-xs text-muted mt-2">MP3, WAV, or ZIP (max 8MB)</p>
             <p id="fileName" class="text-sm font-medium mt-3 hidden"></p>
           </div>
         </div>
