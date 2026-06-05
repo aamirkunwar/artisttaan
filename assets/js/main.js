@@ -186,7 +186,10 @@ function initDemoForm() {
           if (fileName) { fileName.textContent = ''; fileName.classList.add('hidden'); }
           showToast('Demo submitted successfully. We\'ll be in touch.');
         }
-      } catch (_) {}
+         } catch (err) {
+     showToast('Something went wrong. Please try again.');
+     console.error(err);
+   }
       btn.textContent = 'Send Demo';
       btn.disabled = false;
     });
