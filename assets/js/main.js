@@ -3,7 +3,7 @@
 // ============================================
 
 let siteData = null;
-
+ 
 async function loadData() {
   try {
     const res = await fetch('assets/data/artists.json');
@@ -14,14 +14,14 @@ async function loadData() {
     showToast('Error loading site data');
   }
 }
-
+ 
 // ============================================
 // RENDER ARTIST ROSTER - No banner, just photo + bio + links
 // ============================================
 function renderRoster() {
   const container = document.getElementById('roster-container');
   if (!container || !siteData) return;
-
+ 
   container.innerHTML = siteData.artists.map(artist => `
     <div class="artist-card group cursor-pointer" onclick="window.location.href='artist/?artist=${artist.id}'">
       <div class="overflow-hidden mb-4 aspect-[3/4] bg-secondary rounded-sm">
@@ -44,14 +44,14 @@ function renderRoster() {
     </div>
   `).join('');
 }
-
+ 
 // ============================================
 // RENDER RELEASES - Spotify embeds ONLY (no other images)
 // ============================================
 function renderReleases() {
   const container = document.getElementById('releases-container');
   if (!container || !siteData) return;
-
+ 
   container.innerHTML = siteData.releases.map(release => `
     <div class="release-card group">
       <div class="spotify-embed mb-3">
@@ -63,14 +63,14 @@ function renderReleases() {
     </div>
   `).join('');
 }
-
+ 
 // ============================================
 // RENDER VIDEOS - Latest validated videos only
 // ============================================
 function renderVideos() {
   const container = document.getElementById('video-container');
   if (!container || !siteData) return;
-
+ 
   // Only include videos with valid YouTube IDs (no placeholders)
   const knownVideos = [
     { title: "KAAGAZ AUR DAAG", artist: "Shrey", embed: "https://www.youtube.com/embed/ZYln3iWRxDk", id: "ZYln3iWRxDk" },
@@ -81,7 +81,7 @@ function renderVideos() {
     { title: "MARZ", artist: "Abir", embed: "https://www.youtube.com/embed/U7AdDdqJWUg", id: "U7AdDdqJWUg" },
     { title: "KAHO NA", artist: "Abir", embed: "https://www.youtube.com/embed/lC9X-FtN7AI", id: "lC9X-FtN7AI" }
   ];
-
+ 
   container.innerHTML = knownVideos.map(v => `
     <div class="relative">
       <p class="text-caption mb-2">${v.artist} - ${v.title}</p>
@@ -91,14 +91,14 @@ function renderVideos() {
     </div>
   `).join('');
 }
-
+ 
 // ============================================
 // RENDER SOCIALS
 // ============================================
 function renderSocials() {
   const container = document.getElementById('socials-container');
   if (!container || !siteData) return;
-
+ 
   const iconMap = {
     instagram: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.',
     youtube: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.5',
@@ -106,7 +106,7 @@ function renderSocials() {
     twitter: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 ',
     soundcloud: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.2'
   };
-
+ 
   container.innerHTML = siteData.socials.map(s => `
     <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="hover-lift flex flex-col items-center justify-center gap-2 p-6 border border-subtle hover:border-dark transition group">
       <span class="text-muted group-hover:text-primary transition">${iconMap[s.icon] || s.icon}</span>
@@ -115,7 +115,7 @@ function renderSocials() {
     </a>
   `).join('');
 }
-
+ 
 // ============================================
 // APPLY SETTINGS
 // ============================================
@@ -125,7 +125,7 @@ function applySettings() {
   document.title = s.site_title;
   document.querySelector('meta[name="description"]').content = s.site_description;
 }
-
+ 
 // ============================================
 // RENDER ALL
 // ============================================
@@ -136,7 +136,7 @@ function renderAll() {
   renderVideos();
   renderSocials();
 }
-
+ 
 // ============================================
 // MOBILE MENU
 // ============================================
@@ -152,7 +152,7 @@ function initMobileMenu() {
     });
   }
 }
-
+ 
 // ============================================
 // DEMO FORM
 // ============================================
@@ -167,7 +167,7 @@ function initDemoForm() {
       }
     });
   }
-
+ 
   const demoForm = document.getElementById('demoForm');
   if (demoForm) {
     demoForm.addEventListener('submit', async (e) => {
@@ -178,24 +178,27 @@ function initDemoForm() {
       try {
         const res = await fetch(demoForm.action, {
           method: 'POST',
-          body: new FormData(demoForm),
-          headers: { Accept: 'application/json' }
+          body: new FormData(demoForm)
         });
+        const data = await res.json();
         if (res.ok) {
           demoForm.reset();
           if (fileName) { fileName.textContent = ''; fileName.classList.add('hidden'); }
-          showToast('Demo submitted successfully. We\'ll be in touch.');
+          showToast("Demo submitted! We'll be in touch within 48 hours.");
+        } else {
+          const msg = data.errors?.map(err => err.message).join(', ') || 'Submission failed. Please try again.';
+          showToast(msg);
         }
-         } catch (err) {
-     showToast('Something went wrong. Please try again.');
-     console.error(err);
-   }
+      } catch (err) {
+        console.error('Submit error:', err);
+        showToast('Network error. Please check your connection and try again.');
+      }
       btn.textContent = 'Send Demo';
       btn.disabled = false;
     });
   }
 }
-
+ 
 // ============================================
 // TOAST
 // ============================================
@@ -207,7 +210,7 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 4000);
   }
 }
-
+ 
 // ============================================
 // INIT
 // ============================================
