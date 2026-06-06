@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label</title>
   <meta name="description" content="ARTISTTAAN is India's premier hip-hop and indie music label, founded in 2016. Discover artists like Abir, Shrey, Slay, Apoorvv & Faraz. Stream music, watch videos, and submit demos to our leading independent music label." />
   <meta name="keywords" content="ARTISTTAAN, Indian hip-hop, indie music label, Abir, Shrey, Slay, Apoorvv, Faraz, Indian music, independent artists, hip-hop India, R&B India, pop music India" />
   <link rel="icon" type="image/png" href="assets/images/logo/logo-icon.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/images/logo/logo-icon.png" />
   <link rel="apple-touch-icon" href="assets/images/logo/apple-touch-icon.png" />
   <link rel="canonical" href="https://artisttaanmusic.com/" />
   <meta property="og:type" content="website" />
@@ -19,6 +19,7 @@
   <meta name="twitter:title" content="ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label" />
   <meta name="twitter:description" content="Discover India's top independent hip-hop and indie artists. Stream music, watch videos, and submit demos." />
   <meta name="twitter:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <title>ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +27,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-
+ 
   <!-- NAVIGATION -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -58,7 +59,7 @@
       </div>
     </div>
   </nav>
-
+ 
   <!-- HERO -->
   <section class="min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
@@ -74,9 +75,9 @@
       </div>
     </div>
   </section>
-
+ 
   <div class="divider max-w-7xl mx-auto"></div>
-
+ 
   <!-- ABOUT US -->
   <section id="about" class="section-pad">
     <div class="max-w-7xl mx-auto">
@@ -93,7 +94,7 @@
           <div class="grid grid-cols-3 gap-8 pt-8 border-t border-subtle">
             <div><p class="stat-number">8+</p><p class="text-caption mt-2">Artists</p></div>
             <div><p class="stat-number">50+</p><p class="text-caption mt-2">Releases</p></div>
-            <div><p class="stat-number">2M+</p><p class="text-caption mt-2">Streams</p></div>
+            <div><p class="stat-number">3M+</p><p class="text-caption mt-2">Streams</p></div>
           </div>
         </div>
         <div class="order-1 md:order-2 about-image flex items-center justify-center bg-white p-8 md:p-16">
@@ -102,9 +103,9 @@
       </div>
     </div>
   </section>
-
+ 
   <div class="divider max-w-7xl mx-auto"></div>
-
+ 
   <!-- ROSTER -->
   <section id="roster" class="section-pad">
     <div class="max-w-7xl mx-auto">
@@ -122,18 +123,26 @@
       </div>
     </div>
   </section>
-
+ 
   <div class="divider max-w-7xl mx-auto"></div>
-
+ 
   <!-- LATEST RELEASES -->
   <section id="releases" class="section-pad">
     <div class="max-w-7xl mx-auto">
-      <div class="flex items-end justify-between mb-16">
+      <div class="flex items-end justify-between mb-10">
         <div>
           <p class="text-caption mb-3">Music</p>
           <h2 class="text-section">Latest Releases</h2>
         </div>
         <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" class="hidden md:block text-sm font-medium text-secondary hover:text-primary transition">See all →</a>
+      </div>
+      <!-- Filter tabs -->
+      <div class="flex flex-wrap gap-2 mb-10" id="release-filters">
+        <button class="release-filter-btn active" data-artist="all">All</button>
+        <button class="release-filter-btn" data-artist="shrey">Shrey</button>
+        <button class="release-filter-btn" data-artist="slay">Slay</button>
+        <button class="release-filter-btn" data-artist="abir">Abir</button>
+        <button class="release-filter-btn" data-artist="apoorvv">Apoorvv</button>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" id="releases-container">
         <div class="skeleton rounded-none aspect-square"></div>
@@ -142,106 +151,67 @@
       </div>
     </div>
   </section>
-
+ 
   <div class="divider max-w-7xl mx-auto"></div>
-
+ 
   <!-- VIDEO -->
   <section id="video" class="section-pad">
     <div class="max-w-7xl mx-auto">
-      <div class="mb-12">
-        <p class="text-caption mb-3">Visuals</p>
-        <h2 class="text-section mb-4">Latest Drops</h2>
-        <p class="text-body max-w-xl">Watch the latest music videos from ARTISTTAAN artists.</p>
+      <div class="flex items-end justify-between mb-16">
+        <div>
+          <p class="text-caption mb-3">Visuals</p>
+          <h2 class="text-section mb-4">Latest Drops</h2>
+        </div>
+        <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" class="hidden md:block text-sm font-medium text-secondary hover:text-primary transition">All Videos →</a>
       </div>
-      <div class="grid md:grid-cols-2 gap-8" id="video-container">
-        <div class="relative">
-          <p class="text-caption mb-2">Shrey - Kaagaz aur Daag</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/ZYln3iWRxDk" title="KAAGAZ AUR DAAG - SHREY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Slay - Namaskar</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/bLTVqTJ1hUQ" title="NAMASKAR - SLAY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Shrey - Sifarishein</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/rcKlMq2uDlk" title="SIFARISHEIN - SHREY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Shrey - Thoughts are poison</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/afRnyWvO6PU" title="THOUGHTS ARE POISON - SHREY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Shrey - Thoda Aur ft. Jai</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/Q5E5t5VbVeo" title="THODA AUR - SHREY ft JAI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Abir - Marz</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/U7AdDdqJWUg" title="MARZ - ABIR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Abir - Kaho Na</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/lC9X-FtN7AI" title="KAHO NA - ABIR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Abir - Pehle Jaisa</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/PLACEHOLDER_PEHLE" title="PEHLE JAISA - ABIR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Slay - Smack</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/PLACEHOLDER_SMACK" title="SMACK - SLAY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="relative">
-          <p class="text-caption mb-2">Slay - Wassup</p>
-          <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/PLACEHOLDER_WASSUP" title="WASSUP - SLAY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-12">
+      <div class="grid md:grid-cols-2 gap-8" id="video-container"></div>
+      <div class="mt-12 text-center md:hidden">
         <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" class="btn-outline inline-block">All Videos on YouTube</a>
       </div>
     </div>
   </section>
-
+ 
   <div class="divider max-w-7xl mx-auto"></div>
-
-  <!-- SOCIAL -->
-  <section id="social" class="section-pad">
+ 
+  <!-- STATS STRIP -->
+  <section class="section-pad bg-secondary">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <p class="text-caption mb-3">Connect</p>
-        <h2 class="text-section">Follow ARTISTTAAN</h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto" id="socials-container">
-        <div class="skeleton rounded-none h-32"></div>
-        <div class="skeleton rounded-none h-32"></div>
-        <div class="skeleton rounded-none h-32"></div>
-        <div class="skeleton rounded-none h-32"></div>
-        <div class="skeleton rounded-none h-32"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="stat-number">3M+</p>
+          <p class="text-caption mt-2">Total Streams</p>
+        </div>
+        <div>
+          <p class="stat-number">125K+</p>
+          <p class="text-caption mt-2">Monthly Listeners</p>
+        </div>
+        <div>
+          <p class="stat-number">5</p>
+          <p class="text-caption mt-2">Artists</p>
+        </div>
+        <div>
+          <p class="stat-number">10+</p>
+          <p class="text-caption mt-2">Years Running</p>
+        </div>
       </div>
     </div>
   </section>
-
+ 
   <div class="divider max-w-7xl mx-auto"></div>
-
+ 
+  <!-- SOCIALS -->
+  <section id="social" class="section-pad">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-caption mb-3">Stay Connected</p>
+        <h2 class="text-section">Follow ARTISTTAAN</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto" id="socials-container"></div>
+    </div>
+  </section>
+ 
+  <div class="divider max-w-7xl mx-auto"></div>
+ 
   <!-- SUBMIT DEMO -->
   <section id="demo" class="section-pad bg-secondary">
     <div class="max-w-3xl mx-auto">
@@ -272,11 +242,15 @@
           </div>
         </div>
         <div>
+          <label class="text-caption block mb-2">Demo Link (SoundCloud, Google Drive, YouTube)</label>
+          <input type="url" name="demoLink" placeholder="https://soundcloud.com/yourtrack" class="form-minimal w-full text-primary" />
+        </div>
+        <div>
           <label class="text-caption block mb-2">About You *</label>
           <textarea name="about" required rows="3" placeholder="Tell us about your sound, influences, and what makes you unique..." class="form-minimal w-full text-primary resize-none"></textarea>
         </div>
         <div>
-          <label class="text-caption block mb-2">Demo File</label>
+          <label class="text-caption block mb-2">Demo File <span class="text-muted font-normal">(optional)</span></label>
           <div class="relative border border-subtle p-8 text-center hover:border-dark transition cursor-pointer group" id="fileDropZone">
             <input type="file" name="attachment" accept=".mp3,.wav,.zip,audio/mpeg,audio/wav" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="demoFile" />
             <p class="text-sm text-secondary group-hover:text-primary transition"><span class="font-medium underline underline-offset-4">Click to upload</span> or drag and drop</p>
@@ -291,7 +265,7 @@
       </form>
     </div>
   </section>
-
+ 
   <!-- FOOTER -->
   <footer class="bg-primary text-white py-16 px-6">
     <div class="max-w-7xl mx-auto">
@@ -327,10 +301,11 @@
       </div>
     </div>
   </footer>
-
+ 
   <!-- Toast -->
   <div id="toast" class="toast">Demo submitted successfully. We'll be in touch.</div>
-
+ 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+ 
