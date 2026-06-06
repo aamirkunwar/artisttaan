@@ -35,7 +35,7 @@ function renderRoster() {
         </h3>
         <p class="text-caption mt-1">${artist.role}</p>
         <p class="text-body text-sm mt-2 line-clamp-3">${artist.bio}</p>
-        ${artist.monthly_listeners && artist.monthly_listeners !== '—' ? `<p class="text-xs text-green-600 mt-2 font-medium">${artist.monthly_listeners} monthly listeners</p>` : ''}
+        ${artist.spotify_url ? `<a href="${artist.spotify_url}" target="_blank" rel="noopener noreferrer" class="text-xs text-green-600 font-medium mt-2 inline-block hover:underline underline-offset-4" onclick="event.stopPropagation()">View on Spotify →</a>` : ''}
       </div>
       <div class="flex flex-wrap gap-3 mt-4">
         ${artist.spotify_url ? `<a href="${artist.spotify_url}" target="_blank" rel="noopener noreferrer" class="social-icon text-xs font-medium text-secondary hover:text-primary transition underline underline-offset-4" onclick="event.stopPropagation()">Spotify</a>` : ''}
