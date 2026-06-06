@@ -301,10 +301,10 @@
       "icon": "twitter"
     },
     {
-      "platform": "SoundCloud",
+      "platform": "Facebook",
       "handle": "ARTISTTAAN",
-      "url": "https://soundcloud.com/artisttaan",
-      "icon": "soundcloud"
+      "url": "https://facebook.com/artisttaan",
+      "icon": "facebook"
     }
   ],
   "team": [
