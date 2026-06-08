@@ -6,6 +6,7 @@
   <title>Culture — ARTISTTAAN</title>
   <meta name="description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
   <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,39 +30,58 @@
     .filter-tab:hover{color:var(--black)}
     .filter-tab.active{color:var(--black);border-bottom-color:var(--black)}
     .layout{padding:48px 32px;max-width:1400px;margin:0 auto}
-    .hero-article{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid #e5e5e5;margin-bottom:48px}
-    .hero-img{aspect-ratio:4/3;position:relative;overflow:hidden}
-    .placeholder-art{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;color:rgba(255,255,255,0.08);letter-spacing:-0.05em;user-select:none}
-    .hero-content{display:flex;flex-direction:column;justify-content:center}
-    .tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:4px 10px;margin-bottom:16px}
+    .tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:4px 10px;margin-bottom:12px}
     .tag.interview{background:var(--black);color:var(--white)}
     .tag.article{background:var(--accent);color:var(--black)}
     .tag.update{background:var(--red);color:var(--white)}
-    .hero-headline{font-family:var(--font-display);font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
-    .hero-excerpt{font-size:15px;color:#555;line-height:1.7;margin-bottom:16px}
+    /* HERO */
+    .hero-article{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid #e5e5e5;margin-bottom:48px}
+    .hero-img{aspect-ratio:4/3;overflow:hidden;background:var(--light);position:relative}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .hero-content{display:flex;flex-direction:column;justify-content:center}
+    .hero-headline{font-family:var(--font-display);font-size:clamp(24px,3.5vw,42px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px}
+    .hero-excerpt{font-size:14px;color:#555;line-height:1.7;margin-bottom:12px}
     .hero-meta{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em}
-    .read-more{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;text-decoration:none;color:var(--black);border-bottom:1.5px solid var(--black);padding-bottom:2px;margin-top:20px;transition:opacity 0.2s}
+    .read-more{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;text-decoration:none;color:var(--black);border-bottom:1.5px solid var(--black);padding-bottom:2px;margin-top:18px;transition:opacity 0.2s}
     .read-more:hover{opacity:0.5}
-    .coming-soon-badge{position:absolute;top:12px;right:12px;background:var(--black);color:var(--white);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:4px 8px}
-    .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-    .article-card{cursor:pointer}
-    .card-img{aspect-ratio:3/2;margin-bottom:16px;overflow:hidden;position:relative}
-    .card-img .placeholder-art{font-size:32px}
-    .card-headline{font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.2;letter-spacing:-0.01em;margin-bottom:8px}
-    .card-excerpt{font-size:13px;color:#666;line-height:1.6;margin-bottom:10px}
+    /* GRID */
+    .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:48px}
+    .article-card{cursor:pointer;text-decoration:none;color:inherit;display:block}
+    .card-img{aspect-ratio:3/2;margin-bottom:14px;overflow:hidden;background:var(--light);position:relative}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+    .article-card:hover .card-img img{transform:scale(1.04)}
+    .placeholder-art{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;color:rgba(255,255,255,0.12);letter-spacing:-0.05em;font-size:32px}
+    .card-headline{font-family:var(--font-display);font-size:19px;font-weight:700;line-height:1.2;letter-spacing:-0.01em;margin-bottom:8px}
+    .card-excerpt{font-size:13px;color:#666;line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .card-meta{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em}
-    .two-col{display:grid;grid-template-columns:1fr 320px;gap:48px;margin-top:48px;padding-top:48px;border-top:1px solid #e5e5e5}
+    /* EMPTY STATE */
+    .empty-state{grid-column:1/-1;text-align:center;padding:80px 0;color:var(--gray)}
+    .empty-state h3{font-family:var(--font-display);font-size:28px;font-weight:700;margin-bottom:8px;color:var(--black)}
+    .empty-state p{font-size:13px}
+    /* ARTICLE PAGE */
+    .article-page{display:none;max-width:720px;margin:0 auto;padding:48px 32px 80px}
+    .article-page.active{display:block}
+    .article-page .back-btn{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray);cursor:pointer;border:none;background:none;padding:0;margin-bottom:32px;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+    .article-page .back-btn:hover{color:var(--black)}
+    .article-cover{width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:32px}
+    .article-title{font-family:var(--font-display);font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:16px}
+    .article-byline{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #e5e5e5}
+    .article-body{font-size:16px;line-height:1.85;color:#222}
+    .article-body p{margin-bottom:20px}
+    .article-body h2{font-family:var(--font-display);font-size:26px;font-weight:700;margin:36px 0 16px;letter-spacing:-0.01em}
+    .article-body h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin:28px 0 12px}
+    .article-body strong{font-weight:600}
+    .article-body em{font-style:italic}
+    .article-body blockquote{border-left:3px solid var(--black);padding-left:20px;margin:24px 0;font-family:var(--font-display);font-size:20px;font-style:italic;line-height:1.5;color:#333}
+    /* SIDEBAR */
+    .two-col{display:grid;grid-template-columns:1fr 300px;gap:48px;padding-top:48px;border-top:1px solid #e5e5e5}
     .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gray);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #e5e5e5}
-    .list-item{padding:20px 0;border-bottom:0.5px solid #f0f0f0;display:grid;grid-template-columns:100px 1fr;gap:16px;cursor:pointer}
-    .list-item:last-child{border-bottom:none}
-    .list-thumb{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;font-weight:900;color:rgba(255,255,255,0.15)}
-    .list-title{font-family:var(--font-display);font-size:16px;font-weight:700;line-height:1.2;margin:6px 0}
-    .sidebar-item{padding:16px 0;border-bottom:0.5px solid #f0f0f0}
+    .sidebar-item{padding:14px 0;border-bottom:0.5px solid #f0f0f0;cursor:pointer}
     .sidebar-item:last-child{border-bottom:none}
     .s-title{font-family:var(--font-display);font-size:15px;font-weight:700;line-height:1.2;margin:6px 0}
     .s-meta{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em}
     .contribute-box{margin-top:24px;background:var(--black);color:var(--white);padding:28px}
-    .contribute-box h4{font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:8px}
+    .contribute-box h4{font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:8px}
     .contribute-box p{font-size:13px;color:#aaa;line-height:1.6;margin-bottom:16px}
     .contribute-box a{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:8px 20px;transition:all 0.2s}
     .contribute-box a:hover{background:var(--accent);color:var(--black)}
@@ -70,9 +90,7 @@
     footer a{font-size:12px;color:#666;text-decoration:none;transition:color 0.2s}
     footer a:hover{color:var(--white)}
     .fade-up{opacity:0;transform:translateY(20px);animation:fadeUp 0.6s ease forwards}
-    .delay-1{animation-delay:0.1s}
-    .delay-2{animation-delay:0.2s}
-    .delay-3{animation-delay:0.3s}
+    .delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
     @keyframes fadeUp{to{opacity:1;transform:none}}
     @media(max-width:900px){.hero-article{grid-template-columns:1fr}.articles-grid{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr}.masthead-title{font-size:64px}}
     @media(max-width:600px){nav{padding:0 16px}.nav-links{gap:16px}.filter-bar,.layout,.masthead{padding-left:20px;padding-right:20px}.articles-grid{grid-template-columns:1fr}.masthead-title{font-size:48px}footer{flex-direction:column;gap:16px;text-align:center}}
@@ -91,7 +109,8 @@
   </div>
 </nav>
 
-<div class="masthead">
+<!-- MASTHEAD -->
+<div class="masthead" id="masthead">
   <div class="masthead-top">
     <span class="masthead-label">ARTISTTAAN · Culture</span>
     <span class="masthead-date" id="current-date"></span>
@@ -99,172 +118,42 @@
   <h1 class="masthead-title fade-up">CUL<span>TURE</span></h1>
 </div>
 
-<div class="filter-bar">
+<!-- FILTER TABS -->
+<div class="filter-bar" id="filter-bar">
   <button class="filter-tab active" data-filter="all">All</button>
   <button class="filter-tab" data-filter="interview">Interviews</button>
   <button class="filter-tab" data-filter="article">Articles</button>
   <button class="filter-tab" data-filter="update">Hip-Hop Updates</button>
 </div>
 
-<div class="layout">
-
-  <!-- HERO -->
-  <div class="hero-article fade-up delay-1" id="hero-section" data-type="interview">
-    <div class="hero-img">
-      <div class="placeholder-art" style="font-size:72px;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);">AT</div>
-      <span class="coming-soon-badge">Coming Soon</span>
-    </div>
-    <div class="hero-content">
-      <span class="tag interview">Interview</span>
-      <h2 class="hero-headline">"We built this from the streets of East Delhi" — Aamir Kunwar on ARTISTTAAN's journey</h2>
-      <p class="hero-excerpt">From underground battles to Sony Music — the founder of India's most important independent hip-hop label talks about the beginning, the grind, and where ARTISTTAAN is headed next.</p>
-      <div class="hero-meta">Coming Soon · ARTISTTAAN Culture</div>
-      <a href="#" class="read-more">Read Interview →</a>
-    </div>
+<!-- MAIN LAYOUT -->
+<div class="layout" id="main-layout">
+  <div id="loading" style="text-align:center;padding:80px 0;color:var(--gray);">
+    <p style="font-size:13px;">Loading articles...</p>
   </div>
-
-  <!-- GRID -->
-  <div class="articles-grid fade-up delay-2" id="articles-grid">
-
-    <div class="article-card" data-type="interview">
-      <div class="card-img">
-        <div class="placeholder-art" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d);">ABIR</div>
-        <span class="coming-soon-badge">Coming Soon</span>
-      </div>
-      <span class="tag interview" style="margin-bottom:8px;">Interview</span>
-      <h3 class="card-headline">Abir on 'Marz', 103K listeners, and making R&B from Agra</h3>
-      <p class="card-excerpt">The singer-songwriter talks about his creative process, the song that changed everything, and what it means to make soul music in Hindi.</p>
-      <p class="card-meta">Coming Soon · Abir</p>
-    </div>
-
-    <div class="article-card" data-type="article">
-      <div class="card-img">
-        <div class="placeholder-art" style="background:linear-gradient(135deg,#2d1b00,#4a2f00);">SHREY</div>
-        <span class="coming-soon-badge">Coming Soon</span>
-      </div>
-      <span class="tag article" style="margin-bottom:8px;">Article</span>
-      <h3 class="card-headline">Breaking down 'Kaagaz Aur Daag' — Shrey's most personal track yet</h3>
-      <p class="card-excerpt">A line-by-line breakdown of the imagery, wordplay, and emotion behind one of ARTISTTAAN's most acclaimed releases.</p>
-      <p class="card-meta">Coming Soon · Shrey</p>
-    </div>
-
-    <div class="article-card" data-type="update">
-      <div class="card-img">
-        <div class="placeholder-art" style="background:linear-gradient(135deg,#1a0000,#3d0000);">INDIA</div>
-        <span class="coming-soon-badge">Coming Soon</span>
-      </div>
-      <span class="tag update" style="margin-bottom:8px;">Hip-Hop Update</span>
-      <h3 class="card-headline">The rise of independent hip-hop in India — 2026 state of the scene</h3>
-      <p class="card-excerpt">How underground artists across Delhi, Mumbai, and beyond are changing the game without a major label behind them.</p>
-      <p class="card-meta">Coming Soon · Scene Report</p>
-    </div>
-
-    <div class="article-card" data-type="interview">
-      <div class="card-img">
-        <div class="placeholder-art" style="background:linear-gradient(135deg,#0d1b2a,#1b2a3d);">SLAY</div>
-        <span class="coming-soon-badge">Coming Soon</span>
-      </div>
-      <span class="tag interview" style="margin-bottom:8px;">Interview</span>
-      <h3 class="card-headline">Slay on 'Namaskar' — "This track is my statement to the scene"</h3>
-      <p class="card-excerpt">ARTISTTAAN's most energetic voice talks about his 2026 comeback, what drives his lyricism, and why precision matters more than hype.</p>
-      <p class="card-meta">Coming Soon · Slay</p>
-    </div>
-
-    <div class="article-card" data-type="article">
-      <div class="card-img">
-        <div class="placeholder-art" style="background:linear-gradient(135deg,#1a1a00,#2d2d00);">APOORVV</div>
-        <span class="coming-soon-badge">Coming Soon</span>
-      </div>
-      <span class="tag article" style="margin-bottom:8px;">Article</span>
-      <h3 class="card-headline">Why 'Mila Tu' by Apoorvv is the indie love song India needed</h3>
-      <p class="card-excerpt">An exploration of melody, longing, and the quiet power of indie pop in a hip-hop-dominated landscape.</p>
-      <p class="card-meta">Coming Soon · Apoorvv</p>
-    </div>
-
-    <div class="article-card" data-type="update">
-      <div class="card-img">
-        <div class="placeholder-art" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);">SCENE</div>
-        <span class="coming-soon-badge">Coming Soon</span>
-      </div>
-      <span class="tag update" style="margin-bottom:8px;">Hip-Hop Update</span>
-      <h3 class="card-headline">East Delhi's underground — the neighbourhood that birthed ARTISTTAAN</h3>
-      <p class="card-excerpt">A deep dive into Jamnapaar's music scene, the battles, the studios, and the culture that shaped India's first Sony-signed hip-hop label.</p>
-      <p class="card-meta">Coming Soon · Culture</p>
-    </div>
-
-  </div>
-
-  <!-- TWO COL -->
-  <div class="two-col fade-up delay-3">
+  <div id="hero-section" style="display:none;"></div>
+  <div class="articles-grid" id="articles-grid" style="display:none;"></div>
+  <div class="two-col" id="two-col" style="display:none;">
     <div>
       <p class="section-label">More Stories</p>
-      <div>
-        <div class="list-item">
-          <div class="list-thumb" style="background:linear-gradient(135deg,#1a1a2e,#0f3460);">FARAZ</div>
-          <div>
-            <span class="tag interview" style="font-size:9px;padding:3px 8px;margin-bottom:0;">Interview</span>
-            <p class="list-title">Faraz on producing for ARTISTTAAN — "Every beat tells a story before the rapper speaks"</p>
-            <p style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;">Coming Soon · Faraz</p>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="list-thumb" style="background:linear-gradient(135deg,#2d1b00,#5a3a00);">SONY</div>
-          <div>
-            <span class="tag article" style="font-size:9px;padding:3px 8px;margin-bottom:0;">Article</span>
-            <p class="list-title">How ARTISTTAAN became India's first hip-hop label to sign with Sony Music</p>
-            <p style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;">Coming Soon · History</p>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="list-thumb" style="background:linear-gradient(135deg,#1a0000,#400000);">TRAP</div>
-          <div>
-            <span class="tag update" style="font-size:9px;padding:3px 8px;margin-bottom:0;">Hip-Hop Update</span>
-            <p class="list-title">Hinglish trap is taking over streaming — and ARTISTTAAN was first</p>
-            <p style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;">Coming Soon · Scene Report</p>
-          </div>
-        </div>
-        <div class="list-item" style="border-bottom:none;">
-          <div class="list-thumb" style="background:linear-gradient(135deg,#0d1b2a,#1b3a5c);">3M</div>
-          <div>
-            <span class="tag article" style="font-size:9px;padding:3px 8px;margin-bottom:0;">Article</span>
-            <p class="list-title">3 million streams and counting — ARTISTTAAN's numbers tell the real story</p>
-            <p style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;">Coming Soon · Data</p>
-          </div>
-        </div>
-      </div>
+      <div id="more-stories"></div>
     </div>
-
     <div>
       <p class="section-label">Latest Updates</p>
-      <div class="sidebar-item">
-        <span class="tag update" style="font-size:9px;padding:3px 8px;margin-bottom:6px;">Update</span>
-        <p class="s-title">Slay's 'Namaskar' crosses 10K streams in first week</p>
-        <p class="s-meta">Coming Soon</p>
-      </div>
-      <div class="sidebar-item">
-        <span class="tag interview" style="font-size:9px;padding:3px 8px;margin-bottom:6px;">Interview</span>
-        <p class="s-title">Abir featured in Spotify India's emerging artists list</p>
-        <p class="s-meta">Coming Soon</p>
-      </div>
-      <div class="sidebar-item">
-        <span class="tag article" style="font-size:9px;padding:3px 8px;margin-bottom:6px;">Article</span>
-        <p class="s-title">ARTISTTAAN hits 3M total streams across all artists</p>
-        <p class="s-meta">Coming Soon</p>
-      </div>
-      <div class="sidebar-item">
-        <span class="tag update" style="font-size:9px;padding:3px 8px;margin-bottom:6px;">Update</span>
-        <p class="s-title">Apoorvv's 'Mila Tu' enters Spotify India Viral 50</p>
-        <p class="s-meta">Coming Soon</p>
-      </div>
-
+      <div id="sidebar-updates"></div>
       <div class="contribute-box">
         <h4>Write for Culture</h4>
         <p>Got a story about Indian hip-hop, an artist interview, or a scene report? We want to hear from you.</p>
-        <a href="mailto:culture@artisttaan.com">Pitch a Story →</a>
+        <a href="mailto:culture@artisttaanmusic.com">Pitch a Story →</a>
       </div>
     </div>
   </div>
+</div>
 
+<!-- ARTICLE READER -->
+<div class="article-page layout" id="article-page">
+  <button class="back-btn" id="back-btn">← Back to Culture</button>
+  <div id="article-content"></div>
 </div>
 
 <footer>
@@ -272,21 +161,217 @@
   <a href="../">← Back to ARTISTTAAN</a>
 </footer>
 
+<!-- marked.js for markdown parsing -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script>
   document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
 
+  // ---- PARSE FRONT MATTER ----
+  function parseFrontMatter(text) {
+    const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+    if (!match) return { meta: {}, body: text };
+    const meta = {};
+    match[1].split('\n').forEach(line => {
+      const i = line.indexOf(':');
+      if (i === -1) return;
+      let key = line.slice(0, i).trim();
+      let val = line.slice(i + 1).trim().replace(/^['"]|['"]$/g, '');
+      meta[key] = val;
+    });
+    // Handle multiline excerpt (>-)
+    const excerptMatch = match[1].match(/excerpt:\s*>\-\n([\s\S]*?)(?=\n\w|$)/);
+    if (excerptMatch) meta.excerpt = excerptMatch[1].replace(/^\s{2}/gm, '').replace(/\n/g, ' ').trim();
+    return { meta, body: match[2].trim() };
+  }
+
+  // ---- LOAD ARTICLES from GitHub raw ----
+  // We fetch the posts listing from GitHub API
+  const REPO = 'artisttaan-main'; // update if different
+  const POSTS_PATH = 'culture/posts';
+
+  let allArticles = [];
+  let currentFilter = 'all';
+
+  async function loadArticles() {
+    try {
+      // Fetch list of .md files from GitHub API
+      const apiUrl = `https://api.github.com/repos/${getRepoOwner()}/${getRepoName()}/contents/${POSTS_PATH}`;
+      const res = await fetch(apiUrl);
+      if (!res.ok) throw new Error('API failed');
+      const files = await res.json();
+      const mdFiles = files.filter(f => f.name.endsWith('.md'));
+
+      const articles = await Promise.all(mdFiles.map(async file => {
+        const r = await fetch(file.download_url);
+        const text = await r.text();
+        const { meta, body } = parseFrontMatter(text);
+        return { ...meta, body, slug: file.name.replace('.md', ''), filename: file.name };
+      }));
+
+      // Sort by date descending
+      allArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+      renderAll();
+    } catch (err) {
+      console.error(err);
+      showError();
+    }
+  }
+
+  function getRepoOwner() {
+    // Try to detect from current URL or fallback
+    return window._repoOwner || 'artisttaan';
+  }
+  function getRepoName() {
+    return window._repoName || 'artisttaan-main';
+  }
+
+  function tagColor(type) {
+    if (type === 'interview') return 'interview';
+    if (type === 'update') return 'update';
+    return 'article';
+  }
+
+  function formatDate(d) {
+    try { return new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }); }
+    catch { return d || ''; }
+  }
+
+  function placeholderBg(type) {
+    if (type === 'interview') return 'linear-gradient(135deg,#1a1a2e,#0f3460)';
+    if (type === 'update') return 'linear-gradient(135deg,#1a0000,#3d0000)';
+    return 'linear-gradient(135deg,#2d1b00,#4a2f00)';
+  }
+
+  function renderAll() {
+    document.getElementById('loading').style.display = 'none';
+
+    const filtered = currentFilter === 'all' ? allArticles : allArticles.filter(a => a.type === currentFilter);
+
+    if (filtered.length === 0) {
+      document.getElementById('hero-section').style.display = 'none';
+      document.getElementById('articles-grid').style.display = 'grid';
+      document.getElementById('articles-grid').innerHTML = `<div class="empty-state"><h3>No articles yet</h3><p>Check back soon — stories are coming.</p></div>`;
+      document.getElementById('two-col').style.display = 'none';
+      return;
+    }
+
+    // HERO — first article
+    const hero = filtered[0];
+    document.getElementById('hero-section').style.display = 'grid';
+    document.getElementById('hero-section').className = 'hero-article fade-up';
+    document.getElementById('hero-section').innerHTML = `
+      <div class="hero-img" style="cursor:pointer;" onclick="openArticle('${hero.slug}')">
+        ${hero.cover ? `<img src="${hero.cover.startsWith('/') ? '..' + hero.cover : '../' + hero.cover}" alt="${hero.title}" />` : `<div class="placeholder-art" style="background:${placeholderBg(hero.type)}">${(hero.artist||'AT').toUpperCase()}</div>`}
+      </div>
+      <div class="hero-content">
+        <span class="tag ${tagColor(hero.type)}">${hero.type === 'update' ? 'Hip-Hop Update' : hero.type.charAt(0).toUpperCase() + hero.type.slice(1)}</span>
+        <h2 class="hero-headline">${hero.title}</h2>
+        <p class="hero-excerpt">${hero.excerpt || ''}</p>
+        <div class="hero-meta">${formatDate(hero.date)} · ${hero.author || 'ARTISTTAAN'}</div>
+        <a href="#" class="read-more" onclick="event.preventDefault();openArticle('${hero.slug}')">Read More →</a>
+      </div>`;
+
+    // GRID — next 6 articles
+    const gridArticles = filtered.slice(1, 7);
+    const grid = document.getElementById('articles-grid');
+    grid.style.display = 'grid';
+    if (gridArticles.length === 0) {
+      grid.style.display = 'none';
+    } else {
+      grid.innerHTML = gridArticles.map(a => `
+        <a class="article-card" href="#" onclick="event.preventDefault();openArticle('${a.slug}')">
+          <div class="card-img">
+            ${a.cover ? `<img src="${a.cover.startsWith('/') ? '..' + a.cover : '../' + a.cover}" alt="${a.title}" />` : `<div class="placeholder-art" style="background:${placeholderBg(a.type)}">${(a.artist||'AT').toUpperCase()}</div>`}
+          </div>
+          <span class="tag ${tagColor(a.type)}">${a.type === 'update' ? 'Hip-Hop Update' : a.type.charAt(0).toUpperCase() + a.type.slice(1)}</span>
+          <h3 class="card-headline">${a.title}</h3>
+          <p class="card-excerpt">${a.excerpt || ''}</p>
+          <p class="card-meta">${formatDate(a.date)} · ${a.author || 'ARTISTTAAN'}</p>
+        </a>`).join('');
+    }
+
+    // MORE STORIES — articles 7+
+    const more = filtered.slice(7);
+    const moreEl = document.getElementById('more-stories');
+    if (more.length === 0) {
+      moreEl.innerHTML = '<p style="font-size:13px;color:var(--gray);">More stories coming soon.</p>';
+    } else {
+      moreEl.innerHTML = more.map(a => `
+        <div class="sidebar-item" onclick="openArticle('${a.slug}')">
+          <span class="tag ${tagColor(a.type)}" style="font-size:9px;padding:3px 8px;">${a.type === 'update' ? 'Update' : a.type.charAt(0).toUpperCase() + a.type.slice(1)}</span>
+          <p class="s-title">${a.title}</p>
+          <p class="s-meta">${formatDate(a.date)} · ${a.author || 'ARTISTTAAN'}</p>
+        </div>`).join('');
+    }
+
+    // SIDEBAR — latest 4
+    const sidebar = allArticles.slice(0, 4);
+    document.getElementById('sidebar-updates').innerHTML = sidebar.map(a => `
+      <div class="sidebar-item" onclick="openArticle('${a.slug}')">
+        <span class="tag ${tagColor(a.type)}" style="font-size:9px;padding:3px 8px;">${a.type === 'update' ? 'Update' : a.type.charAt(0).toUpperCase() + a.type.slice(1)}</span>
+        <p class="s-title">${a.title}</p>
+        <p class="s-meta">${formatDate(a.date)} · ${a.author || 'ARTISTTAAN'}</p>
+      </div>`).join('');
+
+    document.getElementById('two-col').style.display = 'grid';
+  }
+
+  function openArticle(slug) {
+    const article = allArticles.find(a => a.slug === slug);
+    if (!article) return;
+
+    document.getElementById('masthead').style.display = 'none';
+    document.getElementById('filter-bar').style.display = 'none';
+    document.getElementById('main-layout').style.display = 'none';
+    document.getElementById('article-page').style.display = 'block';
+
+    const coverHtml = article.cover
+      ? `<img class="article-cover" src="${article.cover.startsWith('/') ? '..' + article.cover : '../' + article.cover}" alt="${article.title}" />`
+      : '';
+
+    document.getElementById('article-content').innerHTML = `
+      <span class="tag ${tagColor(article.type)}" style="margin-bottom:20px;">${article.type === 'update' ? 'Hip-Hop Update' : article.type.charAt(0).toUpperCase() + article.type.slice(1)}</span>
+      <h1 class="article-title">${article.title}</h1>
+      <p class="article-byline">By ${article.author || 'ARTISTTAAN'} · ${formatDate(article.date)}${article.artist ? ' · ' + article.artist : ''}</p>
+      ${coverHtml}
+      <div class="article-body">${marked.parse(article.body)}</div>`;
+
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById('back-btn').addEventListener('click', () => {
+    document.getElementById('masthead').style.display = 'block';
+    document.getElementById('filter-bar').style.display = 'flex';
+    document.getElementById('main-layout').style.display = 'block';
+    document.getElementById('article-page').style.display = 'none';
+    window.scrollTo(0, 0);
+  });
+
+  function showError() {
+    document.getElementById('loading').innerHTML = `
+      <p style="font-size:13px;color:var(--gray);">Could not load articles. Make sure your GitHub repo is public.</p>
+      <p style="font-size:12px;color:var(--gray);margin-top:8px;">If your repo is private, articles need to be fetched differently.</p>`;
+  }
+
+  // Filter tabs
   document.querySelectorAll('.filter-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      const filter = tab.dataset.filter;
-      document.querySelectorAll('.article-card').forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.type === filter) ? 'block' : 'none';
-      });
-      const hero = document.getElementById('hero-section');
-      hero.style.display = (filter === 'all' || filter === 'interview') ? 'grid' : 'none';
+      currentFilter = tab.dataset.filter;
+      renderAll();
     });
   });
+
+  loadArticles();
+</script>
+
+<!-- CONFIG: set your GitHub repo details here -->
+<script>
+  // ⚠️ UPDATE THESE with your actual GitHub username and repo name
+  window._repoOwner = 'YOUR_GITHUB_USERNAME';
+  window._repoName = 'artisttaan-main';
 </script>
 
 </body>
