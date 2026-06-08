@@ -229,37 +229,6 @@ function showToast(msg) {
 }
 
 
-  let current = 0;
-
-  const iframe = document.getElementById('radio-iframe');
-  const trackName = document.getElementById('radio-track-name');
-  const artistName = document.getElementById('radio-artist-name');
-  const dotsContainer = document.getElementById('radio-dots');
-  const skipBtn = document.getElementById('radio-skip');
-
-  if (!iframe || !skipBtn) return;
-
-  function renderDots() {
-    dotsContainer.innerHTML = tracks.map((_, i) =>
-      `<div style="width:6px;height:6px;border-radius:50%;background:${i === current ? '#000' : '#ddd'};transition:background 0.3s;"></div>`
-    ).join('');
-  }
-
-  function loadTrack(index) {
-    const track = tracks[index];
-    trackName.textContent = track.title;
-    artistName.textContent = track.artist + ' · ARTISTTAAN';
-    iframe.src = track.embed + '?utm_source=generator&theme=0';
-    renderDots();
-  }
-
-  skipBtn.addEventListener('click', () => {
-    current = (current + 1) % tracks.length;
-    loadTrack(current);
-  });
-
-  loadTrack(current);
-}
 
 // ============================================
 // INIT
