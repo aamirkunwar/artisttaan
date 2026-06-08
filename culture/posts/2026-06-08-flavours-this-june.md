@@ -1,5 +1,5 @@
 ---
-title: FLAVOURS THIS JUNE
+title: Flavours this june
 type: article
 artist: SLAY
 author: Shashank Sharma
