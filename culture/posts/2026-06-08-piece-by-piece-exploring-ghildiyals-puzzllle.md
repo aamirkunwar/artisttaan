@@ -11,7 +11,7 @@ excerpt: With Puzzllle, GHILDIYAL delivers four tracks that refuse to stay in
 ---
 When people talk about the future of Uttarakhand's music scene, one name continues to stand out: GHILDIYAL.
 
-Over the last few years, he has quietly built a reputation for being one of the most unique and versatile artists to emerge from the region. If anyone doubts that claim, all they need to do is listen to projects like *7 Mood* or tracks like *Tu Jaagi Reh*. From melodic records to hard-hitting rap cuts, GHILDIYAL has consistently shown an ability to move across genres and emotions without losing his identity.
+Over the last few years, he has quietly built a reputation for being one of the most unique and versatile artists to emerge from the region. If anyone doubts that claim, all they need to do is listen to projects like *7 Mod paar* or tracks like *Tu Jaagi Reh*. From melodic records to hard-hitting rap cuts, GHILDIYAL has consistently shown an ability to move across genres and emotions without losing his identity.
 
 His latest EP, *Puzzllle*, is perhaps the strongest example of that versatility yet.
 
