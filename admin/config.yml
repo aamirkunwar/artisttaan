@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: assets/images/culture
+public_folder: /assets/images/culture
+
+collections:
+  - name: culture
+    label: Culture Articles
+    folder: culture/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Type, name: type, widget: select,
+          options: [interview, article, update] }
+      - { label: Artist, name: artist, widget: string }
+      - { label: Author, name: author, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Cover Image, name: cover, widget: image, required: false }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Body, name: body, widget: markdown }
