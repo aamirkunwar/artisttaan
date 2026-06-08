@@ -3,7 +3,7 @@ title: FLAVOURS THIS JUNE
 type: article
 artist: SLAY
 author: Shashank Sharma
-date: 2026-06-08T22:55:00.000+05:30
+date: 2026-06-08T23:16:00.000+05:30
 cover: /assets/images/culture/screenshot-2026-04-02-at-8.40.09 pm.png
 excerpt: >-
   Slay Announces Upcoming EP "Flavours" – A Musical Journey Through Different
