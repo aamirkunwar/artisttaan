@@ -196,7 +196,7 @@
   async function loadArticles() {
     try {
       // Fetch list of .md files from GitHub API
-      const apiUrl = `https://api.github.com/repos/${getRepoOwner()}/${getRepoName()}/contents/${POSTS_PATH}`;
+      const apiUrl = `https://api.github.com/repos/aamirkunwar/artisttaan/contents/culture/posts`;
       const res = await fetch(apiUrl);
       if (!res.ok) throw new Error('API failed');
       const files = await res.json();
@@ -371,7 +371,7 @@
 <script>
   // ⚠️ UPDATE THESE with your actual GitHub username and repo name
   window._repoOwner = 'aamirkunwar';
-  window._repoName = 'artisttaan-main';
+  window._repoName = 'artisttaan';
 </script>
 
 </body>
