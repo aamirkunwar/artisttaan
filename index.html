@@ -138,25 +138,92 @@
       <div class="flex items-end justify-between mb-10">
         <div>
           <p class="text-caption mb-3">Music</p>
-          <h2 class="text-section">Latest Releases</h2>
+          <h2 class="text-section">Releases</h2>
         </div>
-        <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" class="hidden md:block text-sm font-medium text-secondary hover:text-primary transition">See all →</a>
+        <a href="releases/" class="hidden md:block text-sm font-medium text-secondary hover:text-primary transition">View All →</a>
       </div>
       <!-- Filter tabs -->
-      <div class="flex flex-wrap gap-2 mb-10" id="release-filters">
-        <button class="release-filter-btn active" data-artist="all">All</button>
-        <button class="release-filter-btn" data-artist="shrey">Shrey</button>
-        <button class="release-filter-btn" data-artist="slay">Slay</button>
-        <button class="release-filter-btn" data-artist="abir">Abir</button>
-        <button class="release-filter-btn" data-artist="apoorvv">Apoorvv</button>
+      <div class="flex flex-wrap gap-2 mb-6" id="release-filters">
+        <button class="release-filter-btn active" data-type="year" data-value="all">All</button>
+        <button class="release-filter-btn" data-type="year" data-value="2026">2026</button>
+        <button class="release-filter-btn" data-type="year" data-value="2025">2025</button>
+        <button class="release-filter-btn" data-type="year" data-value="2024">2024</button>
+        <button class="release-filter-btn" data-type="year" data-value="2023">2023</button>
+        <button class="release-filter-btn" data-type="year" data-value="2021">2021</button>
+        <button class="release-filter-btn" data-type="year" data-value="2020">2020</button>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" id="releases-container">
-        <div class="skeleton rounded-none aspect-square"></div>
-        <div class="skeleton rounded-none aspect-square"></div>
-        <div class="skeleton rounded-none aspect-square"></div>
+      <div class="flex flex-wrap gap-2 mb-10" id="artist-filters">
+        <button class="release-filter-btn active" data-type="artist" data-value="all">All Artists</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Abir">Abir</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Shrey">Shrey</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Slay">Slay</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Faraz">Faraz</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Raga">Raga</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Rish">Rish</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Manisten">Manisten</button>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="releases-grid"></div>
+      <div class="mt-10 text-center md:hidden">
+        <a href="releases/" class="btn-outline inline-block">View All Releases</a>
       </div>
     </div>
   </section>
+
+  <script>
+  (function() {
+    const releases = [{"title": "Namaskar", "artist": "Slay", "year": "2026", "spotify": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO", "cover": "https://i.scdn.co/image/ab67616d0000b2734fyIUj87reU7YlSM0Yr2aO"}, {"title": "Mila Tu", "artist": "Apoorvv", "year": "2026", "spotify": "https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE", "cover": "https://i.scdn.co/image/ab67616d0000b2734PYWGLbm1bXPA28JauGNbE"}, {"title": "Kaagaz Aur Daag", "artist": "Shrey", "year": "2025", "spotify": "https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm", "cover": "https://i.scdn.co/image/ab67616d0000b2731N1mifOiNnHnScZwOtQ2Jm"}, {"title": "Sifarishein", "artist": "Shrey", "year": "2025", "spotify": "https://open.spotify.com/track/196x0S8IsX40sd3KB12v84", "cover": "https://i.scdn.co/image/ab67616d0000b273196x0S8IsX40sd3KB12v84"}, {"title": "Thoughts Are Poison", "artist": "Shrey", "year": "2025", "spotify": "https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx", "cover": "https://i.scdn.co/image/ab67616d0000b2736KAJ0muurlS5Fwb2fj0pdx"}, {"title": "Pehle Jaisa", "artist": "Abir", "year": "2025", "spotify": "https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5", "cover": "https://i.scdn.co/image/ab67616d0000b2730guvOjewHtC0Pv6uk0pID5"}, {"title": "Smack", "artist": "Slay", "year": "2025", "spotify": "https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H", "cover": "https://i.scdn.co/image/ab67616d0000b2733pdRAxpgmtPqEo4ufUfv4H"}, {"title": "Wassup", "artist": "Slay", "year": "2025", "spotify": "https://open.spotify.com/track/0evpBO2tW3AKbJrmThc3CS", "cover": "https://i.scdn.co/image/ab67616d0000b2730evpBO2tW3AKbJrmThc3CS"}, {"title": "Kya Se Kya Hue", "artist": "Slay", "year": "2025", "spotify": "https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc", "cover": "https://i.scdn.co/image/ab67616d0000b2731zGi1mUUekvsGZALAee6oc"}, {"title": "Marz", "artist": "Abir", "year": "2024", "spotify": "https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol", "cover": "https://i.scdn.co/image/ab67616d0000b2735snmOSMT761hHpVZ4Eovol"}, {"title": "Thoda Aur", "artist": "Shrey", "year": "2024", "spotify": "https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz", "cover": "https://i.scdn.co/image/ab67616d0000b2736gAEHCnOcfK4sLjA7Zc1Nz"}, {"title": "Jaqeen Trending Version", "artist": "Talwiinder, Rish", "year": "2023", "spotify": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc", "cover": "https://i.scdn.co/image/ab67616d0000b2731nJy3ZevNvqBOZcBaS7Wnc"}, {"title": "Kaho Na", "artist": "Abir", "year": "2023", "spotify": "https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw", "cover": "https://i.scdn.co/image/ab67616d0000b2735znUlfypbCVjEzqGvzy0Xw"}, {"title": "Sath Chalegi", "artist": "Raga, Rish", "year": "2021", "spotify": "https://open.spotify.com/album/6359k4XlwyF81N12omSDHD", "cover": "https://i.scdn.co/image/ab67616d0000b2736359k4XlwyF81N12omSDHD"}, {"title": "Jaqeen", "artist": "Talwiinder, Rish", "year": "2021", "spotify": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc", "cover": "https://i.scdn.co/image/ab67616d0000b2731nJy3ZevNvqBOZcBaS7Wnc"}, {"title": "Rageshwar", "artist": "Raga", "year": "2021", "spotify": "https://open.spotify.com/track/7dEQoxUIipE21E5x3g1jAW", "cover": "https://i.scdn.co/image/ab67616d0000b2737dEQoxUIipE21E5x3g1jAW"}, {"title": "Look at Me", "artist": "Rigul, Yawar", "year": "2021", "spotify": "https://open.spotify.com/track/5k2g1PqmdHGHdOQzTmhrg6", "cover": "https://i.scdn.co/image/ab67616d0000b2735k2g1PqmdHGHdOQzTmhrg6"}, {"title": "Love Again", "artist": "Luck, Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/2D1Qn9o7CINzFyb96Sd7Yc", "cover": "https://i.scdn.co/image/ab67616d0000b2732D1Qn9o7CINzFyb96Sd7Yc"}, {"title": "Congratulations", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/3erirML2bH3Jl8Hwl1qPf3", "cover": "https://i.scdn.co/image/ab67616d0000b2733erirML2bH3Jl8Hwl1qPf3"}, {"title": "Greatest", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/3uLLs8UMMyxJEC1Py3fg2H", "cover": "https://i.scdn.co/image/ab67616d0000b2733uLLs8UMMyxJEC1Py3fg2H"}, {"title": "Airplane Mode", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/album/2qVqgj0hMXTfP7cdRUb6zf", "cover": "https://i.scdn.co/image/ab67616d0000b2732qVqgj0hMXTfP7cdRUb6zf"}, {"title": "Triggered", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/album/12g4L6k0bVk8BcakDHxTG2", "cover": "https://i.scdn.co/image/ab67616d0000b27312g4L6k0bVk8BcakDHxTG2"}, {"title": "My Lady", "artist": "Rish", "year": "2021", "spotify": "https://open.spotify.com/track/5bNA92fEilaFUdXbza3gkJ", "cover": "https://i.scdn.co/image/ab67616d0000b2735bNA92fEilaFUdXbza3gkJ"}, {"title": "Different Opinion", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/4drwpq7oMD1kG3iq5j4nUL", "cover": "https://i.scdn.co/image/ab67616d0000b2734drwpq7oMD1kG3iq5j4nUL"}, {"title": "Beh Ja", "artist": "Rish", "year": "2020", "spotify": "https://open.spotify.com/track/4Ox54GzIlqLQ8dTtk1ey8P", "cover": "https://i.scdn.co/image/ab67616d0000b2734Ox54GzIlqLQ8dTtk1ey8P"}, {"title": "Kaisa Hai Bhai", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/7C11bvvEr3ODYyjAGXpzd7", "cover": "https://i.scdn.co/image/ab67616d0000b2737C11bvvEr3ODYyjAGXpzd7"}, {"title": "Badal Gaye", "artist": "Faraz", "year": "2020", "spotify": "https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf", "cover": "https://i.scdn.co/image/ab67616d0000b2730z1oc8Ej4yGgOxk39DNGkf"}, {"title": "Kaanch Ki Tarah", "artist": "Faraz", "year": "2020", "spotify": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA", "cover": "https://i.scdn.co/image/ab67616d0000b27333UXEFPNAJ6sMCW8hGOuEA"}, {"title": "Ishq Adhoora", "artist": "Apoorvv", "year": "2020", "spotify": "https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono", "cover": "https://i.scdn.co/image/ab67616d0000b2731z2KFhYRc6wk44FUQRIono"}, {"title": "Naam Tumhara", "artist": "Sam Rajput", "year": "2020", "spotify": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab", "cover": "https://i.scdn.co/image/ab67616d0000b27364tbEVvEnMxtOGPPmZDcab"}, {"title": "Jaane Na", "artist": "Apoorvv", "year": "2020", "spotify": "https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln", "cover": "https://i.scdn.co/image/ab67616d0000b27333kVvuCEjFDQCnb0w41Oln"}, {"title": "Haseena", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/5Lit31j9cVf8k7k33tbJyn", "cover": "https://i.scdn.co/image/ab67616d0000b2735Lit31j9cVf8k7k33tbJyn"}, {"title": "Mantra", "artist": "Lukka", "year": "2020", "spotify": "https://open.spotify.com/track/7CIXuuauYU2maFBLAlNoLu", "cover": "https://i.scdn.co/image/ab67616d0000b2737CIXuuauYU2maFBLAlNoLu"}, {"title": "Choo Liya 2.0", "artist": "Abir", "year": "2020", "spotify": "https://open.spotify.com/track/1zckeQVI1uIKCraYPHjz4j", "cover": "https://i.scdn.co/image/ab67616d0000b2731zckeQVI1uIKCraYPHjz4j"}, {"title": "Badal Gaye Unplugged", "artist": "Faraz", "year": "2020", "spotify": "https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9", "cover": "https://i.scdn.co/image/ab67616d0000b2731C9BpHayhV4XHvc9I2PsN9"}, {"title": "Choo Liya", "artist": "Faraz, Abir", "year": "2020", "spotify": "https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT", "cover": "https://i.scdn.co/image/ab67616d0000b2731cOslRbqe0srHqbVi2lanT"}, {"title": "Tum Badli Ho", "artist": "Abir", "year": "2020", "spotify": "https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l", "cover": "https://i.scdn.co/image/ab67616d0000b2736RIV4XVosJpY7o2O9K5b9l"}, {"title": "Lifestyle", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/3kORfvMWbtTT0wxjVAZofZ", "cover": "https://i.scdn.co/image/ab67616d0000b2733kORfvMWbtTT0wxjVAZofZ"}, {"title": "Ajj Vi", "artist": "Rish", "year": "2020", "spotify": "https://open.spotify.com/track/5rxsGT6YS7dmfjjJGXq3N6", "cover": "https://i.scdn.co/image/ab67616d0000b2735rxsGT6YS7dmfjjJGXq3N6"}, {"title": "A Note to My Mother", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/4Z2HkIGd34s6q4cFpeqFNf", "cover": "https://i.scdn.co/image/ab67616d0000b2734Z2HkIGd34s6q4cFpeqFNf"}, {"title": "Pinnak Na Tod", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/7yO8LrjdVOaNkHoqT7w9aO", "cover": "https://i.scdn.co/image/ab67616d0000b2737yO8LrjdVOaNkHoqT7w9aO"}, {"title": "Video Call", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/2cwOrW2prswLDP6FFxWOos", "cover": "https://i.scdn.co/image/ab67616d0000b2732cwOrW2prswLDP6FFxWOos"}, {"title": "No Offense", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/3vCzGpb93QN44jAkd2o7Pw", "cover": "https://i.scdn.co/image/ab67616d0000b2733vCzGpb93QN44jAkd2o7Pw"}, {"title": "Skills", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/1jUURRDklHcdF9wMnXO26t", "cover": "https://i.scdn.co/image/ab67616d0000b2731jUURRDklHcdF9wMnXO26t"}, {"title": "Boss Mode", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/1l09zQh9feuCHVmXQhmQ11", "cover": "https://i.scdn.co/image/ab67616d0000b2731l09zQh9feuCHVmXQhmQ11"}, {"title": "Tum Nahin Aaye", "artist": "Abir", "year": "2020", "spotify": "https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi", "cover": "https://i.scdn.co/image/ab67616d0000b27372cGqxSo0tjiPVwDxWEABi"}];
+    let activeYear = 'all';
+    let activeArtist = 'all';
+
+    function filterReleases() {
+      return releases.filter(r => {
+        const yearMatch = activeYear === 'all' || r.year === activeYear;
+        const artistMatch = activeArtist === 'all' || r.artist.includes(activeArtist);
+        return yearMatch && artistMatch;
+      });
+    }
+
+    function renderReleases() {
+      const grid = document.getElementById('releases-grid');
+      if (!grid) return;
+      const filtered = filterReleases();
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color:#888;font-size:13px;grid-column:1/-1;text-align:center;padding:40px 0;">No releases found.</p>';
+        return;
+      }
+      grid.innerHTML = filtered.map(r => `
+        <a href="${r.spotify}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;display:block;">
+          <div style="aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative;margin-bottom:8px;">
+            <img src="${r.cover}" alt="${r.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          </div>
+          <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</p>
+          <p style="font-size:11px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.artist} · ${r.year}</p>
+        </a>`).join('');
+    }
+
+    document.querySelectorAll('[data-type="year"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type="year"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeYear = btn.dataset.value;
+        renderReleases();
+      });
+    });
+
+    document.querySelectorAll('[data-type="artist"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type="artist"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeArtist = btn.dataset.value;
+        renderReleases();
+      });
+    });
+
+    renderReleases();
+  })();
+  </script>
 
   <div class="divider max-w-7xl mx-auto"></div>
 
