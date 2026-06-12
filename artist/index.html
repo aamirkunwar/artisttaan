@@ -3,297 +3,509 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">Artists | ARTISTTAAN - India's Hip-Hop & Indie Music Label</title>
-  <meta name="description" id="meta-description" content="Explore the roster of talented hip-hop, pop, R&B, and indie artists signed to ARTISTTAAN, India's leading independent music label." />
-  <meta name="keywords" id="meta-keywords" content="ARTISTTAAN artists, Indian hip-hop artists, indie music India, independent musicians" />
+  <title id="page-title">Artist | ARTISTTAAN</title>
+  <meta name="description" id="meta-description" content="" />
   <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
-  <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png" />
   <meta property="og:type" content="profile" />
-  <meta property="og:site_name" content="ARTISTTAAN" />
-  <meta property="og:url" id="og-url" content="https://artisttaanmusic.com/artist/" />
-  <meta property="og:image" id="og-image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
-  <meta property="og:title" id="og-title" content="Artists | ARTISTTAAN - India's Hip-Hop & Indie Music Label" />
-  <meta property="og:description" id="og-description" content="Explore the roster of talented hip-hop, pop, R&B, and indie artists signed to ARTISTTAAN." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" id="twitter-title" content="Artists | ARTISTTAAN - India's Hip-Hop & Indie Music Label" />
-  <meta name="twitter:description" id="twitter-description" content="Explore the roster of talented hip-hop, pop, R&B, and indie artists signed to ARTISTTAAN." />
-  <meta name="twitter:image" id="twitter-image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:url" id="og-url" content="" />
+  <meta property="og:image" id="og-image" content="" />
+  <meta property="og:title" id="og-title" content="" />
+  <meta property="og:description" id="og-description" content="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    .artist-hero { padding-top: 120px; padding-bottom: 60px; }
-    .artist-photo-main { width: 240px; aspect-ratio: 3/4; border-radius: 4px; object-fit: cover; }
-    .platform-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; transition: all 0.3s ease; text-decoration: none; }
-    .platform-btn:hover { transform: translateY(-2px); }
-    .platform-spotify { background: #1DB954; color: white; }
-    .platform-apple { background: #FA243C; color: white; }
-    .platform-youtube { background: #FF0000; color: white; }
-    .platform-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
-    .platform-twitter { background: #000000; color: white; }
-    .platform-soundcloud { background: #FF5500; color: white; }
-    .stat-card { text-align: center; padding: 1.5rem; background: #f5f5f5; border-radius: 12px; }
-    .genre-tag { display: inline-block; padding: 0.375rem 1rem; background: #000; color: #fff; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; margin-right: 0.5rem; margin-bottom: 0.5rem; }
-    .city-tag { display: inline-block; padding: 0.375rem 1rem; border: 1px solid #e5e5e5; font-size: 0.75rem; font-weight: 500; border-radius: 9999px; margin-right: 0.5rem; margin-bottom: 0.5rem; }
-    .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: #000; color: #fff; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.05em; border-radius: 8px; transition: all 0.3s ease; text-decoration: none; }
-    .download-btn:hover { background: #333; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #666; transition: color 0.3s; text-decoration: none; }
-    .back-link:hover { color: #000; }
-    .spotify-player { border-radius: 12px; overflow: hidden; margin-top: 1rem; }
-    .spotify-player iframe { border: none; width: 100%; height: 380px; }
-    @media (max-width: 768px) {
-      .artist-photo-main { width: 180px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f8f7f4;
+      --gray: #888;
+      --light: #f0ede8;
+      --border: #e8e5e0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { height: 26px; width: auto; }
+    .nav-back {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none; color: var(--gray);
+      display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--black); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 56px);
+    }
+    .hero-left {
+      padding: 80px 60px 80px 40px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      border-right: 1px solid var(--border);
+    }
+    .hero-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 24px;
+    }
+    .hero-name {
+      font-size: clamp(72px, 10vw, 140px);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.88;
+      margin-bottom: 32px;
+    }
+    .hero-role {
+      font-size: 13px; color: var(--gray); letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 48px;
+    }
+    .hero-bio {
+      font-size: 15px; line-height: 1.75; color: #444;
+      max-width: 440px; margin-bottom: 48px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap-8px;
+      padding: 11px 24px; background: var(--black); color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-solid:hover { opacity: 0.8; }
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      padding: 11px 24px; border: 1px solid var(--border); color: var(--black);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--black); background: var(--black); color: #fff; }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: #1a1a1a;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      padding: 48px 40px 40px;
+      display: flex; gap: 40px;
+    }
+    .hero-stat p:first-child {
+      font-size: 32px; font-weight: 900; color: #fff;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .hero-stat p:last-child {
+      font-size: 10px; color: rgba(255,255,255,0.45);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      position: sticky; top: 56px; z-index: 90;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; padding: 0 40px; overflow-x: auto;
+    }
+    .tab {
+      padding: 16px 20px; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
+      border-bottom: 1px solid transparent; margin-bottom: -1px;
+      cursor: pointer; white-space: nowrap; background: none;
+      border-top: none; border-left: none; border-right: none;
+      transition: all 0.2s;
+    }
+    .tab:hover { color: var(--black); }
+    .tab.active { color: var(--black); border-bottom-color: var(--black); }
+
+    /* ── SECTIONS ── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+    .section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .sec-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 8px;
+    }
+    .sec-title {
+      font-size: clamp(28px, 3.5vw, 44px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1; margin-bottom: 48px;
+    }
+
+    /* ── GENRES ── */
+    .genre-tag {
+      display: inline-block; padding: 5px 14px; border: 1px solid var(--border);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--gray); margin: 4px 4px 4px 0;
+    }
+
+    /* ── PLATFORM LINKS ── */
+    .platform-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+    .platform-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border: 1px solid var(--border);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+      text-decoration: none; color: var(--black); transition: all 0.2s;
+    }
+    .platform-link:hover { background: var(--black); color: #fff; border-color: var(--black); }
+
+    /* ── RELEASES ── */
+    .releases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .rel-card { text-decoration: none; color: inherit; display: block; }
+    .rel-poster {
+      aspect-ratio: 1; overflow: hidden; background: #1a1a1a;
+      position: relative; margin-bottom: 10px;
+    }
+    .rel-poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .rel-card:hover .rel-poster img { transform: scale(1.05); }
+    .rel-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0); display: flex;
+      align-items: center; justify-content: center; transition: background 0.3s;
+    }
+    .rel-card:hover .rel-overlay { background: rgba(0,0,0,0.45); }
+    .rel-play { opacity: 0; transition: opacity 0.3s; color: #fff; }
+    .rel-card:hover .rel-play { opacity: 1; }
+    .rel-title { font-size: 12px; font-weight: 500; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rel-year { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+    /* ── CITIES ── */
+    .city-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .city-row:last-child { border-bottom: none; }
+    .city-num { font-size: 11px; color: var(--gray); min-width: 18px; text-align: right; }
+    .city-name { font-size: 13px; font-weight: 500; min-width: 150px; }
+    .city-track { flex: 1; height: 1px; background: var(--border); position: relative; }
+    .city-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--black); transition: width 0.8s ease; }
+    .city-count { font-size: 12px; color: var(--gray); min-width: 60px; text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* ── VIDEOS ── */
+    .videos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .vid-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; font-weight: 500; }
+    .vid-frame { aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
+    .vid-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); color: #fff;
+      padding: 40px; display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 11px; color: #555; }
+    footer a { font-size: 11px; color: #555; text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); justify-content: flex-start; }
+      .hero-right { height: 60vw; }
+      .tabs { padding: 0 20px; }
+      .wrap { padding: 0 24px; }
+      .section { padding: 56px 0; }
+      .releases-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .videos-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero-name { font-size: clamp(56px, 16vw, 80px); }
+      .hero-stats { gap: 24px; padding: 32px 20px; }
+      .hero-stat p:first-child { font-size: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="../index.html" class="flex items-center gap-2">
-        <img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
-      </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="../index.html#about" class="text-sm font-medium text-secondary hover:text-primary transition">About</a>
-        <a href="../index.html#roster" class="text-sm font-medium text-secondary hover:text-primary transition">Roster</a>
-        <a href="../index.html#releases" class="text-sm font-medium text-secondary hover:text-primary transition">Releases</a>
-        <a href="../upcoming/" class="text-sm font-medium text-secondary hover:text-primary transition">Upcoming</a>
-        <a href="../team/" class="text-sm font-medium text-secondary hover:text-primary transition">Our Team</a>
-        <a href="../index.html#demo" class="text-sm font-medium text-secondary hover:text-primary transition">Submit Demo</a>
-      </div>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="../"><img class="nav-logo" src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" /></a>
+  <a href="../#roster" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+    Roster
+  </a>
+</nav>
 
-  <!-- LOADING -->
-  <div id="loading" class="min-h-screen flex items-center justify-center pt-20">
-    <div class="text-center">
-      <div class="skeleton w-48 h-6 mx-auto mb-4 rounded"></div>
-      <div class="skeleton w-32 h-4 mx-auto rounded"></div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-label">ARTISTTAAN &nbsp;/&nbsp; <span id="hero-role"></span></p>
+    <h1 class="hero-name" id="hero-name"></h1>
+    <p class="hero-role" id="hero-role2"></p>
+    <p class="hero-bio" id="hero-bio"></p>
+    <div class="hero-actions" id="hero-actions"></div>
+  </div>
+  <div class="hero-right">
+    <img id="hero-img" src="" alt="" />
+    <div class="hero-stats" id="hero-stats"></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" data-target="music">Music</button>
+  <button class="tab" data-target="about">About</button>
+  <button class="tab" data-target="listeners">Listeners</button>
+  <button class="tab" data-target="videos">Videos</button>
+</div>
+
+<!-- MUSIC -->
+<div id="music">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">Discography</p>
+      <h2 class="sec-title" id="music-title">Music</h2>
+      <div class="releases-grid" id="releases-grid"></div>
     </div>
   </div>
+</div>
 
-  <!-- ARTIST CONTENT -->
-  <div id="artist-content" class="hidden">
-
-    <!-- PROFILE HEADER -->
-    <div class="artist-hero max-w-5xl mx-auto px-6">
-      <div class="flex flex-col items-center text-center">
-        <img id="artist-photo" src="" alt="" class="artist-photo-main shadow-2xl mb-8" />
-        <h1 id="artist-name" class="text-4xl md:text-6xl font-black tracking-tight"></h1>
-        <p id="artist-role" class="text-caption mt-3"></p>
-        <p id="artist-listeners" class="text-sm text-green-600 font-semibold mt-2"></p>
-
-        <!-- Platform Links -->
-        <div class="flex flex-wrap gap-3 justify-center mt-8" id="platform-links"></div>
-
-        <!-- Download Deck -->
-        <div class="mt-10">
-          <a id="deck-download" href="" download class="download-btn">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Download Artist Deck (PDF)
-          </a>
+<!-- ABOUT -->
+<div id="about" style="background: var(--light);">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">About</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;" id="about-grid">
+        <div>
+          <h2 class="sec-title" id="about-title"></h2>
+          <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:32px;" id="about-bio"></p>
+          <div id="genres" style="margin-bottom:0;"></div>
+          <div class="platform-links" id="platform-links"></div>
         </div>
-      </div>
-
-      <!-- STATS -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-3xl mx-auto">
-        <div class="stat-card">
-          <p id="stat-monthly" class="text-2xl font-black"></p>
-          <p class="text-caption mt-1">Monthly Listeners</p>
+        <div style="aspect-ratio:3/4;overflow:hidden;background:#e5e5e5;">
+          <img id="about-photo" src="" alt="" style="width:100%;height:100%;object-fit:cover;" />
         </div>
-        <div class="stat-card">
-          <p id="stat-streams" class="text-2xl font-black"></p>
-          <p class="text-caption mt-1">Total Streams</p>
-        </div>
-        <div class="stat-card">
-          <p id="stat-releases" class="text-2xl font-black"></p>
-          <p class="text-caption mt-1">Releases</p>
-        </div>
-        <div class="stat-card">
-          <p id="stat-featured" class="text-2xl font-black"></p>
-          <p class="text-caption mt-1">Status</p>
-        </div>
-      </div>
-
-      <!-- BIO -->
-      <div class="mt-16 max-w-3xl mx-auto text-center">
-        <p class="text-caption mb-4">About</p>
-        <p id="artist-bio" class="text-lg leading-relaxed text-secondary"></p>
-      </div>
-
-      <!-- GENRES -->
-      <div class="mt-12 max-w-3xl mx-auto text-center">
-        <p class="text-caption mb-4">Genres</p>
-        <div id="artist-genres" class="flex flex-wrap justify-center"></div>
-      </div>
-
-      <!-- TOP CITIES -->
-      <div class="mt-12 max-w-3xl mx-auto text-center">
-        <p class="text-caption mb-4">Top Cities</p>
-        <div id="artist-cities" class="flex flex-wrap justify-center"></div>
-      </div>
-
-      <!-- SPOTIFY PLAYER -->
-      <div class="mt-16 max-w-3xl mx-auto">
-        <p class="text-caption mb-4 text-center">Listen on Spotify</p>
-        <div id="spotify-player" class="spotify-player"></div>
-      </div>
-
-      <!-- RELEASES -->
-      <div class="mt-16">
-        <p class="text-caption mb-4 text-center">Releases</p>
-        <div id="artist-releases" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="mt-16 text-center py-12 border-t border-subtle">
-        <p class="text-caption mb-4">Booking & Press</p>
-        <a id="contact-email" href="" class="text-lg font-semibold hover:underline"></a>
-        <p class="text-sm text-muted mt-2">For bookings, collaborations, and press inquiries</p>
-      </div>
-
-      <!-- BACK -->
-      <div class="mt-12 text-center pb-16">
-        <a href="../index.html#roster" class="back-link">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          Back to All Artists
-        </a>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer class="bg-primary text-white py-12 px-6">
-    <div class="max-w-7xl mx-auto text-center">
-      <img src="../assets/images/logo/logo-white.png" alt="ARTISTTAAN" class="h-8 w-auto mx-auto mb-4" />
-      <p class="text-sm text-gray-400 mb-6">India's hip-hop & indie powerhouse. Founded in 2016 by Aamir Kunwar.</p>
-      <div class="flex justify-center gap-6">
-        <a href="https://instagram.com/artisttaan" target="_blank" class="text-sm text-gray-400 hover:text-white transition">Instagram</a>
-        <a href="https://youtube.com/@artisttaan" target="_blank" class="text-sm text-gray-400 hover:text-white transition">YouTube</a>
-        <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" class="text-sm text-gray-400 hover:text-white transition">Spotify</a>
+<!-- LISTENERS -->
+<div id="listeners">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">Audience · Last 28 Days</p>
+      <h2 class="sec-title">Top Cities</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;">
+        <div id="cities-list"></div>
+        <div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" id="listener-cards"></div>
+        </div>
       </div>
-      <p class="text-xs text-gray-600 mt-8">&copy; 2026 ARTISTTAAN. All rights reserved.</p>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const artistId = params.get('artist');
-    let siteData = null;
+<!-- VIDEOS -->
+<div id="videos" style="background: var(--light);">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">Visuals</p>
+      <h2 class="sec-title">Videos</h2>
+      <div class="videos-grid" id="videos-grid"></div>
+    </div>
+  </div>
+</div>
 
-    async function loadData() {
-      try {
-        const res = await fetch('../assets/data/artists.json');
-        siteData = await res.json();
-        renderArtist();
-      } catch (err) {
-        console.error('Failed to load data:', err);
-        document.getElementById('loading').innerHTML = '<p class="text-red-500">Error loading artist data.</p>';
-      }
-    }
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ARTISTTAAN</p>
+  <a href="../">← Back to ARTISTTAAN</a>
+</footer>
 
-    function renderArtist() {
-      if (!siteData || !artistId) {
-        document.getElementById('loading').innerHTML = '<p class="text-red-500">Artist not found.</p>';
-        return;
-      }
-      const artist = siteData.artists.find(a => a.id === artistId);
-      if (!artist) {
-        document.getElementById('loading').innerHTML = '<p class="text-red-500">Artist not found.</p>';
-        return;
-      }
+<script>
+  const artistId = new URLSearchParams(window.location.search).get('artist');
 
-      document.getElementById('loading').classList.add('hidden');
-      document.getElementById('artist-content').classList.remove('hidden');
+  const listenerData = {
+    abir: [{c:'New Delhi',l:4202},{c:'Delhi',l:4200},{c:'Kolkata',l:3921},{c:'Patna',l:3638},{c:'Pune',l:3436},{c:'Bhubaneswar',l:3320},{c:'Bengaluru',l:3234},{c:'Guwahati',l:3144},{c:'Mumbai',l:2984},{c:'Jaipur',l:2461}],
+    shrey: [{c:'New Delhi',l:466},{c:'Delhi',l:461},{c:'Dehradun',l:393},{c:'Meerut',l:265},{c:'Agra',l:174},{c:'Noida',l:91},{c:'Pune',l:82},{c:'Mumbai',l:77},{c:'Gurugram',l:69},{c:'Indore',l:51}],
+    slay: [{c:'Mumbai',l:1332},{c:'Delhi',l:839},{c:'Dehradun',l:806},{c:'New Delhi',l:776},{c:'Meerut',l:699},{c:'Pune',l:604},{c:'Agra',l:443},{c:'Indore',l:205},{c:'Noida',l:166},{c:'Bengaluru',l:140}],
+    apoorvv: [{c:'Guwahati',l:733},{c:'New Delhi',l:686},{c:'Pune',l:626},{c:'Delhi',l:566},{c:'Mumbai',l:551},{c:'Bengaluru',l:530},{c:'Patna',l:490},{c:'Kolkata',l:444},{c:'Jaipur',l:441},{c:'Bhubaneswar',l:343}],
+    faraz: [{c:'Guwahati',l:522},{c:'Pune',l:470},{c:'New Delhi',l:467},{c:'Delhi',l:431},{c:'Mumbai',l:404},{c:'Bengaluru',l:384},{c:'Patna',l:358},{c:'Kolkata',l:319},{c:'Jaipur',l:315},{c:'Bhubaneswar',l:279}]
+  };
 
-      document.getElementById('page-title').textContent = artist.name + ' | ' + artist.role + ' Artist - ARTISTTAAN';
-      const seoDescription = artist.bio + ' Listen to ' + artist.name + ' on Spotify, Apple Music & more. Part of ARTISTTAAN, India\'s leading indie music label.';
-      document.querySelector('meta[name="description"]').content = seoDescription;
-      document.getElementById('meta-keywords').content = artist.name + ', ' + artist.role + ', ARTISTTAAN, Indian ' + artist.role.toLowerCase() + ' artist, ' + artist.name + ' music, ' + artist.name + ' songs';
-      document.getElementById('og-title').content = artist.name + ' | ' + artist.role + ' Artist - ARTISTTAAN';
-      document.getElementById('og-description').content = seoDescription;
-      document.getElementById('og-url').content = 'https://artisttaanmusic.com/artist/?artist=' + artist.id;
-      if (artist.square_photo) {
-        document.getElementById('og-image').content = 'https://artisttaanmusic.com/' + artist.square_photo;
-        document.getElementById('twitter-image').content = 'https://artisttaanmusic.com/' + artist.square_photo;
-      }
-      document.getElementById('twitter-title').content = artist.name + ' | ' + artist.role + ' Artist - ARTISTTAAN';
-      document.getElementById('twitter-description').content = seoDescription;
+  const artistVideos = {
+    shrey: [{t:'Kaagaz Aur Daag',e:'https://www.youtube.com/embed/ZYln3iWRxDk'},{t:'Sifarishein',e:'https://www.youtube.com/embed/rcKlMq2uDlk'},{t:'Thoughts Are Poison',e:'https://www.youtube.com/embed/afRnyWvO6PU'},{t:'Thoda Aur',e:'https://www.youtube.com/embed/Q5E5t5VbVeo'}],
+    abir: [{t:'Marz',e:'https://www.youtube.com/embed/U7AdDdqJWUg'},{t:'Kaho Na',e:'https://www.youtube.com/embed/lC9X-FtN7AI'}],
+    slay: [{t:'Namaskar',e:'https://www.youtube.com/embed/bLTVqTJ1hUQ'}],
+    apoorvv: [], faraz: []
+  };
 
-      document.getElementById('artist-photo').src = '../' + artist.photo;
-      document.getElementById('artist-photo').alt = artist.name;
+  const allReleases = [
+    {id:'shrey',t:'Kaagaz Aur Daag',y:'2025',s:'https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm',c:'assets/images/logo/logo-hero.png'},
+    {id:'shrey',t:'Sifarishein',y:'2025',s:'https://open.spotify.com/track/196x0S8IsX40sd3KB12v84',c:'assets/images/logo/logo-hero.png'},
+    {id:'shrey',t:'Thoughts Are Poison',y:'2025',s:'https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx',c:'assets/images/logo/logo-hero.png'},
+    {id:'shrey',t:'Thoda Aur',y:'2024',s:'https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Pehle Jaisa',y:'2025',s:'https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Marz',y:'2024',s:'https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Kaho Na',y:'2023',s:'https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Choo Liya 2.0',y:'2020',s:'https://open.spotify.com/track/1zckeQVI1uIKCraYPHjz4j',c:'assets/images/releases-posters/releases/release-23-choo-liya-2-0-2020.jpg'},
+    {id:'abir',t:'Tum Badli Ho',y:'2020',s:'https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l',c:'assets/images/releases-posters/releases/release-26-tum-badli-ho-2020.jpg'},
+    {id:'abir',t:'Tum Nahin Aaye',y:'2020',s:'https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi',c:'assets/images/releases-posters/releases/release-36-tum-nahin-aaye-2020.jpg'},
+    {id:'slay',t:'Namaskar',y:'2026',s:'https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO',c:'assets/images/logo/logo-hero.png'},
+    {id:'slay',t:'Smack',y:'2025',s:'https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H',c:'assets/images/logo/logo-hero.png'},
+    {id:'slay',t:'Wassup',y:'2025',s:'https://open.spotify.com/track/0evpBO2tW3AKbJrmThc3CS',c:'assets/images/logo/logo-hero.png'},
+    {id:'slay',t:'Kya Se Kya Hue',y:'2025',s:'https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc',c:'assets/images/logo/logo-hero.png'},
+    {id:'apoorvv',t:'Mila Tu',y:'2026',s:'https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE',c:'assets/images/logo/logo-hero.png'},
+    {id:'apoorvv',t:'Ishq Adhoora',y:'2020',s:'https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono',c:'assets/images/releases-posters/releases/release-18-ishq-adhoora-2020.jpg'},
+    {id:'apoorvv',t:'Jaane Na',y:'2020',s:'https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln',c:'assets/images/releases-posters/releases/release-20-jaane-na-2020.jpg'},
+    {id:'faraz',t:'Badal Gaye',y:'2020',s:'https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf',c:'assets/images/releases-posters/releases/release-16-badal-gaye-2020.jpg'},
+    {id:'faraz',t:'Kaanch Ki Tarah',y:'2020',s:'https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA',c:'assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg'},
+    {id:'faraz',t:'Choo Liya',y:'2020',s:'https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT',c:'assets/images/releases-posters/releases/release-25-choo-liya-2020.jpg'},
+    {id:'faraz',t:'Badal Gaye Unplugged',y:'2020',s:'https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9',c:'assets/images/releases-posters/releases/release-24-badal-gaye-unplugged--2020.jpg'},
+  ];
 
-      document.getElementById('artist-name').textContent = artist.name;
-      document.getElementById('artist-role').textContent = artist.role;
+  async function init() {
+    try {
+      const res = await fetch('../assets/data/artists.json');
+      const data = await res.json();
+      const artist = data.artists.find(a => a.id === artistId);
+      if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:120px 20px;font-size:14px;color:#888;">Artist not found.</p>'; return; }
+      render(artist);
+    } catch(e) { console.error(e); }
+  }
 
-      if (artist.monthly_listeners && artist.monthly_listeners !== '—') {
-        document.getElementById('artist-listeners').textContent = artist.monthly_listeners + ' monthly listeners on Spotify';
-      } else {
-        document.getElementById('artist-listeners').classList.add('hidden');
-      }
+  function render(a) {
+    document.getElementById('page-title').textContent = `${a.name} — ARTISTTAAN`;
+    document.getElementById('meta-description').content = a.full_bio || a.bio;
+    document.getElementById('og-title').content = `${a.name} | ARTISTTAAN`;
+    document.getElementById('og-description').content = a.bio;
+    document.getElementById('og-url').content = `https://artisttaanmusic.com/artist/?artist=${a.id}`;
+    if (a.square_photo) document.getElementById('og-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
 
-      const platforms = [];
-      if (artist.spotify_url) platforms.push({ name: 'Spotify', url: artist.spotify_url, class: 'platform-spotify', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02z"/></svg>' });
-      if (artist.apple_music_url) platforms.push({ name: 'Apple Music', url: artist.apple_music_url, class: 'platform-apple', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.002-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.238.233a6.76 6.76 0 00-1.974.616 4.812 4.812 0 00-1.686 1.26c-.62.71-1.002 1.538-1.15 2.496-.074.48-.11.964-.14 1.45-.01.154-.017.307-.026.46V17.88c.01.154.017.307.026.46.03.486.066.97.14 1.45.148.958.53 1.786 1.15 2.496.465.53 1.012.956 1.686 1.26.63.29 1.286.49 1.974.616.748.11 1.49.19 2.238.233.152.01.303.017.455.026h12.823c.04-.003.083-.01.124-.014.521-.01 1.042-.05 1.564-.15.66-.12 1.274-.34 1.877-.725 1.118-.733 1.863-1.733 2.18-3.043.14-.58.2-1.175.24-2.19V6.124z"/></svg>' });
-      if (artist.youtube_url) platforms.push({ name: 'YouTube', url: artist.youtube_url, class: 'platform-youtube', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>' });
-      if (artist.instagram) platforms.push({ name: 'Instagram', url: artist.instagram, class: 'platform-instagram', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>' });
-      if (artist.twitter) platforms.push({ name: 'Twitter', url: artist.twitter, class: 'platform-twitter', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' });
-      if (artist.soundcloud) platforms.push({ name: 'SoundCloud', url: artist.soundcloud, class: 'platform-soundcloud', icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1z"/></svg>' });
+    // Hero
+    document.getElementById('hero-role').textContent = a.role;
+    document.getElementById('hero-role2').textContent = a.role;
+    document.getElementById('hero-name').textContent = a.name;
+    document.getElementById('hero-bio').textContent = a.bio;
+    document.getElementById('hero-img').src = `../${a.banner || a.photo}`;
+    document.getElementById('hero-img').alt = a.name;
 
-      document.getElementById('platform-links').innerHTML = platforms.map(p => 
-        `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="platform-btn ${p.class}">${p.icon} ${p.name}</a>`
-      ).join('');
+    // Hero actions
+    const acts = [];
+    if (a.spotify_url) acts.push(`<a href="${a.spotify_url}" target="_blank" class="btn-solid">Listen on Spotify</a>`);
+    if (a.instagram) acts.push(`<a href="${a.instagram}" target="_blank" class="btn-ghost">Instagram</a>`);
+    document.getElementById('hero-actions').innerHTML = acts.join('');
 
-      document.getElementById('deck-download').href = '../' + artist.deck_pdf;
+    // Hero stats
+    const releases = allReleases.filter(r => r.id === a.id);
+    const stats = [];
+    if (a.total_streams && a.total_streams !== '—') stats.push(`<div class="hero-stat"><p>${a.total_streams}</p><p>Total Streams</p></div>`);
+    stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
+    document.getElementById('hero-stats').innerHTML = stats.join('');
 
-      document.getElementById('stat-monthly').textContent = artist.monthly_listeners || '—';
-      document.getElementById('stat-streams').textContent = artist.total_streams || '—';
-
-      const artistReleases = siteData.releases.filter(r => r.artist_id === artist.id);
-      document.getElementById('stat-releases').textContent = artistReleases.length;
-      document.getElementById('stat-featured').textContent = artist.featured ? 'Featured' : 'Artist';
-
-      document.getElementById('artist-bio').textContent = artist.full_bio || artist.bio;
-
-      if (artist.genres) {
-        document.getElementById('artist-genres').innerHTML = artist.genres.map(g => 
-          `<span class="genre-tag">${g}</span>`
-        ).join('');
-      }
-
-      if (artist.top_cities) {
-        document.getElementById('artist-cities').innerHTML = artist.top_cities.map(c => 
-          `<span class="city-tag">${c}</span>`
-        ).join('');
-      }
-
-      const embedUrl = artist.spotify_url ? artist.spotify_url.replace('open.spotify.com', 'open.spotify.com/embed') : '';
-      if (embedUrl) {
-        document.getElementById('spotify-player').innerHTML = `<iframe src="${embedUrl}" allow="encrypted-media" loading="lazy"></iframe>`;
-      }
-
-      if (artistReleases.length > 0) {
-        document.getElementById('artist-releases').innerHTML = artistReleases.map(r => `
-          <div class="spotify-embed">
-            <iframe src="${r.spotify_embed}" height="352" allow="encrypted-media" loading="lazy"></iframe>
-            <p class="font-semibold mt-2">${r.title}</p>
-            <p class="text-caption">${r.year}</p>
+    // Music
+    document.getElementById('music-title').textContent = `${a.name}'s Music`;
+    document.getElementById('releases-grid').innerHTML = releases.length
+      ? releases.map(r => `
+        <a class="rel-card" href="${r.s}" target="_blank" rel="noopener noreferrer">
+          <div class="rel-poster">
+            <img src="../${r.c}" alt="${r.t}" loading="lazy" />
+            <div class="rel-overlay">
+              <svg class="rel-play" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
+            </div>
           </div>
-        `).join('');
-      } else {
-        document.getElementById('artist-releases').innerHTML = '<p class="text-muted col-span-3 text-center py-8">No releases yet.</p>';
-      }
+          <p class="rel-title">${r.t}</p>
+          <p class="rel-year">${r.y}</p>
+        </a>`).join('')
+      : '<p style="font-size:13px;color:#888;">Releases coming soon.</p>';
 
-      if (artist.contact_email) {
-        document.getElementById('contact-email').href = 'mailto:' + artist.contact_email;
-        document.getElementById('contact-email').textContent = artist.contact_email;
-      }
-    }
+    // About
+    document.getElementById('about-title').textContent = a.name;
+    document.getElementById('about-bio').textContent = a.full_bio || a.bio;
+    document.getElementById('about-photo').src = `../${a.photo}`;
+    document.getElementById('about-photo').alt = a.name;
+    if (a.genres) document.getElementById('genres').innerHTML = a.genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
 
-    document.addEventListener('DOMContentLoaded', loadData);
-  </script>
+    const plats = [];
+    if (a.spotify_url) plats.push(`<a href="${a.spotify_url}" target="_blank" class="platform-link">Spotify</a>`);
+    if (a.apple_music_url) plats.push(`<a href="${a.apple_music_url}" target="_blank" class="platform-link">Apple Music</a>`);
+    if (a.youtube_url) plats.push(`<a href="${a.youtube_url}" target="_blank" class="platform-link">YouTube</a>`);
+    if (a.instagram) plats.push(`<a href="${a.instagram}" target="_blank" class="platform-link">Instagram</a>`);
+    document.getElementById('platform-links').innerHTML = plats.join('');
+
+    // Cities
+    const cities = listenerData[a.id] || [];
+    const max = cities[0]?.l || 1;
+    document.getElementById('cities-list').innerHTML = cities.length
+      ? cities.map((c, i) => `
+        <div class="city-row">
+          <span class="city-num">${i + 1}</span>
+          <span class="city-name">${c.c}</span>
+          <div class="city-track"><div class="city-fill" style="width:${Math.round(c.l/max*100)}%"></div></div>
+          <span class="city-count">${c.l.toLocaleString()}</span>
+        </div>`).join('')
+      : '<p style="font-size:13px;color:#888;">Data coming soon.</p>';
+
+    const total = cities.reduce((s, c) => s + c.l, 0);
+    document.getElementById('listener-cards').innerHTML = `
+      <div style="border:1px solid var(--border);padding:28px;">
+        <p style="font-size:32px;font-weight:900;letter-spacing:-0.02em;">${total.toLocaleString()}</p>
+        <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Total Listeners</p>
+      </div>
+      <div style="border:1px solid var(--border);padding:28px;">
+        <p style="font-size:32px;font-weight:900;letter-spacing:-0.02em;">${cities.length}</p>
+        <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Cities Reached</p>
+      </div>
+      <div style="border:1px solid var(--border);padding:28px;grid-column:1/-1;">
+        <p style="font-size:20px;font-weight:700;">${cities[0]?.c || '—'}</p>
+        <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Top City</p>
+      </div>`;
+
+    // Videos
+    const vids = artistVideos[a.id] || [];
+    document.getElementById('videos-grid').innerHTML = vids.length
+      ? vids.map(v => `
+        <div>
+          <p class="vid-label">${v.t}</p>
+          <div class="vid-frame"><iframe src="${v.e}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        </div>`).join('')
+      : '<p style="font-size:13px;color:#888;">Videos coming soon.</p>';
+  }
+
+  // Tab scroll
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const el = document.getElementById(tab.dataset.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  const tabSections = ['music', 'about', 'listeners', 'videos'];
+  window.addEventListener('scroll', () => {
+    let cur = 'music';
+    tabSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) cur = id;
+    });
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.target === cur));
+  });
+
+  document.addEventListener('DOMContentLoaded', init);
+</script>
 </body>
 </html>
