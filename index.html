@@ -29,13 +29,13 @@
 <body>
 
   <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-nav">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2">
         <img src="assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-sm font-medium text-secondary hover:text-primary transition">About</a>
+        <a href="#about" class="text-sm font-medium transition" style="color:rgba(255,255,255,0.8);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About</a>
         <a href="#roster" class="text-sm font-medium text-secondary hover:text-primary transition">Roster</a>
         <a href="#releases" class="text-sm font-medium text-secondary hover:text-primary transition">Releases</a>
         <a href="upcoming/" class="text-sm font-medium text-secondary hover:text-primary transition">Upcoming</a>
@@ -63,17 +63,33 @@
   </nav>
 
   <!-- HERO -->
-  <section class="min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="fade-up">
-        <img src="assets/images/logo/logo-hero.png" alt="ARTISTTAAN" class="mx-auto mb-6" style="height: 120px; width: auto;" />
-      </div>
-      <p class="text-caption mb-6 fade-up fade-up-delay-1">India's Hip-Hop & Indie Powerhouse</p>
-      <h1 class="text-hero font-display mb-8 fade-up fade-up-delay-2">ARTIST<span class="font-light">TAAN</span></h1>
-      <p class="text-body max-w-xl mx-auto mb-12 fade-up fade-up-delay-3">Home to Abir, Shrey, Slay, Apoorvv & more. Discover the latest music, visuals, and drops from India's most exciting independent artists.</p>
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Video Background -->
+    <video
+      id="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+      style="z-index:0;"
+    >
+      <source src="assets/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <!-- Dark overlay -->
+    <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.85) 100%);z-index:1;"></div>
+    <!-- Content -->
+    <div class="relative max-w-4xl mx-auto text-center px-6 pt-20 pb-16" style="z-index:2;">
+      <p class="fade-up fade-up-delay-1 mb-6" style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">India's Hip-Hop & Indie Powerhouse</p>
+      <h1 class="fade-up fade-up-delay-2 mb-8" style="font-size:clamp(64px,10vw,120px);font-weight:900;letter-spacing:-0.04em;line-height:0.9;color:#fff;">ARTISTTAAN</h1>
       <div class="flex flex-wrap gap-4 justify-center fade-up fade-up-delay-3">
-        <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" class="btn-primary">Listen on Spotify</a>
-        <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" class="btn-outline">Watch on YouTube</a>
+        <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:#fff;color:#000;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">Listen on Spotify</a>
+        <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='#fff';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='transparent'">Watch on YouTube</a>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="fade-up fade-up-delay-3" style="margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.4;">
+        <span style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;">Scroll</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none"><rect x="0.5" y="0.5" width="15" height="23" rx="7.5" stroke="white"/><circle cx="8" cy="7" r="2.5" fill="white"><animate attributeName="cy" values="7;15;7" dur="1.8s" repeatCount="indefinite"/></circle></svg>
       </div>
     </div>
   </section>
