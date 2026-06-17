@@ -247,39 +247,41 @@
   <div class="divider max-w-7xl mx-auto"></div>
 
   <!-- LATEST RELEASES -->
-  <section id="releases" class="section-pad">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-end justify-between mb-10">
+  <section id="releases" class="section-pad" style="display:block;visibility:visible;opacity:1;">
+    <div class="max-w-7xl mx-auto" style="width:100%;max-width:1280px;margin:0 auto;padding:0 1rem;">
+      <div class="flex items-end justify-between mb-10" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;">
         <div>
-          <p class="text-caption mb-3">Music</p>
+          <p class="text-caption mb-3" style="margin-bottom:0.75rem;">Music</p>
           <h2 class="text-section">Releases</h2>
         </div>
         <a href="releases/" class="hidden md:block text-sm font-medium text-secondary hover:text-primary transition">View All →</a>
       </div>
       <!-- Filter tabs -->
-      <div class="flex flex-wrap gap-2 mb-6" id="release-filters">
-        <button class="release-filter-btn active" data-type="year" data-value="all" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:#000;color:#fff;cursor:pointer;transition:all 0.2s;border-radius:2px;">All</button>
-        <button class="release-filter-btn" data-type="year" data-value="2026" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2026</button>
-        <button class="release-filter-btn" data-type="year" data-value="2025" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2025</button>
-        <button class="release-filter-btn" data-type="year" data-value="2024" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2024</button>
-        <button class="release-filter-btn" data-type="year" data-value="2023" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2023</button>
-        <button class="release-filter-btn" data-type="year" data-value="2021" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2021</button>
-        <button class="release-filter-btn" data-type="year" data-value="2020" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2020</button>
+      <div class="flex flex-wrap gap-2 mb-6" id="release-filters" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;">
+        <button class="release-filter-btn active" data-type="year" data-value="all" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:#000;color:#fff;cursor:pointer;transition:all 0.2s;border-radius:2px;">All</button>
+        <button class="release-filter-btn" data-type="year" data-value="2026" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2026</button>
+        <button class="release-filter-btn" data-type="year" data-value="2025" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2025</button>
+        <button class="release-filter-btn" data-type="year" data-value="2024" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2024</button>
+        <button class="release-filter-btn" data-type="year" data-value="2023" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2023</button>
+        <button class="release-filter-btn" data-type="year" data-value="2021" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2021</button>
+        <button class="release-filter-btn" data-type="year" data-value="2020" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">2020</button>
       </div>
-      <div class="flex flex-wrap gap-2 mb-10" id="artist-filters">
-        <button class="release-filter-btn active" data-type="artist" data-value="all" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:#000;color:#fff;cursor:pointer;transition:all 0.2s;border-radius:2px;">All Artists</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Abir" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Abir</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Shrey" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Shrey</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Slay" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Slay</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Apoorvv" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Apoorvv</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Faraz" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Faraz</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Raga" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Raga</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Rish" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Rish</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Yawar" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Yawar</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Manisten" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #333;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Manisten</button>
+      <div class="flex flex-wrap gap-2 mb-10" id="artist-filters" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;">
+        <button class="release-filter-btn active" data-type="artist" data-value="all" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:#000;color:#fff;cursor:pointer;transition:all 0.2s;border-radius:2px;">All Artists</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Abir" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Abir</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Shrey" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Shrey</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Slay" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Slay</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Apoorvv" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Apoorvv</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Faraz" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Faraz</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Raga" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Raga</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Rish" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Rish</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Yawar" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Yawar</button>
+        <button class="release-filter-btn" data-type="artist" data-value="Manisten" style="padding:6px 14px;font-size:12px;font-weight:500;border:1px solid #555;background:transparent;color:#888;cursor:pointer;transition:all 0.2s;border-radius:2px;">Manisten</button>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="releases-grid"></div>
-      <div class="mt-10 text-center md:hidden">
+      <div id="releases-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;width:100%;">
+        <div style="text-align:center;padding:40px 0;grid-column:1/-1;color:#888;font-size:14px;">Loading releases...</div>
+      </div>
+      <div class="mt-10 text-center md:hidden" style="margin-top:2.5rem;text-align:center;">
         <a href="releases/" class="btn-outline inline-block">View All Releases</a>
       </div>
     </div>
@@ -315,6 +317,16 @@
     .release-card:hover .release-img-wrap img {
       transform: scale(1.06);
     }
+    @media (min-width: 640px) {
+      #releases-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+    @media (min-width: 768px) {
+      #releases-grid { grid-template-columns: repeat(4, 1fr) !important; }
+    }
+    @media (min-width: 1024px) {
+      #releases-grid { grid-template-columns: repeat(6, 1fr) !important; }
+    }
+    #releases { display: block !important; visibility: visible !important; }
   </style>
 
   <script>
