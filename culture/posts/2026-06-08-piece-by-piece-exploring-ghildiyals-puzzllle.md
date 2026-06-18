@@ -17,7 +17,7 @@ His latest EP, *Puzzllle*, is perhaps the strongest example of that versatility 
 
 Consisting of four tracks, the project showcases four completely different sides of the artist while maintaining a cohesive sound and vision throughout. Rather than staying in one lane, GHILDIYAL treats each song as a different piece of the puzzle, revealing another aspect of who he is as an artist.
 
-The EP opens with *Kai Sani Ni*, featuring Kumaoni icon Tarun Bisht, widely known as "Mr. Kumaon." Produced by GHILDIYAL himself, the track immediately establishes the project's cultural roots while bringing together two artists from different generations of Uttarakhand's music movement. The visual experience adds another layer to the song, with the music video directed by Harsh Kandpal and Vishal SP Aesthetic. The result is a track that feels both modern and deeply connected to the hills.
+The EP opens with *Kai Sani Ni*, featuring Kumaoni icon Tarun Bisht, widely known as "Mr. Kumaon." Produced by GHILDIYAL himself, the track immediately establishes the project's cultural roots while bringing together two artists from different generations of Uttarakhand's music movement. The visual experience adds another layer to the song, with the music video directed by Harsh Kandpal. The result is a track that feels both modern and deeply connected to the hills.
 
 The second track, *Tu*, is arguably one of the most addictive songs on the project. Built around a memorable hook that stays in your head long after the song ends, the record highlights GHILDIYAL's ability to create emotionally engaging music without sacrificing replay value. It's the kind of track that instantly finds a place in listeners' regular rotation.
 
