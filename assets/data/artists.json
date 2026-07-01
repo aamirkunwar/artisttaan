@@ -155,6 +155,16 @@
   ],
   "releases": [
     {
+      "title": "Flavours",
+      "artist": "Slay",
+      "artist_id": "slay",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV",
+      "spotify_embed": "https://open.spotify.com/embed/album/3NMnuPW9pAuMFQsuGKgXzV",
+      "cover": "https://i.scdn.co/image/ab67616d0000b273d6ebc8b4124ce1cc95be8d8c",
+      "type": "EP"
+    },
+    {
       "title": "Kaagaz aur Daag",
       "artist": "Shrey",
       "artist_id": "shrey",
@@ -336,18 +346,7 @@
       "instagram": "https://instagram.com/ninorawat"
     }
   ],
-  "upcoming": [
-    {
-      "id": "slay-flavours",
-      "title": "Flavours",
-      "artist": "Slay",
-      "type": "EP Poster",
-      "image": "assets/images/upcoming/slay-flavours.jpg",
-      "status": "Coming Soon",
-      "release_date": "2026-06-05T14:00:00+05:30",
-      "description": "The upcoming EP from Slay. Poster out now — full project dropping soon."
-    }
-  ],
+  "upcoming": [],
   "settings": {
     "site_title": "ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label",
     "site_description": "ARTISTTAAN is India's premier hip-hop and indie music label, founded in 2016. Discover artists like Abir, Shrey, Slay, Apoorvv & Faraz. Stream music, watch videos, and submit your demo.",
