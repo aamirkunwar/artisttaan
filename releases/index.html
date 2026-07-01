@@ -1,203 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Releases — ARTISTTAAN</title>
-  <meta name="description" content="Full discography of ARTISTTAAN. 89 releases from 2016 to today."/>
-  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Artist | ARTISTTAAN</title>
+  <meta name="description" id="meta-description" content="" />
+  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" id="og-url" content="" />
+  <meta property="og:image" id="og-image" content="" />
+  <meta property="og:title" id="og-title" content="" />
+  <meta property="og:description" id="og-description" content="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{background:#fafaf8;color:#0a0a0a;font-family:'Inter',sans-serif;overflow-x:hidden}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo img{height:32px;width:auto}
-    .nav-links{display:flex;gap:28px}
-    .nav-links a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;color:#888;transition:color 0.2s}
-    .nav-links a:hover,.nav-links a.active{color:#0a0a0a}
-    .header{margin-top:60px;padding:40px 32px 24px;border-bottom:1px solid #e5e5e5}
-    .header-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
-    .header-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:8px}
-    .header-title{font-size:clamp(32px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1}
-    .header-count{font-size:13px;color:#888;align-self:flex-end}
-    .filters{padding:16px 32px;border-bottom:1px solid #e5e5e5;background:#fafaf8;position:sticky;top:60px;z-index:90;display:flex;flex-direction:column;gap:10px}
-    .filter-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-    .filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;min-width:48px}
-    .filter-btn{padding:5px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border:1px solid #e0e0e0;background:transparent;cursor:pointer;transition:all 0.2s;color:#888;border-radius:2px}
-    .filter-btn:hover{border-color:#000;color:#000}
-    .filter-btn.active{background:#000;color:#fff;border-color:#000}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px;padding:28px 32px;max-width:1600px;margin:0 auto}
-    .release-card{cursor:pointer;text-decoration:none;display:block}
-    .poster{aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative;margin-bottom:8px}
-    .poster img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
-    .release-card:hover .poster img{transform:scale(1.06)}
-    .poster-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;transition:background 0.3s}
-    .release-card:hover .poster-overlay{background:rgba(0,0,0,0.55)}
-    .play-icon{opacity:0;transition:opacity 0.3s;color:#fff}
-    .release-card:hover .play-icon{opacity:1}
-    .release-title{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .release-artist{font-size:11px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
-    .release-year{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:0.06em}
-    .no-results{grid-column:1/-1;text-align:center;padding:80px 0;color:#888;font-size:14px}
-    .latest{padding:28px 32px 4px;max-width:1600px;margin:0 auto}
-    .latest-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#aaa;margin-bottom:14px}
-    .ls{position:relative;overflow:hidden;border-radius:4px}
-    .ls-track{display:flex;transition:transform 0.5s cubic-bezier(.22,1,.36,1)}
-    .ls-slide{flex:0 0 100%;display:grid;grid-template-columns:200px 1fr;gap:28px;background:#0a0a0a;color:#fff;padding:28px}
-    .ls-poster{width:200px;height:200px;overflow:hidden;background:#1a1a1a;flex-shrink:0}
-    .ls-poster img{width:100%;height:100%;object-fit:cover}
-    .ls-info{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
-    .ls-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#fff;background:rgba(255,255,255,0.12);padding:4px 10px;border-radius:2px;width:fit-content;margin-bottom:8px}
-    .ls-title{font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .ls-artist{font-size:14px;color:rgba(255,255,255,0.7);margin-top:4px}
-    .ls-year{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
-    .ls-actions{margin-top:16px}
-    .ls-actions a{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;color:#0a0a0a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:2px;transition:opacity 0.2s}
-    .ls-actions a:hover{opacity:0.85}
-    .ls-arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.14);color:#fff;border:none;cursor:pointer;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background 0.2s;z-index:2}
-    .ls-arrow:hover{background:rgba(255,255,255,0.28)}
-    .ls-prev{left:10px}
-    .ls-next{right:10px}
-    .ls-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
-    .ls-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:background 0.2s,width 0.2s}
-    .ls-dot.active{background:#fff;width:18px;border-radius:3px}
-    @media(max-width:640px){.ls-slide{grid-template-columns:1fr;padding:20px}.ls-poster{width:100%;height:auto;aspect-ratio:1}}
-    footer{background:#0a0a0a;color:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:space-between;margin-top:40px}
-    footer p{font-size:12px;color:#555}
-    footer a{font-size:12px;color:#555;text-decoration:none;transition:color 0.2s}
-    footer a:hover{color:#fff}
-    @media(max-width:768px){nav{padding:0 16px}.header,.filters{padding-left:16px;padding-right:16px}.grid{padding:16px;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}footer{flex-direction:column;gap:12px;text-align:center}.latest{padding:20px 16px 4px}}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f8f7f4;
+      --gray: #888;
+      --light: #f0ede8;
+      --border: #e8e5e0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { height: 26px; width: auto; }
+    .nav-back {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none; color: var(--gray);
+      display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--black); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 56px);
+    }
+    .hero-left {
+      padding: 80px 60px 80px 40px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      border-right: 1px solid var(--border);
+    }
+    .hero-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 24px;
+    }
+    .hero-name {
+      font-size: clamp(72px, 10vw, 140px);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.88;
+      margin-bottom: 32px;
+    }
+    .hero-role {
+      font-size: 13px; color: var(--gray); letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 48px;
+    }
+    .hero-bio {
+      font-size: 15px; line-height: 1.75; color: #444;
+      max-width: 440px; margin-bottom: 48px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap-8px;
+      padding: 11px 24px; background: var(--black); color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-solid:hover { opacity: 0.8; }
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      padding: 11px 24px; border: 1px solid var(--border); color: var(--black);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--black); background: var(--black); color: #fff; }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: #1a1a1a;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      padding: 48px 40px 40px;
+      display: flex; gap: 40px;
+    }
+    .hero-stat p:first-child {
+      font-size: 32px; font-weight: 900; color: #fff;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .hero-stat p:last-child {
+      font-size: 10px; color: rgba(255,255,255,0.45);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      position: sticky; top: 56px; z-index: 90;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; padding: 0 40px; overflow-x: auto;
+    }
+    .tab {
+      padding: 16px 20px; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
+      border-bottom: 1px solid transparent; margin-bottom: -1px;
+      cursor: pointer; white-space: nowrap; background: none;
+      border-top: none; border-left: none; border-right: none;
+      transition: all 0.2s;
+    }
+    .tab:hover { color: var(--black); }
+    .tab.active { color: var(--black); border-bottom-color: var(--black); }
+
+    /* ── SECTIONS ── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+    .section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .sec-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 8px;
+    }
+    .sec-title {
+      font-size: clamp(28px, 3.5vw, 44px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1; margin-bottom: 48px;
+    }
+
+    /* ── GENRES ── */
+    .genre-tag {
+      display: inline-block; padding: 5px 14px; border: 1px solid var(--border);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--gray); margin: 4px 4px 4px 0;
+    }
+
+    /* ── PLATFORM LINKS ── */
+    .platform-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+    .platform-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border: 1px solid var(--border);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+      text-decoration: none; color: var(--black); transition: all 0.2s;
+    }
+    .platform-link:hover { background: var(--black); color: #fff; border-color: var(--black); }
+
+    /* ── LATEST RELEASES SLIDESHOW ── */
+    .ls{position:relative; overflow:hidden; border-radius:4px; margin-bottom:48px;}
+    .ls-track{display:flex; transition:transform 0.5s cubic-bezier(.22,1,.36,1);}
+    .ls-slide{
+      flex:0 0 100%; display:grid; grid-template-columns:200px 1fr; gap:28px;
+      background:var(--black); color:#fff; padding:28px;
+    }
+    .ls-poster{width:200px; height:200px; overflow:hidden; background:#1a1a1a; flex-shrink:0;}
+    .ls-poster img{width:100%;height:100%;object-fit:cover;}
+    .ls-info{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;}
+    .ls-tag{
+      font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.14em;
+      color:#fff; background:rgba(255,255,255,0.12); padding:4px 10px; border-radius:2px;
+      width:fit-content; margin-bottom:8px;
+    }
+    .ls-title{font-size:clamp(20px,3vw,32px); font-weight:900; letter-spacing:-0.02em; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .ls-year{font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
+    .ls-actions{margin-top:16px;}
+    .ls-actions a{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+      background:#fff; color:var(--black); font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:0.08em; text-decoration:none;
+      border-radius:2px; transition:opacity 0.2s;
+    }
+    .ls-actions a:hover{opacity:0.85;}
+    .ls-arrow{
+      position:absolute; top:50%; transform:translateY(-50%); width:34px; height:34px;
+      border-radius:50%; background:rgba(255,255,255,0.14); color:#fff; border:none;
+      cursor:pointer; font-size:18px; line-height:1; display:flex; align-items:center;
+      justify-content:center; transition:background 0.2s; z-index:2;
+    }
+    .ls-arrow:hover{background:rgba(255,255,255,0.28);}
+    .ls-prev{left:10px;}
+    .ls-next{right:10px;}
+    .ls-dots{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2;}
+    .ls-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.3); cursor:pointer; transition:background 0.2s,width 0.2s;}
+    .ls-dot.active{background:#fff; width:18px; border-radius:3px;}
+    @media (max-width:600px){.ls-slide{grid-template-columns:1fr; padding:20px;}.ls-poster{width:100%;height:auto;aspect-ratio:1;}}
+
+    /* ── RELEASES ── */
+    .releases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .rel-card { text-decoration: none; color: inherit; display: block; }
+    .rel-poster {
+      aspect-ratio: 1; overflow: hidden; background: #1a1a1a;
+      position: relative; margin-bottom: 10px;
+    }
+    .rel-poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .rel-card:hover .rel-poster img { transform: scale(1.05); }
+    .rel-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0); display: flex;
+      align-items: center; justify-content: center; transition: background 0.3s;
+    }
+    .rel-card:hover .rel-overlay { background: rgba(0,0,0,0.45); }
+    .rel-play { opacity: 0; transition: opacity 0.3s; color: #fff; }
+    .rel-card:hover .rel-play { opacity: 1; }
+    .rel-title { font-size: 12px; font-weight: 500; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rel-year { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+    /* ── CITIES ── */
+    .city-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .city-row:last-child { border-bottom: none; }
+    .city-num { font-size: 11px; color: var(--gray); min-width: 18px; text-align: right; }
+    .city-name { font-size: 13px; font-weight: 500; min-width: 150px; }
+    .city-track { flex: 1; height: 1px; background: var(--border); position: relative; }
+    .city-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--black); transition: width 0.8s ease; }
+    .city-count { font-size: 12px; color: var(--gray); min-width: 60px; text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* ── VIDEOS ── */
+    .videos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .vid-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; font-weight: 500; }
+    .vid-frame { aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
+    .vid-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); color: #fff;
+      padding: 40px; display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 11px; color: #555; }
+    footer a { font-size: 11px; color: #555; text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); justify-content: flex-start; }
+      .hero-right { height: 60vw; }
+      .tabs { padding: 0 20px; }
+      .wrap { padding: 0 24px; }
+      .section { padding: 56px 0; }
+      .releases-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .videos-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero-name { font-size: clamp(56px, 16vw, 80px); }
+      .hero-stats { gap: 24px; padding: 32px 20px; }
+      .hero-stat p:first-child { font-size: 24px; }
+    }
   </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
-  <a href="../" class="nav-logo"><img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
-  <div class="nav-links">
-    <a href="../#roster">Roster</a>
-    <a href="./" class="active">Releases</a>
-    <a href="../culture/">Culture</a>
-    <a href="../#demo">Submit Demo</a>
-  </div>
+  <a href="../"><img class="nav-logo" src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" /></a>
+  <a href="../#roster" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+    Roster
+  </a>
 </nav>
-<div class="header">
-  <div class="header-top">
-    <div>
-      <p class="header-label">Discography</p>
-      <h1 class="header-title">All Releases</h1>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-label">ARTISTTAAN &nbsp;/&nbsp; <span id="hero-role"></span></p>
+    <h1 class="hero-name" id="hero-name"></h1>
+    <p class="hero-role" id="hero-role2"></p>
+    <p class="hero-bio" id="hero-bio"></p>
+    <div class="hero-actions" id="hero-actions"></div>
+  </div>
+  <div class="hero-right">
+    <img id="hero-img" src="" alt="" />
+    <div class="hero-stats" id="hero-stats"></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" data-target="music">Music</button>
+  <button class="tab" data-target="about">About</button>
+  <button class="tab" data-target="listeners">Listeners</button>
+  <button class="tab" data-target="videos">Videos</button>
+</div>
+
+<!-- MUSIC -->
+<div id="music">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">Discography</p>
+      <h2 class="sec-title" id="music-title">Music</h2>
+      <div id="latest-release-panel"></div>
+      <div class="releases-grid" id="releases-grid"></div>
     </div>
-    <p class="header-count" id="release-count">89 releases</p>
   </div>
 </div>
-<div class="latest" id="latest-release">
-  <p class="latest-label">Latest Releases</p>
-  <div class="ls" id="ls">
-    <div class="ls-track" id="ls-track"></div>
-    <button class="ls-arrow ls-prev" id="ls-prev" aria-label="Previous">&#8249;</button>
-    <button class="ls-arrow ls-next" id="ls-next" aria-label="Next">&#8250;</button>
-    <div class="ls-dots" id="ls-dots"></div>
-  </div>
-</div>
-<div class="filters">
-  <div class="filter-row">
-    <span class="filter-label">Year</span>
-    <button class="filter-btn active" data-type="year" data-value="all">All</button>
-    <button class="filter-btn" data-type="year" data-value="2026">2026</button><button class="filter-btn" data-type="year" data-value="2025">2025</button><button class="filter-btn" data-type="year" data-value="2024">2024</button><button class="filter-btn" data-type="year" data-value="2023">2023</button><button class="filter-btn" data-type="year" data-value="2021">2021</button><button class="filter-btn" data-type="year" data-value="2020">2020</button><button class="filter-btn" data-type="year" data-value="2019">2019</button><button class="filter-btn" data-type="year" data-value="2018">2018</button><button class="filter-btn" data-type="year" data-value="2017">2017</button><button class="filter-btn" data-type="year" data-value="2016">2016</button>
-  </div>
-  <div class="filter-row">
-    <span class="filter-label">Artist</span>
-    <button class="filter-btn active" data-type="artist" data-value="all">All</button>
-    <button class="filter-btn" data-type="artist" data-value="Abir">Abir</button><button class="filter-btn" data-type="artist" data-value="Amie">Amie</button><button class="filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button><button class="filter-btn" data-type="artist" data-value="Faraz">Faraz</button><button class="filter-btn" data-type="artist" data-value="Harjas">Harjas</button><button class="filter-btn" data-type="artist" data-value="Kay J">Kay J</button><button class="filter-btn" data-type="artist" data-value="Luck">Luck</button><button class="filter-btn" data-type="artist" data-value="Lukka">Lukka</button><button class="filter-btn" data-type="artist" data-value="Manisten">Manisten</button><button class="filter-btn" data-type="artist" data-value="Mr A">Mr A</button><button class="filter-btn" data-type="artist" data-value="Muhfaad">Muhfaad</button><button class="filter-btn" data-type="artist" data-value="Newtone">Newtone</button><button class="filter-btn" data-type="artist" data-value="Raga">Raga</button><button class="filter-btn" data-type="artist" data-value="Rigul">Rigul</button><button class="filter-btn" data-type="artist" data-value="Rish">Rish</button><button class="filter-btn" data-type="artist" data-value="Sam Rajput">Sam Rajput</button><button class="filter-btn" data-type="artist" data-value="Shrey">Shrey</button><button class="filter-btn" data-type="artist" data-value="Slay">Slay</button><button class="filter-btn" data-type="artist" data-value="Talwar">Talwar</button><button class="filter-btn" data-type="artist" data-value="Talwiinder">Talwiinder</button><button class="filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
-  </div>
-</div>
-<div class="grid" id="releases-grid"></div>
-<footer>
-  <p>© 2026 ARTISTTAAN · All Rights Reserved</p>
-  <a href="../">← Back to ARTISTTAAN</a>
-</footer>
-<script>
-const releases = [{"title": "Flavours", "artist": "Slay", "year": "2026", "spotify": "https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV", "cover": "assets/images/upcoming/slay-flavours.jpg"}, {"title": "Namaskar", "artist": "Slay", "year": "2026", "spotify": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Mila Tu", "artist": "Apoorvv", "year": "2026", "spotify": "https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Kaagaz Aur Daag", "artist": "Shrey", "year": "2025", "spotify": "https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Sifarishein", "artist": "Shrey", "year": "2025", "spotify": "https://open.spotify.com/track/196x0S8IsX40sd3KB12v84", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Thoughts Are Poison", "artist": "Shrey", "year": "2025", "spotify": "https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Pehle Jaisa", "artist": "Abir", "year": "2025", "spotify": "https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Smack", "artist": "Slay", "year": "2025", "spotify": "https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Wassup", "artist": "Slay", "year": "2025", "spotify": "https://open.spotify.com/track/0evpBO2tW3AKbJrmThc3CS", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Kya Se Kya Hue", "artist": "Slay", "year": "2025", "spotify": "https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Marz", "artist": "Abir", "year": "2024", "spotify": "https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Thoda Aur", "artist": "Shrey", "year": "2024", "spotify": "https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Jaqeen Trending Version", "artist": "Talwiinder, Rish", "year": "2023", "spotify": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc", "cover": "assets/images/releases-posters/releases/release-02-jaqeen-trending-version-2023.jpg"}, {"title": "Kaho Na", "artist": "Abir", "year": "2023", "spotify": "https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw", "cover": "assets/images/logo/logo-hero.png"}, {"title": "Sath Chalegi", "artist": "Raga, Rish", "year": "2021", "spotify": "https://open.spotify.com/album/6359k4XlwyF81N12omSDHD", "cover": "assets/images/releases-posters/releases/release-03-sath-chalegi-2021.jpg"}, {"title": "Jaqeen", "artist": "Talwiinder, Rish", "year": "2021", "spotify": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc", "cover": "assets/images/releases-posters/releases/release-04-jaqeen-2021.jpg"}, {"title": "Rageshwar", "artist": "Raga", "year": "2021", "spotify": "https://open.spotify.com/track/7dEQoxUIipE21E5x3g1jAW", "cover": "assets/images/releases-posters/releases/release-05-rageshwar-2021.jpg"}, {"title": "Look at Me", "artist": "Rigul, Yawar", "year": "2021", "spotify": "https://open.spotify.com/track/5k2g1PqmdHGHdOQzTmhrg6", "cover": "assets/images/releases-posters/releases/release-06-look-at-me-2021.jpg"}, {"title": "Love Again", "artist": "Luck, Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/2D1Qn9o7CINzFyb96Sd7Yc", "cover": "assets/images/releases-posters/releases/release-07-love-again-2021.jpg"}, {"title": "Congratulations", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/3erirML2bH3Jl8Hwl1qPf3", "cover": "assets/images/releases-posters/releases/release-08-congratulations-2021.jpg"}, {"title": "Greatest", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/3uLLs8UMMyxJEC1Py3fg2H", "cover": "assets/images/releases-posters/releases/release-09-greatest-2021.jpg"}, {"title": "Airplane Mode", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/album/2qVqgj0hMXTfP7cdRUb6zf", "cover": "assets/images/releases-posters/releases/release-10-airplane-mode-2021.jpg"}, {"title": "Triggered", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/album/12g4L6k0bVk8BcakDHxTG2", "cover": "assets/images/releases-posters/releases/release-11-triggered-2021.jpg"}, {"title": "My Lady", "artist": "Rish", "year": "2021", "spotify": "https://open.spotify.com/track/5bNA92fEilaFUdXbza3gkJ", "cover": "assets/images/releases-posters/releases/release-12-my-lady-2021.jpg"}, {"title": "Different Opinion", "artist": "Manisten", "year": "2021", "spotify": "https://open.spotify.com/track/4drwpq7oMD1kG3iq5j4nUL", "cover": "assets/images/releases-posters/releases/release-13-different-opinion-2021.jpg"}, {"title": "Beh Ja", "artist": "Rish", "year": "2020", "spotify": "https://open.spotify.com/track/4Ox54GzIlqLQ8dTtk1ey8P", "cover": "assets/images/releases-posters/releases/release-14-beh-ja-2020.jpg"}, {"title": "Kaisa Hai Bhai", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/7C11bvvEr3ODYyjAGXpzd7", "cover": "assets/images/releases-posters/releases/release-15-kaisa-hai-bhai-2020.jpg"}, {"title": "Badal Gaye", "artist": "Faraz", "year": "2020", "spotify": "https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf", "cover": "assets/images/releases-posters/releases/release-16-badal-gaye-2020.jpg"}, {"title": "Kaanch Ki Tarah", "artist": "Faraz", "year": "2020", "spotify": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA", "cover": "assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg"}, {"title": "Ishq Adhoora", "artist": "Apoorvv", "year": "2020", "spotify": "https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono", "cover": "assets/images/releases-posters/releases/release-18-ishq-adhoora-2020.jpg"}, {"title": "Naam Tumhara", "artist": "Sam Rajput", "year": "2020", "spotify": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab", "cover": "assets/images/releases-posters/releases/release-19-naam-tumhara-2020.jpg"}, {"title": "Jaane Na", "artist": "Apoorvv", "year": "2020", "spotify": "https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln", "cover": "assets/images/releases-posters/releases/release-20-jaane-na-2020.jpg"}, {"title": "Haseena", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/5Lit31j9cVf8k7k33tbJyn", "cover": "assets/images/releases-posters/releases/release-21-haseena-2020.jpg"}, {"title": "Mantra", "artist": "Lukka", "year": "2020", "spotify": "https://open.spotify.com/track/7CIXuuauYU2maFBLAlNoLu", "cover": "assets/images/releases-posters/releases/release-22-mantra-2020.jpg"}, {"title": "Choo Liya 2.0", "artist": "Abir", "year": "2020", "spotify": "https://open.spotify.com/track/1zckeQVI1uIKCraYPHjz4j", "cover": "assets/images/releases-posters/releases/release-23-choo-liya-2-0-2020.jpg"}, {"title": "Badal Gaye Unplugged", "artist": "Faraz", "year": "2020", "spotify": "https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9", "cover": "assets/images/releases-posters/releases/release-24-badal-gaye-unplugged--2020.jpg"}, {"title": "Choo Liya", "artist": "Faraz, Abir", "year": "2020", "spotify": "https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT", "cover": "assets/images/releases-posters/releases/release-25-choo-liya-2020.jpg"}, {"title": "Tum Badli Ho", "artist": "Abir", "year": "2020", "spotify": "https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l", "cover": "assets/images/releases-posters/releases/release-26-tum-badli-ho-2020.jpg"}, {"title": "Lifestyle", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/3kORfvMWbtTT0wxjVAZofZ", "cover": "assets/images/releases-posters/releases/release-27-lifestyle-2020.jpg"}, {"title": "Ajj Vi", "artist": "Rish", "year": "2020", "spotify": "https://open.spotify.com/track/5rxsGT6YS7dmfjjJGXq3N6", "cover": "assets/images/releases-posters/releases/release-28-ajj-vi-2020.jpg"}, {"title": "A Note to My Mother", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/4Z2HkIGd34s6q4cFpeqFNf", "cover": "assets/images/releases-posters/releases/release-29-a-note-to-my-mother-2020.jpg"}, {"title": "Pinnak Na Tod", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/7yO8LrjdVOaNkHoqT7w9aO", "cover": "assets/images/releases-posters/releases/release-30-pinnak-na-tod-2020.jpg"}, {"title": "Video Call", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/2cwOrW2prswLDP6FFxWOos", "cover": "assets/images/releases-posters/releases/release-31-video-call-2020.jpg"}, {"title": "No Offense", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/3vCzGpb93QN44jAkd2o7Pw", "cover": "assets/images/releases-posters/releases/release-32-no-offense-2020.jpg"}, {"title": "Jahannum", "artist": "Raga", "year": "2020", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-33-jahannum-2020.jpg"}, {"title": "Skills", "artist": "Raga", "year": "2020", "spotify": "https://open.spotify.com/track/1jUURRDklHcdF9wMnXO26t", "cover": "assets/images/releases-posters/releases/release-34-skills-2020.jpg"}, {"title": "Boss Mode", "artist": "Yawar", "year": "2020", "spotify": "https://open.spotify.com/track/1l09zQh9feuCHVmXQhmQ11", "cover": "assets/images/releases-posters/releases/release-35-boss-mode-2020.jpg"}, {"title": "Tum Nahin Aaye", "artist": "Abir", "year": "2020", "spotify": "https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi", "cover": "assets/images/releases-posters/releases/release-36-tum-nahin-aaye-2020.jpg"}, {"title": "Try Kijiye", "artist": "Lukka", "year": "2020", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-53-try-kijiye-2020.jpg"}, {"title": "Jeet Bawa Jeet", "artist": "\u2014", "year": "2020", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-39-jeet-bawa-jeet-2020.jpg"}, {"title": "Chahida Mennu Sab", "artist": "Manisten", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-54-chahida-mennu-sab-2019.jpg"}, {"title": "End Karegi", "artist": "Kay J, Yawar", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-57-end-karegi-2019.jpg"}, {"title": "Alone", "artist": "Amie", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-58-alone-2019.jpg"}, {"title": "Mili Raahat", "artist": "Raga", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-59-mili-raahat-2019.jpg"}, {"title": "Hangover", "artist": "Manisten", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-60-hangover-2019.jpg"}, {"title": "Bekabu", "artist": "Yawar", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-61-bekabu-2019.jpg"}, {"title": "Tere Utte", "artist": "Rish", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-62-tere-utte-2019.jpg"}, {"title": "Neeli Neeli", "artist": "Yawar, Amie", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-63-neeli-neeli-2019.jpg"}, {"title": "Taaze Bars", "artist": "Yawar", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-64-taaze-bars-2019.jpg"}, {"title": "Mere Kol", "artist": "Rish", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-65-mere-kol-2019.jpg"}, {"title": "Tu Jaari Hai", "artist": "Rish", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-66-tu-jaari-hai-2019.jpg"}, {"title": "Rap Ka Mausam", "artist": "Raga", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-67-rap-ka-mausam-2019.jpg"}, {"title": "Raahat", "artist": "Raga", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-68-raahat-2019.jpg"}, {"title": "Mudda", "artist": "Raga, Yawar", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-69-mudda-2019.jpg"}, {"title": "Shikayat", "artist": "Raga, Yawar", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-70-shikayat-2019.jpg"}, {"title": "Telephone", "artist": "Amie", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-71-telephone-2019.jpg"}, {"title": "Sheher Tera", "artist": "Talwar, Newtone", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-72-sheher-tera-2019.jpg"}, {"title": "Ishq Waleya", "artist": "Amie", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-73-ishq-waleya-2019.jpg"}, {"title": "UP 14", "artist": "Raga", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-74-up-14-2019.jpg"}, {"title": "Harjaayi", "artist": "Amie", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-75-harjaayi-2019.jpg"}, {"title": "Khushnaseeb", "artist": "Rish", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-77-khushnaseeb-2019.jpg"}, {"title": "School Waley Yaar", "artist": "Raga", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-78-school-waley-yaar-2019.jpg"}, {"title": "Kaaliyaan Rattaan", "artist": "\u2014", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-56-kaaliyaan-rattaan-2019.jpg"}, {"title": "Jamnapaar", "artist": "\u2014", "year": "2019", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-55-jamnapaar-2019.jpg"}, {"title": "Dhokebaaz", "artist": "\u2014", "year": "2018", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-37-dhokebaaz-2018.jpg"}, {"title": "2006", "artist": "\u2014", "year": "2018", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-38-2006-2018.jpg"}, {"title": "Baatein Mere Baare Mein", "artist": "\u2014", "year": "2018", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-42-baatein-mere-baare-mein-2018.jpg"}, {"title": "Gunehgar", "artist": "\u2014", "year": "2018", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-43-gunehgar-2018.jpg"}, {"title": "Akhan Rondiya", "artist": "Apoorvv", "year": "2017", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-48-akhan-rondiya-2017.jpg"}, {"title": "Layak", "artist": "Yawar", "year": "2017", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-50-layak-2017.jpg"}, {"title": "This Is Your Chance", "artist": "\u2014", "year": "2017", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-40-this-is-your-chance-2017.jpg"}, {"title": "World Cup", "artist": "\u2014", "year": "2017", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-44-world-cup-2017.jpg"}, {"title": "Wah Bete", "artist": "\u2014", "year": "2017", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-45-wah-bete-2017.jpg"}, {"title": "STFU", "artist": "\u2014", "year": "2017", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-47-stfu-2017.jpg"}, {"title": "Sandook", "artist": "Mr A", "year": "2016", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-49-sandook-2016.jpg"}, {"title": "Sach Too Much Hai", "artist": "Muhfaad", "year": "2016", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-51-sach-too-much-hai-2016.jpg"}, {"title": "Sautan", "artist": "Yawar, Harjas", "year": "2016", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-52-sautan-2016.jpg"}, {"title": "Don't", "artist": "\u2014", "year": "2016", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-41-don-t-2016.jpg"}, {"title": "Likhaari", "artist": "\u2014", "year": "2016", "spotify": "#", "cover": "assets/images/releases-posters/releases/release-46-likhaari-2016.jpg"}];
-function toEmbed(url){
-  if(!url||url==='#')return null;
-  return url.replace('open.spotify.com/','open.spotify.com/embed/');
-}
-function initLatestSlideshow(){
-  const slides=releases.slice(0,6);
-  const track=document.getElementById('ls-track');
-  const dotsEl=document.getElementById('ls-dots');
-  const prevBtn=document.getElementById('ls-prev');
-  const nextBtn=document.getElementById('ls-next');
-  if(!slides.length){document.getElementById('latest-release').style.display='none';return;}
-  track.innerHTML=slides.map(r=>`
-    <div class="ls-slide">
-      <div class="ls-poster"><img src="../${r.cover}" alt="${r.title}" loading="lazy"/></div>
-      <div class="ls-info">
-        <span class="ls-tag">New</span>
-        <p class="ls-title">${r.title}</p>
-        <p class="ls-artist">${r.artist}</p>
-        <p class="ls-year">${r.year}</p>
-        <div class="ls-actions"><a href="${r.spotify}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
-      </div>
-    </div>`).join('');
-  dotsEl.innerHTML=slides.map((_,i)=>`<span class="ls-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
-  const dots=[...dotsEl.children];
-  let idx=0,timer;
-  function go(i){
-    idx=(i+slides.length)%slides.length;
-    track.style.transform=`translateX(-${idx*100}%)`;
-    dots.forEach((d,j)=>d.classList.toggle('active',j===idx));
-  }
-  function startTimer(){timer=setInterval(()=>go(idx+1),5000);}
-  function stopTimer(){clearInterval(timer);}
-  prevBtn.addEventListener('click',()=>{go(idx-1);stopTimer();startTimer();});
-  nextBtn.addEventListener('click',()=>{go(idx+1);stopTimer();startTimer();});
-  dots.forEach(d=>d.addEventListener('click',()=>{go(+d.dataset.i);stopTimer();startTimer();}));
-  const box=document.getElementById('ls');
-  box.addEventListener('mouseenter',stopTimer);
-  box.addEventListener('mouseleave',startTimer);
-  if(slides.length<2){prevBtn.style.display='none';nextBtn.style.display='none';dotsEl.style.display='none';}
-  else{startTimer();}
-}
-initLatestSlideshow();
-let activeYear='all', activeArtist='all';
-function filterReleases(){
-  return releases.filter(r=>{
-    const y=activeYear==='all'||r.year===activeYear;
-    const a=activeArtist==='all'||r.artist.includes(activeArtist);
-    return y&&a;
-  });
-}
-function render(){
-  const grid=document.getElementById('releases-grid');
-  const filtered=filterReleases();
-  document.getElementById('release-count').textContent=filtered.length+' releases';
-  if(!filtered.length){grid.innerHTML='<div class="no-results">No releases found.</div>';return;}
-  grid.innerHTML=filtered.map(r=>`
-    <a class="release-card" href="${r.spotify==='#'?'javascript:void(0)':r.spotify}" ${r.spotify!=='#'?'target="_blank" rel="noopener noreferrer"':''}>
-      <div class="poster">
-        <img src="../${r.cover}" alt="${r.title}" loading="lazy"/>
-        <div class="poster-overlay">
-          <svg class="play-icon" width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
+
+<!-- ABOUT -->
+<div id="about" style="background: var(--light);">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">About</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;" id="about-grid">
+        <div>
+          <h2 class="sec-title" id="about-title"></h2>
+          <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:32px;" id="about-bio"></p>
+          <div id="genres" style="margin-bottom:0;"></div>
+          <div class="platform-links" id="platform-links"></div>
+        </div>
+        <div style="aspect-ratio:3/4;overflow:hidden;background:#e5e5e5;">
+          <img id="about-photo" src="" alt="" style="width:100%;height:100%;object-fit:cover;" />
         </div>
       </div>
-      <p class="release-title">${r.title}</p>
-      <p class="release-artist">${r.artist}</p>
-      <p class="release-year">${r.year}</p>
-    </a>`).join('');
-}
-document.querySelectorAll('[data-type="year"]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('[data-type="year"]').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');activeYear=btn.dataset.value;render();
+    </div>
+  </div>
+</div>
+
+<!-- LISTENERS -->
+<div id="listeners">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">Audience · Last 28 Days</p>
+      <h2 class="sec-title">Top Cities</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;">
+        <div id="cities-list"></div>
+        <div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" id="listener-cards"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div id="videos" style="background: var(--light);">
+  <div class="wrap">
+    <div class="section">
+      <p class="sec-label">Visuals</p>
+      <h2 class="sec-title">Videos</h2>
+      <div class="videos-grid" id="videos-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ARTISTTAAN</p>
+  <a href="../">← Back to ARTISTTAAN</a>
+</footer>
+
+<script>
+  const artistId = new URLSearchParams(window.location.search).get('artist');
+
+  const listenerData = {
+    abir: [{c:'New Delhi',l:4202},{c:'Delhi',l:4200},{c:'Kolkata',l:3921},{c:'Patna',l:3638},{c:'Pune',l:3436},{c:'Bhubaneswar',l:3320},{c:'Bengaluru',l:3234},{c:'Guwahati',l:3144},{c:'Mumbai',l:2984},{c:'Jaipur',l:2461}],
+    shrey: [{c:'New Delhi',l:466},{c:'Delhi',l:461},{c:'Dehradun',l:393},{c:'Meerut',l:265},{c:'Agra',l:174},{c:'Noida',l:91},{c:'Pune',l:82},{c:'Mumbai',l:77},{c:'Gurugram',l:69},{c:'Indore',l:51}],
+    slay: [{c:'Mumbai',l:1332},{c:'Delhi',l:839},{c:'Dehradun',l:806},{c:'New Delhi',l:776},{c:'Meerut',l:699},{c:'Pune',l:604},{c:'Agra',l:443},{c:'Indore',l:205},{c:'Noida',l:166},{c:'Bengaluru',l:140}],
+    apoorvv: [{c:'Guwahati',l:733},{c:'New Delhi',l:686},{c:'Pune',l:626},{c:'Delhi',l:566},{c:'Mumbai',l:551},{c:'Bengaluru',l:530},{c:'Patna',l:490},{c:'Kolkata',l:444},{c:'Jaipur',l:441},{c:'Bhubaneswar',l:343}],
+    faraz: [{c:'Guwahati',l:522},{c:'Pune',l:470},{c:'New Delhi',l:467},{c:'Delhi',l:431},{c:'Mumbai',l:404},{c:'Bengaluru',l:384},{c:'Patna',l:358},{c:'Kolkata',l:319},{c:'Jaipur',l:315},{c:'Bhubaneswar',l:279}]
+  };
+
+  const artistVideos = {
+    shrey: [{t:'Kaagaz Aur Daag',e:'https://www.youtube.com/embed/ZYln3iWRxDk'},{t:'Sifarishein',e:'https://www.youtube.com/embed/rcKlMq2uDlk'},{t:'Thoughts Are Poison',e:'https://www.youtube.com/embed/afRnyWvO6PU'},{t:'Thoda Aur',e:'https://www.youtube.com/embed/Q5E5t5VbVeo'}],
+    abir: [{t:'Marz',e:'https://www.youtube.com/embed/U7AdDdqJWUg'},{t:'Kaho Na',e:'https://www.youtube.com/embed/lC9X-FtN7AI'}],
+    slay: [{t:'Namaskar',e:'https://www.youtube.com/embed/bLTVqTJ1hUQ'}],
+    apoorvv: [], faraz: []
+  };
+
+  const allReleases = [
+    {id:'slay',t:'Flavours',y:'2026',s:'https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV',c:'assets/images/upcoming/slay-flavours.jpg'},
+    {id:'shrey',t:'Kaagaz Aur Daag',y:'2025',s:'https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm',c:'assets/images/logo/logo-hero.png'},
+    {id:'shrey',t:'Sifarishein',y:'2025',s:'https://open.spotify.com/track/196x0S8IsX40sd3KB12v84',c:'assets/images/logo/logo-hero.png'},
+    {id:'shrey',t:'Thoughts Are Poison',y:'2025',s:'https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx',c:'assets/images/logo/logo-hero.png'},
+    {id:'shrey',t:'Thoda Aur',y:'2024',s:'https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Pehle Jaisa',y:'2025',s:'https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Marz',y:'2024',s:'https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Kaho Na',y:'2023',s:'https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw',c:'assets/images/logo/logo-hero.png'},
+    {id:'abir',t:'Choo Liya 2.0',y:'2020',s:'https://open.spotify.com/track/1zckeQVI1uIKCraYPHjz4j',c:'assets/images/releases-posters/releases/release-23-choo-liya-2-0-2020.jpg'},
+    {id:'abir',t:'Tum Badli Ho',y:'2020',s:'https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l',c:'assets/images/releases-posters/releases/release-26-tum-badli-ho-2020.jpg'},
+    {id:'abir',t:'Tum Nahin Aaye',y:'2020',s:'https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi',c:'assets/images/releases-posters/releases/release-36-tum-nahin-aaye-2020.jpg'},
+    {id:'slay',t:'Namaskar',y:'2026',s:'https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO',c:'assets/images/logo/logo-hero.png'},
+    {id:'slay',t:'Smack',y:'2025',s:'https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H',c:'assets/images/logo/logo-hero.png'},
+    {id:'slay',t:'Wassup',y:'2025',s:'https://open.spotify.com/track/0evpBO2tW3AKbJrmThc3CS',c:'assets/images/logo/logo-hero.png'},
+    {id:'slay',t:'Kya Se Kya Hue',y:'2025',s:'https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc',c:'assets/images/logo/logo-hero.png'},
+    {id:'apoorvv',t:'Mila Tu',y:'2026',s:'https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE',c:'assets/images/logo/logo-hero.png'},
+    {id:'apoorvv',t:'Ishq Adhoora',y:'2020',s:'https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono',c:'assets/images/releases-posters/releases/release-18-ishq-adhoora-2020.jpg'},
+    {id:'apoorvv',t:'Jaane Na',y:'2020',s:'https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln',c:'assets/images/releases-posters/releases/release-20-jaane-na-2020.jpg'},
+    {id:'faraz',t:'Badal Gaye',y:'2020',s:'https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf',c:'assets/images/releases-posters/releases/release-16-badal-gaye-2020.jpg'},
+    {id:'faraz',t:'Kaanch Ki Tarah',y:'2020',s:'https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA',c:'assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg'},
+    {id:'faraz',t:'Choo Liya',y:'2020',s:'https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT',c:'assets/images/releases-posters/releases/release-25-choo-liya-2020.jpg'},
+    {id:'faraz',t:'Badal Gaye Unplugged',y:'2020',s:'https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9',c:'assets/images/releases-posters/releases/release-24-badal-gaye-unplugged--2020.jpg'},
+  ];
+
+  async function init() {
+    try {
+      const res = await fetch('../assets/data/artists.json');
+      const data = await res.json();
+      const artist = data.artists.find(a => a.id === artistId);
+      if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:120px 20px;font-size:14px;color:#888;">Artist not found.</p>'; return; }
+      render(artist);
+    } catch(e) { console.error(e); }
+  }
+
+  function render(a) {
+    document.getElementById('page-title').textContent = `${a.name} — ARTISTTAAN`;
+    document.getElementById('meta-description').content = a.full_bio || a.bio;
+    document.getElementById('og-title').content = `${a.name} | ARTISTTAAN`;
+    document.getElementById('og-description').content = a.bio;
+    document.getElementById('og-url').content = `https://artisttaanmusic.com/artist/?artist=${a.id}`;
+    if (a.square_photo) document.getElementById('og-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
+
+    // Hero
+    document.getElementById('hero-role').textContent = a.role;
+    document.getElementById('hero-role2').textContent = a.role;
+    document.getElementById('hero-name').textContent = a.name;
+    document.getElementById('hero-bio').textContent = a.bio;
+    document.getElementById('hero-img').src = `../${a.banner || a.photo}`;
+    document.getElementById('hero-img').alt = a.name;
+
+    // Hero actions
+    const acts = [];
+    if (a.spotify_url) acts.push(`<a href="${a.spotify_url}" target="_blank" class="btn-solid">Listen on Spotify</a>`);
+    if (a.instagram) acts.push(`<a href="${a.instagram}" target="_blank" class="btn-ghost">Instagram</a>`);
+    document.getElementById('hero-actions').innerHTML = acts.join('');
+
+    // Hero stats
+    const releases = allReleases.filter(r => r.id === a.id);
+    const stats = [];
+    if (a.total_streams && a.total_streams !== '—') stats.push(`<div class="hero-stat"><p>${a.total_streams}</p><p>Total Streams</p></div>`);
+    stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
+    document.getElementById('hero-stats').innerHTML = stats.join('');
+
+    // Latest releases slideshow
+    const latestPanel = document.getElementById('latest-release-panel');
+    const slides = releases.slice(0, 5);
+    if (slides.length) {
+      latestPanel.innerHTML = `
+        <div class="ls" id="ls">
+          <div class="ls-track" id="ls-track"></div>
+          <button class="ls-arrow ls-prev" id="ls-prev" aria-label="Previous">&#8249;</button>
+          <button class="ls-arrow ls-next" id="ls-next" aria-label="Next">&#8250;</button>
+          <div class="ls-dots" id="ls-dots"></div>
+        </div>`;
+      const track = document.getElementById('ls-track');
+      const dotsEl = document.getElementById('ls-dots');
+      const prevBtn = document.getElementById('ls-prev');
+      const nextBtn = document.getElementById('ls-next');
+      track.innerHTML = slides.map((r, i) => `
+        <div class="ls-slide">
+          <div class="ls-poster"><img src="../${r.c}" alt="${r.t}" loading="lazy" /></div>
+          <div class="ls-info">
+            <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
+            <p class="ls-title">${r.t}</p>
+            <p class="ls-year">${r.y}</p>
+            <div class="ls-actions"><a href="${r.s}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+          </div>
+        </div>`).join('');
+      dotsEl.innerHTML = slides.map((_, i) => `<span class="ls-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('');
+      const dots = [...dotsEl.children];
+      let idx = 0, timer;
+      function go(i) {
+        idx = (i + slides.length) % slides.length;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      }
+      function startTimer() { timer = setInterval(() => go(idx + 1), 5000); }
+      function stopTimer() { clearInterval(timer); }
+      prevBtn.addEventListener('click', () => { go(idx - 1); stopTimer(); startTimer(); });
+      nextBtn.addEventListener('click', () => { go(idx + 1); stopTimer(); startTimer(); });
+      dots.forEach(d => d.addEventListener('click', () => { go(+d.dataset.i); stopTimer(); startTimer(); }));
+      const box = document.getElementById('ls');
+      box.addEventListener('mouseenter', stopTimer);
+      box.addEventListener('mouseleave', startTimer);
+      if (slides.length < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsEl.style.display = 'none'; }
+      else { startTimer(); }
+    } else {
+      latestPanel.innerHTML = '';
+    }
+
+    // Music
+    document.getElementById('music-title').textContent = `${a.name}'s Music`;
+    document.getElementById('releases-grid').innerHTML = releases.length
+      ? releases.map(r => `
+        <a class="rel-card" href="${r.s}" target="_blank" rel="noopener noreferrer">
+          <div class="rel-poster">
+            <img src="../${r.c}" alt="${r.t}" loading="lazy" />
+            <div class="rel-overlay">
+              <svg class="rel-play" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
+            </div>
+          </div>
+          <p class="rel-title">${r.t}</p>
+          <p class="rel-year">${r.y}</p>
+        </a>`).join('')
+      : '<p style="font-size:13px;color:#888;">Releases coming soon.</p>';
+
+    // About
+    document.getElementById('about-title').textContent = a.name;
+    document.getElementById('about-bio').textContent = a.full_bio || a.bio;
+    document.getElementById('about-photo').src = `../${a.photo}`;
+    document.getElementById('about-photo').alt = a.name;
+    if (a.genres) document.getElementById('genres').innerHTML = a.genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
+
+    const plats = [];
+    if (a.spotify_url) plats.push(`<a href="${a.spotify_url}" target="_blank" class="platform-link">Spotify</a>`);
+    if (a.apple_music_url) plats.push(`<a href="${a.apple_music_url}" target="_blank" class="platform-link">Apple Music</a>`);
+    if (a.youtube_url) plats.push(`<a href="${a.youtube_url}" target="_blank" class="platform-link">YouTube</a>`);
+    if (a.instagram) plats.push(`<a href="${a.instagram}" target="_blank" class="platform-link">Instagram</a>`);
+    document.getElementById('platform-links').innerHTML = plats.join('');
+
+    // Cities
+    const cities = listenerData[a.id] || [];
+    const max = cities[0]?.l || 1;
+    document.getElementById('cities-list').innerHTML = cities.length
+      ? cities.map((c, i) => `
+        <div class="city-row">
+          <span class="city-num">${i + 1}</span>
+          <span class="city-name">${c.c}</span>
+          <div class="city-track"><div class="city-fill" style="width:${Math.round(c.l/max*100)}%"></div></div>
+          <span class="city-count">${c.l.toLocaleString()}</span>
+        </div>`).join('')
+      : '<p style="font-size:13px;color:#888;">Data coming soon.</p>';
+
+    const total = cities.reduce((s, c) => s + c.l, 0);
+    document.getElementById('listener-cards').innerHTML = `
+      <div style="border:1px solid var(--border);padding:28px;">
+        <p style="font-size:32px;font-weight:900;letter-spacing:-0.02em;">${total.toLocaleString()}</p>
+        <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Total Listeners</p>
+      </div>
+      <div style="border:1px solid var(--border);padding:28px;">
+        <p style="font-size:32px;font-weight:900;letter-spacing:-0.02em;">${cities.length}</p>
+        <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Cities Reached</p>
+      </div>
+      <div style="border:1px solid var(--border);padding:28px;grid-column:1/-1;">
+        <p style="font-size:20px;font-weight:700;">${cities[0]?.c || '—'}</p>
+        <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Top City</p>
+      </div>`;
+
+    // Videos
+    const vids = artistVideos[a.id] || [];
+    document.getElementById('videos-grid').innerHTML = vids.length
+      ? vids.map(v => `
+        <div>
+          <p class="vid-label">${v.t}</p>
+          <div class="vid-frame"><iframe src="${v.e}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        </div>`).join('')
+      : '<p style="font-size:13px;color:#888;">Videos coming soon.</p>';
+  }
+
+  // Tab scroll
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const el = document.getElementById(tab.dataset.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
   });
-});
-document.querySelectorAll('[data-type="artist"]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('[data-type="artist"]').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');activeArtist=btn.dataset.value;render();
+  const tabSections = ['music', 'about', 'listeners', 'videos'];
+  window.addEventListener('scroll', () => {
+    let cur = 'music';
+    tabSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) cur = id;
+    });
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.target === cur));
   });
-});
-render();
+
+  document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
