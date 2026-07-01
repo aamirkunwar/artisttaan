@@ -169,6 +169,33 @@
     }
     .platform-link:hover { background: var(--black); color: #fff; border-color: var(--black); }
 
+    /* ── LATEST RELEASE ── */
+    .latest-release{
+      display:grid; grid-template-columns:220px 1fr; gap:32px;
+      background:var(--black); color:#fff; padding:32px;
+      margin-bottom:48px;
+    }
+    .latest-poster{aspect-ratio:1; overflow:hidden; background:#1a1a1a;}
+    .latest-poster img{width:100%;height:100%;object-fit:cover;}
+    .latest-info{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;}
+    .latest-tag{
+      font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.14em;
+      color:#fff; background:rgba(255,255,255,0.12); padding:4px 10px; border-radius:2px;
+      width:fit-content; margin-bottom:8px;
+    }
+    .latest-title{font-size:clamp(22px,3vw,34px); font-weight:900; letter-spacing:-0.02em; line-height:1.05;}
+    .latest-year{font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
+    .latest-embed{margin-top:18px; border-radius:8px; overflow:hidden;}
+    .latest-actions{margin-top:18px;}
+    .latest-actions a{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+      background:#fff; color:var(--black); font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:0.08em; text-decoration:none;
+      border-radius:2px; transition:opacity 0.2s;
+    }
+    .latest-actions a:hover{opacity:0.85;}
+    @media (max-width:600px){.latest-release{grid-template-columns:1fr; padding:20px;}}
+
     /* ── RELEASES ── */
     .releases-grid {
       display: grid;
@@ -280,6 +307,7 @@
     <div class="section">
       <p class="sec-label">Discography</p>
       <h2 class="sec-title" id="music-title">Music</h2>
+      <div id="latest-release-panel"></div>
       <div class="releases-grid" id="releases-grid"></div>
     </div>
   </div>
@@ -418,6 +446,26 @@
     if (a.total_streams && a.total_streams !== '—') stats.push(`<div class="hero-stat"><p>${a.total_streams}</p><p>Total Streams</p></div>`);
     stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
     document.getElementById('hero-stats').innerHTML = stats.join('');
+
+    // Latest release
+    const latestPanel = document.getElementById('latest-release-panel');
+    if (releases.length) {
+      const latest = releases[0];
+      const embed = latest.s && latest.s !== '#' ? latest.s.replace('open.spotify.com/', 'open.spotify.com/embed/') : null;
+      latestPanel.innerHTML = `
+        <div class="latest-release">
+          <div class="latest-poster"><img src="../${latest.c}" alt="${latest.t}" loading="lazy" /></div>
+          <div class="latest-info">
+            <span class="latest-tag">Latest Release</span>
+            <p class="latest-title">${latest.t}</p>
+            <p class="latest-year">${latest.y}</p>
+            ${embed ? `<div class="latest-embed"><iframe src="${embed}" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>` : ''}
+            <div class="latest-actions"><a href="${latest.s}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+          </div>
+        </div>`;
+    } else {
+      latestPanel.innerHTML = '';
+    }
 
     // Music
     document.getElementById('music-title').textContent = `${a.name}'s Music`;
