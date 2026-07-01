@@ -169,32 +169,44 @@
     }
     .platform-link:hover { background: var(--black); color: #fff; border-color: var(--black); }
 
-    /* ── LATEST RELEASE ── */
-    .latest-release{
-      display:grid; grid-template-columns:220px 1fr; gap:32px;
-      background:var(--black); color:#fff; padding:32px;
-      margin-bottom:48px;
+    /* ── LATEST RELEASES SLIDESHOW ── */
+    .ls{position:relative; overflow:hidden; border-radius:4px; margin-bottom:48px;}
+    .ls-track{display:flex; transition:transform 0.5s cubic-bezier(.22,1,.36,1);}
+    .ls-slide{
+      flex:0 0 100%; display:grid; grid-template-columns:200px 1fr; gap:28px;
+      background:var(--black); color:#fff; padding:28px;
     }
-    .latest-poster{aspect-ratio:1; overflow:hidden; background:#1a1a1a;}
-    .latest-poster img{width:100%;height:100%;object-fit:cover;}
-    .latest-info{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;}
-    .latest-tag{
+    .ls-poster{width:200px; height:200px; overflow:hidden; background:#1a1a1a; flex-shrink:0;}
+    .ls-poster img{width:100%;height:100%;object-fit:cover;}
+    .ls-info{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;}
+    .ls-tag{
       font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.14em;
       color:#fff; background:rgba(255,255,255,0.12); padding:4px 10px; border-radius:2px;
       width:fit-content; margin-bottom:8px;
     }
-    .latest-title{font-size:clamp(22px,3vw,34px); font-weight:900; letter-spacing:-0.02em; line-height:1.05;}
-    .latest-year{font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
-    .latest-embed{margin-top:18px; border-radius:8px; overflow:hidden;}
-    .latest-actions{margin-top:18px;}
-    .latest-actions a{
+    .ls-title{font-size:clamp(20px,3vw,32px); font-weight:900; letter-spacing:-0.02em; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .ls-year{font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
+    .ls-actions{margin-top:16px;}
+    .ls-actions a{
       display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
       background:#fff; color:var(--black); font-size:11px; font-weight:700;
       text-transform:uppercase; letter-spacing:0.08em; text-decoration:none;
       border-radius:2px; transition:opacity 0.2s;
     }
-    .latest-actions a:hover{opacity:0.85;}
-    @media (max-width:600px){.latest-release{grid-template-columns:1fr; padding:20px;}}
+    .ls-actions a:hover{opacity:0.85;}
+    .ls-arrow{
+      position:absolute; top:50%; transform:translateY(-50%); width:34px; height:34px;
+      border-radius:50%; background:rgba(255,255,255,0.14); color:#fff; border:none;
+      cursor:pointer; font-size:18px; line-height:1; display:flex; align-items:center;
+      justify-content:center; transition:background 0.2s; z-index:2;
+    }
+    .ls-arrow:hover{background:rgba(255,255,255,0.28);}
+    .ls-prev{left:10px;}
+    .ls-next{right:10px;}
+    .ls-dots{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2;}
+    .ls-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.3); cursor:pointer; transition:background 0.2s,width 0.2s;}
+    .ls-dot.active{background:#fff; width:18px; border-radius:3px;}
+    @media (max-width:600px){.ls-slide{grid-template-columns:1fr; padding:20px;}.ls-poster{width:100%;height:auto;aspect-ratio:1;}}
 
     /* ── RELEASES ── */
     .releases-grid {
@@ -385,6 +397,7 @@
   };
 
   const allReleases = [
+    {id:'slay',t:'Flavours',y:'2026',s:'https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV',c:'assets/images/upcoming/slay-flavours.jpg'},
     {id:'shrey',t:'Kaagaz Aur Daag',y:'2025',s:'https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm',c:'assets/images/logo/logo-hero.png'},
     {id:'shrey',t:'Sifarishein',y:'2025',s:'https://open.spotify.com/track/196x0S8IsX40sd3KB12v84',c:'assets/images/logo/logo-hero.png'},
     {id:'shrey',t:'Thoughts Are Poison',y:'2025',s:'https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx',c:'assets/images/logo/logo-hero.png'},
@@ -447,22 +460,49 @@
     stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
     document.getElementById('hero-stats').innerHTML = stats.join('');
 
-    // Latest release
+    // Latest releases slideshow
     const latestPanel = document.getElementById('latest-release-panel');
-    if (releases.length) {
-      const latest = releases[0];
-      const embed = latest.s && latest.s !== '#' ? latest.s.replace('open.spotify.com/', 'open.spotify.com/embed/') : null;
+    const slides = releases.slice(0, 5);
+    if (slides.length) {
       latestPanel.innerHTML = `
-        <div class="latest-release">
-          <div class="latest-poster"><img src="../${latest.c}" alt="${latest.t}" loading="lazy" /></div>
-          <div class="latest-info">
-            <span class="latest-tag">Latest Release</span>
-            <p class="latest-title">${latest.t}</p>
-            <p class="latest-year">${latest.y}</p>
-            ${embed ? `<div class="latest-embed"><iframe src="${embed}" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>` : ''}
-            <div class="latest-actions"><a href="${latest.s}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
-          </div>
+        <div class="ls" id="ls">
+          <div class="ls-track" id="ls-track"></div>
+          <button class="ls-arrow ls-prev" id="ls-prev" aria-label="Previous">&#8249;</button>
+          <button class="ls-arrow ls-next" id="ls-next" aria-label="Next">&#8250;</button>
+          <div class="ls-dots" id="ls-dots"></div>
         </div>`;
+      const track = document.getElementById('ls-track');
+      const dotsEl = document.getElementById('ls-dots');
+      const prevBtn = document.getElementById('ls-prev');
+      const nextBtn = document.getElementById('ls-next');
+      track.innerHTML = slides.map((r, i) => `
+        <div class="ls-slide">
+          <div class="ls-poster"><img src="../${r.c}" alt="${r.t}" loading="lazy" /></div>
+          <div class="ls-info">
+            <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
+            <p class="ls-title">${r.t}</p>
+            <p class="ls-year">${r.y}</p>
+            <div class="ls-actions"><a href="${r.s}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+          </div>
+        </div>`).join('');
+      dotsEl.innerHTML = slides.map((_, i) => `<span class="ls-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('');
+      const dots = [...dotsEl.children];
+      let idx = 0, timer;
+      function go(i) {
+        idx = (i + slides.length) % slides.length;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      }
+      function startTimer() { timer = setInterval(() => go(idx + 1), 5000); }
+      function stopTimer() { clearInterval(timer); }
+      prevBtn.addEventListener('click', () => { go(idx - 1); stopTimer(); startTimer(); });
+      nextBtn.addEventListener('click', () => { go(idx + 1); stopTimer(); startTimer(); });
+      dots.forEach(d => d.addEventListener('click', () => { go(+d.dataset.i); stopTimer(); startTimer(); }));
+      const box = document.getElementById('ls');
+      box.addEventListener('mouseenter', stopTimer);
+      box.addEventListener('mouseleave', startTimer);
+      if (slides.length < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsEl.style.display = 'none'; }
+      else { startTimer(); }
     } else {
       latestPanel.innerHTML = '';
     }
