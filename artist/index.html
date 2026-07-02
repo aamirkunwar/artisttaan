@@ -396,42 +396,17 @@
     apoorvv: [], faraz: []
   };
 
-  const allReleases = [
-    {id:'slay',t:'Flavours',y:'2026',s:'https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV',c:'assets/images/upcoming/slay-flavours.jpg'},
-    {id:'shrey',t:'Kaagaz Aur Daag',y:'2025',s:'https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm',c:'assets/images/logo/logo-hero.png'},
-    {id:'shrey',t:'Sifarishein',y:'2025',s:'https://open.spotify.com/track/196x0S8IsX40sd3KB12v84',c:'assets/images/logo/logo-hero.png'},
-    {id:'shrey',t:'Thoughts Are Poison',y:'2025',s:'https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx',c:'assets/images/logo/logo-hero.png'},
-    {id:'shrey',t:'Thoda Aur',y:'2024',s:'https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz',c:'assets/images/logo/logo-hero.png'},
-    {id:'abir',t:'Pehle Jaisa',y:'2025',s:'https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5',c:'assets/images/logo/logo-hero.png'},
-    {id:'abir',t:'Marz',y:'2024',s:'https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol',c:'assets/images/logo/logo-hero.png'},
-    {id:'abir',t:'Kaho Na',y:'2023',s:'https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw',c:'assets/images/logo/logo-hero.png'},
-    {id:'abir',t:'Choo Liya 2.0',y:'2020',s:'https://open.spotify.com/track/1zckeQVI1uIKCraYPHjz4j',c:'assets/images/releases-posters/releases/release-23-choo-liya-2-0-2020.jpg'},
-    {id:'abir',t:'Tum Badli Ho',y:'2020',s:'https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l',c:'assets/images/releases-posters/releases/release-26-tum-badli-ho-2020.jpg'},
-    {id:'abir',t:'Tum Nahin Aaye',y:'2020',s:'https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi',c:'assets/images/releases-posters/releases/release-36-tum-nahin-aaye-2020.jpg'},
-    {id:'slay',t:'Namaskar',y:'2026',s:'https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO',c:'assets/images/logo/logo-hero.png'},
-    {id:'slay',t:'Smack',y:'2025',s:'https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H',c:'assets/images/logo/logo-hero.png'},
-    {id:'slay',t:'Wassup',y:'2025',s:'https://open.spotify.com/track/0evpBO2tW3AKbJrmThc3CS',c:'assets/images/logo/logo-hero.png'},
-    {id:'slay',t:'Kya Se Kya Hue',y:'2025',s:'https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc',c:'assets/images/logo/logo-hero.png'},
-    {id:'apoorvv',t:'Mila Tu',y:'2026',s:'https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE',c:'assets/images/logo/logo-hero.png'},
-    {id:'apoorvv',t:'Ishq Adhoora',y:'2020',s:'https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono',c:'assets/images/releases-posters/releases/release-18-ishq-adhoora-2020.jpg'},
-    {id:'apoorvv',t:'Jaane Na',y:'2020',s:'https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln',c:'assets/images/releases-posters/releases/release-20-jaane-na-2020.jpg'},
-    {id:'faraz',t:'Badal Gaye',y:'2020',s:'https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf',c:'assets/images/releases-posters/releases/release-16-badal-gaye-2020.jpg'},
-    {id:'faraz',t:'Kaanch Ki Tarah',y:'2020',s:'https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA',c:'assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg'},
-    {id:'faraz',t:'Choo Liya',y:'2020',s:'https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT',c:'assets/images/releases-posters/releases/release-25-choo-liya-2020.jpg'},
-    {id:'faraz',t:'Badal Gaye Unplugged',y:'2020',s:'https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9',c:'assets/images/releases-posters/releases/release-24-badal-gaye-unplugged--2020.jpg'},
-  ];
-
   async function init() {
     try {
       const res = await fetch('../assets/data/artists.json');
       const data = await res.json();
       const artist = data.artists.find(a => a.id === artistId);
       if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:120px 20px;font-size:14px;color:#888;">Artist not found.</p>'; return; }
-      render(artist);
+      render(artist, data.releases || []);
     } catch(e) { console.error(e); }
   }
 
-  function render(a) {
+  function render(a, allReleases) {
     document.getElementById('page-title').textContent = `${a.name} — ARTISTTAAN`;
     document.getElementById('meta-description').content = a.full_bio || a.bio;
     document.getElementById('og-title').content = `${a.name} | ARTISTTAAN`;
@@ -454,7 +429,7 @@
     document.getElementById('hero-actions').innerHTML = acts.join('');
 
     // Hero stats
-    const releases = allReleases.filter(r => r.id === a.id);
+    const releases = allReleases.filter(r => r.artist_id === a.id);
     const stats = [];
     if (a.total_streams && a.total_streams !== '—') stats.push(`<div class="hero-stat"><p>${a.total_streams}</p><p>Total Streams</p></div>`);
     stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
@@ -477,12 +452,12 @@
       const nextBtn = document.getElementById('ls-next');
       track.innerHTML = slides.map((r, i) => `
         <div class="ls-slide">
-          <div class="ls-poster"><img src="../${r.c}" alt="${r.t}" loading="lazy" /></div>
+          <div class="ls-poster"><img src="../${r.cover}" alt="${r.title}" loading="lazy" /></div>
           <div class="ls-info">
             <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
-            <p class="ls-title">${r.t}</p>
-            <p class="ls-year">${r.y}</p>
-            <div class="ls-actions"><a href="${r.s}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+            <p class="ls-title">${r.title}</p>
+            <p class="ls-year">${r.year}</p>
+            <div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
           </div>
         </div>`).join('');
       dotsEl.innerHTML = slides.map((_, i) => `<span class="ls-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('');
@@ -511,15 +486,15 @@
     document.getElementById('music-title').textContent = `${a.name}'s Music`;
     document.getElementById('releases-grid').innerHTML = releases.length
       ? releases.map(r => `
-        <a class="rel-card" href="${r.s}" target="_blank" rel="noopener noreferrer">
+        <a class="rel-card" href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">
           <div class="rel-poster">
-            <img src="../${r.c}" alt="${r.t}" loading="lazy" />
+            <img src="../${r.cover}" alt="${r.title}" loading="lazy" />
             <div class="rel-overlay">
               <svg class="rel-play" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
             </div>
           </div>
-          <p class="rel-title">${r.t}</p>
-          <p class="rel-year">${r.y}</p>
+          <p class="rel-title">${r.title}</p>
+          <p class="rel-year">${r.year}</p>
         </a>`).join('')
       : '<p style="font-size:13px;color:#888;">Releases coming soon.</p>';
 
