@@ -21,3 +21,110 @@ collections:
       - { label: Cover Image, name: cover, widget: image, required: false }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Body, name: body, widget: markdown }
+
+  - name: site_data
+    label: Site Data
+    files:
+      - name: artists_data
+        label: Artists, Releases & More
+        file: assets/data/artists.json
+        media_folder: /assets/images
+        public_folder: /assets/images
+        fields:
+          - label: Releases
+            name: releases
+            widget: list
+            summary: "{{fields.title}} — {{fields.artist}} ({{fields.year}})"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Artist (display name), name: artist, widget: string, hint: "e.g. 'Slay' or 'Raga, Rish' for collabs" }
+              - { label: Artist ID, name: artist_id, widget: string, required: false,
+                  hint: "Only set this if the release belongs to a roster artist with their own page — must exactly match that artist's Artist ID below (e.g. slay, abir, shrey, apoorvv, faraz). Leave blank for legacy/non-roster artists." }
+              - { label: Year, name: year, widget: string }
+              - { label: Type, name: type, widget: select, options: [single, EP, album], default: single }
+              - { label: Spotify URL, name: spotify_url, widget: string, hint: "Full track or album link, e.g. https://open.spotify.com/track/..." }
+              - { label: Spotify Embed URL, name: spotify_embed, widget: string, required: false,
+                  hint: "Same as Spotify URL but with '/embed' after open.spotify.com — e.g. https://open.spotify.com/embed/track/..." }
+              - { label: Cover Image, name: cover, widget: image, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
+
+          - label: Artists
+            name: artists
+            widget: list
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: Artist ID, name: id, widget: string, hint: "lowercase, no spaces — e.g. slay. This must match Artist ID used in Releases above." }
+              - { label: Name, name: name, widget: string }
+              - { label: Role / Genre Tag, name: role, widget: string }
+              - { label: Short Bio, name: bio, widget: text }
+              - { label: Full Bio, name: full_bio, widget: text, required: false }
+              - { label: Photo, name: photo, widget: image, required: false }
+              - { label: Banner Photo, name: banner, widget: image, required: false }
+              - { label: Square Photo, name: square_photo, widget: image, required: false }
+              - { label: Press Deck (PDF), name: deck_pdf, widget: file, required: false }
+              - { label: Spotify URL, name: spotify_url, widget: string, required: false }
+              - { label: Apple Music URL, name: apple_music_url, widget: string, required: false }
+              - { label: YouTube URL, name: youtube_url, widget: string, required: false }
+              - { label: Instagram URL, name: instagram, widget: string, required: false }
+              - { label: Twitter URL, name: twitter, widget: string, required: false }
+              - { label: SoundCloud URL, name: soundcloud, widget: string, required: false }
+              - { label: Featured on Homepage, name: featured, widget: boolean, default: false }
+              - { label: Monthly Listeners, name: monthly_listeners, widget: string, required: false }
+              - { label: Total Streams, name: total_streams, widget: string, required: false }
+              - { label: Top Cities, name: top_cities, widget: list, required: false }
+              - { label: Genres, name: genres, widget: list, required: false }
+              - { label: Contact Email, name: contact_email, widget: string, required: false }
+
+          - label: Upcoming
+            name: upcoming
+            widget: list
+            required: false
+            summary: "{{fields.title}} — {{fields.artist}}"
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Artist, name: artist, widget: string }
+              - { label: Type, name: type, widget: string }
+              - { label: Image, name: image, widget: image }
+              - { label: Status, name: status, widget: string }
+              - { label: Release Date, name: release_date, widget: datetime }
+              - { label: Description, name: description, widget: text }
+
+          - label: Social Links
+            name: socials
+            widget: list
+            required: false
+            summary: "{{fields.platform}}"
+            fields:
+              - { label: Platform, name: platform, widget: string }
+              - { label: Handle, name: handle, widget: string }
+              - { label: URL, name: url, widget: string }
+              - { label: Icon, name: icon, widget: string }
+
+          - label: Team
+            name: team
+            widget: list
+            required: false
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string }
+              - { label: Photo, name: photo, widget: image }
+              - { label: Bio, name: bio, widget: text }
+              - { label: Instagram Handle, name: instagram_handle, widget: string }
+              - { label: Instagram URL, name: instagram, widget: string }
+
+          - label: Site Settings
+            name: settings
+            widget: object
+            fields:
+              - { label: Site Title, name: site_title, widget: string }
+              - { label: Site Description, name: site_description, widget: text }
+              - { label: Hero Tagline, name: hero_tagline, widget: string }
+              - { label: Hero Primary CTA Label, name: hero_cta_primary, widget: string }
+              - { label: Hero Primary CTA URL, name: hero_cta_primary_url, widget: string }
+              - { label: Hero Secondary CTA Label, name: hero_cta_secondary, widget: string }
+              - { label: Hero Secondary CTA URL, name: hero_cta_secondary_url, widget: string }
+              - { label: YouTube Embed URL, name: youtube_embed, widget: string }
+              - { label: Formspree Endpoint, name: formspree_endpoint, widget: string }
+              - { label: Footer Year, name: footer_year, widget: string }
