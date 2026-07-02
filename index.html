@@ -327,6 +327,8 @@
       const prevBtn = document.getElementById('latest-ls-prev');
       const nextBtn = document.getElementById('latest-ls-next');
       if (!track || !slides.length) { const el = document.getElementById('latest-ls'); if (el) el.style.display = 'none'; return; }
+      const wrap = document.getElementById('latest-ls');
+      if (wrap) wrap.style.display = '';
       track.innerHTML = slides.map(r => `
         <div class="ls-slide">
           <div class="ls-poster"><img src="${r.cover}" alt="${r.title}" loading="lazy" onerror="this.style.display='none';this.parentNode.style.background='#1a1a1a';" /></div>
@@ -357,7 +359,6 @@
       if (slides.length < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsEl.style.display = 'none'; }
       else { startTimer(); }
     }
-    initLatestSlideshow();
 
     function filterReleases() {
       return releases.filter(r => {
