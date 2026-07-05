@@ -125,6 +125,34 @@
     .ls-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:background 0.2s,width 0.2s;}
     .ls-dot.active{background:#fff;width:18px;border-radius:3px;}
     @media(max-width:640px){.ls-slide{grid-template-columns:1fr;padding:20px;}.ls-poster{width:100%;height:auto;aspect-ratio:1;}}
+
+    /* Newsletter popup */
+    .nl-popup-overlay{position:fixed;inset:0;background:rgba(10,10,10,0.65);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity 0.3s ease;}
+    .nl-popup-overlay.active{opacity:1;visibility:visible;}
+    .nl-popup-box{background:#fff;max-width:760px;width:100%;position:relative;border-radius:6px;overflow:hidden;transform:translateY(14px) scale(0.98);transition:transform 0.35s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:1fr 1fr;box-shadow:0 30px 80px rgba(0,0,0,0.35);}
+    .nl-popup-overlay.active .nl-popup-box{transform:translateY(0) scale(1);}
+    .nl-popup-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;background:rgba(255,255,255,0.92);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;color:#0a0a0a;z-index:3;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s;}
+    .nl-popup-close:hover{background:#fff;transform:scale(1.08);}
+
+    .nl-popup-visual{position:relative;background:#0a0a0a;overflow:hidden;}
+    .nl-popup-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .nl-popup-visual-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.15) 45%,rgba(0,0,0,0.85) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;}
+    .nl-popup-eyebrow{color:rgba(255,255,255,0.65);font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px;}
+    .nl-popup-visual-title{color:#fff;font-size:27px;font-weight:800;line-height:1.15;letter-spacing:-0.02em;}
+
+    .nl-popup-content{padding:40px 34px;display:flex;flex-direction:column;justify-content:center;}
+    .nl-popup-content .text-caption{margin-bottom:6px;}
+    .nl-popup-heading{font-size:21px;font-weight:800;line-height:1.25;letter-spacing:-0.01em;margin-bottom:10px;color:#0a0a0a;}
+    .nl-popup-sub{font-size:13.5px;color:#666;line-height:1.6;margin-bottom:24px;}
+    .nl-popup-content form{display:flex;flex-direction:column;gap:12px;}
+    .nl-popup-footnote{font-size:11px;color:#aaa;margin-top:16px;text-align:center;}
+
+    @media(max-width:620px){
+      .nl-popup-box{grid-template-columns:1fr;max-height:90vh;overflow-y:auto;}
+      .nl-popup-visual{height:130px;}
+      .nl-popup-visual-title{font-size:22px;}
+      .nl-popup-content{padding:28px 24px;}
+    }
   </style>
 
 </head>
@@ -598,6 +626,34 @@
   <!-- Toast -->
   <div id="toast" class="toast">Demo submitted successfully. We'll be in touch.</div>
 
+  <!-- Newsletter Popup -->
+  <div id="nlPopupOverlay" class="nl-popup-overlay">
+    <div class="nl-popup-box">
+      <button type="button" id="nlPopupClose" class="nl-popup-close" aria-label="Close">&times;</button>
+
+      <div class="nl-popup-visual">
+        <img src="assets/images/logo/logo-hero.png" alt="ARTISTTAAN" />
+        <div class="nl-popup-visual-overlay">
+          <p class="nl-popup-eyebrow">ARTISTTAAN</p>
+          <p class="nl-popup-visual-title">Never Miss<br>A Drop</p>
+        </div>
+      </div>
+
+      <div class="nl-popup-content">
+        <p class="text-caption">Stay In The Loop</p>
+        <h2 class="nl-popup-heading">Get first access to new releases</h2>
+        <p class="nl-popup-sub">Join the list — new tracks, singles &amp; EPs straight to your inbox. Nothing else.</p>
+        <form id="nlPopupForm" novalidate>
+          <p class="hidden" aria-hidden="true"><label>Do not fill this in: <input type="text" id="nlPopupBotField" autocomplete="off" tabindex="-1" /></label></p>
+          <input type="email" id="nlPopupEmail" required placeholder="you@example.com" class="form-minimal w-full text-primary" />
+          <button type="submit" id="nlPopupBtn" class="btn-primary w-full">Notify Me</button>
+        </form>
+        <p id="nlPopupMsg" class="text-sm mt-1 hidden"></p>
+        <p class="nl-popup-footnote">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/js/main.js"></script>
 
 
@@ -639,44 +695,43 @@
       setTimeout(initReveal, 100);
     });
 
-    // Newsletter signup
-    document.addEventListener('DOMContentLoaded', function() {
-      var form = document.getElementById('newsletterForm');
-      if (!form) return;
-      var emailInput = document.getElementById('newsletterEmail');
-      var botField = document.getElementById('newsletterBotField');
-      var btn = document.getElementById('newsletterBtn');
-      var msg = document.getElementById('newsletterMsg');
+    // Shared helper: POST an email to the subscribe function
+    function subscribeEmail(email, botFieldValue) {
+      return fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, botField: botFieldValue })
+      }).then(function(res) {
+        return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+      });
+    }
 
+    function wireNewsletterForm(formEl, emailEl, botEl, btnEl, msgEl, onSuccess) {
+      if (!formEl) return;
       function showMsg(text, isError) {
-        msg.textContent = text;
-        msg.classList.remove('hidden');
-        msg.style.color = isError ? '#c0392b' : '#1a7a4c';
+        msgEl.textContent = text;
+        msgEl.classList.remove('hidden');
+        msgEl.style.color = isError ? '#c0392b' : '#1a7a4c';
       }
-
-      form.addEventListener('submit', function(e) {
+      formEl.addEventListener('submit', function(e) {
         e.preventDefault();
-        var email = emailInput.value.trim();
+        var email = emailEl.value.trim();
         if (!email) {
           showMsg('Please enter your email address.', true);
           return;
         }
+        btnEl.disabled = true;
+        var originalText = btnEl.textContent;
+        btnEl.textContent = 'Submitting...';
+        msgEl.classList.add('hidden');
 
-        btn.disabled = true;
-        var originalText = btn.textContent;
-        btn.textContent = 'Submitting...';
-        msg.classList.add('hidden');
-
-        fetch('/.netlify/functions/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, botField: botField.value })
-        })
-          .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
+        subscribeEmail(email, botEl ? botEl.value : '')
           .then(function(result) {
             if (result.ok) {
               showMsg(result.data.alreadySubscribed ? "You're already subscribed!" : "You're in! We'll email you when something new drops.", false);
-              form.reset();
+              formEl.reset();
+              try { localStorage.setItem('nlSubscribed', '1'); } catch (e) {}
+              if (onSuccess) onSuccess();
             } else {
               showMsg(result.data.error || 'Something went wrong. Please try again.', true);
             }
@@ -685,10 +740,60 @@
             showMsg('Something went wrong. Please try again later.', true);
           })
           .finally(function() {
-            btn.disabled = false;
-            btn.textContent = originalText;
+            btnEl.disabled = false;
+            btnEl.textContent = originalText;
           });
       });
+    }
+
+    // Inline newsletter section
+    document.addEventListener('DOMContentLoaded', function() {
+      wireNewsletterForm(
+        document.getElementById('newsletterForm'),
+        document.getElementById('newsletterEmail'),
+        document.getElementById('newsletterBotField'),
+        document.getElementById('newsletterBtn'),
+        document.getElementById('newsletterMsg')
+      );
+    });
+
+    // Newsletter popup: show once per visitor, a few seconds after page load
+    document.addEventListener('DOMContentLoaded', function() {
+      var overlay = document.getElementById('nlPopupOverlay');
+      if (!overlay) return;
+      var closeBtn = document.getElementById('nlPopupClose');
+
+      function openPopup() {
+        var alreadyHandled = false;
+        try { alreadyHandled = localStorage.getItem('nlSubscribed') === '1' || localStorage.getItem('nlPopupDismissed') === '1'; } catch (e) {}
+        if (alreadyHandled) return;
+        overlay.classList.add('active');
+      }
+      function closePopup(remember) {
+        overlay.classList.remove('active');
+        if (remember) {
+          try { localStorage.setItem('nlPopupDismissed', '1'); } catch (e) {}
+        }
+      }
+
+      setTimeout(openPopup, 6000);
+
+      closeBtn.addEventListener('click', function() { closePopup(true); });
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closePopup(true);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closePopup(true);
+      });
+
+      wireNewsletterForm(
+        document.getElementById('nlPopupForm'),
+        document.getElementById('nlPopupEmail'),
+        document.getElementById('nlPopupBotField'),
+        document.getElementById('nlPopupBtn'),
+        document.getElementById('nlPopupMsg'),
+        function() { setTimeout(function() { closePopup(false); }, 1800); }
+      );
     });
   </script>
 </body>
