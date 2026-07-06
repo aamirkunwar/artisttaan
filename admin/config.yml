@@ -88,6 +88,14 @@ collections:
               - { label: Status, name: status, widget: string }
               - { label: Release Date, name: release_date, widget: datetime }
               - { label: Description, name: description, widget: text }
+              - label: Locked Snippets (email required to unlock)
+                name: snippets
+                widget: list
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Snippet Title, name: title, widget: string }
+                  - { label: Audio File (mp3), name: audio, widget: file, media_folder: "/assets/audio", public_folder: "/assets/audio" }
 
           - label: Social Links
             name: socials
