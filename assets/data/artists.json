@@ -1106,7 +1106,28 @@
       "instagram": "https://instagram.com/ninorawat"
     }
   ],
-  "upcoming": [],
+  "upcoming": [
+    {
+      "id": "shrey-modern-kumaon",
+      "title": "Modern Kumaon",
+      "artist": "Shrey",
+      "type": "Mixtape",
+      "image": "assets/images/artists/shrey-square.jpg",
+      "status": "Coming Soon",
+      "release_date": "2026-09-15T00:00:00",
+      "description": "Shrey's most personal project yet — a mixtape rooted in the sounds and stories of Kumaon, reimagined for right now.",
+      "snippets": [
+        {
+          "title": "Snippet 1",
+          "audio": ""
+        },
+        {
+          "title": "Snippet 2",
+          "audio": ""
+        }
+      ]
+    }
+  ],
   "settings": {
     "site_title": "ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label",
     "site_description": "ARTISTTAAN is India's premier hip-hop and indie music label, founded in 2016. Discover artists like Abir, Shrey, Slay, Apoorvv & Faraz. Stream music, watch videos, and submit your demo.",
