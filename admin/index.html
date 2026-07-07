@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
   <title>ARTISTTAAN Admin</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- Netlify Identity widget removed — Netlify Identity/Git Gateway is deprecated
+       and is what was causing the ACCESS_TOKEN_ERROR. Login is now handled by
+       DecapBridge via the identity_url/gateway_url set in config.yml. -->
+  <script src="https://unpkg.com/decap-cms@3.9.0/dist/decap-cms.js"></script>
 </body>
 </html>
