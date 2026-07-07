@@ -1,6 +1,10 @@
 backend:
   name: git-gateway
+  repo: aamirkunwar/artisttaan
   branch: main
+  # PASTE THESE TWO LINES FROM YOUR DECAPBRIDGE SITE DASHBOARD (see setup steps):
+  identity_url: https://auth.decapbridge.com/sites/YOUR-SITE-ID
+  gateway_url: https://gateway.decapbridge.com
 
 media_folder: assets/images/culture
 public_folder: /assets/images/culture
