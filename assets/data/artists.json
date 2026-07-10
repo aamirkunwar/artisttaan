@@ -1113,6 +1113,7 @@
       "artist": "Shrey",
       "type": "Mixtape",
       "image": "assets/images/upcoming/shrey-modern-kumaon.jpg",
+      "imageAspect": "square",
       "status": "Coming Soon",
       "description": "Shrey's most personal project yet — a mixtape rooted in the sounds and stories of Kumaon, reimagined for right now.",
       "snippets": [
