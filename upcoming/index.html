@@ -142,8 +142,8 @@
           const releaseLabel = item.release_date ? formatReleaseDate(item.release_date) : '';
           return `
           <article class="upcoming-card">
-            <div class="upcoming-media aspect-[3/4] ${isLocked ? 'is-locked' : ''}">
-              <img src="../${item.image}" alt="${item.title} — ${item.artist}" loading="lazy" />
+            <div class="upcoming-media ${item.imageAspect === 'square' ? 'aspect-square' : 'aspect-[3/4]'} ${isLocked ? 'is-locked' : ''}">
+              <img src="../${item.image}" alt="${item.title} — ${item.artist}" loading="lazy" style="object-position: ${item.imagePosition || 'center'};" />
               <span class="type-badge">${item.type}</span>
               ${item.status ? `<span class="status-badge">${item.status}</span>` : ''}
               ${isLocked ? `
