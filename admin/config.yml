@@ -114,7 +114,7 @@ collections:
               - { label: Type, name: type, widget: string }
               - { label: Image, name: image, widget: image }
               - { label: Status, name: status, widget: string }
-              - { label: Release Date, name: release_date, widget: datetime }
+              - { label: Release Date, name: release_date, widget: datetime, required: false }
               - { label: Description, name: description, widget: text }
               - label: Locked Snippets (email required to unlock)
                 name: snippets
