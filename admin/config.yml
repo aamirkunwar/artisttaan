@@ -73,7 +73,7 @@ collections:
               - { label: Spotify URL, name: spotify_url, widget: string, hint: "Full track or album link, e.g. https://open.spotify.com/track/..." }
               - { label: Spotify Embed URL, name: spotify_embed, widget: string, required: false,
                   hint: "Same as Spotify URL but with '/embed' after open.spotify.com — e.g. https://open.spotify.com/embed/track/..." }
-              - { label: Cover Image, name: cover, widget: image, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
+              - { label: Cover Image, name: cover, widget: image, required: false, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
 
           - label: Artists
             name: artists
