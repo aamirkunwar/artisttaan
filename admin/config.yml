@@ -123,7 +123,7 @@ collections:
                 summary: "{{fields.title}}"
                 fields:
                   - { label: Snippet Title, name: title, widget: string }
-                  - { label: Audio File (mp3), name: audio, widget: file, media_folder: "/assets/audio", public_folder: "/assets/audio" }
+                  - { label: Audio File (mp3), name: audio, widget: file, required: false, media_folder: "/assets/audio", public_folder: "/assets/audio" }
 
           - label: Social Links
             name: socials
