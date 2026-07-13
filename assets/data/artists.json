@@ -1,155 +1,155 @@
 {
   "artists": [
     {
-      "id": "abir",
-      "name": "Abir",
-      "role": "Pop / RnB",
-      "bio": "Singer/songwriter from Agra, India. His music reflects soul and pop depth. 103K+ monthly listeners on Spotify.",
-      "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir's music resonates with audiences across India.",
-      "photo": "assets/images/artists/abir.jpg",
-      "banner": "assets/images/artists/abir-banner.jpg",
-      "deck_pdf": "assets/decks/abir-deck.pdf",
-      "spotify_url": "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO",
-      "apple_music_url": "https://music.apple.com/in/artist/abir/",
-      "youtube_url": "https://youtube.com/watch?v=U7AdDdqJWUg",
-      "instagram": "https://instagram.com/luvabiirr",
-      "twitter": "https://twitter.com/abir",
+      "youtube": "https://youtube.com/results?search_query=Abir+artisttaan",
       "soundcloud": "https://soundcloud.com/abir",
-      "featured": true,
+      "bio": "Singer/songwriter from Agra, India. His music reflects soul and pop depth. 103K+ monthly listeners on Spotify.",
+      "spotify_url": "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO",
+      "name": "Abir",
+      "banner": "assets/images/artists/abir-banner.jpg",
       "monthly_listeners": "103,560",
-      "total_streams": "2.1M+",
+      "featured": true,
+      "square_photo": "assets/images/artists/abir-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/abir/",
+      "genres": [
+        "Pop",
+        "R&B"
+      ],
+      "photo": "assets/images/artists/abir.jpg",
+      "instagram": "https://instagram.com/luvabiirr",
       "top_cities": [
         "Delhi",
         "Mumbai",
         "Bangalore",
         "Pune"
       ],
-      "genres": [
-        "Pop",
-        "R&B"
-      ],
-      "contact_email": "abir@artisttaan.com",
-      "youtube": "https://youtube.com/results?search_query=Abir+artisttaan",
-      "square_photo": "assets/images/artists/abir-square.jpg"
+      "youtube_url": "https://youtube.com/watch?v=U7AdDdqJWUg",
+      "twitter": "https://twitter.com/abir",
+      "role": "Pop / RnB",
+      "total_streams": "2.1M+",
+      "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir's music resonates with audiences across India.",
+      "id": "abir",
+      "deck_pdf": "assets/decks/abir-deck.pdf",
+      "contact_email": "abir@artisttaan.com"
     },
     {
-      "id": "shrey",
-      "name": "Shrey",
-      "role": "Hip-Hop",
-      "bio": "Layered soundscapes and hard-hitting bars. Known for tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag'.",
-      "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following.",
-      "photo": "assets/images/artists/shrey.jpg",
-      "banner": "assets/images/artists/shrey-banner.jpg",
-      "deck_pdf": "assets/decks/shrey-deck.pdf",
-      "spotify_url": "https://open.spotify.com/artist/760KQ4PXRrEyJW9SU44ABS",
-      "apple_music_url": "https://music.apple.com/in/artist/shrey/",
-      "youtube_url": "https://youtube.com/watch?v=ZYln3iWRxDk",
-      "instagram": "https://instagram.com/shrey0000001",
-      "twitter": "https://twitter.com/shrey",
+      "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
       "soundcloud": "https://soundcloud.com/shrey",
-      "featured": true,
+      "bio": "Layered soundscapes and hard-hitting bars. Known for tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag'.",
+      "spotify_url": "https://open.spotify.com/artist/760KQ4PXRrEyJW9SU44ABS",
+      "name": "Shrey",
+      "banner": "assets/images/artists/shrey-banner.jpg",
       "monthly_listeners": "—",
-      "total_streams": "800K+",
+      "featured": true,
+      "square_photo": "assets/images/artists/shrey-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/shrey/",
+      "genres": [
+        "Hip-Hop"
+      ],
+      "photo": "assets/images/artists/shrey.jpg",
+      "instagram": "https://instagram.com/shrey0000001",
       "top_cities": [
         "Delhi",
         "Chandigarh",
         "Jaipur"
       ],
+      "youtube_url": "https://youtube.com/watch?v=ZYln3iWRxDk",
+      "twitter": "https://twitter.com/shrey",
+      "role": "Hip-Hop",
+      "total_streams": "800K+",
+      "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following.",
+      "id": "shrey",
+      "deck_pdf": "assets/decks/shrey-deck.pdf",
+      "contact_email": "shrey@artisttaan.com"
+    },
+    {
+      "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
+      "soundcloud": "https://soundcloud.com/slay",
+      "bio": "Born to perform. Slay brings relentless energy and precision lyricism. Latest drop: 'Namaskar' (2026).",
+      "spotify_url": "https://open.spotify.com/artist/2E1ceqTF8kEm7UDucwGosW",
+      "name": "Slay",
+      "banner": "assets/images/artists/slay-banner.jpg",
+      "monthly_listeners": "—",
+      "featured": false,
+      "square_photo": "assets/images/artists/slay-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/slay/",
       "genres": [
         "Hip-Hop"
       ],
-      "contact_email": "shrey@artisttaan.com",
-      "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
-      "square_photo": "assets/images/artists/shrey-square.jpg"
-    },
-    {
-      "id": "slay",
-      "name": "Slay",
-      "role": "Hip-Hop",
-      "bio": "Born to perform. Slay brings relentless energy and precision lyricism. Latest drop: 'Namaskar' (2026).",
-      "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop.",
       "photo": "assets/images/artists/slay.jpg",
-      "banner": "assets/images/artists/slay-banner.jpg",
-      "deck_pdf": "assets/decks/slay-deck.pdf",
-      "spotify_url": "https://open.spotify.com/artist/2E1ceqTF8kEm7UDucwGosW",
-      "apple_music_url": "https://music.apple.com/in/artist/slay/",
-      "youtube_url": "https://youtube.com/watch?v=bLTVqTJ1hUQ",
       "instagram": "https://instagram.com/slaywav",
-      "twitter": "https://twitter.com/slay",
-      "soundcloud": "https://soundcloud.com/slay",
-      "featured": false,
-      "monthly_listeners": "—",
-      "total_streams": "500K+",
       "top_cities": [
         "Mumbai",
         "Delhi",
         "Hyderabad"
       ],
-      "genres": [
-        "Hip-Hop"
-      ],
-      "contact_email": "slay@artisttaan.com",
-      "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
-      "square_photo": "assets/images/artists/slay-square.jpg"
+      "youtube_url": "https://youtube.com/watch?v=bLTVqTJ1hUQ",
+      "twitter": "https://twitter.com/slay",
+      "role": "Hip-Hop",
+      "total_streams": "500K+",
+      "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop.",
+      "id": "slay",
+      "deck_pdf": "assets/decks/slay-deck.pdf",
+      "contact_email": "slay@artisttaan.com"
     },
     {
-      "id": "apoorvv",
-      "name": "Apoorvv",
-      "role": "Pop / Indie",
-      "bio": "Independent artist blending stories, emotion, and smooth vibes. 22K+ monthly listeners. Known for 'Ishq Adhoora'.",
-      "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating love and loss.",
-      "photo": "assets/images/artists/apoorvv.jpg",
-      "banner": "assets/images/artists/apoorvv-banner.jpg",
-      "deck_pdf": "assets/decks/apoorvv-deck.pdf",
-      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
-      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/",
-      "youtube_url": "https://youtube.com/@artisttaan",
-      "instagram": "https://instagram.com/apoorvvwho",
-      "twitter": "https://twitter.com/apoorvv",
+      "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
       "soundcloud": "https://soundcloud.com/apoorvv",
-      "featured": false,
+      "bio": "Independent artist blending stories, emotion, and smooth vibes. 22K+ monthly listeners. Known for 'Ishq Adhoora'.",
+      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "name": "Apoorvv",
+      "banner": "assets/images/artists/apoorvv-banner.jpg",
       "monthly_listeners": "22,656",
-      "total_streams": "350K+",
+      "featured": false,
+      "square_photo": "assets/images/artists/apoorvv-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/",
+      "genres": [
+        "Pop",
+        "Indie"
+      ],
+      "photo": "assets/images/artists/apoorvv.jpg",
+      "instagram": "https://instagram.com/apoorvvwho",
       "top_cities": [
         "Delhi",
         "Lucknow",
         "Kanpur"
       ],
-      "genres": [
-        "Pop",
-        "Indie"
-      ],
-      "contact_email": "apoorvv@artisttaan.com",
-      "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
-      "square_photo": "assets/images/artists/apoorvv-square.jpg"
+      "youtube_url": "https://youtube.com/@artisttaan",
+      "twitter": "https://twitter.com/apoorvv",
+      "role": "Pop / Indie",
+      "total_streams": "350K+",
+      "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating love and loss.",
+      "id": "apoorvv",
+      "deck_pdf": "assets/decks/apoorvv-deck.pdf",
+      "contact_email": "apoorvv@artisttaan.com"
     },
     {
-      "id": "faraz",
-      "name": "Faraz",
-      "role": "Producer / Singer / RnB",
-      "bio": "Producer, singer and RnB artist from Agra. Faraz brings a unique blend of production excellence, vocal artistry and RnB flavor to ARTISTTAAN.",
-      "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between artists and audiences.",
-      "photo": "assets/images/artists/faraz.jpg",
-      "square_photo": "assets/images/artists/faraz-square.jpg",
-      "deck_pdf": "assets/decks/faraz-deck.pdf",
-      "spotify_url": "https://open.spotify.com/artist/5v97XScMyk02FNVZhHX2TR",
-      "apple_music_url": "",
-      "youtube_url": "https://youtube.com/@artisttaan",
-      "instagram": "https://instagram.com/faraz",
-      "twitter": "",
       "soundcloud": "",
-      "featured": false,
+      "bio": "Producer, singer and RnB artist from Agra. Faraz brings a unique blend of production excellence, vocal artistry and RnB flavor to ARTISTTAAN.",
+      "spotify_url": "https://open.spotify.com/artist/5v97XScMyk02FNVZhHX2TR",
+      "name": "Faraz",
       "monthly_listeners": "—",
-      "total_streams": "—",
-      "top_cities": [
-        "Agra",
-        "Delhi"
-      ],
+      "featured": false,
+      "square_photo": "assets/images/artists/faraz-square.jpg",
+      "apple_music_url": "",
       "genres": [
         "Production",
         "R&B",
         "Vocal"
       ],
+      "photo": "assets/images/artists/faraz.jpg",
+      "instagram": "https://instagram.com/faraz",
+      "top_cities": [
+        "Agra",
+        "Delhi"
+      ],
+      "youtube_url": "https://youtube.com/@artisttaan",
+      "twitter": "",
+      "role": "Producer / Singer / RnB",
+      "total_streams": "—",
+      "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between artists and audiences.",
+      "id": "faraz",
+      "deck_pdf": "assets/decks/faraz-deck.pdf",
       "contact_email": "faraz@artisttaan.com"
     }
   ],
@@ -171,7 +171,7 @@
       "year": "2026",
       "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
       "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
-      "cover": "assets/images/logo/logo-hero.png",
+      "cover": "/assets/images/namaskar.jpg",
       "type": "single"
     },
     {
@@ -1108,14 +1108,9 @@
   ],
   "upcoming": [
     {
-      "id": "shrey-modern-kumaon",
-      "title": "Modern Kumaon",
       "artist": "Shrey",
-      "type": "Mixtape",
-      "image": "assets/images/upcoming/shrey-modern-kumaon.jpg",
-      "imageAspect": "square",
       "status": "Coming Soon",
-      "description": "Shrey's most personal project yet — a mixtape rooted in the sounds and stories of Kumaon, reimagined for right now.",
+      "imageAspect": "square",
       "snippets": [
         {
           "title": "Gham Pani",
@@ -1125,19 +1120,24 @@
           "title": "Snippet 2",
           "audio": ""
         }
-      ]
+      ],
+      "title": "Modern Kumaon",
+      "type": "Mixtape",
+      "id": "shrey-modern-kumaon",
+      "image": "assets/images/upcoming/shrey-modern-kumaon.jpg",
+      "description": "Shrey's most personal project yet — a mixtape rooted in the sounds and stories of Kumaon, reimagined for right now."
     }
   ],
   "settings": {
+    "hero_cta_secondary": "Watch on YouTube",
     "site_title": "ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label",
+    "footer_year": "2026",
+    "formspree_endpoint": "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT",
     "site_description": "ARTISTTAAN is India's premier hip-hop and indie music label, founded in 2016. Discover artists like Abir, Shrey, Slay, Apoorvv & Faraz. Stream music, watch videos, and submit your demo.",
     "hero_tagline": "India's Hip-Hop & Indie Powerhouse",
     "hero_cta_primary": "Listen on Spotify",
-    "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb",
-    "hero_cta_secondary": "Watch on YouTube",
     "hero_cta_secondary_url": "https://youtube.com/@artisttaan",
     "youtube_embed": "https://www.youtube.com/embed/ZYln3iWRxDk",
-    "formspree_endpoint": "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT",
-    "footer_year": "2026"
+    "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb"
   }
 }
