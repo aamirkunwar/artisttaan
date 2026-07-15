@@ -89,8 +89,8 @@ function renderVideos() {
   if (!container || !siteData) return;
 
   const knownVideos = [
-    { title: "KAAGAZ AUR DAAG", artist: "Shrey", embed: "https://www.youtube.com/embed/ZYln3iWRxDk" },
     { title: "NAMASKAR", artist: "Slay", embed: "https://www.youtube.com/embed/bLTVqTJ1hUQ" },
+    { title: "KAAGAZ AUR DAAG", artist: "Shrey", embed: "https://www.youtube.com/embed/ZYln3iWRxDk" },
     { title: "SIFARISHEIN", artist: "Shrey", embed: "https://www.youtube.com/embed/rcKlMq2uDlk" },
     { title: "THOUGHTS ARE POISON", artist: "Shrey", embed: "https://www.youtube.com/embed/afRnyWvO6PU" },
     { title: "THODA AUR", artist: "Shrey ft. Jai", embed: "https://www.youtube.com/embed/Q5E5t5VbVeo" },
@@ -106,11 +106,12 @@ function renderVideos() {
 
   function card(v, featured) {
     const id = videoId(v.embed);
-    const thumb = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    // hqdefault.jpg is generated for every YouTube video and reliably loads,
+    // unlike maxresdefault.jpg which 404s for a lot of uploads.
+    const thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
     return `
     <div class="video-card ${featured ? 'video-featured' : ''} aspect-video" data-embed="${v.embed}">
-      <img class="video-thumb-img w-full h-full object-cover" src="${thumb}" alt="${v.title} - ${v.artist}" loading="lazy"
-        onerror="this.src='https://img.youtube.com/vi/${id}/hqdefault.jpg'" />
+      <img class="video-thumb-img absolute inset-0 w-full h-full object-cover" src="${thumb}" alt="${v.title} - ${v.artist}" loading="lazy" />
       <div class="video-overlay">
         <p class="text-white ${featured ? 'text-base md:text-lg' : 'text-sm'} font-bold leading-tight">${v.title}</p>
         <p class="text-xs mt-1" style="color:rgba(255,255,255,0.7);">${v.artist}</p>
