@@ -257,18 +257,81 @@ body {
 /* Artist Cards */
 .artist-card {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 .artist-card:hover {
   transform: translateY(-8px);
 }
- 
+
+.artist-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #111;
+}
 .artist-img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  filter: grayscale(1) contrast(1.05);
 }
 .artist-card:hover .artist-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  filter: grayscale(0) contrast(1);
 }
- 
+.artist-card:hover .artist-photo-wrap {
+  box-shadow: 0 24px 48px -12px rgba(0,0,0,0.35);
+}
+.artist-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 65%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+}
+.artist-featured-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000;
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.artist-quick-links {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.artist-card:hover .artist-quick-links {
+  opacity: 1;
+  transform: translateY(0);
+}
+.artist-quick-link {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.artist-quick-link:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+
 /* Video Cards */
 .video-card {
   position: relative;
