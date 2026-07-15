@@ -269,6 +269,59 @@ body {
   transform: scale(1.05);
 }
  
+/* Video Cards */
+.video-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #111;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.video-card:hover {
+  transform: translateY(-6px);
+}
+.video-thumb-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+.video-card:hover .video-thumb-img {
+  transform: scale(1.06);
+  filter: brightness(0.55);
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0) 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, background 0.3s ease;
+}
+.video-card:hover .video-play-btn {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  background: #fff;
+}
+.video-featured .video-play-btn {
+  width: 76px;
+  height: 76px;
+}
+
 .social-icon {
   transition: all 0.3s ease;
 }
@@ -400,4 +453,3 @@ body {
   color: #fff;
   border-color: #000;
 }
- 
