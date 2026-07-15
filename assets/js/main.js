@@ -98,14 +98,43 @@ function renderVideos() {
     { title: "KAHO NA", artist: "Abir", embed: "https://www.youtube.com/embed/lC9X-FtN7AI" }
   ];
 
-  container.innerHTML = knownVideos.map(v => `
-    <div class="relative">
-      <p class="text-caption mb-2">${v.artist} - ${v.title}</p>
-      <div class="aspect-video bg-secondary overflow-hidden rounded-sm">
-        <iframe class="w-full h-full" src="${v.embed}" title="${v.title} - ${v.artist}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+  const playIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>`;
+
+  function videoId(embed) {
+    return embed.split('/embed/')[1];
+  }
+
+  function card(v, featured) {
+    const id = videoId(v.embed);
+    const thumb = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    return `
+    <div class="video-card ${featured ? 'video-featured' : ''} aspect-video" data-embed="${v.embed}">
+      <img class="video-thumb-img w-full h-full object-cover" src="${thumb}" alt="${v.title} - ${v.artist}" loading="lazy"
+        onerror="this.src='https://img.youtube.com/vi/${id}/hqdefault.jpg'" />
+      <div class="video-overlay">
+        <p class="text-white ${featured ? 'text-base md:text-lg' : 'text-sm'} font-bold leading-tight">${v.title}</p>
+        <p class="text-xs mt-1" style="color:rgba(255,255,255,0.7);">${v.artist}</p>
       </div>
+      <div class="video-play-btn">${playIcon}</div>
+    </div>`;
+  }
+
+  const [featuredVideo, ...restVideos] = knownVideos;
+
+  container.innerHTML = `
+    <div class="mb-8">${card(featuredVideo, true)}</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      ${restVideos.map(v => card(v, false)).join('')}
     </div>
-  `).join('');
+  `;
+
+  container.querySelectorAll('.video-card').forEach(el => {
+    el.addEventListener('click', () => {
+      const embed = el.getAttribute('data-embed');
+      el.innerHTML = `<iframe class="w-full h-full" src="${embed}?autoplay=1" title="video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>`;
+      el.style.cursor = 'default';
+    }, { once: true });
+  });
 }
 
 // ============================================
