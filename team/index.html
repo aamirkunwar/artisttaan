@@ -24,7 +24,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
-    .team-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; }
+    .team-photo-wrap { position: relative; overflow: hidden; border-radius: 4px; background: #111; }
+    .team-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); transition: filter 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .team-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; opacity: 0; transform: translateY(28px); }
+    .team-card.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .team-card:hover { transform: translateY(-6px); }
+    .team-card.in-view:hover { transform: translateY(-6px); }
+    .team-card:hover .team-photo { filter: grayscale(0) contrast(1); transform: scale(1.05); }
+    .team-card:hover .team-photo-wrap { box-shadow: 0 24px 48px -12px rgba(0,0,0,0.35); }
+    .team-index { position: absolute; top: 16px; left: 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #fff; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); padding: 4px 10px; border-radius: 999px; }
+    .team-role-badge { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0)); display: flex; align-items: center; gap: 8px; }
+    .team-role-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; flex-shrink: 0; }
     .insta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 600; text-decoration: none; color: #fff; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); transition: transform 0.3s ease; }
     .insta-btn:hover { transform: translateY(-2px); }
     .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #666; transition: color 0.3s; text-decoration: none; }
@@ -61,8 +71,9 @@
 
   <!-- TEAM GRID -->
   <section class="px-6 pb-24">
-    <div class="max-w-4xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12" id="team-container">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12" id="team-container">
+        <div class="skeleton rounded-none aspect-[3/4]"></div>
         <div class="skeleton rounded-none aspect-[3/4]"></div>
         <div class="skeleton rounded-none aspect-[3/4]"></div>
       </div>
@@ -102,19 +113,36 @@
           container.innerHTML = '<p class="text-muted col-span-2 text-center py-8">No team members yet.</p>';
           return;
         }
-        container.innerHTML = team.map(member => `
-          <article class="hover-lift">
-            <div class="overflow-hidden bg-secondary rounded-sm mb-6">
+
+        container.innerHTML = team.map((member, i) => `
+          <article class="team-card">
+            <div class="team-photo-wrap mb-6">
+              <span class="team-index">0${i + 1}</span>
               <img src="../${member.photo}" alt="${member.name}" class="team-photo" loading="lazy" />
+              <div class="team-role-badge">
+                <span class="team-role-dot"></span>
+                <p class="text-white text-xs font-bold uppercase tracking-wider">${member.role}</p>
+              </div>
             </div>
             <h2 class="text-2xl font-black tracking-tight">${member.name}</h2>
-            <p class="text-caption mt-2">${member.role}</p>
             <p class="text-body mt-4">${member.bio}</p>
             <a href="${member.instagram}" target="_blank" rel="noopener noreferrer" class="insta-btn mt-6">
               ${instaIcon} ${member.instagram_handle}
             </a>
           </article>
         `).join('');
+
+        // Staggered scroll-reveal
+        const cards = container.querySelectorAll('.team-card');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add('in-view'), i * 90);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        cards.forEach(c => observer.observe(c));
       } catch (err) {
         console.error('Failed to load team data:', err);
         container.innerHTML = '<p class="text-red-500 col-span-2 text-center py-8">Error loading team.</p>';
