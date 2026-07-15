@@ -244,6 +244,32 @@
     </div>
   </section>
 
+  <!-- LATEST RELEASE BANNER -->
+  <div id="latest-release-banner" style="display:none;background:#000;border-top:1px solid rgba(255,255,255,0.1);">
+    <a href="#" id="lrb-link" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;display:block;">
+      <div class="max-w-7xl mx-auto" style="display:flex;align-items:center;gap:20px;padding:16px 24px;">
+        <img id="lrb-cover" src="" alt="" style="width:56px;height:56px;object-fit:cover;flex-shrink:0;border-radius:2px;" />
+        <div style="min-width:0;flex:1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;background:#fff;padding:4px 10px;border-radius:999px;flex-shrink:0;">
+            <span style="width:6px;height:6px;border-radius:50%;background:#000;display:inline-block;animation:lrbPulse 1.6s ease-in-out infinite;"></span>
+            New Release
+          </span>
+          <p style="color:#fff;font-size:14px;font-weight:600;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+            <span id="lrb-title"></span> <span style="color:rgba(255,255,255,0.5);font-weight:400;">— <span id="lrb-artist"></span></span>
+          </p>
+        </div>
+        <span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">
+          Listen Now
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+  <style>
+    @keyframes lrbPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+    #latest-release-banner:hover { background:#111 !important; }
+  </style>
+
   <div class="divider max-w-7xl mx-auto"></div>
 
   <!-- ABOUT US -->
@@ -350,6 +376,18 @@
     let activeYear = 'all';
     let activeArtist = 'all';
 
+    function initHeroBanner() {
+      const banner = document.getElementById('latest-release-banner');
+      const latest = releases[0];
+      if (!banner || !latest) return;
+      document.getElementById('lrb-link').href = latest.spotify_url && latest.spotify_url !== '#' ? latest.spotify_url : '#releases';
+      document.getElementById('lrb-cover').src = latest.cover;
+      document.getElementById('lrb-cover').alt = latest.title;
+      document.getElementById('lrb-title').textContent = latest.title;
+      document.getElementById('lrb-artist').textContent = `${latest.artist} · ${latest.year}`;
+      banner.style.display = 'block';
+    }
+
     function initLatestSlideshow() {
       const slides = releases.slice(0, 6);
       const track = document.getElementById('latest-ls-track');
@@ -450,6 +488,7 @@
         console.error('Failed to load releases data:', e);
         releases = [];
       }
+      initHeroBanner();
       initLatestSlideshow();
       renderReleases();
     }
