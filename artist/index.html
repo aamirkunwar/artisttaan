@@ -259,7 +259,25 @@
     footer a { font-size: 11px; color: #555; text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: #fff; }
 
-    /* ── RESPONSIVE ── */
+    /* ── REVEAL ON SCROLL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ── VIDEO CARDS (facade) ── */
+    .vid-card { position: relative; cursor: pointer; overflow: hidden; border-radius: 2px; background: #1a1a1a; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .vid-card:hover { transform: translateY(-4px); }
+    .vid-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease; }
+    .vid-card:hover .vid-thumb { transform: scale(1.05); filter: brightness(0.6); }
+    .vid-overlay-info { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%, transparent 70%); display: flex; align-items: flex-end; padding: 16px; }
+    .vid-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.85); width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; opacity: 0.9; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; }
+    .vid-card:hover .vid-play-btn { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+
+    /* ── LISTENER / STAT CARDS ── */
+    .stat-card { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease; }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(0,0,0,0.15); }
+    .top-city-crown { display: inline-block; margin-right: 6px; }
+    .city-row.is-top .city-name { font-weight: 700; }
+
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -316,7 +334,7 @@
 <!-- MUSIC -->
 <div id="music">
   <div class="wrap">
-    <div class="section">
+    <div class="section reveal">
       <p class="sec-label">Discography</p>
       <h2 class="sec-title" id="music-title">Music</h2>
       <div id="latest-release-panel"></div>
@@ -328,7 +346,7 @@
 <!-- ABOUT -->
 <div id="about" style="background: var(--light);">
   <div class="wrap">
-    <div class="section">
+    <div class="section reveal">
       <p class="sec-label">About</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;" id="about-grid">
         <div>
@@ -348,7 +366,7 @@
 <!-- LISTENERS -->
 <div id="listeners">
   <div class="wrap">
-    <div class="section">
+    <div class="section reveal">
       <p class="sec-label">Audience · Last 28 Days</p>
       <h2 class="sec-title">Top Cities</h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;">
@@ -364,7 +382,7 @@
 <!-- VIDEOS -->
 <div id="videos" style="background: var(--light);">
   <div class="wrap">
-    <div class="section">
+    <div class="section reveal">
       <p class="sec-label">Visuals</p>
       <h2 class="sec-title">Videos</h2>
       <div class="videos-grid" id="videos-grid"></div>
@@ -517,38 +535,68 @@
     const max = cities[0]?.l || 1;
     document.getElementById('cities-list').innerHTML = cities.length
       ? cities.map((c, i) => `
-        <div class="city-row">
+        <div class="city-row${i === 0 ? ' is-top' : ''}">
           <span class="city-num">${i + 1}</span>
-          <span class="city-name">${c.c}</span>
-          <div class="city-track"><div class="city-fill" style="width:${Math.round(c.l/max*100)}%"></div></div>
+          <span class="city-name">${i === 0 ? '<span class="top-city-crown">&#9733;</span>' : ''}${c.c}</span>
+          <div class="city-track"><div class="city-fill" data-width="${Math.round(c.l/max*100)}" style="width:0%"></div></div>
           <span class="city-count">${c.l.toLocaleString()}</span>
         </div>`).join('')
       : '<p style="font-size:13px;color:#888;">Data coming soon.</p>';
 
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.city-fill').forEach((bar, i) => {
+            setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 60);
+          });
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    barObserver.observe(document.getElementById('cities-list'));
+
     const total = cities.reduce((s, c) => s + c.l, 0);
     document.getElementById('listener-cards').innerHTML = `
-      <div style="border:1px solid var(--border);padding:28px;">
+      <div class="stat-card" style="border:1px solid var(--border);padding:28px;">
         <p style="font-size:32px;font-weight:900;letter-spacing:-0.02em;">${total.toLocaleString()}</p>
         <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Total Listeners</p>
       </div>
-      <div style="border:1px solid var(--border);padding:28px;">
+      <div class="stat-card" style="border:1px solid var(--border);padding:28px;">
         <p style="font-size:32px;font-weight:900;letter-spacing:-0.02em;">${cities.length}</p>
         <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Cities Reached</p>
       </div>
-      <div style="border:1px solid var(--border);padding:28px;grid-column:1/-1;">
+      <div class="stat-card" style="border:1px solid var(--border);padding:28px;grid-column:1/-1;">
         <p style="font-size:20px;font-weight:700;">${cities[0]?.c || '—'}</p>
         <p style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;">Top City</p>
       </div>`;
 
     // Videos
     const vids = artistVideos[a.id] || [];
+    const playIconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>`;
     document.getElementById('videos-grid').innerHTML = vids.length
-      ? vids.map(v => `
+      ? vids.map(v => {
+          const id = v.e.split('/embed/')[1];
+          const thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+          return `
         <div>
           <p class="vid-label">${v.t}</p>
-          <div class="vid-frame"><iframe src="${v.e}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        </div>`).join('')
+          <div class="vid-frame">
+            <div class="vid-card" style="width:100%;height:100%;" data-embed="${v.e}">
+              <img class="vid-thumb" src="${thumb}" alt="${v.t}" loading="lazy" />
+              <div class="vid-overlay-info"></div>
+              <div class="vid-play-btn">${playIconSvg}</div>
+            </div>
+          </div>
+        </div>`;
+        }).join('')
       : '<p style="font-size:13px;color:#888;">Videos coming soon.</p>';
+    document.querySelectorAll('.vid-card').forEach(el => {
+      el.addEventListener('click', () => {
+        const embed = el.getAttribute('data-embed');
+        el.innerHTML = `<iframe src="${embed}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>`;
+        el.style.cursor = 'default';
+      }, { once: true });
+    });
   }
 
   // Tab scroll
@@ -567,6 +615,17 @@
     });
     document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.target === cur));
   });
+
+  // Reveal sections on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   document.addEventListener('DOMContentLoaded', init);
 </script>
