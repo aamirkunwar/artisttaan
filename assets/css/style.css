@@ -302,34 +302,22 @@ body {
   padding: 4px 10px;
   border-radius: 999px;
 }
-.artist-quick-links {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  display: flex;
-  gap: 6px;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.artist-card:hover .artist-quick-links {
-  opacity: 1;
-  transform: translateY(0);
-}
-.artist-quick-link {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  display: flex;
+.artist-listen-link {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: #000;
-  transition: transform 0.2s ease, background 0.2s ease;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  padding-bottom: 1px;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
 }
-.artist-quick-link:hover {
-  transform: scale(1.1);
-  background: #fff;
+.artist-listen-link:hover {
+  border-color: #fff;
 }
 
 /* Video Cards */
