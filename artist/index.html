@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
   <meta property="og:type" content="profile" />
   <meta property="og:url" id="og-url" content="" />
+  <link rel="canonical" id="canonical-url" href="" />
   <meta property="og:image" id="og-image" content="" />
   <meta property="og:title" id="og-title" content="" />
   <meta property="og:description" id="og-description" content="" />
@@ -386,6 +387,7 @@
     document.getElementById('og-title').content = `${a.name} | ARTISTTAAN`;
     document.getElementById('og-description').content = a.bio;
     document.getElementById('og-url').content = `https://artisttaanmusic.com/artist/?artist=${a.id}`;
+    document.getElementById('canonical-url').href = `https://artisttaanmusic.com/artist/?artist=${a.id}`;
     if (a.square_photo) document.getElementById('og-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
 
     // Hero
