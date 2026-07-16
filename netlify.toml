@@ -3,3 +3,16 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# Clean artist URLs: /artist/abir/ serves artist/index.html directly
+# (the page itself reads the slug from the URL path). Old-style
+# /artist/?artist=abir links keep working since that file still lives there.
+[[redirects]]
+  from = "/artist/:slug/"
+  to = "/artist/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/artist/:slug"
+  to = "/artist/index.html"
+  status = 200
