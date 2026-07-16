@@ -24,7 +24,7 @@ function renderRoster() {
   if (!container || !siteData) return;
 
   container.innerHTML = siteData.artists.map(artist => `
-    <div class="artist-card group" onclick="window.location.href='artist/?artist=${artist.id}'">
+    <div class="artist-card group" onclick="window.location.href='artist/${artist.id}/'">
       <div class="artist-photo-wrap aspect-[3/4] mb-4">
         <img src="${artist.photo}" alt="${artist.name}" class="w-full h-full object-cover artist-img" loading="lazy" />
         ${artist.featured ? '<span class="artist-featured-badge">Featured</span>' : ''}
