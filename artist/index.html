@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <base href="/artist/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">Artist | ARTISTTAAN</title>
   <meta name="description" id="meta-description" content="" />
@@ -362,7 +363,14 @@
 </footer>
 
 <script>
-  const artistId = new URLSearchParams(window.location.search).get('artist');
+  function getArtistIdFromUrl() {
+    // Clean path form: /artist/slug/  (or /artist/slug)
+    const pathMatch = window.location.pathname.match(/\/artist\/([^\/?#]+)\/?$/);
+    if (pathMatch && pathMatch[1]) return decodeURIComponent(pathMatch[1]);
+    // Legacy form: /artist/?artist=slug — kept working for old shared links
+    return new URLSearchParams(window.location.search).get('artist');
+  }
+  const artistId = getArtistIdFromUrl();
 
   const artistVideos = {
     shrey: [{t:'Kaagaz Aur Daag',e:'https://www.youtube.com/embed/ZYln3iWRxDk'},{t:'Sifarishein',e:'https://www.youtube.com/embed/rcKlMq2uDlk'},{t:'Thoughts Are Poison',e:'https://www.youtube.com/embed/afRnyWvO6PU'},{t:'Thoda Aur',e:'https://www.youtube.com/embed/Q5E5t5VbVeo'}],
@@ -386,8 +394,8 @@
     document.getElementById('meta-description').content = a.full_bio || a.bio;
     document.getElementById('og-title').content = `${a.name} | ARTISTTAAN`;
     document.getElementById('og-description').content = a.bio;
-    document.getElementById('og-url').content = `https://artisttaanmusic.com/artist/?artist=${a.id}`;
-    document.getElementById('canonical-url').href = `https://artisttaanmusic.com/artist/?artist=${a.id}`;
+    document.getElementById('og-url').content = `https://artisttaanmusic.com/artist/${a.id}/`;
+    document.getElementById('canonical-url').href = `https://artisttaanmusic.com/artist/${a.id}/`;
     if (a.square_photo) document.getElementById('og-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
 
     // Hero
