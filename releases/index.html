@@ -34,6 +34,7 @@
     .filter-btn.active{background:#000;color:#fff;border-color:#000}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px;padding:28px 32px;max-width:1600px;margin:0 auto}
     .release-card{cursor:pointer;text-decoration:none;display:block}
+    .release-card-noLink{cursor:default}
     .poster{aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative;margin-bottom:8px}
     .poster img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
     .release-card:hover .poster img{transform:scale(1.06)}
@@ -138,7 +139,7 @@ function initLatestSlideshow(){
         <p class="ls-title">${r.title}</p>
         <p class="ls-artist">${r.artist}</p>
         <p class="ls-year">${r.year}</p>
-        <div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+        ${r.spotify_url && r.spotify_url !== '#' ? `<div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>` : ''}
       </div>
     </div>`).join('');
   dotsEl.innerHTML=slides.map((_,i)=>`<span class="ls-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
@@ -174,18 +175,23 @@ function render(){
   const filtered=filterReleases();
   document.getElementById('release-count').textContent=filtered.length+' releases';
   if(!filtered.length){grid.innerHTML='<div class="no-results">No releases found.</div>';return;}
-  grid.innerHTML=filtered.map(r=>`
-    <a class="release-card" href="${r.spotify_url==='#'?'javascript:void(0)':r.spotify_url}" ${r.spotify_url!=='#'?'target="_blank" rel="noopener noreferrer"':''}>
+  grid.innerHTML=filtered.map(r=>{
+    const hasLink = r.spotify_url && r.spotify_url !== '#';
+    const tag = hasLink ? 'a' : 'div';
+    const attrs = hasLink ? `href="${r.spotify_url}" target="_blank" rel="noopener noreferrer"` : 'aria-disabled="true"';
+    return `
+    <${tag} class="release-card${hasLink ? '' : ' release-card-noLink'}" ${attrs}>
       <div class="poster">
         <img src="../${r.cover}" alt="${r.title}" loading="lazy"/>
-        <div class="poster-overlay">
+        ${hasLink ? `<div class="poster-overlay">
           <svg class="play-icon" width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
-        </div>
+        </div>` : ''}
       </div>
       <p class="release-title">${r.title}</p>
       <p class="release-artist">${r.artist}</p>
       <p class="release-year">${r.year}</p>
-    </a>`).join('');
+    </${tag}>`;
+  }).join('');
 }
 document.querySelectorAll('[data-type="year"]').forEach(btn=>{
   btn.addEventListener('click',()=>{
