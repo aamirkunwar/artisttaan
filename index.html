@@ -432,7 +432,7 @@
             <p class="ls-title">${r.title}</p>
             <p class="ls-artist">${r.artist}</p>
             <p class="ls-year">${r.year}</p>
-            <div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+            ${r.spotify_url && r.spotify_url !== '#' ? `<div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>` : ''}
           </div>
         </div>`).join('');
       dotsEl.innerHTML = slides.map((_, i) => `<span class="ls-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('');
@@ -471,21 +471,26 @@
         grid.innerHTML = '<p style="color:#888;font-size:13px;grid-column:1/-1;text-align:center;padding:40px 0;">No releases found.</p>';
         return;
       }
-      grid.innerHTML = filtered.map(r => `
-        <a href="${r.spotify_url === '#' ? 'javascript:void(0)' : r.spotify_url}" ${r.spotify_url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} style="text-decoration:none;color:inherit;display:block;">
+      grid.innerHTML = filtered.map(r => {
+        const hasLink = r.spotify_url && r.spotify_url !== '#';
+        const tag = hasLink ? 'a' : 'div';
+        const attrs = hasLink ? `href="${r.spotify_url}" target="_blank" rel="noopener noreferrer"` : 'aria-disabled="true"';
+        return `
+        <${tag} ${attrs} style="text-decoration:none;color:inherit;display:block;">
           <div style="aspect-ratio:1;overflow:hidden;background:#111;position:relative;margin-bottom:8px;border-radius:2px;">
             <img src="${r.cover}" alt="${r.title}" loading="lazy"
               style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;"
               onerror="this.style.display='none';this.parentNode.style.background='#1a1a1a';"
             />
-            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;background:rgba(0,0,0,0.5);"
+            ${hasLink ? `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;background:rgba(0,0,0,0.5);"
               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
-            </div>
+            </div>` : ''}
           </div>
           <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</p>
           <p style="font-size:11px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.artist} · ${r.year}</p>
-        </a>`).join('');
+        </${tag}>`;
+      }).join('');
     }
 
     document.querySelectorAll('[data-type="year"]').forEach(btn => {
