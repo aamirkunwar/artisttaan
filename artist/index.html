@@ -83,7 +83,7 @@
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
     .btn-solid {
-      display: inline-flex; align-items: center; gap-8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 11px 24px; background: var(--black); color: #fff;
       font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
       text-transform: uppercase; text-decoration: none; transition: opacity 0.2s;
@@ -268,15 +268,16 @@
     .vid-card:hover { transform: translateY(-4px); }
     .vid-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease; }
     .vid-card:hover .vid-thumb { transform: scale(1.05); filter: brightness(0.6); }
-    .vid-overlay-info { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%, transparent 70%); display: flex; align-items: flex-end; padding: 16px; }
     .vid-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.85); width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; opacity: 0.9; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; }
     .vid-card:hover .vid-play-btn { transform: translate(-50%,-50%) scale(1); opacity: 1; }
 
     /* ── LISTENER / STAT CARDS ── */
     .stat-card { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease; }
     .stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(0,0,0,0.15); }
-    .top-city-crown { display: inline-block; margin-right: 6px; }
+    .top-city-crown { display: none; }
+    .city-row.is-top { background: var(--light); margin: 0 -16px; padding-left: 16px; padding-right: 16px; border-radius: 2px; }
     .city-row.is-top .city-name { font-weight: 700; }
+    .city-row.is-top .city-fill { background: linear-gradient(90deg, #000, #444); }
 
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
@@ -537,7 +538,7 @@
       ? cities.map((c, i) => `
         <div class="city-row${i === 0 ? ' is-top' : ''}">
           <span class="city-num">${i + 1}</span>
-          <span class="city-name">${i === 0 ? '<span class="top-city-crown">&#9733;</span>' : ''}${c.c}</span>
+          <span class="city-name">${c.c}</span>
           <div class="city-track"><div class="city-fill" data-width="${Math.round(c.l/max*100)}" style="width:0%"></div></div>
           <span class="city-count">${c.l.toLocaleString()}</span>
         </div>`).join('')
@@ -583,7 +584,6 @@
           <div class="vid-frame">
             <div class="vid-card" style="width:100%;height:100%;" data-embed="${v.e}">
               <img class="vid-thumb" src="${thumb}" alt="${v.t}" loading="lazy" />
-              <div class="vid-overlay-info"></div>
               <div class="vid-play-btn">${playIconSvg}</div>
             </div>
           </div>
