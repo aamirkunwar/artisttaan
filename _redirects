@@ -1,0 +1,2 @@
+/artist/:slug/  /artist/index.html  200
+/artist/:slug   /artist/index.html  200
