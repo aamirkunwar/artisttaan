@@ -31,7 +31,12 @@ export default {
     // code -- see https://developers.cloudflare.com/workers/static-assets/redirects/
     const artistSlugMatch = url.pathname.match(/^\/artist\/([^\/]+)\/?$/);
     if (artistSlugMatch && artistSlugMatch[1] !== 'index.html') {
-      const assetUrl = new URL('/artist/index.html', url.origin);
+      // Request the FOLDER path ("/artist/"), not the literal filename
+      // ("/artist/index.html"). Requesting the filename directly triggers
+      // Cloudflare's default html_handling redirect chain
+      // (/artist/index.html -> 307 -> /artist -> 307 -> /artist/), which is
+      // exactly what was sending every visitor back to the bare /artist/ URL.
+      const assetUrl = new URL('/artist/', url.origin);
       const assetRequest = new Request(assetUrl.toString(), request);
       return env.ASSETS.fetch(assetRequest);
     }
