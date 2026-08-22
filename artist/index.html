@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">Artist | ARTISTTAAN</title>
   <meta name="description" id="meta-description" content="" />
-  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
+  <link rel="icon" type="image/png" href="/assets/images/logo/logo-icon.png" />
   <meta property="og:type" content="profile" />
   <meta property="og:url" id="og-url" content="" />
   <meta property="og:image" id="og-image" content="" />
@@ -282,8 +282,8 @@
 
 <!-- NAV -->
 <nav>
-  <a href="../"><img class="nav-logo" src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" /></a>
-  <a href="../#roster" class="nav-back">
+  <a href="/"><img class="nav-logo" src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN" /></a>
+  <a href="/#roster" class="nav-back">
     <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
     Roster
   </a>
@@ -357,7 +357,7 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2026 ARTISTTAAN</p>
-  <a href="../">← Back to ARTISTTAAN</a>
+  <a href="/">← Back to ARTISTTAAN</a>
 </footer>
 
 <script>
@@ -375,7 +375,7 @@
 
   async function init() {
     try {
-      const res = await fetch('../assets/data/artists.json');
+      const res = await fetch('/assets/data/artists.json');
       const data = await res.json();
       const artist = data.artists.find(a => a.id === artistId);
       if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:120px 20px;font-size:14px;color:#888;">Artist not found.</p>'; return; }
@@ -396,7 +396,7 @@
     document.getElementById('hero-role2').textContent = a.role;
     document.getElementById('hero-name').textContent = a.name;
     document.getElementById('hero-bio').textContent = a.bio;
-    document.getElementById('hero-img').src = `../${a.banner || a.photo}`;
+    document.getElementById('hero-img').src = `/${a.banner || a.photo}`;
     document.getElementById('hero-img').alt = a.name;
 
     // Hero actions
@@ -429,7 +429,7 @@
       const nextBtn = document.getElementById('ls-next');
       track.innerHTML = slides.map((r, i) => `
         <div class="ls-slide">
-          <div class="ls-poster"><img src="../${r.cover}" alt="${r.title}" loading="lazy" /></div>
+          <div class="ls-poster"><img src="/${r.cover}" alt="${r.title}" loading="lazy" /></div>
           <div class="ls-info">
             <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
             <p class="ls-title">${r.title}</p>
@@ -465,7 +465,7 @@
       ? releases.map(r => `
         <a class="rel-card" href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">
           <div class="rel-poster">
-            <img src="../${r.cover}" alt="${r.title}" loading="lazy" />
+            <img src="/${r.cover}" alt="${r.title}" loading="lazy" />
             <div class="rel-overlay">
               <svg class="rel-play" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
             </div>
@@ -478,7 +478,7 @@
     // About
     document.getElementById('about-title').textContent = a.name;
     document.getElementById('about-bio').textContent = a.full_bio || a.bio;
-    document.getElementById('about-photo').src = `../${a.photo}`;
+    document.getElementById('about-photo').src = `/${a.photo}`;
     document.getElementById('about-photo').alt = a.name;
     if (a.genres) document.getElementById('genres').innerHTML = a.genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
 
