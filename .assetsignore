@@ -1,0 +1,7 @@
+.git
+.github
+node_modules
+.wrangler
+netlify
+netlify.toml
+readme.md
