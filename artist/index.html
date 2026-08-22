@@ -366,6 +366,14 @@
   const pathSlug = (pathParts[0] === 'artist' && pathParts[1]) ? pathParts[1] : null;
   const artistId = new URLSearchParams(window.location.search).get('artist') || pathSlug;
 
+  // Some records in artists.json store image paths with a leading "/" and
+  // some without. Normalize here so both forms always resolve correctly,
+  // instead of producing a broken "//..." (protocol-relative) URL.
+  function assetPath(p) {
+    if (!p) return '';
+    return '/' + String(p).replace(/^\/+/, '');
+  }
+
   const artistVideos = {
     shrey: [{t:'Kaagaz Aur Daag',e:'https://www.youtube.com/embed/ZYln3iWRxDk'},{t:'Sifarishein',e:'https://www.youtube.com/embed/rcKlMq2uDlk'},{t:'Thoughts Are Poison',e:'https://www.youtube.com/embed/afRnyWvO6PU'},{t:'Thoda Aur',e:'https://www.youtube.com/embed/Q5E5t5VbVeo'}],
     abir: [{t:'Marz',e:'https://www.youtube.com/embed/U7AdDdqJWUg'},{t:'Kaho Na',e:'https://www.youtube.com/embed/lC9X-FtN7AI'}],
@@ -396,7 +404,7 @@
     document.getElementById('hero-role2').textContent = a.role;
     document.getElementById('hero-name').textContent = a.name;
     document.getElementById('hero-bio').textContent = a.bio;
-    document.getElementById('hero-img').src = `/${a.banner || a.photo}`;
+    document.getElementById('hero-img').src = assetPath(a.banner || a.photo);
     document.getElementById('hero-img').alt = a.name;
 
     // Hero actions
@@ -429,7 +437,7 @@
       const nextBtn = document.getElementById('ls-next');
       track.innerHTML = slides.map((r, i) => `
         <div class="ls-slide">
-          <div class="ls-poster"><img src="/${r.cover}" alt="${r.title}" loading="lazy" /></div>
+          <div class="ls-poster"><img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy" /></div>
           <div class="ls-info">
             <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
             <p class="ls-title">${r.title}</p>
@@ -465,7 +473,7 @@
       ? releases.map(r => `
         <a class="rel-card" href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">
           <div class="rel-poster">
-            <img src="/${r.cover}" alt="${r.title}" loading="lazy" />
+            <img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy" />
             <div class="rel-overlay">
               <svg class="rel-play" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
             </div>
@@ -478,7 +486,7 @@
     // About
     document.getElementById('about-title').textContent = a.name;
     document.getElementById('about-bio').textContent = a.full_bio || a.bio;
-    document.getElementById('about-photo').src = `/${a.photo}`;
+    document.getElementById('about-photo').src = assetPath(a.photo);
     document.getElementById('about-photo').alt = a.name;
     if (a.genres) document.getElementById('genres').innerHTML = a.genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
 
