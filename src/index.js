@@ -38,13 +38,66 @@ export default {
       // exactly what was sending every visitor back to the bare /artist/ URL.
       const assetUrl = new URL('/artist/', url.origin);
       const assetRequest = new Request(assetUrl.toString(), request);
-      return env.ASSETS.fetch(assetRequest);
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      return renderArtistMeta(assetResponse, artistSlugMatch[1], url.origin, env);
     }
 
     // Anything else: serve the static website files as normal.
     return env.ASSETS.fetch(request);
   },
 };
+
+// ---------- Server-rendered artist meta tags ----------
+//
+// artist/index.html ships with empty <title>/meta description/canonical/OG
+// tags and fills them in client-side via JS once artists.json loads. That's
+// invisible to anything that doesn't execute JS -- notably link-preview bots
+// (WhatsApp, iMessage, Instagram, Twitter/X, Slack) and it's also slower for
+// search engines than plain HTML. This rewrites those tags (and the visible
+// <h1> artist name) server-side before the response ever reaches the client,
+// using Cloudflare's streaming HTMLRewriter so we don't have to buffer or
+// re-parse the whole page. The client-side JS still runs afterwards and sets
+// the same values again, so nothing changes if this ever fails open.
+async function renderArtistMeta(assetResponse, slug, origin, env) {
+  let artist;
+  try {
+    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
+    if (!dataRes.ok) return assetResponse;
+    const data = await dataRes.json();
+    artist = (data.artists || []).find(function (a) { return a.id === slug; });
+  } catch (e) {
+    console.error('renderArtistMeta: could not load artists.json', e);
+    return assetResponse;
+  }
+
+  if (!artist) return assetResponse; // Unknown slug -- let the client-side "Artist not found" state handle it.
+
+  const pageUrl = origin + '/artist/' + artist.id + '/';
+  const title = artist.name + ' — ARTISTTAAN';
+  const ogTitle = artist.name + ' | ARTISTTAAN';
+  const description = artist.full_bio || artist.bio || '';
+  const shortDescription = artist.bio || description;
+  const image = artist.square_photo ? origin + '/' + String(artist.square_photo).replace(/^\/+/, '') : '';
+
+  const rewriter = new HTMLRewriter()
+    .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
+    .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('link#canonical-url', { element: function (el) { el.setAttribute('href', pageUrl); } })
+    .on('meta#og-url', { element: function (el) { el.setAttribute('content', pageUrl); } })
+    .on('meta#og-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#og-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
+    .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
+    .on('h1#hero-name', { element: function (el) { el.setInnerContent(artist.name); } });
+
+  if (image) {
+    rewriter
+      .on('meta#og-image', { element: function (el) { el.setAttribute('content', image); } })
+      .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } });
+  }
+
+  return rewriter.transform(assetResponse);
+}
 
 function jsonResponse(obj, status) {
   return new Response(JSON.stringify(obj), {
