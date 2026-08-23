@@ -136,6 +136,16 @@ collections:
               - { label: URL, name: url, widget: string }
               - { label: Icon, name: icon, widget: string }
 
+          - label: Videos
+            name: videos
+            widget: list
+            required: false
+            summary: "{{fields.title}} — {{fields.artist}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Artist, name: artist, widget: string }
+              - { label: YouTube URL, name: youtube_url, widget: string, hint: "Paste any normal YouTube link, e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or a youtu.be link. The first video in this list is shown as the big featured one." }
+
           - label: Team
             name: team
             widget: list
