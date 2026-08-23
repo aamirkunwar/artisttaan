@@ -7,7 +7,7 @@ let allReleases = [];
 
 async function loadData() {
   try {
-    const res = await fetch('assets/data/artists.json');
+    const res = await fetch('/assets/data/artists.json');
     siteData = await res.json();
     renderAll();
   } catch (err) {
@@ -79,29 +79,25 @@ function renderVideos() {
   const container = document.getElementById('video-container');
   if (!container || !siteData) return;
 
-  const knownVideos = [
-    { title: "NAMASKAR", artist: "Slay", embed: "https://www.youtube.com/embed/bLTVqTJ1hUQ" },
-    { title: "KAAGAZ AUR DAAG", artist: "Shrey", embed: "https://www.youtube.com/embed/ZYln3iWRxDk" },
-    { title: "SIFARISHEIN", artist: "Shrey", embed: "https://www.youtube.com/embed/rcKlMq2uDlk" },
-    { title: "THOUGHTS ARE POISON", artist: "Shrey", embed: "https://www.youtube.com/embed/afRnyWvO6PU" },
-    { title: "THODA AUR", artist: "Shrey ft. Jai", embed: "https://www.youtube.com/embed/Q5E5t5VbVeo" },
-    { title: "MARZ", artist: "Abir", embed: "https://www.youtube.com/embed/U7AdDdqJWUg" },
-    { title: "KAHO NA", artist: "Abir", embed: "https://www.youtube.com/embed/lC9X-FtN7AI" }
-  ];
+  const knownVideos = siteData.videos || [];
+  if (!knownVideos.length) { container.innerHTML = ''; return; }
 
   const playIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>`;
 
-  function videoId(embed) {
-    return embed.split('/embed/')[1];
+  // Accepts a full YouTube URL in any common form (watch?v=, youtu.be/,
+  // embed/, shorts/) and returns just the video ID.
+  function videoId(url) {
+    const m = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : '';
   }
 
   function card(v, featured) {
-    const id = videoId(v.embed);
+    const id = videoId(v.youtube_url);
     // hqdefault.jpg is generated for every YouTube video and reliably loads,
     // unlike maxresdefault.jpg which 404s for a lot of uploads.
     const thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
     return `
-    <div class="video-card ${featured ? 'video-featured' : ''} aspect-video" data-embed="${v.embed}">
+    <div class="video-card ${featured ? 'video-featured' : ''} aspect-video" data-embed="https://www.youtube.com/embed/${id}">
       <img class="video-thumb-img absolute inset-0 w-full h-full object-cover" src="${thumb}" alt="${v.title} - ${v.artist}" loading="lazy" />
       <div class="video-overlay">
         <p class="text-white ${featured ? 'text-base md:text-lg' : 'text-sm'} font-bold leading-tight">${v.title}</p>
