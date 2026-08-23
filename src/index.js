@@ -24,6 +24,23 @@ export default {
       return handleDemo(request, env);
     }
 
+    // Clean artist URLs: /artist/abir or /artist/abir/ -> serve artist/index.html
+    // directly (the page itself reads the slug from the URL path). This has to be
+    // done here in the Worker rather than via the _redirects file, because
+    // Cloudflare does not apply _redirects rules to requests handled by Worker
+    // code -- see https://developers.cloudflare.com/workers/static-assets/redirects/
+    const artistSlugMatch = url.pathname.match(/^\/artist\/([^\/]+)\/?$/);
+    if (artistSlugMatch && artistSlugMatch[1] !== 'index.html') {
+      // Request the FOLDER path ("/artist/"), not the literal filename
+      // ("/artist/index.html"). Requesting the filename directly triggers
+      // Cloudflare's default html_handling redirect chain
+      // (/artist/index.html -> 307 -> /artist -> 307 -> /artist/), which is
+      // exactly what was sending every visitor back to the bare /artist/ URL.
+      const assetUrl = new URL('/artist/', url.origin);
+      const assetRequest = new Request(assetUrl.toString(), request);
+      return env.ASSETS.fetch(assetRequest);
+    }
+
     // Anything else: serve the static website files as normal.
     return env.ASSETS.fetch(request);
   },

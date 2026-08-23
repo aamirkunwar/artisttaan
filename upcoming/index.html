@@ -126,6 +126,10 @@
   </footer>
 
   <script>
+    function assetPath(p) {
+      if (!p) return '';
+      return '../' + String(p).replace(/^\/+/, '');
+    }
     async function loadUpcoming() {
       const container = document.getElementById('upcoming-container');
       try {
@@ -144,7 +148,7 @@
           return `
           <article class="upcoming-card">
             <div class="upcoming-media ${item.imageAspect === 'square' ? 'aspect-square' : 'aspect-[3/4]'} ${isLocked ? 'is-locked' : ''}">
-              <img src="../${item.image}" alt="${item.title} — ${item.artist}" loading="lazy" style="object-position: ${item.imagePosition || 'center'};" />
+              <img src="${assetPath(item.image)}" alt="${item.title} — ${item.artist}" loading="lazy" style="object-position: ${item.imagePosition || 'center'};" />
               <span class="type-badge">${item.type}</span>
               ${item.status ? `<span class="status-badge">${item.status}</span>` : ''}
               ${isLocked ? `
@@ -233,7 +237,7 @@
           return `
           <div class="snippet-track">
             <span class="snippet-track-title">${s.title || 'Snippet'}</span>
-            <audio controls preload="none" src="../${s.audio}"></audio>
+            <audio controls preload="none" src="${assetPath(s.audio)}"></audio>
           </div>`;
         }
         return `

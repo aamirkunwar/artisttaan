@@ -124,6 +124,14 @@
 <script>
 let releases = [];
 
+// Some records in artists.json store image paths with a leading "/" and
+// some without. Normalize here so both forms resolve correctly regardless
+// of which style was used.
+function assetPath(p) {
+  if (!p) return '';
+  return '../' + String(p).replace(/^\/+/, '');
+}
+
 function initLatestSlideshow(){
   const slides=releases.slice(0,6);
   const track=document.getElementById('ls-track');
@@ -133,7 +141,7 @@ function initLatestSlideshow(){
   if(!slides.length){document.getElementById('latest-release').style.display='none';return;}
   track.innerHTML=slides.map(r=>`
     <div class="ls-slide">
-      <div class="ls-poster"><img src="../${r.cover}" alt="${r.title}" loading="lazy"/></div>
+      <div class="ls-poster"><img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy"/></div>
       <div class="ls-info">
         <span class="ls-tag">New</span>
         <p class="ls-title">${r.title}</p>
@@ -182,7 +190,7 @@ function render(){
     return `
     <${tag} class="release-card${hasLink ? '' : ' release-card-noLink'}" ${attrs}>
       <div class="poster">
-        <img src="../${r.cover}" alt="${r.title}" loading="lazy"/>
+        <img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy"/>
         ${hasLink ? `<div class="poster-overlay">
           <svg class="play-icon" width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
         </div>` : ''}
