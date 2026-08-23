@@ -1,1180 +1,257 @@
-{
-  "artists": [
-    {
-      "youtube": "https://youtube.com/results?search_query=Abir+artisttaan",
-      "soundcloud": "https://soundcloud.com/abir",
-      "bio": "Singer/songwriter from Agra, India. His music reflects soul and pop depth. 103K+ monthly listeners on Spotify.",
-      "spotify_url": "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO",
-      "name": "Abir",
-      "banner": "assets/images/artists/abir-banner.jpg",
-      "monthly_listeners": "103,560",
-      "featured": true,
-      "square_photo": "assets/images/artists/abir-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/abir/",
-      "genres": [
-        "Pop",
-        "R&B"
-      ],
-      "photo": "assets/images/artists/abir.jpg",
-      "instagram": "https://instagram.com/luvabiirr",
-      "top_cities": [
-        "Delhi",
-        "Mumbai",
-        "Bangalore",
-        "Pune"
-      ],
-      "youtube_url": "https://youtube.com/watch?v=U7AdDdqJWUg",
-      "twitter": "https://twitter.com/abir",
-      "role": "Pop / RnB",
-      "total_streams": "2.1M+",
-      "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir's music resonates with audiences across India.",
-      "id": "abir",
-      "deck_pdf": "assets/decks/abir-deck.pdf",
-      "contact_email": "abir@artisttaan.com"
-    },
-    {
-      "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
-      "soundcloud": "https://soundcloud.com/shrey",
-      "bio": "Layered soundscapes and hard-hitting bars. Known for tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag'.",
-      "spotify_url": "https://open.spotify.com/artist/760KQ4PXRrEyJW9SU44ABS",
-      "name": "Shrey",
-      "banner": "assets/images/artists/shrey-banner.jpg",
-      "monthly_listeners": "—",
-      "featured": true,
-      "square_photo": "assets/images/artists/shrey-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/shrey/",
-      "genres": [
-        "Hip-Hop"
-      ],
-      "photo": "assets/images/artists/shrey.jpg",
-      "instagram": "https://instagram.com/shrey0000001",
-      "top_cities": [
-        "Delhi",
-        "Chandigarh",
-        "Jaipur"
-      ],
-      "youtube_url": "https://youtube.com/watch?v=ZYln3iWRxDk",
-      "twitter": "https://twitter.com/shrey",
-      "role": "Hip-Hop",
-      "total_streams": "800K+",
-      "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following.",
-      "id": "shrey",
-      "deck_pdf": "assets/decks/shrey-deck.pdf",
-      "contact_email": "shrey@artisttaan.com"
-    },
-    {
-      "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
-      "soundcloud": "https://soundcloud.com/slay",
-      "bio": "Born to perform. Slay brings relentless energy and precision lyricism. Latest drop: 'Namaskar' (2026).",
-      "spotify_url": "https://open.spotify.com/artist/2E1ceqTF8kEm7UDucwGosW",
-      "name": "Slay",
-      "banner": "assets/images/artists/slay-banner.jpg",
-      "monthly_listeners": "—",
-      "featured": false,
-      "square_photo": "assets/images/artists/slay-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/slay/",
-      "genres": [
-        "Hip-Hop"
-      ],
-      "photo": "assets/images/artists/slay.jpg",
-      "instagram": "https://instagram.com/slaywav",
-      "top_cities": [
-        "Mumbai",
-        "Delhi",
-        "Hyderabad"
-      ],
-      "youtube_url": "https://youtube.com/watch?v=bLTVqTJ1hUQ",
-      "twitter": "https://twitter.com/slay",
-      "role": "Hip-Hop",
-      "total_streams": "500K+",
-      "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop.",
-      "id": "slay",
-      "deck_pdf": "assets/decks/slay-deck.pdf",
-      "contact_email": "slay@artisttaan.com"
-    },
-    {
-      "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
-      "soundcloud": "https://soundcloud.com/apoorvv",
-      "bio": "Independent artist blending stories, emotion, and smooth vibes. 22K+ monthly listeners. Known for 'Ishq Adhoora'.",
-      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
-      "name": "Apoorvv",
-      "banner": "assets/images/artists/apoorvv-banner.jpg",
-      "monthly_listeners": "22,656",
-      "featured": false,
-      "square_photo": "assets/images/artists/apoorvv-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/",
-      "genres": [
-        "Pop",
-        "Indie"
-      ],
-      "photo": "assets/images/artists/apoorvv.jpg",
-      "instagram": "https://instagram.com/apoorvvwho",
-      "top_cities": [
-        "Delhi",
-        "Lucknow",
-        "Kanpur"
-      ],
-      "youtube_url": "https://youtube.com/@artisttaan",
-      "twitter": "https://twitter.com/apoorvv",
-      "role": "Pop / Indie",
-      "total_streams": "350K+",
-      "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating love and loss.",
-      "id": "apoorvv",
-      "deck_pdf": "assets/decks/apoorvv-deck.pdf",
-      "contact_email": "apoorvv@artisttaan.com"
-    },
-    {
-      "soundcloud": "",
-      "bio": "Producer, singer and RnB artist from Agra. Faraz brings a unique blend of production excellence, vocal artistry and RnB flavor to ARTISTTAAN.",
-      "spotify_url": "https://open.spotify.com/artist/5v97XScMyk02FNVZhHX2TR",
-      "name": "Faraz",
-      "monthly_listeners": "—",
-      "featured": false,
-      "square_photo": "assets/images/artists/faraz-square.jpg",
-      "apple_music_url": "",
-      "genres": [
-        "Production",
-        "R&B",
-        "Vocal"
-      ],
-      "photo": "assets/images/artists/faraz.jpg",
-      "instagram": "https://instagram.com/faraz",
-      "top_cities": [
-        "Agra",
-        "Delhi"
-      ],
-      "youtube_url": "https://youtube.com/@artisttaan",
-      "twitter": "",
-      "role": "Producer / Singer / RnB",
-      "total_streams": "—",
-      "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between artists and audiences.",
-      "id": "faraz",
-      "deck_pdf": "assets/decks/faraz-deck.pdf",
-      "contact_email": "faraz@artisttaan.com"
-    }
-  ],
-  "releases": [
-    {
-      "title": "Flavours",
-      "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2026",
-      "spotify_url": "https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV",
-      "spotify_embed": "https://open.spotify.com/embed/album/3NMnuPW9pAuMFQsuGKgXzV",
-      "cover": "assets/images/upcoming/slay-flavours.jpg",
-      "type": "EP"
-    },
-    {
-      "title": "Namaskar",
-      "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2026",
-      "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
-      "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
-      "cover": "/assets/images/namaskar.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Mila Tu",
-      "artist": "Apoorvv",
-      "artist_id": "apoorvv",
-      "year": "2026",
-      "spotify_url": "https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE",
-      "spotify_embed": "https://open.spotify.com/embed/track/4PYWGLbm1bXPA28JauGNbE",
-      "cover": "/assets/images/mila-tu_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Kaagaz Aur Daag",
-      "artist": "Shrey",
-      "artist_id": "shrey",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm",
-      "spotify_embed": "https://open.spotify.com/embed/track/1N1mifOiNnHnScZwOtQ2Jm",
-      "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Sifarishein",
-      "artist": "Shrey",
-      "artist_id": "shrey",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/196x0S8IsX40sd3KB12v84",
-      "spotify_embed": "https://open.spotify.com/embed/track/196x0S8IsX40sd3KB12v84",
-      "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Thoughts Are Poison",
-      "artist": "Shrey",
-      "artist_id": "shrey",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx",
-      "spotify_embed": "https://open.spotify.com/embed/track/6KAJ0muurlS5Fwb2fj0pdx",
-      "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Pehle Jaisa",
-      "artist": "Abir",
-      "artist_id": "abir",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5",
-      "spotify_embed": "https://open.spotify.com/embed/album/0guvOjewHtC0Pv6uk0pID5",
-      "cover": "/assets/images/pehle-jaisa_640x640-1-.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Smack",
-      "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H",
-      "spotify_embed": "https://open.spotify.com/embed/track/3pdRAxpgmtPqEo4ufUfv4H",
-      "cover": "/assets/images/thoda-aur_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Wassup",
-      "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/0evpBO2tW3AKbJrmThc3CS",
-      "spotify_embed": "https://open.spotify.com/embed/track/0evpBO2tW3AKbJrmThc3CS",
-      "cover": "/assets/images/kya-se-kya-hue_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Kya Se Kya Hue",
-      "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc",
-      "spotify_embed": "https://open.spotify.com/embed/track/1zGi1mUUekvsGZALAee6oc",
-      "cover": "/assets/images/kya-se-kya-hue_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Marz",
-      "artist": "Abir",
-      "artist_id": "abir",
-      "year": "2024",
-      "spotify_url": "https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol",
-      "spotify_embed": "https://open.spotify.com/embed/track/5snmOSMT761hHpVZ4Eovol",
-      "cover": "/assets/images/marz_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Thoda Aur",
-      "artist": "Shrey",
-      "artist_id": "shrey",
-      "year": "2025",
-      "spotify_url": "https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz",
-      "spotify_embed": "https://open.spotify.com/embed/track/6gAEHCnOcfK4sLjA7Zc1Nz",
-      "cover": "/assets/images/thoda-aur_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Jaqeen Trending Version",
-      "artist": "Talwiinder, Rish",
-      "artist_id": null,
-      "year": "2023",
-      "spotify_url": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc",
-      "spotify_embed": "https://open.spotify.com/embed/track/1nJy3ZevNvqBOZcBaS7Wnc",
-      "cover": "assets/images/releases-posters/releases/release-02-jaqeen-trending-version-2023.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Kaho Na",
-      "artist": "Abir",
-      "artist_id": "abir",
-      "year": "2023",
-      "spotify_url": "https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw",
-      "spotify_embed": "https://open.spotify.com/embed/track/5znUlfypbCVjEzqGvzy0Xw",
-      "cover": "/assets/images/kaho-na_640x640.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Sath Chalegi",
-      "artist": "Raga, Rish",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/album/6359k4XlwyF81N12omSDHD",
-      "spotify_embed": "https://open.spotify.com/embed/album/6359k4XlwyF81N12omSDHD",
-      "cover": "assets/images/releases-posters/releases/release-03-sath-chalegi-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Jaqeen",
-      "artist": "Talwiinder, Rish",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc",
-      "spotify_embed": "https://open.spotify.com/embed/track/1nJy3ZevNvqBOZcBaS7Wnc",
-      "cover": "assets/images/releases-posters/releases/release-04-jaqeen-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Rageshwar",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/7dEQoxUIipE21E5x3g1jAW",
-      "spotify_embed": "https://open.spotify.com/embed/track/7dEQoxUIipE21E5x3g1jAW",
-      "cover": "assets/images/releases-posters/releases/release-05-rageshwar-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Look at Me",
-      "artist": "Rigul, Yawar",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/5k2g1PqmdHGHdOQzTmhrg6",
-      "spotify_embed": "https://open.spotify.com/embed/track/5k2g1PqmdHGHdOQzTmhrg6",
-      "cover": "assets/images/releases-posters/releases/release-06-look-at-me-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Love Again",
-      "artist": "Luck, Manisten",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/2D1Qn9o7CINzFyb96Sd7Yc",
-      "spotify_embed": "https://open.spotify.com/embed/track/2D1Qn9o7CINzFyb96Sd7Yc",
-      "cover": "assets/images/releases-posters/releases/release-07-love-again-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Congratulations",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/3erirML2bH3Jl8Hwl1qPf3",
-      "spotify_embed": "https://open.spotify.com/embed/track/3erirML2bH3Jl8Hwl1qPf3",
-      "cover": "assets/images/releases-posters/releases/release-08-congratulations-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Greatest",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/3uLLs8UMMyxJEC1Py3fg2H",
-      "spotify_embed": "https://open.spotify.com/embed/track/3uLLs8UMMyxJEC1Py3fg2H",
-      "cover": "assets/images/releases-posters/releases/release-09-greatest-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Airplane Mode",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/album/2qVqgj0hMXTfP7cdRUb6zf",
-      "spotify_embed": "https://open.spotify.com/embed/album/2qVqgj0hMXTfP7cdRUb6zf",
-      "cover": "assets/images/releases-posters/releases/release-10-airplane-mode-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Triggered",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/album/12g4L6k0bVk8BcakDHxTG2",
-      "spotify_embed": "https://open.spotify.com/embed/album/12g4L6k0bVk8BcakDHxTG2",
-      "cover": "assets/images/releases-posters/releases/release-11-triggered-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "My Lady",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/5bNA92fEilaFUdXbza3gkJ",
-      "spotify_embed": "https://open.spotify.com/embed/track/5bNA92fEilaFUdXbza3gkJ",
-      "cover": "assets/images/releases-posters/releases/release-12-my-lady-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Different Opinion",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2021",
-      "spotify_url": "https://open.spotify.com/track/4drwpq7oMD1kG3iq5j4nUL",
-      "spotify_embed": "https://open.spotify.com/embed/track/4drwpq7oMD1kG3iq5j4nUL",
-      "cover": "assets/images/releases-posters/releases/release-13-different-opinion-2021.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Beh Ja",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/4Ox54GzIlqLQ8dTtk1ey8P",
-      "spotify_embed": "https://open.spotify.com/embed/track/4Ox54GzIlqLQ8dTtk1ey8P",
-      "cover": "assets/images/releases-posters/releases/release-14-beh-ja-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Kaisa Hai Bhai",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/7C11bvvEr3ODYyjAGXpzd7",
-      "spotify_embed": "https://open.spotify.com/embed/track/7C11bvvEr3ODYyjAGXpzd7",
-      "cover": "assets/images/releases-posters/releases/release-15-kaisa-hai-bhai-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Badal Gaye",
-      "artist": "Faraz",
-      "artist_id": "faraz",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf",
-      "spotify_embed": "https://open.spotify.com/embed/track/0z1oc8Ej4yGgOxk39DNGkf",
-      "cover": "assets/images/releases-posters/releases/release-16-badal-gaye-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Kaanch Ki Tarah",
-      "artist": "Faraz",
-      "artist_id": "faraz",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA",
-      "spotify_embed": "https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA",
-      "cover": "assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Ishq Adhoora",
-      "artist": "Apoorvv",
-      "artist_id": "apoorvv",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono",
-      "spotify_embed": "https://open.spotify.com/embed/track/1z2KFhYRc6wk44FUQRIono",
-      "cover": "assets/images/releases-posters/releases/release-18-ishq-adhoora-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Naam Tumhara",
-      "artist": "Sam Rajput",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab",
-      "spotify_embed": "https://open.spotify.com/embed/track/64tbEVvEnMxtOGPPmZDcab",
-      "cover": "assets/images/releases-posters/releases/release-19-naam-tumhara-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Jaane Na",
-      "artist": "Apoorvv",
-      "artist_id": "apoorvv",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln",
-      "spotify_embed": "https://open.spotify.com/embed/track/33kVvuCEjFDQCnb0w41Oln",
-      "cover": "assets/images/releases-posters/releases/release-20-jaane-na-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Haseena",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/5Lit31j9cVf8k7k33tbJyn",
-      "spotify_embed": "https://open.spotify.com/embed/track/5Lit31j9cVf8k7k33tbJyn",
-      "cover": "assets/images/releases-posters/releases/release-21-haseena-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Mantra",
-      "artist": "Lukka",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/7CIXuuauYU2maFBLAlNoLu",
-      "spotify_embed": "https://open.spotify.com/embed/track/7CIXuuauYU2maFBLAlNoLu",
-      "cover": "assets/images/releases-posters/releases/release-22-mantra-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Choo Liya 2.0",
-      "artist": "Abir",
-      "artist_id": "abir",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1zckeQVI1uIKCraYPHjz4j",
-      "spotify_embed": "https://open.spotify.com/embed/track/1zckeQVI1uIKCraYPHjz4j",
-      "cover": "assets/images/releases-posters/releases/release-23-choo-liya-2-0-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Badal Gaye Unplugged",
-      "artist": "Faraz",
-      "artist_id": "faraz",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9",
-      "spotify_embed": "https://open.spotify.com/embed/track/1C9BpHayhV4XHvc9I2PsN9",
-      "cover": "assets/images/releases-posters/releases/release-24-badal-gaye-unplugged--2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Choo Liya",
-      "artist": "Faraz, Abir",
-      "artist_id": "faraz",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT",
-      "spotify_embed": "https://open.spotify.com/embed/track/1cOslRbqe0srHqbVi2lanT",
-      "cover": "assets/images/releases-posters/releases/release-25-choo-liya-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Tum Badli Ho",
-      "artist": "Abir",
-      "artist_id": "abir",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l",
-      "spotify_embed": "https://open.spotify.com/embed/track/6RIV4XVosJpY7o2O9K5b9l",
-      "cover": "assets/images/releases-posters/releases/release-26-tum-badli-ho-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Lifestyle",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/3kORfvMWbtTT0wxjVAZofZ",
-      "spotify_embed": "https://open.spotify.com/embed/track/3kORfvMWbtTT0wxjVAZofZ",
-      "cover": "assets/images/releases-posters/releases/release-27-lifestyle-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Ajj Vi",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/5rxsGT6YS7dmfjjJGXq3N6",
-      "spotify_embed": "https://open.spotify.com/embed/track/5rxsGT6YS7dmfjjJGXq3N6",
-      "cover": "assets/images/releases-posters/releases/release-28-ajj-vi-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "A Note to My Mother",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/4Z2HkIGd34s6q4cFpeqFNf",
-      "spotify_embed": "https://open.spotify.com/embed/track/4Z2HkIGd34s6q4cFpeqFNf",
-      "cover": "assets/images/releases-posters/releases/release-29-a-note-to-my-mother-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Pinnak Na Tod",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/7yO8LrjdVOaNkHoqT7w9aO",
-      "spotify_embed": "https://open.spotify.com/embed/track/7yO8LrjdVOaNkHoqT7w9aO",
-      "cover": "assets/images/releases-posters/releases/release-30-pinnak-na-tod-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Video Call",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/2cwOrW2prswLDP6FFxWOos",
-      "spotify_embed": "https://open.spotify.com/embed/track/2cwOrW2prswLDP6FFxWOos",
-      "cover": "assets/images/releases-posters/releases/release-31-video-call-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "No Offense",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/3vCzGpb93QN44jAkd2o7Pw",
-      "spotify_embed": "https://open.spotify.com/embed/track/3vCzGpb93QN44jAkd2o7Pw",
-      "cover": "assets/images/releases-posters/releases/release-32-no-offense-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Jahannum",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-33-jahannum-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Skills",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1jUURRDklHcdF9wMnXO26t",
-      "spotify_embed": "https://open.spotify.com/embed/track/1jUURRDklHcdF9wMnXO26t",
-      "cover": "assets/images/releases-posters/releases/release-34-skills-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Boss Mode",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1l09zQh9feuCHVmXQhmQ11",
-      "spotify_embed": "https://open.spotify.com/embed/track/1l09zQh9feuCHVmXQhmQ11",
-      "cover": "assets/images/releases-posters/releases/release-35-boss-mode-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Tum Nahin Aaye",
-      "artist": "Abir",
-      "artist_id": "abir",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi",
-      "spotify_embed": "https://open.spotify.com/embed/track/72cGqxSo0tjiPVwDxWEABi",
-      "cover": "assets/images/releases-posters/releases/release-36-tum-nahin-aaye-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Try Kijiye",
-      "artist": "Lukka",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-53-try-kijiye-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Jeet Bawa Jeet",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2020",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-39-jeet-bawa-jeet-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Chahida Mennu Sab",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-54-chahida-mennu-sab-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "End Karegi",
-      "artist": "Kay J, Yawar",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-57-end-karegi-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Alone",
-      "artist": "Amie",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-58-alone-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Mili Raahat",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-59-mili-raahat-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Hangover",
-      "artist": "Manisten",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-60-hangover-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Bekabu",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-61-bekabu-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Tere Utte",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-62-tere-utte-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Neeli Neeli",
-      "artist": "Yawar, Amie",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-63-neeli-neeli-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Taaze Bars",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-64-taaze-bars-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Mere Kol",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-65-mere-kol-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Tu Jaari Hai",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-66-tu-jaari-hai-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Rap Ka Mausam",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-67-rap-ka-mausam-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Raahat",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-68-raahat-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Mudda",
-      "artist": "Raga, Yawar",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-69-mudda-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Shikayat",
-      "artist": "Raga, Yawar",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-70-shikayat-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Telephone",
-      "artist": "Amie",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-71-telephone-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Sheher Tera",
-      "artist": "Talwar, Newtone",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-72-sheher-tera-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Ishq Waleya",
-      "artist": "Amie",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-73-ishq-waleya-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "UP 14",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-74-up-14-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Harjaayi",
-      "artist": "Amie",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-75-harjaayi-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Khushnaseeb",
-      "artist": "Rish",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-77-khushnaseeb-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "School Waley Yaar",
-      "artist": "Raga",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-78-school-waley-yaar-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Kaaliyaan Rattaan",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-56-kaaliyaan-rattaan-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Jamnapaar",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2019",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-55-jamnapaar-2019.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Dhokebaaz",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2018",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-37-dhokebaaz-2018.jpg",
-      "type": "single"
-    },
-    {
-      "title": "2006",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2018",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-38-2006-2018.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Baatein Mere Baare Mein",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2018",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-42-baatein-mere-baare-mein-2018.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Gunehgar",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2018",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-43-gunehgar-2018.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Akhan Rondiya",
-      "artist": "Apoorvv",
-      "artist_id": "apoorvv",
-      "year": "2017",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-48-akhan-rondiya-2017.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Layak",
-      "artist": "Yawar",
-      "artist_id": null,
-      "year": "2017",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-50-layak-2017.jpg",
-      "type": "single"
-    },
-    {
-      "title": "This Is Your Chance",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2017",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-40-this-is-your-chance-2017.jpg",
-      "type": "single"
-    },
-    {
-      "title": "World Cup",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2017",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-44-world-cup-2017.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Wah Bete",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2017",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-45-wah-bete-2017.jpg",
-      "type": "single"
-    },
-    {
-      "title": "STFU",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2017",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-47-stfu-2017.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Sandook",
-      "artist": "Mr A",
-      "artist_id": null,
-      "year": "2016",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-49-sandook-2016.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Sach Too Much Hai",
-      "artist": "Muhfaad",
-      "artist_id": null,
-      "year": "2016",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-51-sach-too-much-hai-2016.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Sautan",
-      "artist": "Yawar, Harjas",
-      "artist_id": null,
-      "year": "2016",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-52-sautan-2016.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Don't",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2016",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-41-don-t-2016.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Likhaari",
-      "artist": "—",
-      "artist_id": null,
-      "year": "2016",
-      "spotify_url": "#",
-      "spotify_embed": null,
-      "cover": "assets/images/releases-posters/releases/release-46-likhaari-2016.jpg",
-      "type": "single"
-    }
-  ],
-  "socials": [
-    {
-      "platform": "Instagram",
-      "handle": "@artisttaan",
-      "url": "https://instagram.com/artisttaan",
-      "icon": "instagram"
-    },
-    {
-      "platform": "YouTube",
-      "handle": "@artisttaan",
-      "url": "https://youtube.com/@artisttaan",
-      "icon": "youtube"
-    },
-    {
-      "platform": "Spotify",
-      "handle": "ARTISTTAAN",
-      "url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb",
-      "icon": "spotify"
-    },
-    {
-      "platform": "Twitter",
-      "handle": "@artisttaan",
-      "url": "https://twitter.com/artisttaan",
-      "icon": "twitter"
-    },
-    {
-      "platform": "Facebook",
-      "handle": "ARTISTTAAN",
-      "url": "https://facebook.com/artisttaan",
-      "icon": "facebook"
-    }
-  ],
-  "team": [
-    {
-      "id": "aamir-kunwar",
-      "name": "Aamir Kunwar",
-      "role": "Founder & A&R",
-      "photo": "assets/images/team/aamir-kunwar.jpg",
-      "bio": "Founder of ARTISTTAAN and the driving force behind its roster. Aamir built the label from the streets of East Delhi in 2016 and now leads A&R — scouting, signing, and developing talent.",
-      "instagram_handle": "@aamirkunwar",
-      "instagram": "https://instagram.com/aamirkunwar"
-    },
-    {
-      "id": "shashank-sharma",
-      "name": "Shashank Sharma",
-      "role": "Video Director & A&R",
-      "photo": "assets/images/team/shashank-sharma.jpg",
-      "bio": "Video Director and A&R at ARTISTTAAN, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists.",
-      "instagram_handle": "@shshank.here",
-      "instagram": "https://instagram.com/shshank.here"
-    },
-    {
-      "id": "nino-rawat",
-      "name": "Nino Rawat",
-      "role": "Head A&R",
-      "photo": "assets/images/team/nino-rawat.jpg",
-      "bio": "Head of A&R at ARTISTTAAN, Nino leads the search for new talent and the development of the label's roster — discovering artists, shaping their sound, and guiding projects from first listen to final release.",
-      "instagram_handle": "@ninorawat",
-      "instagram": "https://instagram.com/ninorawat"
-    }
-  ],
-  "upcoming": [
-    {
-      "artist": "Shrey",
-      "status": "Coming Soon",
-      "imageAspect": "square",
-      "snippets": [
-        {
-          "title": "Gham Pani",
-          "audio": "assets/audio/shrey-modern-kumaon-gham-pani.mp3"
-        },
-        {
-          "title": "Popstar ft. Tarun",
-          "audio": "/assets/audio/popstar_owggdwrw.mp3"
-        }
-      ],
-      "title": "Modern Kumaon",
-      "type": "Mixtape",
-      "id": "shrey-modern-kumaon",
-      "image": "assets/images/upcoming/shrey-modern-kumaon.jpg",
-      "description": "Shrey's most personal project yet — a mixtape rooted in the sounds and stories of Kumaon, reimagined for right now."
-    }
-  ],
-  "settings": {
-    "hero_cta_secondary": "Watch on YouTube",
-    "site_title": "ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label",
-    "footer_year": "2026",
-    "formspree_endpoint": "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT",
-    "site_description": "ARTISTTAAN is India's premier hip-hop and indie music label, founded in 2016. Discover artists like Abir, Shrey, Slay, Apoorvv & Faraz. Stream music, watch videos, and submit your demo.",
-    "hero_tagline": "India's Hip-Hop & Indie Powerhouse",
-    "hero_cta_primary": "Listen on Spotify",
-    "hero_cta_secondary_url": "https://youtube.com/@artisttaan",
-    "youtube_embed": "https://www.youtube.com/embed/ZYln3iWRxDk",
-    "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb"
-  },
-  "videos": [
-    {
-      "title": "NAMASKAR",
-      "artist": "Slay",
-      "youtube_url": "https://www.youtube.com/watch?v=bLTVqTJ1hUQ"
-    },
-    {
-      "title": "KAAGAZ AUR DAAG",
-      "artist": "Shrey",
-      "youtube_url": "https://www.youtube.com/watch?v=ZYln3iWRxDk"
-    },
-    {
-      "title": "SIFARISHEIN",
-      "artist": "Shrey",
-      "youtube_url": "https://www.youtube.com/watch?v=rcKlMq2uDlk"
-    },
-    {
-      "title": "THOUGHTS ARE POISON",
-      "artist": "Shrey",
-      "youtube_url": "https://www.youtube.com/watch?v=afRnyWvO6PU"
-    },
-    {
-      "title": "THODA AUR",
-      "artist": "Shrey ft. Jai",
-      "youtube_url": "https://www.youtube.com/watch?v=Q5E5t5VbVeo"
-    },
-    {
-      "title": "MARZ",
-      "artist": "Abir",
-      "youtube_url": "https://www.youtube.com/watch?v=U7AdDdqJWUg"
-    },
-    {
-      "title": "KAHO NA",
-      "artist": "Abir",
-      "youtube_url": "https://www.youtube.com/watch?v=lC9X-FtN7AI"
-    }
-  ]
+// ============================================
+// ARTISTTAAN - MAIN JAVASCRIPT
+// ============================================
+
+let siteData = null;
+let allReleases = [];
+
+async function loadData() {
+  try {
+    const res = await fetch('assets/data/artists.json');
+    siteData = await res.json();
+    renderAll();
+  } catch (err) {
+    console.error('Failed to load data:', err);
+    showToast('Error loading site data');
+  }
 }
+
+// ============================================
+// RENDER ARTIST ROSTER
+// ============================================
+function renderRoster() {
+  const container = document.getElementById('roster-container');
+  if (!container || !siteData) return;
+
+  container.innerHTML = siteData.artists.map(artist => `
+    <div class="artist-card group" onclick="window.location.href='artist/${artist.id}/'">
+      <div class="artist-photo-wrap aspect-[3/4] mb-4">
+        <img src="${artist.photo}" alt="${artist.name}" class="w-full h-full object-cover artist-img" loading="lazy" />
+        ${artist.featured ? '<span class="artist-featured-badge">Featured</span>' : ''}
+        <div class="artist-overlay">
+          <h3 class="text-white font-bold text-lg leading-tight">${artist.name}</h3>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,0.7);">${artist.role}</p>
+          ${artist.spotify_url ? `<a href="${artist.spotify_url}" target="_blank" rel="noopener noreferrer" class="artist-listen-link" onclick="event.stopPropagation()">Listen on Spotify <span aria-hidden="true">&#8599;</span></a>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============================================
+// RENDER RELEASES with filter support
+// ============================================
+function renderReleases(filter = 'all') {
+  const container = document.getElementById('releases-container');
+  if (!container || !siteData) return;
+
+  const releases = filter === 'all'
+    ? siteData.releases
+    : siteData.releases.filter(r => r.artist_id === filter);
+
+  container.innerHTML = releases.map(release => `
+    <div class="release-card group">
+      <div class="spotify-embed mb-3">
+        <iframe src="${release.spotify_embed}" height="352" allow="encrypted-media" loading="lazy"></iframe>
+      </div>
+      <p class="font-semibold text-base">${release.title}</p>
+      <p class="text-caption mt-1">${release.artist} · ${release.year}</p>
+      <a href="${release.spotify_url}" target="_blank" rel="noopener noreferrer" class="text-xs text-secondary hover:text-primary transition underline underline-offset-4 mt-2 inline-block">Open in Spotify</a>
+    </div>
+  `).join('');
+}
+
+function initReleaseFilters() {
+  const btns = document.querySelectorAll('.release-filter-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderReleases(btn.dataset.artist);
+    });
+  });
+}
+
+// ============================================
+// RENDER VIDEOS
+// ============================================
+function renderVideos() {
+  const container = document.getElementById('video-container');
+  if (!container || !siteData) return;
+
+  const knownVideos = siteData.videos || [];
+  if (!knownVideos.length) { container.innerHTML = ''; return; }
+
+  const playIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>`;
+
+  // Accepts a full YouTube URL in any common form (watch?v=, youtu.be/,
+  // embed/, shorts/) and returns just the video ID.
+  function videoId(url) {
+    const m = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : '';
+  }
+
+  function card(v, featured) {
+    const id = videoId(v.youtube_url);
+    // hqdefault.jpg is generated for every YouTube video and reliably loads,
+    // unlike maxresdefault.jpg which 404s for a lot of uploads.
+    const thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+    return `
+    <div class="video-card ${featured ? 'video-featured' : ''} aspect-video" data-embed="https://www.youtube.com/embed/${id}">
+      <img class="video-thumb-img absolute inset-0 w-full h-full object-cover" src="${thumb}" alt="${v.title} - ${v.artist}" loading="lazy" />
+      <div class="video-overlay">
+        <p class="text-white ${featured ? 'text-base md:text-lg' : 'text-sm'} font-bold leading-tight">${v.title}</p>
+        <p class="text-xs mt-1" style="color:rgba(255,255,255,0.7);">${v.artist}</p>
+      </div>
+      <div class="video-play-btn">${playIcon}</div>
+    </div>`;
+  }
+
+  const [featuredVideo, ...restVideos] = knownVideos;
+
+  container.innerHTML = `
+    <div class="mb-8">${card(featuredVideo, true)}</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      ${restVideos.map(v => card(v, false)).join('')}
+    </div>
+  `;
+
+  container.querySelectorAll('.video-card').forEach(el => {
+    el.addEventListener('click', () => {
+      const embed = el.getAttribute('data-embed');
+      el.innerHTML = `<iframe class="w-full h-full" src="${embed}?autoplay=1" title="video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>`;
+      el.style.cursor = 'default';
+    }, { once: true });
+  });
+}
+
+// ============================================
+// RENDER SOCIALS
+// ============================================
+function renderSocials() {
+  const container = document.getElementById('socials-container');
+  if (!container || !siteData) return;
+
+  const iconMap = {
+    instagram: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>',
+    youtube: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+    spotify: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.1-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>',
+    twitter: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+    facebook: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>'
+  };
+
+  container.innerHTML = siteData.socials.map(s => `
+    <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="hover-lift flex flex-col items-center justify-center gap-2 p-6 border border-subtle hover:border-dark transition group">
+      <span class="text-muted group-hover:text-primary transition">${iconMap[s.icon] || s.icon}</span>
+      <span class="text-sm font-semibold">${s.platform}</span>
+      <span class="text-xs text-muted">${s.handle}</span>
+    </a>
+  `).join('');
+}
+
+// ============================================
+// APPLY SETTINGS
+// ============================================
+function applySettings() {
+  if (!siteData) return;
+  const s = siteData.settings;
+  document.title = s.site_title;
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc) desc.content = s.site_description;
+}
+
+// ============================================
+// RENDER ALL
+// ============================================
+function renderAll() {
+  applySettings();
+  renderRoster();
+  renderReleases('all');
+  initReleaseFilters();
+  renderVideos();
+  renderSocials();
+}
+
+// ============================================
+// MOBILE MENU
+// ============================================
+function initMobileMenu() {
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  }
+}
+
+// ============================================
+// DEMO FORM — Netlify Forms handler
+// ============================================
+function initDemoForm() {
+  const demoFile = document.getElementById('demoFile');
+  const fileName = document.getElementById('fileName');
+  if (demoFile && fileName) {
+    demoFile.addEventListener('change', () => {
+      if (demoFile.files[0]) {
+        fileName.textContent = demoFile.files[0].name;
+        fileName.classList.remove('hidden');
+      }
+    });
+  }
+
+  const demoForm = document.getElementById('demoForm');
+  if (demoForm) {
+    demoForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('/demo', {
+          method: 'POST',
+          body: new FormData(demoForm)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          demoForm.reset();
+          if (fileName) { fileName.textContent = ''; fileName.classList.add('hidden'); }
+          showToast("Demo submitted! We'll be in touch within 48 hours.");
+        } else {
+          showToast(data.error || 'Submission failed. Please try again.');
+        }
+      } catch (err) {
+        console.error('Submit error:', err);
+        showToast('Network error. Please check your connection and try again.');
+      }
+      btn.textContent = 'Send Demo';
+      btn.disabled = false;
+    });
+  }
+}
+
+// ============================================
+// TOAST
+// ============================================
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (toast) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+}
+
+
+
+// ============================================
+// INIT
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+  initMobileMenu();
+  initDemoForm();
+});
