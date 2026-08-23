@@ -7,7 +7,7 @@ let allReleases = [];
 
 async function loadData() {
   try {
-    const res = await fetch('assets/data/artists.json');
+    const res = await fetch('/assets/data/artists.json');
     siteData = await res.json();
     renderAll();
   } catch (err) {
