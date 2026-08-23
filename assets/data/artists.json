@@ -1139,5 +1139,42 @@
     "hero_cta_secondary_url": "https://youtube.com/@artisttaan",
     "youtube_embed": "https://www.youtube.com/embed/ZYln3iWRxDk",
     "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb"
-  }
+  },
+  "videos": [
+    {
+      "title": "NAMASKAR",
+      "artist": "Slay",
+      "youtube_url": "https://www.youtube.com/watch?v=bLTVqTJ1hUQ"
+    },
+    {
+      "title": "KAAGAZ AUR DAAG",
+      "artist": "Shrey",
+      "youtube_url": "https://www.youtube.com/watch?v=ZYln3iWRxDk"
+    },
+    {
+      "title": "SIFARISHEIN",
+      "artist": "Shrey",
+      "youtube_url": "https://www.youtube.com/watch?v=rcKlMq2uDlk"
+    },
+    {
+      "title": "THOUGHTS ARE POISON",
+      "artist": "Shrey",
+      "youtube_url": "https://www.youtube.com/watch?v=afRnyWvO6PU"
+    },
+    {
+      "title": "THODA AUR",
+      "artist": "Shrey ft. Jai",
+      "youtube_url": "https://www.youtube.com/watch?v=Q5E5t5VbVeo"
+    },
+    {
+      "title": "MARZ",
+      "artist": "Abir",
+      "youtube_url": "https://www.youtube.com/watch?v=U7AdDdqJWUg"
+    },
+    {
+      "title": "KAHO NA",
+      "artist": "Abir",
+      "youtube_url": "https://www.youtube.com/watch?v=lC9X-FtN7AI"
+    }
+  ]
 }
