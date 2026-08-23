@@ -1142,6 +1142,11 @@
   },
   "videos": [
     {
+      "title": "MEDITATE",
+      "artist": "Slay",
+      "youtube_url": "https://youtu.be/BsJOe-luhps?si=dN59sQncAobub6yk"
+    },
+    {
       "title": "NAMASKAR",
       "artist": "Slay",
       "youtube_url": "https://www.youtube.com/watch?v=bLTVqTJ1hUQ"
@@ -1175,11 +1180,6 @@
       "title": "KAHO NA",
       "artist": "Abir",
       "youtube_url": "https://www.youtube.com/watch?v=lC9X-FtN7AI"
-    },
-    {
-      "title": "MEDITATE",
-      "artist": "Slay",
-      "youtube_url": "https://youtu.be/BsJOe-luhps?si=dN59sQncAobub6yk"
     }
   ]
 }
