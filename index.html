@@ -165,7 +165,7 @@
         <img src="assets/images/logo/logo-white.png" alt="ARTISTTAAN" class="h-8 w-auto" id="nav-logo" />
       </a>
       <div class="hidden md:flex items-center gap-8" id="nav-links">
-        <a href="#about" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">About</a>
+        <a href="about/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">About</a>
         <a href="artists/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Artists</a>
         <a href="what-we-do/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">What We Do</a>
         <a href="#releases" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Releases</a>
@@ -181,7 +181,7 @@
     </div>
     <div id="mobileMenu" class="hidden md:hidden border-t" style="background:rgba(0,0,0,0.95);border-color:rgba(255,255,255,0.1);">
       <div class="px-6 py-4 space-y-4">
-        <a href="#about" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">About</a>
+        <a href="about/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">About</a>
         <a href="artists/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Artists</a>
         <a href="what-we-do/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">What We Do</a>
         <a href="#releases" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Releases</a>
@@ -273,7 +273,7 @@
   <div class="divider max-w-7xl mx-auto"></div>
 
   <!-- ABOUT US -->
-  <section id="about" class="section-pad">
+  <section id="about-teaser" class="section-pad">
     <div class="max-w-7xl mx-auto">
       <div class="about-grid">
         <div class="order-2 md:order-1">
@@ -281,19 +281,15 @@
           <h2 class="text-section mb-8">Building India's Sound</h2>
           <div class="space-y-6">
             <p class="text-body">Founded in 2016 by Aamir Kunwar, ARTISTTAAN began as a movement in the streets of East Delhi. What started as a passion project to support local rappers evolved into India's leading independent hip-hop and indie music label — and the <strong>first Indian hip-hop label to sign with Sony Music</strong>.</p>
-            <p class="text-body">From a small locality in Jamnapaar, Aamir identified raw talent that mainstream labels wouldn't touch. Legends like <strong>Raga, Harjas, Yawar, and Muhfaad</strong> were among the first voices ARTISTTAAN amplified — artists who shaped the underground before Indian hip-hop had a mainstream.</p>
             <p class="text-body">That legacy lives on through today's roster — Shrey's poetic flows, Abir's soulful production, Slay's relentless energy, Apoorvv's indie heart, and Faraz's RnB precision. Every release carries the DNA of Indian streets, languages, and lived experiences.</p>
           </div>
           <div class="about-quote mt-10 mb-10">We don't sign artists. We amplify voices that were already loud — just unheard.</div>
-          <div class="flex items-center gap-3 mb-10 p-4 border border-subtle w-fit">
-            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-            <p class="text-sm font-semibold">India's first hip-hop label to sign with Sony Music</p>
-          </div>
-          <div class="grid grid-cols-3 gap-8 pt-8 border-t border-subtle">
+          <div class="grid grid-cols-3 gap-8 pt-8 pb-10 border-t border-subtle">
             <div><p class="stat-number">8+</p><p class="text-caption mt-2">Artists</p></div>
             <div><p class="stat-number">50+</p><p class="text-caption mt-2">Releases</p></div>
             <div><p class="stat-number">3M+</p><p class="text-caption mt-2">Streams</p></div>
           </div>
+          <a href="about/" class="text-sm font-semibold underline underline-offset-4">Read our full story →</a>
         </div>
         <div class="order-1 md:order-2 about-image flex items-center justify-center bg-white p-8 md:p-16">
           <img src="assets/images/logo/logo-hero.png" alt="ARTISTTAAN" class="w-full max-w-md object-contain" />
@@ -670,7 +666,7 @@
         <div>
           <h4 class="text-caption text-gray-400 mb-4">Links</h4>
           <div class="space-y-2">
-            <a href="#about" class="block text-sm hover:text-gray-300 transition">About</a>
+            <a href="about/" class="block text-sm hover:text-gray-300 transition">About</a>
             <a href="artists/" class="block text-sm hover:text-gray-300 transition">Artists</a>
             <a href="what-we-do/" class="block text-sm hover:text-gray-300 transition">What We Do</a>
             <a href="#releases" class="block text-sm hover:text-gray-300 transition">Releases</a>
@@ -737,7 +733,7 @@
     // Scroll reveal
     function initReveal() {
       // Add reveal class to major sections
-      var sections = document.querySelectorAll('section > div, #about > div, #roster > div, #releases > div, #video > div, #social > div, #newsletter > div, #demo > div');
+      var sections = document.querySelectorAll('section > div, #about-teaser > div, #roster > div, #releases > div, #video > div, #social > div, #newsletter > div, #demo > div');
       sections.forEach(function(el) {
         if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
           el.classList.add('reveal');
