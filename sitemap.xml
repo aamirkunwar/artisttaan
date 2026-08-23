@@ -26,6 +26,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://artisttaanmusic.com/videos/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://artisttaanmusic.com/culture/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
