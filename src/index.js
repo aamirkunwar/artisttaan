@@ -42,6 +42,20 @@ export default {
       return renderArtistMeta(assetResponse, artistSlugMatch[1], url.origin, env);
     }
 
+    // Clean culture-article URLs: /culture/<slug> or /culture/<slug>/ -> serve
+    // culture/index.html directly (same single-page pattern as /artist/:slug/
+    // above). "posts" is reserved since that's the real folder the raw .md
+    // files live in (e.g. /culture/posts/my-post.md) -- that path has two
+    // segments after /culture/ so this regex won't match it anyway, but it's
+    // excluded explicitly for clarity.
+    const cultureSlugMatch = url.pathname.match(/^\/culture\/([^\/]+)\/?$/);
+    if (cultureSlugMatch && cultureSlugMatch[1] !== 'index.html' && cultureSlugMatch[1] !== 'posts') {
+      const assetUrl = new URL('/culture/', url.origin);
+      const assetRequest = new Request(assetUrl.toString(), request);
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin);
+    }
+
     // Anything else: serve the static website files as normal.
     return env.ASSETS.fetch(request);
   },
@@ -97,6 +111,76 @@ async function renderArtistMeta(assetResponse, slug, origin, env) {
   }
 
   return rewriter.transform(assetResponse);
+}
+
+// ---------- Server-rendered culture-article meta tags ----------
+//
+// culture/index.html used to route articles through a #hash, which the
+// server (and search engines, and link-preview bots) never sees, and even
+// after switching to real /culture/<slug>/ paths, the raw HTML for that path
+// still starts out as the generic "Culture" page until client-side JS loads
+// the article and rewrites the tags. This does the same rewrite server-side,
+// before the response leaves the Worker, by pulling the post's frontmatter
+// straight from GitHub (the same source of truth the CMS commits to, so a
+// newly-published post gets correct tags immediately without a redeploy).
+const CULTURE_REPO_OWNER = 'aamirkunwar';
+const CULTURE_REPO_NAME = 'artisttaan';
+const CULTURE_REPO_BRANCH = 'main';
+
+function parseFrontMatter(text) {
+  const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!match) return { meta: {}, body: text };
+  const meta = {};
+  match[1].split('\n').forEach(function (line) {
+    const i = line.indexOf(':');
+    if (i === -1) return;
+    const key = line.slice(0, i).trim();
+    const val = line.slice(i + 1).trim().replace(/^['"]|['"]$/g, '');
+    meta[key] = val;
+  });
+  const excerptMatch = match[1].match(/excerpt:\s*>-\n([\s\S]*?)(?=\n\w|$)/);
+  if (excerptMatch) meta.excerpt = excerptMatch[1].replace(/^\s{2}/gm, '').replace(/\n/g, ' ').trim();
+  return { meta: meta, body: match[2].trim() };
+}
+
+async function renderCultureMeta(assetResponse, slug, origin) {
+  // Guard against a malicious/odd slug being used to build the GitHub URL.
+  if (!/^[A-Za-z0-9._-]+$/.test(slug)) return assetResponse;
+
+  let meta;
+  try {
+    const rawUrl =
+      'https://raw.githubusercontent.com/' + CULTURE_REPO_OWNER + '/' + CULTURE_REPO_NAME +
+      '/' + CULTURE_REPO_BRANCH + '/culture/posts/' + slug + '.md';
+    const res = await fetch(rawUrl);
+    if (!res.ok) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
+    const text = await res.text();
+    meta = parseFrontMatter(text).meta;
+  } catch (e) {
+    console.error('renderCultureMeta: could not load post from GitHub', e);
+    return assetResponse;
+  }
+
+  if (!meta || !meta.title) return assetResponse;
+
+  const pageUrl = origin + '/culture/' + slug + '/';
+  const title = meta.title + ' — ARTISTTAAN';
+  const ogTitle = meta.title + ' | ARTISTTAAN';
+  const description = meta.excerpt || "Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground.";
+  const image = meta.cover ? origin + '/' + String(meta.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
+
+  return new HTMLRewriter()
+    .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
+    .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('link#canonical-url', { element: function (el) { el.setAttribute('href', pageUrl); } })
+    .on('meta#og-url', { element: function (el) { el.setAttribute('content', pageUrl); } })
+    .on('meta#og-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#og-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('meta#og-image', { element: function (el) { el.setAttribute('content', image); } })
+    .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } })
+    .transform(assetResponse);
 }
 
 function jsonResponse(obj, status) {
