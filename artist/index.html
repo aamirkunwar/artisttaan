@@ -422,6 +422,7 @@
     // Hero actions
     const acts = [];
     if (a.spotify_url) acts.push(`<a href="${a.spotify_url}" target="_blank" class="btn-solid">Listen on Spotify</a>`);
+    if (a.apple_music_url) acts.push(`<a href="${a.apple_music_url}" target="_blank" class="btn-ghost">Apple Music</a>`);
     if (a.instagram) acts.push(`<a href="${a.instagram}" target="_blank" class="btn-ghost">Instagram</a>`);
     document.getElementById('hero-actions').innerHTML = acts.join('');
 
