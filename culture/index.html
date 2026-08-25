@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+    Articles now live at real URLs like /culture/<slug>/ instead of
+    /culture/#<slug>, so the browser resolves every relative link/image/asset
+    on this page (nav links, logo, favicon) against THAT path, not against
+    /culture/ where the actual file lives -- breaking the logo, nav, and any
+    relative article cover image. <base> pins relative-URL resolution back to
+    /culture/ regardless of which slug is in the address bar.
+  -->
+  <base href="/culture/" />
   <title id="page-title">Culture — ARTISTTAAN</title>
   <meta name="description" id="meta-description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
   <link rel="canonical" id="canonical-url" href="https://artisttaanmusic.com/culture/" />
