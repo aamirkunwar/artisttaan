@@ -139,12 +139,15 @@ function slugify(s) {
 }
 
 async function renderReleaseMeta(assetResponse, slug, origin, env) {
-  let release;
+  let release, artist;
   try {
     const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
     if (!dataRes.ok) return assetResponse;
     const data = await dataRes.json();
     release = (data.releases || []).find(function (r) { return slugify(r.title) === slug; });
+    if (release) {
+      artist = (data.artists || []).find(function (a) { return a.id === release.artist_id; });
+    }
   } catch (e) {
     console.error('renderReleaseMeta: could not load artists.json', e);
     return assetResponse;
@@ -158,6 +161,15 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
   const description = 'Stream "' + release.title + '" by ' + release.artist + ' (' + (release.year || '') + ') — a ' + type + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
   const image = release.cover ? origin + '/' + String(release.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
 
+  // Embed the already-fetched release (and matching artist) data directly into
+  // the page as inline JSON. Without this, the browser has to fetch and parse
+  // the ~40KB artists.json a SECOND time client-side (the Worker just fetched
+  // it above) before it can paint the cover image, title, or about text --
+  // that duplicate round trip was the main cause of the 3-4s delay before
+  // content appeared. release/index.html's script reads window.__RELEASE_DATA__
+  // first and only falls back to fetching if it's missing (e.g. local dev).
+  const inlineData = '<script>window.__RELEASE_DATA__=' + JSON.stringify({ release: release, artist: artist || null }) + ';</script>';
+
   const rewriter = new HTMLRewriter()
     .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
     .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
@@ -169,7 +181,8 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', title); } })
     .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', description); } })
     .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } })
-    .on('h1#rel-title', { element: function (el) { el.setInnerContent(release.title); } });
+    .on('h1#rel-title', { element: function (el) { el.setInnerContent(release.title); } })
+    .on('head', { element: function (el) { el.append(inlineData, { html: true }); } });
 
   return rewriter.transform(assetResponse);
 }
