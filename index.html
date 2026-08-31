@@ -153,6 +153,7 @@
       .nl-popup-visual-title{font-size:22px;}
       .nl-popup-content{padding:28px 24px;}
     }
+    body.nl-popup-lock{overflow:hidden;}
   </style>
 
 </head>
@@ -697,7 +698,7 @@
   <div id="toast" class="toast">Demo submitted successfully. We'll be in touch.</div>
 
   <!-- Newsletter Popup -->
-  <div id="nlPopupOverlay" class="nl-popup-overlay">
+  <div id="nlPopupOverlay" class="nl-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="nlPopupHeading">
     <div class="nl-popup-box">
       <button type="button" id="nlPopupClose" class="nl-popup-close" aria-label="Close">&times;</button>
 
@@ -711,7 +712,7 @@
 
       <div class="nl-popup-content">
         <p class="text-caption">Stay In The Loop</p>
-        <h2 class="nl-popup-heading">Get first access to new releases</h2>
+        <h2 class="nl-popup-heading" id="nlPopupHeading">Get first access to new releases</h2>
         <p class="nl-popup-sub">Join the list — new tracks, singles &amp; EPs straight to your inbox. Nothing else.</p>
         <form id="nlPopupForm" novalidate>
           <p class="hidden" aria-hidden="true"><label>Do not fill this in: <input type="text" id="nlPopupBotField" autocomplete="off" tabindex="-1" /></label></p>
@@ -778,6 +779,8 @@
 
     function wireNewsletterForm(formEl, emailEl, botEl, btnEl, msgEl, onSuccess) {
       if (!formEl) return;
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var submitting = false;
       function showMsg(text, isError) {
         msgEl.textContent = text;
         msgEl.classList.remove('hidden');
@@ -785,11 +788,17 @@
       }
       formEl.addEventListener('submit', function(e) {
         e.preventDefault();
+        if (submitting) return; // guard against double-submit (e.g. double-click, or Enter + click)
         var email = emailEl.value.trim();
         if (!email) {
           showMsg('Please enter your email address.', true);
           return;
         }
+        if (!EMAIL_RE.test(email)) {
+          showMsg('Please enter a valid email address.', true);
+          return;
+        }
+        submitting = true;
         btnEl.disabled = true;
         var originalText = btnEl.textContent;
         btnEl.textContent = 'Submitting...';
@@ -810,6 +819,7 @@
             showMsg('Something went wrong. Please try again later.', true);
           })
           .finally(function() {
+            submitting = false;
             btnEl.disabled = false;
             btnEl.textContent = originalText;
           });
@@ -827,26 +837,99 @@
       );
     });
 
-    // Newsletter popup: show once per visitor, a few seconds after page load
+    // Newsletter popup: shown once per visitor, using whichever signal comes
+    // first -- a short delay, meaningful scroll depth, or exit-intent (mouse
+    // heading for the top of the browser, desktop only). This is more
+    // reliable at catching genuinely interested visitors than a blind timer,
+    // and much less likely to fire before the page has even rendered.
     document.addEventListener('DOMContentLoaded', function() {
       var overlay = document.getElementById('nlPopupOverlay');
       if (!overlay) return;
       var closeBtn = document.getElementById('nlPopupClose');
+      var popupBox = overlay.querySelector('.nl-popup-box');
 
-      function openPopup() {
-        var alreadyHandled = false;
-        try { alreadyHandled = localStorage.getItem('nlSubscribed') === '1' || localStorage.getItem('nlPopupDismissed') === '1'; } catch (e) {}
-        if (alreadyHandled) return;
-        overlay.classList.add('active');
+      // A dismissal now expires after 14 days instead of blocking the popup
+      // forever -- someone who wasn't interested today may well be on a
+      // later visit, and a permanent localStorage flag was closing that door
+      // for good. A completed subscription still suppresses it permanently.
+      var DISMISS_DAYS = 14;
+      function isSuppressed() {
+        try {
+          if (localStorage.getItem('nlSubscribed') === '1') return true;
+          var dismissedAt = parseInt(localStorage.getItem('nlPopupDismissedAt') || '0', 10);
+          if (dismissedAt && (Date.now() - dismissedAt) < DISMISS_DAYS * 24 * 60 * 60 * 1000) return true;
+        } catch (e) {}
+        return false;
       }
-      function closePopup(remember) {
-        overlay.classList.remove('active');
-        if (remember) {
-          try { localStorage.setItem('nlPopupDismissed', '1'); } catch (e) {}
+
+      var shown = false;
+      var lastFocused = null;
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var focusable = popupBox.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
         }
       }
 
-      setTimeout(openPopup, 6000);
+      function openPopup() {
+        if (shown || isSuppressed()) return;
+        shown = true;
+        lastFocused = document.activeElement;
+        overlay.classList.add('active');
+        document.body.classList.add('nl-popup-lock');
+        document.addEventListener('keydown', trapFocus);
+        var emailInput = document.getElementById('nlPopupEmail');
+        if (emailInput) setTimeout(function() { emailInput.focus(); }, 350);
+      }
+      function closePopup(remember) {
+        overlay.classList.remove('active');
+        document.body.classList.remove('nl-popup-lock');
+        document.removeEventListener('keydown', trapFocus);
+        if (remember) {
+          try { localStorage.setItem('nlPopupDismissedAt', String(Date.now())); } catch (e) {}
+        }
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+      }
+
+      // Signal 1: a short delay, long enough for the hero to have rendered.
+      var delayTimer = setTimeout(openPopup, 8000);
+
+      // Signal 2: the visitor has scrolled far enough to show real engagement.
+      function onScroll() {
+        var scrolled = window.scrollY || document.documentElement.scrollTop;
+        var viewport = window.innerHeight;
+        var full = document.documentElement.scrollHeight;
+        if (full <= viewport) return; // page too short to measure scroll depth
+        var pct = scrolled / (full - viewport);
+        if (pct >= 0.5) {
+          clearTimeout(delayTimer);
+          window.removeEventListener('scroll', onScroll);
+          openPopup();
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Signal 3: exit-intent -- the cursor moves up toward the browser chrome,
+      // the classic "about to close the tab" gesture. Desktop-only by nature
+      // (no mouse on touch devices), so signals 1 and 2 above cover mobile.
+      function onMouseOut(e) {
+        if (e.clientY > 0) return;
+        if (e.relatedTarget || e.toElement) return;
+        clearTimeout(delayTimer);
+        document.removeEventListener('mouseout', onMouseOut);
+        window.removeEventListener('scroll', onScroll);
+        openPopup();
+      }
+      document.addEventListener('mouseout', onMouseOut);
 
       closeBtn.addEventListener('click', function() { closePopup(true); });
       overlay.addEventListener('click', function(e) {
