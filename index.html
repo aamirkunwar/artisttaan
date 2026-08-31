@@ -168,7 +168,7 @@
         <a href="about/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">About</a>
         <a href="artists/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Artists</a>
         <a href="what-we-do/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">What We Do</a>
-        <a href="#releases" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Releases</a>
+        <a href="releases/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Releases</a>
         <a href="upcoming/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Upcoming</a>
         <a href="team/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Our Team</a>
         <a href="videos/" class="nav-link text-sm font-medium transition" style="color:rgba(255,255,255,0.85);">Video</a>
@@ -184,7 +184,7 @@
         <a href="about/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">About</a>
         <a href="artists/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Artists</a>
         <a href="what-we-do/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">What We Do</a>
-        <a href="#releases" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Releases</a>
+        <a href="releases/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Releases</a>
         <a href="upcoming/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Upcoming</a>
         <a href="team/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Our Team</a>
         <a href="videos/" class="block text-sm font-medium" style="color:rgba(255,255,255,0.85);">Video</a>
@@ -386,7 +386,7 @@
       let idx = 0, timer;
       function render(i) {
         const r = items[i];
-        link.href = r.spotify_url && r.spotify_url !== '#' ? r.spotify_url : '#releases';
+        link.href = r.spotify_url && r.spotify_url !== '#' ? r.spotify_url : 'releases/';
         cover.src = r.cover;
         cover.alt = r.title;
         titleEl.textContent = r.title;
@@ -669,7 +669,7 @@
             <a href="about/" class="block text-sm hover:text-gray-300 transition">About</a>
             <a href="artists/" class="block text-sm hover:text-gray-300 transition">Artists</a>
             <a href="what-we-do/" class="block text-sm hover:text-gray-300 transition">What We Do</a>
-            <a href="#releases" class="block text-sm hover:text-gray-300 transition">Releases</a>
+            <a href="releases/" class="block text-sm hover:text-gray-300 transition">Releases</a>
             <a href="upcoming/" class="block text-sm hover:text-gray-300 transition">Upcoming</a>
             <a href="team/" class="block text-sm hover:text-gray-300 transition">Our Team</a>
             <a href="videos/" class="block text-sm hover:text-gray-300 transition">Video</a>
