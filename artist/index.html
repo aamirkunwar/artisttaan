@@ -380,6 +380,13 @@
     return '/' + String(p).replace(/^\/+/, '');
   }
 
+  // Matches the slugify used on /releases/ and /release/<slug>/ so release
+  // links from this page land on the same URLs.
+  function slugify(s) {
+    if (!s) return '';
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
   const artistVideos = {
     shrey: [{t:'Kaagaz Aur Daag',e:'https://www.youtube.com/embed/ZYln3iWRxDk'},{t:'Sifarishein',e:'https://www.youtube.com/embed/rcKlMq2uDlk'},{t:'Thoughts Are Poison',e:'https://www.youtube.com/embed/afRnyWvO6PU'},{t:'Thoda Aur',e:'https://www.youtube.com/embed/Q5E5t5VbVeo'}],
     abir: [{t:'Marz',e:'https://www.youtube.com/embed/U7AdDdqJWUg'},{t:'Kaho Na',e:'https://www.youtube.com/embed/lC9X-FtN7AI'}],
@@ -455,7 +462,7 @@
             <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
             <p class="ls-title">${r.title}</p>
             <p class="ls-year">${r.year}</p>
-            <div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>
+            <div class="ls-actions"><a href="/release/${slugify(r.title)}/">View Release</a></div>
           </div>
         </div>`).join('');
       dotsEl.innerHTML = slides.map((_, i) => `<span class="ls-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('');
@@ -484,7 +491,7 @@
     document.getElementById('music-title').textContent = `${a.name}'s Music`;
     document.getElementById('releases-grid').innerHTML = releases.length
       ? releases.map(r => `
-        <a class="rel-card" href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">
+        <a class="rel-card" href="/release/${slugify(r.title)}/">
           <div class="rel-poster">
             <img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy" />
             <div class="rel-overlay">

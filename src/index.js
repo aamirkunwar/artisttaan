@@ -10,7 +10,7 @@
 //   TEAM_EMAIL     - the inbox that should receive demo submissions, e.g. hello@artisttaanmusic.com
 //   SENDER_EMAIL   - a verified "from" address in your Brevo account, e.g. noreply@artisttaanmusic.com
 
-const BREVO_LIST_ID = 3; // your "Release Updates" list in Brevo
+const BREVO_LIST_ID = 3; // your "Release Updates" list in Brevo -- used for both newsletter signups and demo submissions
 
 export default {
   async fetch(request, env, ctx) {
@@ -54,13 +54,19 @@ export default {
       const assetRequest = new Request(assetUrl.toString(), request);
       const assetResponse = await env.ASSETS.fetch(assetRequest);
       return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin);
+    }
+
+    // Clean release URLs: /release/<slug> or /release/<slug>/ -> serve
+    // release/index.html directly (same single-page pattern as /artist/:slug/
+    // above). The Worker rewrites the meta tags server-side so search engines
+    // and link-preview bots (WhatsApp, Slack, Twitter/X, etc.) see the real
+    // song title/cover/description immediately, without executing JS.
     const releaseSlugMatch = url.pathname.match(/^\/release\/([^\/]+)\/?$/);
     if (releaseSlugMatch && releaseSlugMatch[1] !== 'index.html') {
       const assetUrl = new URL('/release/', url.origin);
       const assetRequest = new Request(assetUrl.toString(), request);
       const assetResponse = await env.ASSETS.fetch(assetRequest);
       return renderReleaseMeta(assetResponse, releaseSlugMatch[1], url.origin, env);
-    }
     }
 
     // Anything else: serve the static website files as normal.
@@ -133,12 +139,15 @@ function slugify(s) {
 }
 
 async function renderReleaseMeta(assetResponse, slug, origin, env) {
-  let release;
+  let release, artist;
   try {
     const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
     if (!dataRes.ok) return assetResponse;
     const data = await dataRes.json();
     release = (data.releases || []).find(function (r) { return slugify(r.title) === slug; });
+    if (release) {
+      artist = (data.artists || []).find(function (a) { return a.id === release.artist_id; });
+    }
   } catch (e) {
     console.error('renderReleaseMeta: could not load artists.json', e);
     return assetResponse;
@@ -152,6 +161,15 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
   const description = 'Stream "' + release.title + '" by ' + release.artist + ' (' + (release.year || '') + ') — a ' + type + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
   const image = release.cover ? origin + '/' + String(release.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
 
+  // Embed the already-fetched release (and matching artist) data directly into
+  // the page as inline JSON. Without this, the browser has to fetch and parse
+  // the ~40KB artists.json a SECOND time client-side (the Worker just fetched
+  // it above) before it can paint the cover image, title, or about text --
+  // that duplicate round trip was the main cause of the 3-4s delay before
+  // content appeared. release/index.html's script reads window.__RELEASE_DATA__
+  // first and only falls back to fetching if it's missing (e.g. local dev).
+  const inlineData = '<script>window.__RELEASE_DATA__=' + JSON.stringify({ release: release, artist: artist || null }) + ';</script>';
+
   const rewriter = new HTMLRewriter()
     .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
     .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
@@ -163,7 +181,8 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', title); } })
     .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', description); } })
     .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } })
-    .on('h1#rel-title', { element: function (el) { el.setInnerContent(release.title); } });
+    .on('h1#rel-title', { element: function (el) { el.setInnerContent(release.title); } })
+    .on('head', { element: function (el) { el.append(inlineData, { html: true }); } });
 
   return rewriter.transform(assetResponse);
 }
@@ -353,6 +372,39 @@ async function handleDemo(request, env) {
     subject: 'New Demo Submission - ' + artistName,
     htmlContent: htmlContent,
   };
+
+  // Add the submitter to the Brevo "Demo Submissions" list. This runs
+  // separately from (and doesn't block) the team-notification email below --
+  // if Brevo's contacts API hiccups, we still want the team to get the demo,
+  // so any failure here is just logged, not surfaced to the submitter.
+  try {
+    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'api-key': env.BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [BREVO_LIST_ID],
+        updateEnabled: true,
+        attributes: {
+          ARTIST_NAME: artistName,
+          INSTAGRAM: instagram,
+          DEMO_LINK: demoLink,
+        },
+      }),
+    });
+    if (!contactResponse.ok) {
+      const contactError = await contactResponse.json().catch(function () { return {}; });
+      if (contactError.code !== 'duplicate_parameter') {
+        console.error('Brevo contacts API error (demo):', contactResponse.status, contactError);
+      }
+    }
+  } catch (err) {
+    console.error('Brevo contacts add error (demo):', err);
+  }
 
   // Attach the demo file if one was uploaded, up to ~8MB.
   const file = form.get('attachment');

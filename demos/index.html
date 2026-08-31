@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Submit Your Demo | ARTISTTAAN" />
   <meta name="twitter:description" content="Send us your best work and our A&R team will get back to you within 48 hours." />
   <meta name="twitter:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/css/tailwind.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -61,31 +61,31 @@
         <p class="hidden"><label>Do not fill: <input name="bot-field" /></label></p>
         <div class="grid md:grid-cols-2 gap-8">
           <div>
-            <label class="text-caption block mb-2">Artist Name *</label>
-            <input type="text" name="artistName" required placeholder="Stage name" class="form-minimal w-full text-primary" />
+            <label for="artistName" class="text-caption block mb-2">Artist Name *</label>
+            <input type="text" id="artistName" name="artistName" required placeholder="Stage name" class="form-minimal w-full text-primary" />
           </div>
           <div>
-            <label class="text-caption block mb-2">Email *</label>
-            <input type="email" name="email" required placeholder="you@example.com" class="form-minimal w-full text-primary" />
+            <label for="demoEmail" class="text-caption block mb-2">Email *</label>
+            <input type="email" id="demoEmail" name="email" required placeholder="you@example.com" class="form-minimal w-full text-primary" />
           </div>
         </div>
         <div>
-          <label class="text-caption block mb-2">Instagram</label>
+          <label for="instagram" class="text-caption block mb-2">Instagram</label>
           <div class="relative">
             <span class="absolute left-0 bottom-4 text-muted">@</span>
-            <input type="text" name="instagram" placeholder="username" class="form-minimal w-full pl-6 text-primary" />
+            <input type="text" id="instagram" name="instagram" placeholder="username" class="form-minimal w-full pl-6 text-primary" />
           </div>
         </div>
         <div>
-          <label class="text-caption block mb-2">Demo Link (SoundCloud, Google Drive, YouTube)</label>
-          <input type="url" name="demoLink" placeholder="https://soundcloud.com/yourtrack" class="form-minimal w-full text-primary" />
+          <label for="demoLink" class="text-caption block mb-2">Demo Link (SoundCloud, Google Drive, YouTube)</label>
+          <input type="url" id="demoLink" name="demoLink" placeholder="https://soundcloud.com/yourtrack" class="form-minimal w-full text-primary" />
         </div>
         <div>
-          <label class="text-caption block mb-2">About You *</label>
-          <textarea name="about" required rows="3" placeholder="Tell us about your sound, influences, and what makes you unique..." class="form-minimal w-full text-primary resize-none"></textarea>
+          <label for="about" class="text-caption block mb-2">About You *</label>
+          <textarea id="about" name="about" required rows="3" placeholder="Tell us about your sound, influences, and what makes you unique..." class="form-minimal w-full text-primary resize-none"></textarea>
         </div>
         <div>
-          <label class="text-caption block mb-2">Demo File <span class="text-muted font-normal">(optional)</span></label>
+          <label for="demoFile" class="text-caption block mb-2">Demo File <span class="text-muted font-normal">(optional)</span></label>
           <div class="relative border border-subtle p-8 text-center hover:border-dark transition cursor-pointer group" id="fileDropZone">
             <input type="file" name="attachment" accept=".mp3,.wav,.zip,audio/mpeg,audio/wav" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="demoFile" />
             <p class="text-sm text-secondary group-hover:text-primary transition"><span class="font-medium underline underline-offset-4">Click to upload</span> or drag and drop</p>

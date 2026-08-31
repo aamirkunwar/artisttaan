@@ -1,0 +1,13 @@
+{
+  "name": "artisttaanmusic",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/tailwind-src.css -o ./assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/tailwind-src.css -o ./assets/css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "tailwindcss": "^3.4.19",
+    "terser": "^5.51.2"
+  }
+}
