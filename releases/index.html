@@ -133,6 +133,11 @@ function assetPath(p) {
   return '../' + String(p).replace(/^\/+/, '');
 }
 
+function slugify(s) {
+  if (!s) return '';
+  return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 function initLatestSlideshow(){
   const slides=releases.slice(0,6);
   const track=document.getElementById('ls-track');
@@ -148,7 +153,7 @@ function initLatestSlideshow(){
         <p class="ls-title">${r.title}</p>
         <p class="ls-artist">${r.artist}</p>
         <p class="ls-year">${r.year}</p>
-        ${r.spotify_url && r.spotify_url !== '#' ? `<div class="ls-actions"><a href="${r.spotify_url}" target="_blank" rel="noopener noreferrer">Listen on Spotify</a></div>` : ''}
+        <div class="ls-actions"><a href="../release/${slugify(r.title)}/">View Release</a></div>
       </div>
     </div>`).join('');
   dotsEl.innerHTML=slides.map((_,i)=>`<span class="ls-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
@@ -185,9 +190,10 @@ function render(){
   document.getElementById('release-count').textContent=filtered.length+' releases';
   if(!filtered.length){grid.innerHTML='<div class="no-results">No releases found.</div>';return;}
   grid.innerHTML=filtered.map(r=>{
-    const hasLink = r.spotify_url && r.spotify_url !== '#';
+    const slug = slugify(r.title);
+    const hasLink = !!slug;
     const tag = hasLink ? 'a' : 'div';
-    const attrs = hasLink ? `href="${r.spotify_url}" target="_blank" rel="noopener noreferrer"` : 'aria-disabled="true"';
+    const attrs = hasLink ? `href="../release/${slug}/"` : 'aria-disabled="true"';
     return `
     <${tag} class="release-card${hasLink ? '' : ' release-card-noLink'}" ${attrs}>
       <div class="poster">

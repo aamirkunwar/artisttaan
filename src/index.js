@@ -38,13 +38,211 @@ export default {
       // exactly what was sending every visitor back to the bare /artist/ URL.
       const assetUrl = new URL('/artist/', url.origin);
       const assetRequest = new Request(assetUrl.toString(), request);
-      return env.ASSETS.fetch(assetRequest);
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      return renderArtistMeta(assetResponse, artistSlugMatch[1], url.origin, env);
+    }
+
+    // Clean culture-article URLs: /culture/<slug> or /culture/<slug>/ -> serve
+    // culture/index.html directly (same single-page pattern as /artist/:slug/
+    // above). "posts" is reserved since that's the real folder the raw .md
+    // files live in (e.g. /culture/posts/my-post.md) -- that path has two
+    // segments after /culture/ so this regex won't match it anyway, but it's
+    // excluded explicitly for clarity.
+    const cultureSlugMatch = url.pathname.match(/^\/culture\/([^\/]+)\/?$/);
+    if (cultureSlugMatch && cultureSlugMatch[1] !== 'index.html' && cultureSlugMatch[1] !== 'posts') {
+      const assetUrl = new URL('/culture/', url.origin);
+      const assetRequest = new Request(assetUrl.toString(), request);
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin);
+    }
+
+    // Clean release URLs: /release/<slug> or /release/<slug>/ -> serve
+    // release/index.html directly (same single-page pattern as /artist/:slug/
+    // above). The Worker rewrites the meta tags server-side so search engines
+    // and link-preview bots (WhatsApp, Slack, Twitter/X, etc.) see the real
+    // song title/cover/description immediately, without executing JS.
+    const releaseSlugMatch = url.pathname.match(/^\/release\/([^\/]+)\/?$/);
+    if (releaseSlugMatch && releaseSlugMatch[1] !== 'index.html') {
+      const assetUrl = new URL('/release/', url.origin);
+      const assetRequest = new Request(assetUrl.toString(), request);
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      return renderReleaseMeta(assetResponse, releaseSlugMatch[1], url.origin, env);
     }
 
     // Anything else: serve the static website files as normal.
     return env.ASSETS.fetch(request);
   },
 };
+
+// ---------- Server-rendered artist meta tags ----------
+//
+// artist/index.html ships with empty <title>/meta description/canonical/OG
+// tags and fills them in client-side via JS once artists.json loads. That's
+// invisible to anything that doesn't execute JS -- notably link-preview bots
+// (WhatsApp, iMessage, Instagram, Twitter/X, Slack) and it's also slower for
+// search engines than plain HTML. This rewrites those tags (and the visible
+// <h1> artist name) server-side before the response ever reaches the client,
+// using Cloudflare's streaming HTMLRewriter so we don't have to buffer or
+// re-parse the whole page. The client-side JS still runs afterwards and sets
+// the same values again, so nothing changes if this ever fails open.
+async function renderArtistMeta(assetResponse, slug, origin, env) {
+  let artist;
+  try {
+    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
+    if (!dataRes.ok) return assetResponse;
+    const data = await dataRes.json();
+    artist = (data.artists || []).find(function (a) { return a.id === slug; });
+  } catch (e) {
+    console.error('renderArtistMeta: could not load artists.json', e);
+    return assetResponse;
+  }
+
+  if (!artist) return assetResponse; // Unknown slug -- let the client-side "Artist not found" state handle it.
+
+  const pageUrl = origin + '/artist/' + artist.id + '/';
+  const title = artist.name + ' — ARTISTTAAN';
+  const ogTitle = artist.name + ' | ARTISTTAAN';
+  const description = artist.full_bio || artist.bio || '';
+  const shortDescription = artist.bio || description;
+  const image = artist.square_photo ? origin + '/' + String(artist.square_photo).replace(/^\/+/, '') : '';
+
+  const rewriter = new HTMLRewriter()
+    .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
+    .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('link#canonical-url', { element: function (el) { el.setAttribute('href', pageUrl); } })
+    .on('meta#og-url', { element: function (el) { el.setAttribute('content', pageUrl); } })
+    .on('meta#og-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#og-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
+    .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
+    .on('h1#hero-name', { element: function (el) { el.setInnerContent(artist.name); } });
+
+  if (image) {
+    rewriter
+      .on('meta#og-image', { element: function (el) { el.setAttribute('content', image); } })
+      .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } });
+  }
+
+  return rewriter.transform(assetResponse);
+}
+
+// ---------- Server-rendered release meta tags ----------
+//
+// Same pattern as renderArtistMeta above: release/index.html is a single
+// dynamic template that fills in title/description/OG tags via client-side
+// JS once artists.json loads. This rewrites those tags server-side first,
+// matching the release by slugifying each release's title the same way the
+// client-side JS and the Releases-grid links already do.
+function slugify(s) {
+  if (!s) return '';
+  return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+async function renderReleaseMeta(assetResponse, slug, origin, env) {
+  let release;
+  try {
+    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
+    if (!dataRes.ok) return assetResponse;
+    const data = await dataRes.json();
+    release = (data.releases || []).find(function (r) { return slugify(r.title) === slug; });
+  } catch (e) {
+    console.error('renderReleaseMeta: could not load artists.json', e);
+    return assetResponse;
+  }
+
+  if (!release) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
+
+  const pageUrl = origin + '/release/' + slug + '/';
+  const type = (release.type || 'release').toLowerCase();
+  const title = release.title + ' by ' + release.artist + ' | ARTISTTAAN';
+  const description = 'Stream "' + release.title + '" by ' + release.artist + ' (' + (release.year || '') + ') — a ' + type + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
+  const image = release.cover ? origin + '/' + String(release.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
+
+  const rewriter = new HTMLRewriter()
+    .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
+    .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('link#canonical-url', { element: function (el) { el.setAttribute('href', pageUrl); } })
+    .on('meta#og-url', { element: function (el) { el.setAttribute('content', pageUrl); } })
+    .on('meta#og-title', { element: function (el) { el.setAttribute('content', title); } })
+    .on('meta#og-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('meta#og-image', { element: function (el) { el.setAttribute('content', image); } })
+    .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', title); } })
+    .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } })
+    .on('h1#rel-title', { element: function (el) { el.setInnerContent(release.title); } });
+
+  return rewriter.transform(assetResponse);
+}
+
+// ---------- Server-rendered culture-article meta tags ----------
+//
+// culture/index.html used to route articles through a #hash, which the
+// server (and search engines, and link-preview bots) never sees, and even
+// after switching to real /culture/<slug>/ paths, the raw HTML for that path
+// still starts out as the generic "Culture" page until client-side JS loads
+// the article and rewrites the tags. This does the same rewrite server-side,
+// before the response leaves the Worker, by pulling the post's frontmatter
+// straight from GitHub (the same source of truth the CMS commits to, so a
+// newly-published post gets correct tags immediately without a redeploy).
+const CULTURE_REPO_OWNER = 'aamirkunwar';
+const CULTURE_REPO_NAME = 'artisttaan';
+const CULTURE_REPO_BRANCH = 'main';
+
+function parseFrontMatter(text) {
+  const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!match) return { meta: {}, body: text };
+  const meta = {};
+  match[1].split('\n').forEach(function (line) {
+    const i = line.indexOf(':');
+    if (i === -1) return;
+    const key = line.slice(0, i).trim();
+    const val = line.slice(i + 1).trim().replace(/^['"]|['"]$/g, '');
+    meta[key] = val;
+  });
+  const excerptMatch = match[1].match(/excerpt:\s*>-\n([\s\S]*?)(?=\n\w|$)/);
+  if (excerptMatch) meta.excerpt = excerptMatch[1].replace(/^\s{2}/gm, '').replace(/\n/g, ' ').trim();
+  return { meta: meta, body: match[2].trim() };
+}
+
+async function renderCultureMeta(assetResponse, slug, origin) {
+  // Guard against a malicious/odd slug being used to build the GitHub URL.
+  if (!/^[A-Za-z0-9._-]+$/.test(slug)) return assetResponse;
+
+  let meta;
+  try {
+    const rawUrl =
+      'https://raw.githubusercontent.com/' + CULTURE_REPO_OWNER + '/' + CULTURE_REPO_NAME +
+      '/' + CULTURE_REPO_BRANCH + '/culture/posts/' + slug + '.md';
+    const res = await fetch(rawUrl);
+    if (!res.ok) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
+    const text = await res.text();
+    meta = parseFrontMatter(text).meta;
+  } catch (e) {
+    console.error('renderCultureMeta: could not load post from GitHub', e);
+    return assetResponse;
+  }
+
+  if (!meta || !meta.title) return assetResponse;
+
+  const pageUrl = origin + '/culture/' + slug + '/';
+  const title = meta.title + ' — ARTISTTAAN';
+  const ogTitle = meta.title + ' | ARTISTTAAN';
+  const description = meta.excerpt || "Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground.";
+  const image = meta.cover ? origin + '/' + String(meta.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
+
+  return new HTMLRewriter()
+    .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
+    .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('link#canonical-url', { element: function (el) { el.setAttribute('href', pageUrl); } })
+    .on('meta#og-url', { element: function (el) { el.setAttribute('content', pageUrl); } })
+    .on('meta#og-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#og-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('meta#og-image', { element: function (el) { el.setAttribute('content', image); } })
+    .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } })
+    .transform(assetResponse);
+}
 
 function jsonResponse(obj, status) {
   return new Response(JSON.stringify(obj), {

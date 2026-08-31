@@ -10,7 +10,7 @@
       "monthly_listeners": "103,560",
       "featured": true,
       "square_photo": "assets/images/artists/abir-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/abir/",
+      "apple_music_url": "https://music.apple.com/in/artist/abir/1509067765",
       "genres": [
         "Pop",
         "R&B"
@@ -42,7 +42,7 @@
       "monthly_listeners": "—",
       "featured": true,
       "square_photo": "assets/images/artists/shrey-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/shrey/",
+      "apple_music_url": "https://music.apple.com/in/artist/shrey/1485842716",
       "genres": [
         "Hip-Hop"
       ],
@@ -72,7 +72,7 @@
       "monthly_listeners": "—",
       "featured": false,
       "square_photo": "assets/images/artists/slay-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/slay/",
+      "apple_music_url": "https://music.apple.com/in/artist/slay/1638763358",
       "genres": [
         "Hip-Hop"
       ],
@@ -102,7 +102,7 @@
       "monthly_listeners": "22,656",
       "featured": false,
       "square_photo": "assets/images/artists/apoorvv-square.jpg",
-      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/",
+      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/1773371021",
       "genres": [
         "Pop",
         "Indie"
@@ -172,7 +172,8 @@
       "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
       "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
       "cover": "/assets/images/namaskar.jpg",
-      "type": "single"
+      "type": "single",
+      "lyrics": "Namaskar, namaskar\nThis is just a sample line to test rendering\nSecond line here\n\nThird line after a blank line"
     },
     {
       "title": "Mila Tu",

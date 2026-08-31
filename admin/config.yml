@@ -74,6 +74,7 @@ collections:
               - { label: Spotify Embed URL, name: spotify_embed, widget: string, required: false,
                   hint: "Same as Spotify URL but with '/embed' after open.spotify.com — e.g. https://open.spotify.com/embed/track/..." }
               - { label: Cover Image, name: cover, widget: image, required: false, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
+              - { label: Lyrics, name: lyrics, widget: text, required: false, hint: "Optional. Paste the full lyrics here — line breaks are preserved on the release page. Leave blank to hide the Lyrics section." }
 
           - label: Artists
             name: artists

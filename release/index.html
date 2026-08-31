@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Release | ARTISTTAAN</title>
+  <meta name="description" id="meta-description" content=""/>
+  <link rel="canonical" id="canonical-url" href="" />
+  <meta property="og:type" content="music.song" />
+  <meta property="og:site_name" content="ARTISTTAAN" />
+  <meta property="og:url" id="og-url" content="" />
+  <meta property="og:title" id="og-title" content="" />
+  <meta property="og:description" id="og-description" content="" />
+  <meta property="og:image" id="og-image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="twitter-title" content="" />
+  <meta name="twitter:description" id="twitter-description" content="" />
+  <meta name="twitter:image" id="twitter-image" content="" />
+  <link rel="icon" type="image/png" href="/assets/images/logo/logo-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json" id="ld-json"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:#fafaf8;color:#0a0a0a;font-family:'Inter',sans-serif;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo img{height:32px;width:auto}
+    .nav-links{display:flex;gap:28px}
+    .nav-links a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;color:#888;transition:color 0.2s}
+    .nav-links a:hover,.nav-links a.active{color:#0a0a0a}
+    .wrap{max-width:900px;margin:0 auto;padding:100px 32px 60px}
+    .crumb{font-size:11px;color:#888;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px}
+    .crumb:hover{color:#000}
+    .release-hero{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin-bottom:36px}
+    .cover{width:280px;height:280px;object-fit:cover;background:#1a1a1a;border-radius:6px}
+    .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#888;background:#f0f0ed;padding:4px 10px;border-radius:2px;width:fit-content;margin-bottom:14px;display:inline-block}
+    h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:10px}
+    .by{font-size:16px;color:#555;margin-bottom:6px}
+    .by a{color:#0a0a0a;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc}
+    .by a:hover{border-color:#000}
+    .year{font-size:12px;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px}
+    .listen-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#0a0a0a;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:3px;transition:opacity 0.2s}
+    .listen-btn:hover{opacity:0.85}
+    .embed-wrap{margin:28px 0;border-radius:12px;overflow:hidden}
+    .about{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5}
+    .about h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
+    .about p{font-size:15px;line-height:1.7;color:#333;max-width:640px}
+    .lyrics{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5;display:none}
+    .lyrics h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
+    .lyrics p{font-size:15px;line-height:1.9;color:#222;max-width:640px;white-space:pre-line}
+    .more{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5;display:flex;gap:24px;flex-wrap:wrap}
+    .more a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0a0a0a;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .more a:hover{text-decoration:underline}
+    .not-found{text-align:center;padding:140px 20px;font-size:14px;color:#888}
+    footer{background:#0a0a0a;color:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:space-between}
+    footer p{font-size:12px;color:#555}
+    footer a{font-size:12px;color:#555;text-decoration:none;transition:color 0.2s}
+    footer a:hover{color:#fff}
+    @media(max-width:640px){
+      nav{padding:0 16px}
+      .wrap{padding:88px 16px 40px}
+      .release-hero{grid-template-columns:1fr;gap:20px}
+      .cover{width:100%;height:auto;aspect-ratio:1}
+      footer{flex-direction:column;gap:12px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
+  <div class="nav-links">
+    <a href="/artists/">Artists</a>
+    <a href="/releases/" class="active">Releases</a>
+    <a href="/videos/">Videos</a>
+    <a href="/culture/">Culture</a>
+    <a href="/demos/">Submit Demo</a>
+  </div>
+</nav>
+<div id="page-content">
+  <div class="wrap">
+    <a href="/releases/" class="crumb">&#8592; All Releases</a>
+    <div class="release-hero">
+      <img class="cover" id="rel-cover" src="" alt="" loading="lazy"/>
+      <div>
+        <span class="tag" id="rel-type"></span>
+        <h1 id="rel-title"></h1>
+        <p class="by">By <span id="rel-artist"></span></p>
+        <p class="year" id="rel-year"></p>
+        <div id="rel-listen"></div>
+      </div>
+    </div>
+    <div class="embed-wrap" id="rel-embed"></div>
+    <div class="about">
+      <h2>About this release</h2>
+      <p id="rel-about"></p>
+    </div>
+    <div class="lyrics" id="lyrics-section">
+      <h2>Lyrics</h2>
+      <p id="lyrics-text"></p>
+    </div>
+    <div class="more" id="rel-more">
+      <a href="/releases/">Browse all releases &#8594;</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2026 ARTISTTAAN &middot; All Rights Reserved</p>
+  <a href="/">&#8592; Back to ARTISTTAAN</a>
+</footer>
+<script>
+  // Supports /release/<slug>/ (canonical) — slug is derived from the release title.
+  const pathParts = window.location.pathname.split('/').filter(Boolean); // ['release','namaskar']
+  const releaseSlug = (pathParts[0] === 'release' && pathParts[1]) ? pathParts[1] : null;
+
+  function slugify(s) {
+    if (!s) return '';
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function assetPath(p) {
+    if (!p) return '';
+    return '/' + String(p).replace(/^\/+/, '');
+  }
+
+  async function init() {
+    try {
+      const res = await fetch('/assets/data/artists.json');
+      const data = await res.json();
+      const releases = data.releases || [];
+      const artists = data.artists || [];
+      const r = releases.find(function (x) { return slugify(x.title) === releaseSlug; });
+      if (!r) {
+        document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
+        return;
+      }
+      render(r, artists);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function render(r, artists) {
+    const year = r.year || '';
+    const type = r.type || 'Release';
+    const typeLower = type.toLowerCase();
+    const pageUrl = 'https://artisttaanmusic.com/release/' + slugify(r.title) + '/';
+    const description = 'Stream "' + r.title + '" by ' + r.artist + ' (' + year + ') — a ' + typeLower + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
+    const coverAbs = r.cover ? 'https://artisttaanmusic.com' + assetPath(r.cover) : 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg';
+
+    document.getElementById('page-title').textContent = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('meta-description').content = description;
+    document.getElementById('canonical-url').href = pageUrl;
+    document.getElementById('og-url').content = pageUrl;
+    document.getElementById('og-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('og-description').content = description;
+    document.getElementById('og-image').content = coverAbs;
+    document.getElementById('twitter-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('twitter-description').content = description;
+    document.getElementById('twitter-image').content = coverAbs;
+    document.getElementById('ld-json').textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MusicRecording',
+      'name': r.title,
+      'byArtist': { '@type': 'MusicGroup', 'name': r.artist },
+      'datePublished': year,
+      'image': coverAbs,
+      'url': pageUrl
+    });
+
+    document.getElementById('rel-cover').src = assetPath(r.cover);
+    document.getElementById('rel-cover').alt = r.title + ' cover art';
+    document.getElementById('rel-type').textContent = type;
+    document.getElementById('rel-title').textContent = r.title;
+    document.getElementById('rel-year').textContent = year;
+
+    const artist = artists.find(function (a) { return a.id === r.artist_id; });
+    const artistEl = document.getElementById('rel-artist');
+    if (artist) {
+      artistEl.innerHTML = '<a href="/artist/' + artist.id + '/">' + r.artist + '</a>';
+    } else {
+      artistEl.textContent = r.artist;
+    }
+
+    if (r.spotify_url && r.spotify_url !== '#') {
+      document.getElementById('rel-listen').innerHTML = '<a class="listen-btn" href="' + r.spotify_url + '" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>';
+    }
+
+    if (r.spotify_embed) {
+      document.getElementById('rel-embed').innerHTML = '<iframe style="border-radius:12px" src="' + r.spotify_embed + '" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+    }
+
+    document.getElementById('rel-about').textContent = '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
+
+    if (r.lyrics && r.lyrics.trim()) {
+      document.getElementById('lyrics-text').textContent = r.lyrics.trim();
+      document.getElementById('lyrics-section').style.display = 'block';
+    }
+
+    if (artist) {
+      const moreEl = document.getElementById('rel-more');
+      moreEl.insertAdjacentHTML('afterbegin', '<a href="/artist/' + artist.id + '/">More from ' + r.artist + ' &#8594;</a>');
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Culture — ARTISTTAAN</title>
-  <meta name="description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
-  <link rel="canonical" href="https://artisttaanmusic.com/culture/" />
-  <meta property="og:url" content="https://artisttaanmusic.com/culture/" />
-  <meta property="og:title" content="Culture | ARTISTTAAN" />
-  <meta property="og:description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
-  <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <!--
+    Articles now live at real URLs like /culture/<slug>/ instead of
+    /culture/#<slug>, so the browser resolves every relative link/image/asset
+    on this page (nav links, logo, favicon) against THAT path, not against
+    /culture/ where the actual file lives -- breaking the logo, nav, and any
+    relative article cover image. <base> pins relative-URL resolution back to
+    /culture/ regardless of which slug is in the address bar.
+  -->
+  <base href="/culture/" />
+  <title id="page-title">Culture — ARTISTTAAN</title>
+  <meta name="description" id="meta-description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
+  <link rel="canonical" id="canonical-url" href="https://artisttaanmusic.com/culture/" />
+  <meta property="og:site_name" content="ARTISTTAAN" />
+  <meta property="og:url" id="og-url" content="https://artisttaanmusic.com/culture/" />
+  <meta property="og:title" id="og-title" content="Culture | ARTISTTAAN" />
+  <meta property="og:description" id="og-description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
+  <meta property="og:image" id="og-image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="twitter-title" content="Culture | ARTISTTAAN" />
+  <meta name="twitter:description" id="twitter-description" content="Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground." />
+  <meta name="twitter:image" id="twitter-image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
   <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -224,7 +238,7 @@
       // Sort by date descending
       allArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date));
       renderAll();
-      checkHash();
+      checkInitialRoute();
     } catch (err) {
       console.error(err);
       showError();
@@ -282,7 +296,7 @@
         <h2 class="hero-headline">${hero.title}</h2>
         <p class="hero-excerpt">${hero.excerpt || ''}</p>
         <div class="hero-meta">${formatDate(hero.date)} · ${hero.author || 'ARTISTTAAN'}</div>
-        <a href="#" class="read-more" onclick="event.preventDefault();openArticle('${hero.slug}')">Read More →</a>
+        <a href="/culture/${hero.slug}/" class="read-more" onclick="event.preventDefault();openArticle('${hero.slug}')">Read More →</a>
       </div>`;
 
     // GRID — next 6 articles
@@ -293,7 +307,7 @@
       grid.style.display = 'none';
     } else {
       grid.innerHTML = gridArticles.map(a => `
-        <a class="article-card" href="#" onclick="event.preventDefault();openArticle('${a.slug}')">
+        <a class="article-card" href="/culture/${a.slug}/" onclick="event.preventDefault();openArticle('${a.slug}')">
           <div class="card-img">
             ${a.cover ? `<img src="${a.cover.startsWith('/') ? '..' + a.cover : '../' + a.cover}" alt="${a.title}" />` : `<div class="placeholder-art" style="background:${placeholderBg(a.type)}">${(a.artist||'AT').toUpperCase()}</div>`}
           </div>
@@ -311,31 +325,67 @@
       moreEl.innerHTML = '<p style="font-size:13px;color:var(--gray);">More stories coming soon.</p>';
     } else {
       moreEl.innerHTML = more.map(a => `
-        <div class="sidebar-item" onclick="openArticle('${a.slug}')">
+        <a class="sidebar-item" style="display:block;text-decoration:none;color:inherit;" href="/culture/${a.slug}/" onclick="event.preventDefault();openArticle('${a.slug}')">
           <span class="tag ${tagColor(a.type)}" style="font-size:9px;padding:3px 8px;">${a.type === 'update' ? 'Update' : a.type.charAt(0).toUpperCase() + a.type.slice(1)}</span>
           <p class="s-title">${a.title}</p>
           <p class="s-meta">${formatDate(a.date)} · ${a.author || 'ARTISTTAAN'}</p>
-        </div>`).join('');
+        </a>`).join('');
     }
 
     // SIDEBAR — latest 4
     const sidebar = allArticles.slice(0, 4);
     document.getElementById('sidebar-updates').innerHTML = sidebar.map(a => `
-      <div class="sidebar-item" onclick="openArticle('${a.slug}')">
+      <a class="sidebar-item" style="display:block;text-decoration:none;color:inherit;" href="/culture/${a.slug}/" onclick="event.preventDefault();openArticle('${a.slug}')">
         <span class="tag ${tagColor(a.type)}" style="font-size:9px;padding:3px 8px;">${a.type === 'update' ? 'Update' : a.type.charAt(0).toUpperCase() + a.type.slice(1)}</span>
         <p class="s-title">${a.title}</p>
         <p class="s-meta">${formatDate(a.date)} · ${a.author || 'ARTISTTAAN'}</p>
-      </div>`).join('');
+      </a>`).join('');
 
     document.getElementById('two-col').style.display = 'grid';
   }
 
-  function openArticle(slug) {
+  const DEFAULT_META = {
+    title: 'Culture — ARTISTTAAN',
+    ogTitle: 'Culture | ARTISTTAAN',
+    description: "Interviews, articles, and hip-hop updates from ARTISTTAAN. The voice of India's underground.",
+    url: 'https://artisttaanmusic.com/culture/',
+    image: 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg',
+  };
+
+  function setMeta({ title, ogTitle, description, url, image }) {
+    document.getElementById('page-title').textContent = title;
+    document.getElementById('meta-description').content = description;
+    document.getElementById('canonical-url').href = url;
+    document.getElementById('og-url').content = url;
+    document.getElementById('og-title').content = ogTitle;
+    document.getElementById('og-description').content = description;
+    document.getElementById('og-image').content = image;
+    document.getElementById('twitter-title').content = ogTitle;
+    document.getElementById('twitter-description').content = description;
+    document.getElementById('twitter-image').content = image;
+  }
+
+  function articleMeta(article) {
+    const image = article.cover
+      ? 'https://artisttaanmusic.com' + (article.cover.startsWith('/') ? article.cover : '/' + article.cover)
+      : DEFAULT_META.image;
+    return {
+      title: `${article.title} — ARTISTTAAN`,
+      ogTitle: `${article.title} | ARTISTTAAN`,
+      description: article.excerpt || DEFAULT_META.description,
+      url: `https://artisttaanmusic.com/culture/${article.slug}/`,
+      image,
+    };
+  }
+
+  function openArticle(slug, opts) {
     const article = allArticles.find(a => a.slug === slug);
     if (!article) return;
 
-    // Update URL hash so article has its own shareable link
-    window.location.hash = slug;
+    // Give the article a real, shareable, indexable URL instead of a hash.
+    const push = !opts || opts.pushState !== false;
+    if (push) history.pushState({ slug }, '', `/culture/${slug}/`);
+    setMeta(articleMeta(article));
 
     document.getElementById('masthead').style.display = 'none';
     document.getElementById('filter-bar').style.display = 'none';
@@ -401,23 +451,43 @@
     });
   }
 
-  // Handle hash on page load (direct article link)
-  function checkHash() {
-    const hash = window.location.hash.slice(1);
-    if (hash && allArticles.length > 0) {
-      const article = allArticles.find(a => a.slug === hash);
-      if (article) openArticle(hash);
+  // Handle a direct link on page load: prefer the real path (/culture/<slug>/),
+  // but still honor old-style #hash links so previously shared links keep working.
+  function checkInitialRoute() {
+    if (allArticles.length === 0) return;
+    const pathSlug = window.location.pathname.match(/^\/culture\/([^\/]+)\/?$/);
+    const slug = (pathSlug && pathSlug[1]) || window.location.hash.slice(1);
+    if (!slug) return;
+    const article = allArticles.find(a => a.slug === slug);
+    if (article) {
+      // Don't push a new history entry for a route we're already on.
+      openArticle(slug, { pushState: !pathSlug });
     }
   }
 
   document.getElementById('back-btn').addEventListener('click', () => {
-    window.location.hash = '';
-    history.pushState('', document.title, window.location.pathname);
+    history.pushState(null, '', '/culture/');
+    setMeta(DEFAULT_META);
     document.getElementById('masthead').style.display = 'block';
     document.getElementById('filter-bar').style.display = 'flex';
     document.getElementById('main-layout').style.display = 'block';
     document.getElementById('article-page').style.display = 'none';
     window.scrollTo(0, 0);
+  });
+
+  // Browser back/forward buttons
+  window.addEventListener('popstate', () => {
+    const pathSlug = window.location.pathname.match(/^\/culture\/([^\/]+)\/?$/);
+    if (pathSlug && pathSlug[1]) {
+      openArticle(pathSlug[1], { pushState: false });
+    } else {
+      setMeta(DEFAULT_META);
+      document.getElementById('masthead').style.display = 'block';
+      document.getElementById('filter-bar').style.display = 'flex';
+      document.getElementById('main-layout').style.display = 'block';
+      document.getElementById('article-page').style.display = 'none';
+      window.scrollTo(0, 0);
+    }
   });
 
   function showError() {
