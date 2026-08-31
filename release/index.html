@@ -80,7 +80,7 @@
   <div class="wrap">
     <a href="/releases/" class="crumb">&#8592; All Releases</a>
     <div class="release-hero">
-      <img class="cover" id="rel-cover" src="" alt="" loading="lazy"/>
+      <img class="cover" id="rel-cover" src="" alt="" fetchpriority="high"/>
       <div>
         <span class="tag" id="rel-type"></span>
         <h1 id="rel-title"></h1>
@@ -123,6 +123,16 @@
   }
 
   async function init() {
+    // The Worker (src/index.js) already looks up this release server-side to
+    // rewrite the meta tags, and embeds the result as window.__RELEASE_DATA__.
+    // Use that directly so the browser doesn't have to fetch and parse the
+    // ~40KB artists.json a second time -- that duplicate fetch was the main
+    // cause of the delay before the cover image and "about" text appeared.
+    // Falls back to fetching (e.g. local dev without the Worker) if it's missing.
+    if (window.__RELEASE_DATA__ && window.__RELEASE_DATA__.release) {
+      render(window.__RELEASE_DATA__.release, window.__RELEASE_DATA__.artist ? [window.__RELEASE_DATA__.artist] : []);
+      return;
+    }
     try {
       const res = await fetch('/assets/data/artists.json');
       const data = await res.json();
