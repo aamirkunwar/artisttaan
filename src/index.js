@@ -10,7 +10,7 @@
 //   TEAM_EMAIL     - the inbox that should receive demo submissions, e.g. hello@artisttaanmusic.com
 //   SENDER_EMAIL   - a verified "from" address in your Brevo account, e.g. noreply@artisttaanmusic.com
 
-const BREVO_LIST_ID = 3; // your "Release Updates" list in Brevo
+const BREVO_LIST_ID = 3; // your "Release Updates" list in Brevo -- used for both newsletter signups and demo submissions
 
 export default {
   async fetch(request, env, ctx) {
@@ -372,6 +372,39 @@ async function handleDemo(request, env) {
     subject: 'New Demo Submission - ' + artistName,
     htmlContent: htmlContent,
   };
+
+  // Add the submitter to the Brevo "Demo Submissions" list. This runs
+  // separately from (and doesn't block) the team-notification email below --
+  // if Brevo's contacts API hiccups, we still want the team to get the demo,
+  // so any failure here is just logged, not surfaced to the submitter.
+  try {
+    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'api-key': env.BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [BREVO_LIST_ID],
+        updateEnabled: true,
+        attributes: {
+          ARTIST_NAME: artistName,
+          INSTAGRAM: instagram,
+          DEMO_LINK: demoLink,
+        },
+      }),
+    });
+    if (!contactResponse.ok) {
+      const contactError = await contactResponse.json().catch(function () { return {}; });
+      if (contactError.code !== 'duplicate_parameter') {
+        console.error('Brevo contacts API error (demo):', contactResponse.status, contactError);
+      }
+    }
+  } catch (err) {
+    console.error('Brevo contacts add error (demo):', err);
+  }
 
   // Attach the demo file if one was uploaded, up to ~8MB.
   const file = form.get('attachment');
