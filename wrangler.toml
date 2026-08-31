@@ -2,11 +2,9 @@ name = "long-forest-4c2a"
 compatibility_date = "2026-08-19"
 main = "src/index.js"
 
+keep_vars = true
+
 [assets]
 directory = "."
 binding = "ASSETS"
-# Force our Worker code to run for anything under /artist/, instead of
-# letting Cloudflare's static-asset router handle it first. Without this,
-# Cloudflare's own routing intercepts /artist/<slug>/ before our fetch()
-# handler ever runs, and 307-redirects it to bare /artist/.
 run_worker_first = ["/artist/*", "/culture/*", "/release/*"]

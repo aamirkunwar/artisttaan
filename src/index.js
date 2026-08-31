@@ -54,19 +54,13 @@ export default {
       const assetRequest = new Request(assetUrl.toString(), request);
       const assetResponse = await env.ASSETS.fetch(assetRequest);
       return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin);
-    }
-
-    // Clean release URLs: /release/<slug> or /release/<slug>/ -> serve
-    // release/index.html directly (same single-page pattern as /artist/:slug/
-    // above). The Worker rewrites the meta tags server-side so search engines
-    // and link-preview bots (WhatsApp, Slack, Twitter/X, etc.) see the real
-    // song title/cover/description immediately, without executing JS.
     const releaseSlugMatch = url.pathname.match(/^\/release\/([^\/]+)\/?$/);
     if (releaseSlugMatch && releaseSlugMatch[1] !== 'index.html') {
       const assetUrl = new URL('/release/', url.origin);
       const assetRequest = new Request(assetUrl.toString(), request);
       const assetResponse = await env.ASSETS.fetch(assetRequest);
       return renderReleaseMeta(assetResponse, releaseSlugMatch[1], url.origin, env);
+    }
     }
 
     // Anything else: serve the static website files as normal.
