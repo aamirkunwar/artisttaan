@@ -365,12 +365,25 @@ async function handleDemo(request, env) {
     '<p><strong>Demo Link:</strong> ' + escapeHtml(demoLink) + '</p>' +
     '<p><strong>About:</strong><br>' + escapeHtml(about).replace(/\n/g, '<br>') + '</p>';
 
+  // A plain-text alternative alongside the HTML body. Spam filters commonly
+  // score HTML-only emails (no text/plain part) as more suspicious, so this
+  // is a small deliverability improvement, not just a fallback for old
+  // email clients.
+  const textContent =
+    'New Demo Submission\n\n' +
+    'Artist Name: ' + artistName + '\n' +
+    'Email: ' + email + '\n' +
+    'Instagram: @' + instagram + '\n' +
+    'Demo Link: ' + demoLink + '\n\n' +
+    'About:\n' + about;
+
   const emailPayload = {
     sender: { email: env.SENDER_EMAIL, name: 'ARTISTTAAN Website' },
     to: [{ email: env.TEAM_EMAIL }],
     replyTo: { email: email, name: artistName },
     subject: 'New Demo Submission - ' + artistName,
     htmlContent: htmlContent,
+    textContent: textContent,
   };
 
   // Add the submitter to the Brevo "Demo Submissions" list. This runs
