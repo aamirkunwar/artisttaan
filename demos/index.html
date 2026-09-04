@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Submit Your Demo | ARTISTTAAN - India's Hip-Hop & Indie Music Label</title>
-  <meta name="description" content="Submit your demo to ARTISTTAAN. Send us your best work and our A&R team will get back to you within 48 hours." />
+  <meta name="description" content="Submit your demo to ARTISTTAAN. Send us your best work and our A&R team will get back to you within one week." />
   <meta name="keywords" content="submit demo, ARTISTTAAN A&R, send music, Indian music label, indie hip-hop demo submission" />
   <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
   <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png" />
@@ -14,10 +14,10 @@
   <meta property="og:url" content="https://artisttaanmusic.com/demos/" />
   <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
   <meta property="og:title" content="Submit Your Demo | ARTISTTAAN" />
-  <meta property="og:description" content="Think you've got what it takes? Send us your best work and our team will get back to you within 48 hours." />
+  <meta property="og:description" content="Think you've got what it takes? Send us your best work and our team will get back to you within one week." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Submit Your Demo | ARTISTTAAN" />
-  <meta name="twitter:description" content="Send us your best work and our A&R team will get back to you within 48 hours." />
+  <meta name="twitter:description" content="Send us your best work and our A&R team will get back to you within one week." />
   <meta name="twitter:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
   <link rel="stylesheet" href="../assets/css/tailwind.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@
     <div class="max-w-3xl mx-auto text-center">
       <p class="text-caption mb-3">A&R</p>
       <h1 class="text-hero font-display">Submit Your Demo</h1>
-      <p class="text-body max-w-lg mx-auto mt-6">Think you've got what it takes? Send us your best work and our team will get back to you within 48 hours.</p>
+      <p class="text-body max-w-lg mx-auto mt-6">Think you've got what it takes? Send us your best work and our team will get back to you within one week.</p>
     </div>
   </section>
 
@@ -161,7 +161,7 @@
             if (res.ok && data.success) {
               demoForm.reset();
               if (fileName) { fileName.textContent = ''; fileName.classList.add('hidden'); }
-              showToast("Demo submitted! We'll be in touch within 48 hours.");
+              showToast("Demo submitted! We'll be in touch within one week.");
             } else {
               showToast(data.error || 'Submission failed. Please try again.');
             }
