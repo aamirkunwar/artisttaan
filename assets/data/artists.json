@@ -151,6 +151,13 @@
       "id": "faraz",
       "deck_pdf": "assets/decks/faraz-deck.pdf",
       "contact_email": "faraz@artisttaan.com"
+    },
+    {
+      "featured": false,
+      "id": "Sam",
+      "name": "Sam Rajput",
+      "role": "Singer",
+      "bio": "Singer from agra"
     }
   ],
   "releases": [
@@ -165,15 +172,15 @@
       "type": "EP"
     },
     {
-      "title": "Namaskar",
       "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2026",
       "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
+      "artist_id": "slay",
       "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
+      "lyrics": "Namaskar, namaskar\nThis is just a sample line to test rendering\nSecond line here\n\nThird line after a blank line",
       "cover": "/assets/images/namaskar.jpg",
+      "title": "Namaskar",
       "type": "single",
-      "lyrics": "Namaskar, namaskar\nThis is just a sample line to test rendering\nSecond line here\n\nThird line after a blank line"
+      "year": "2026"
     },
     {
       "title": "Mila Tu",
