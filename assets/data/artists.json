@@ -158,9 +158,9 @@
       "name": "Sam Rajput",
       "role": "Singer",
       "bio": "Singer from agra",
-      "photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
-      "banner": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
-      "square_photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp"
+      "photo": "assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "banner": "assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "square_photo": "assets/images/490448129_18399646015111779_4500456068656346681_n.webp"
     }
   ],
   "releases": [
