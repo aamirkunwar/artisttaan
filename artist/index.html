@@ -383,8 +383,8 @@
     document.getElementById('twitter-title').content = `${a.name} | ARTISTTAAN`;
     document.getElementById('twitter-description').content = a.bio;
     if (a.square_photo) {
-      document.getElementById('og-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
-      document.getElementById('twitter-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
+      document.getElementById('og-image').content = `https://artisttaanmusic.com${assetPath(a.square_photo)}`;
+      document.getElementById('twitter-image').content = `https://artisttaanmusic.com${assetPath(a.square_photo)}`;
     }
 
     document.getElementById('hero-role').textContent = a.role;
