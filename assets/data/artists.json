@@ -153,14 +153,20 @@
       "contact_email": "faraz@artisttaan.com"
     },
     {
-      "featured": true,
-      "id": "Sam",
-      "name": "Sam Rajput",
-      "role": "Singer",
       "bio": "Singer from agra",
-      "photo": "assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
-      "banner": "assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
-      "square_photo": "assets/images/490448129_18399646015111779_4500456068656346681_n.webp"
+      "spotify_url": "https://open.spotify.com/artist/13PyGUDm2rsm7dGG2QzkWm?si=h6o-noa8ToiXi9SzCeGttw",
+      "name": "Sam Rajput",
+      "banner": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "featured": true,
+      "square_photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "genres": [
+        "Classical",
+        "Pop"
+      ],
+      "photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "instagram": "https://www.instagram.com/officialsam_rajput/",
+      "role": "Singer",
+      "id": "Sam"
     }
   ],
   "releases": [
