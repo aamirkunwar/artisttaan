@@ -1081,6 +1081,15 @@
       "spotify_url": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA?si=f54fd34d93c94275",
       "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA?utm_source=generator&si=143faca1215447d5\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
       "cover": "/assets/images/kaanch-ki-tarah_300x300.jpg"
+    },
+    {
+      "type": "single",
+      "title": "Tha ek chehra",
+      "artist": "Apoorvv, Slay",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d",
+      "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/4LyR7z70cF2dh46saTV1TM?utm_source=generator&si=0f1094a685284208\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+      "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg"
     }
   ],
   "socials": [
