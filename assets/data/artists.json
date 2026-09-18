@@ -1085,11 +1085,12 @@
     {
       "type": "single",
       "title": "Tha ek chehra",
-      "artist": "Apoorvv, Slay",
+      "artist": "Apoorvv, slay",
       "year": "2026",
       "spotify_url": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d",
       "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/4LyR7z70cF2dh46saTV1TM?utm_source=generator&si=0f1094a685284208\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
-      "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg"
+      "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg",
+      "artist_id": "Apoorvv, slay"
     }
   ],
   "socials": [
