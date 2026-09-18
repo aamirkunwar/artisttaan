@@ -1061,6 +1061,16 @@
       "spotify_embed": null,
       "cover": "assets/images/releases-posters/releases/release-46-likhaari-2016.jpg",
       "type": "single"
+    },
+    {
+      "type": "single",
+      "title": "Naam Tumhara",
+      "artist": "Sam Rajput",
+      "artist_id": "Sam",
+      "year": "2020",
+      "spotify_url": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab?si=318c9ff6e64f4c5d",
+      "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/2PC9awuNAM5zoTmqVEqjUy?utm_source=generator&si=3f7e2c0e0af94b27\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+      "cover": "/assets/images/naam-tumhara_300x300.jpg"
     }
   ],
   "socials": [
