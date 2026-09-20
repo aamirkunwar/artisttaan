@@ -1180,6 +1180,11 @@
   },
   "videos": [
     {
+      "title": "NATHULI ",
+      "artist": "Slay",
+      "youtube_url": "https://youtu.be/QQZSNUV0fT4?si=zR7yt4eM3_nsf6oy"
+    },
+    {
       "title": "MEDITATE",
       "artist": "Slay",
       "youtube_url": "https://youtu.be/BsJOe-luhps?si=dN59sQncAobub6yk"
@@ -1218,11 +1223,6 @@
       "title": "KAHO NA",
       "artist": "Abir",
       "youtube_url": "https://www.youtube.com/watch?v=lC9X-FtN7AI"
-    },
-    {
-      "title": "NATHULI - Slay",
-      "artist": "Slay",
-      "youtube_url": "https://youtu.be/QQZSNUV0fT4?si=zR7yt4eM3_nsf6oy"
     }
   ]
 }
