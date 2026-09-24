@@ -1,14 +1,17 @@
 // Main Worker script for artisttaanmusic.com
 //
-// This does three things:
-//   1. POST /subscribe -> adds an email to your Brevo "Release Updates" list
-//   2. POST /demo      -> emails your team the demo submission (with attachment)
-//   3. Everything else -> serves your normal website files, unchanged
+// This does four things:
+//   1. POST /subscribe                        -> adds an email to your Brevo "Release Updates" list
+//   2. POST /demo                              -> emails your team the demo submission (with attachment)
+//   3. GET  /api/spotify-top-tracks/:artistId  -> an artist's top 5 tracks, pulled live from Spotify
+//   4. Everything else                         -> serves your normal website files, unchanged
 //
 // Required environment variables (set in Cloudflare -> Settings -> Environment variables):
-//   BREVO_API_KEY  - same key you used on Netlify
-//   TEAM_EMAIL     - the inbox that should receive demo submissions, e.g. hello@artisttaanmusic.com
-//   SENDER_EMAIL   - a verified "from" address in your Brevo account, e.g. noreply@artisttaanmusic.com
+//   BREVO_API_KEY          - same key you used on Netlify
+//   TEAM_EMAIL             - the inbox that should receive demo submissions, e.g. hello@artisttaanmusic.com
+//   SENDER_EMAIL           - a verified "from" address in your Brevo account, e.g. noreply@artisttaanmusic.com
+//   SPOTIFY_CLIENT_ID      - from your app at developer.spotify.com/dashboard
+//   SPOTIFY_CLIENT_SECRET  - from the same app
 
 const BREVO_LIST_ID = 3; // your "Release Updates" list in Brevo -- used for both newsletter signups and demo submissions
 
@@ -22,6 +25,11 @@ export default {
 
     if (request.method === 'POST' && url.pathname === '/demo') {
       return handleDemo(request, env);
+    }
+
+    const topTracksMatch = url.pathname.match(/^\/api\/spotify-top-tracks\/([^\/]+)\/?$/);
+    if (request.method === 'GET' && topTracksMatch) {
+      return handleSpotifyTopTracks(request, env, ctx, topTracksMatch[1]);
     }
 
     // Clean artist URLs: /artist/abir or /artist/abir/ -> serve artist/index.html
@@ -473,4 +481,125 @@ function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
   }
   return btoa(binary);
+}
+
+// ---------- Spotify top tracks ----------
+//
+// Pulls an artist's top tracks straight from Spotify's own Web API using the
+// "Client Credentials" flow -- this is app-to-app authentication, not tied
+// to any Spotify user login. Requires SPOTIFY_CLIENT_ID and
+// SPOTIFY_CLIENT_SECRET (see the file header above).
+//
+// Note on "monthly listeners": Spotify's public API does not expose that
+// number anywhere -- it only exists on open.spotify.com's own private
+// frontend, so it isn't something this endpoint (or any legitimate
+// integration) can pull in. Top tracks, however, is a fully supported
+// public endpoint and is what this powers.
+
+let cachedSpotifyToken = null; // { token, expiresAt } -- reused across requests within the same Worker isolate
+
+async function getSpotifyToken(env) {
+  if (cachedSpotifyToken && cachedSpotifyToken.expiresAt > Date.now()) {
+    return cachedSpotifyToken.token;
+  }
+  if (!env.SPOTIFY_CLIENT_ID || !env.SPOTIFY_CLIENT_SECRET) {
+    throw new Error('Spotify credentials are not configured.');
+  }
+  const basic = btoa(env.SPOTIFY_CLIENT_ID + ':' + env.SPOTIFY_CLIENT_SECRET);
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Basic ' + basic,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials',
+  });
+  if (!res.ok) throw new Error('Could not get a Spotify access token (status ' + res.status + ').');
+  const data = await res.json();
+  cachedSpotifyToken = {
+    token: data.access_token,
+    expiresAt: Date.now() + (data.expires_in - 60) * 1000, // refresh a minute early, just in case
+  };
+  return cachedSpotifyToken.token;
+}
+
+// Pulls the Spotify artist ID out of a full profile URL, e.g.
+// "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO?si=abc123"
+// -> "0XHapa0VH6XHwA3wlqextO". Works with or without a trailing query string.
+function extractSpotifyArtistId(spotifyUrl) {
+  if (!spotifyUrl) return null;
+  const match = String(spotifyUrl).match(/artist\/([A-Za-z0-9]+)/);
+  return match ? match[1] : null;
+}
+
+function formatDuration(ms) {
+  const totalSeconds = Math.round(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return minutes + ':' + String(seconds).padStart(2, '0');
+}
+
+async function handleSpotifyTopTracks(request, env, ctx, artistSlug) {
+  // Cache the finished JSON response for a few hours -- top tracks don't
+  // change often, and this keeps us well within Spotify's rate limits
+  // regardless of how much traffic the site gets.
+  const cache = caches.default;
+  const cacheKey = new Request('https://artisttaanmusic.com/__cache/spotify-top-tracks/' + artistSlug);
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
+  let artist;
+  try {
+    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', request.url));
+    const data = await dataRes.json();
+    artist = (data.artists || []).find(function (a) { return a.id === artistSlug; });
+  } catch (e) {
+    console.error('handleSpotifyTopTracks: could not load artists.json', e);
+    return jsonResponse({ error: 'Could not load artist data.' }, 500);
+  }
+
+  if (!artist) return jsonResponse({ error: 'Unknown artist.' }, 404);
+
+  const spotifyArtistId = extractSpotifyArtistId(artist.spotify_url);
+  if (!spotifyArtistId) return jsonResponse({ error: 'No Spotify link on file for this artist.' }, 404);
+
+  let token;
+  try {
+    token = await getSpotifyToken(env);
+  } catch (e) {
+    console.error('handleSpotifyTopTracks: token error', e);
+    return jsonResponse({ error: 'Spotify is not configured yet.' }, 500);
+  }
+
+  let tracks;
+  try {
+    const res = await fetch(
+      'https://api.spotify.com/v1/artists/' + spotifyArtistId + '/top-tracks?market=IN',
+      { headers: { Authorization: 'Bearer ' + token } }
+    );
+    if (!res.ok) throw new Error('Spotify API returned status ' + res.status);
+    const data = await res.json();
+    tracks = (data.tracks || []).slice(0, 5).map(function (t) {
+      return {
+        name: t.name,
+        album: t.album ? t.album.name : '',
+        image: t.album && t.album.images && t.album.images[0] ? t.album.images[0].url : '',
+        url: t.external_urls ? t.external_urls.spotify : '',
+        duration: formatDuration(t.duration_ms),
+      };
+    });
+  } catch (e) {
+    console.error('handleSpotifyTopTracks: fetch error', e);
+    return jsonResponse({ error: 'Could not load top tracks right now.' }, 502);
+  }
+
+  const response = new Response(JSON.stringify({ tracks: tracks }), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+      'Cache-Control': 'public, max-age=21600', // 6 hours
+    },
+  });
+  ctx.waitUntil(cache.put(cacheKey, response.clone()));
+  return response;
 }
