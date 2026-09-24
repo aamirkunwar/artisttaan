@@ -304,6 +304,10 @@
     <div class="section">
       <h2 class="sec-title display" id="music-title">Music</h2>
       <div id="latest-release-panel"></div>
+      <div id="top-tracks-section" style="display:none; margin-bottom: 64px;">
+        <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">Top Tracks on Spotify</p>
+        <div class="tracklist" id="top-tracks-list"></div>
+      </div>
       <div class="tracklist" id="releases-grid"></div>
     </div>
   </div>
@@ -370,7 +374,37 @@
       const artist = data.artists.find(a => a.id === artistId);
       if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:160px 20px;font-size:14px;color:#8c8676;">Artist not found.</p>'; return; }
       render(artist, data.releases || []);
+      loadTopTracks(artist.id);
     } catch(e) { console.error(e); }
+  }
+
+  // Fetches the artist's top 5 Spotify tracks from our own Worker endpoint
+  // (which in turn calls Spotify's API server-side and caches the result).
+  // Fails silently -- if Spotify isn't configured yet, or the request
+  // fails for any reason, the section just stays hidden rather than
+  // showing an error on the page.
+  async function loadTopTracks(id) {
+    try {
+      const res = await fetch(`/api/spotify-top-tracks/${id}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      const tracks = data.tracks || [];
+      if (!tracks.length) return;
+
+      document.getElementById('top-tracks-list').innerHTML = tracks.map((t, i) => `
+        <a class="track-row" href="${t.url}" target="_blank" rel="noopener noreferrer">
+          <span class="track-num display">${String(i + 1).padStart(2, '0')}</span>
+          <span class="track-title">${t.name}</span>
+          <span class="track-year">${t.duration}</span>
+          <span class="track-cta">Play on Spotify
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+          ${t.image ? `<div class="track-thumb"><img src="${t.image}" alt="${t.name}" loading="lazy" /></div>` : ''}
+        </a>`).join('');
+      document.getElementById('top-tracks-section').style.display = 'block';
+    } catch (e) {
+      console.error('loadTopTracks failed', e);
+    }
   }
 
   function render(a, allReleases) {
