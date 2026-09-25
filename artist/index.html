@@ -304,6 +304,10 @@
     <div class="section">
       <h2 class="sec-title display" id="music-title">Music</h2>
       <div id="latest-release-panel"></div>
+      <div id="top-tracks-section" style="display:none; margin-bottom: 64px;">
+        <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">Top Tracks on Spotify</p>
+        <div class="tracklist" id="top-tracks-list"></div>
+      </div>
       <div class="tracklist" id="releases-grid"></div>
     </div>
   </div>
@@ -370,7 +374,39 @@
       const artist = data.artists.find(a => a.id === artistId);
       if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:160px 20px;font-size:14px;color:#8c8676;">Artist not found.</p>'; return; }
       render(artist, data.releases || []);
+      renderTopTracks(artist);
     } catch(e) { console.error(e); }
+  }
+
+  // Renders the artist's top tracks straight from the "top_tracks" array on
+  // the artist object in artists.json.
+  //
+  // NOTE: this used to fetch /api/spotify-top-tracks/:id, which called
+  // Spotify's "Get Artist's Top Tracks" endpoint live via the Worker. As of
+  // Nov 27 2024, Spotify restricted that endpoint (along with
+  // related-artists/recommendations) to apps with Extended Quota Mode --
+  // which requires a registered business + 250k/mo active users + a live
+  // consumer service. A normal Development-Mode app (what any new Spotify
+  // dev app gets) receives a 403 from Spotify, which the Worker turned into
+  // a 502. There's no code fix for this on our side; Spotify just doesn't
+  // grant that access tier for this kind of use case. So top tracks are
+  // curated by hand here instead -- update them by editing each artist's
+  // "top_tracks" array in assets/data/artists.json.
+  function renderTopTracks(artist) {
+    const tracks = artist.top_tracks || [];
+    if (!tracks.length) return;
+
+    document.getElementById('top-tracks-list').innerHTML = tracks.map((t, i) => `
+      <a class="track-row" href="${t.url}" target="_blank" rel="noopener noreferrer">
+        <span class="track-num display">${String(i + 1).padStart(2, '0')}</span>
+        <span class="track-title">${t.name}</span>
+        <span class="track-year">${t.duration || ''}</span>
+        <span class="track-cta">Play on Spotify
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </span>
+        ${t.image ? `<div class="track-thumb"><img src="${t.image}" alt="${t.name}" loading="lazy" /></div>` : ''}
+      </a>`).join('');
+    document.getElementById('top-tracks-section').style.display = 'block';
   }
 
   function render(a, allReleases) {
@@ -383,8 +419,8 @@
     document.getElementById('twitter-title').content = `${a.name} | ARTISTTAAN`;
     document.getElementById('twitter-description').content = a.bio;
     if (a.square_photo) {
-      document.getElementById('og-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
-      document.getElementById('twitter-image').content = `https://artisttaanmusic.com/${a.square_photo}`;
+      document.getElementById('og-image').content = `https://artisttaanmusic.com${assetPath(a.square_photo)}`;
+      document.getElementById('twitter-image').content = `https://artisttaanmusic.com${assetPath(a.square_photo)}`;
     }
 
     document.getElementById('hero-role').textContent = a.role;

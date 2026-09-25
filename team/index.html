@@ -122,19 +122,27 @@
 
         container.innerHTML = team.map((member, i) => `
           <article class="team-card">
-            <div class="team-photo-wrap mb-6">
+            <a href="../team/${member.id}/" class="team-photo-wrap mb-6" style="display:block;">
               <span class="team-index">0${i + 1}</span>
               <img src="${assetPath(member.photo)}" alt="${member.name}" class="team-photo" loading="lazy" />
               <div class="team-role-badge">
                 <span class="team-role-dot"></span>
                 <p class="text-white text-xs font-bold uppercase tracking-wider">${member.role}</p>
               </div>
-            </div>
-            <h2 class="text-2xl font-black tracking-tight">${member.name}</h2>
-            <p class="text-body mt-4">${member.bio}</p>
-            <a href="${member.instagram}" target="_blank" rel="noopener noreferrer" class="insta-btn mt-6">
-              ${instaIcon} ${member.instagram_handle}
             </a>
+            <h2 class="text-2xl font-black tracking-tight">
+              <a href="../team/${member.id}/" class="hover:opacity-70 transition">${member.name}</a>
+            </h2>
+            <p class="text-body mt-4">${member.bio}</p>
+            <div class="flex items-center gap-5 mt-6">
+              <a href="../team/${member.id}/" class="back-link" style="color:#111;">
+                View Profile
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a href="${member.instagram}" target="_blank" rel="noopener noreferrer" class="insta-btn">
+                ${instaIcon} ${member.instagram_handle}
+              </a>
+            </div>
           </article>
         `).join('');
 

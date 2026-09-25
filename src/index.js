@@ -1,14 +1,17 @@
 // Main Worker script for artisttaanmusic.com
 //
-// This does three things:
-//   1. POST /subscribe -> adds an email to your Brevo "Release Updates" list
-//   2. POST /demo      -> emails your team the demo submission (with attachment)
-//   3. Everything else -> serves your normal website files, unchanged
+// This does four things:
+//   1. POST /subscribe                        -> adds an email to your Brevo "Release Updates" list
+//   2. POST /demo                              -> emails your team the demo submission (with attachment)
+//   3. GET  /api/spotify-top-tracks/:artistId  -> an artist's top 5 tracks, pulled live from Spotify
+//   4. Everything else                         -> serves your normal website files, unchanged
 //
 // Required environment variables (set in Cloudflare -> Settings -> Environment variables):
-//   BREVO_API_KEY  - same key you used on Netlify
-//   TEAM_EMAIL     - the inbox that should receive demo submissions, e.g. hello@artisttaanmusic.com
-//   SENDER_EMAIL   - a verified "from" address in your Brevo account, e.g. noreply@artisttaanmusic.com
+//   BREVO_API_KEY          - same key you used on Netlify
+//   TEAM_EMAIL             - the inbox that should receive demo submissions, e.g. hello@artisttaanmusic.com
+//   SENDER_EMAIL           - a verified "from" address in your Brevo account, e.g. noreply@artisttaanmusic.com
+//   SPOTIFY_CLIENT_ID      - from your app at developer.spotify.com/dashboard
+//   SPOTIFY_CLIENT_SECRET  - from the same app
 
 const BREVO_LIST_ID = 3; // your "Release Updates" list in Brevo -- used for both newsletter signups and demo submissions
 
@@ -22,6 +25,11 @@ export default {
 
     if (request.method === 'POST' && url.pathname === '/demo') {
       return handleDemo(request, env);
+    }
+
+    const topTracksMatch = url.pathname.match(/^\/api\/spotify-top-tracks\/([^\/]+)\/?$/);
+    if (request.method === 'GET' && topTracksMatch) {
+      return handleSpotifyTopTracks(request, env, ctx, topTracksMatch[1]);
     }
 
     // Clean artist URLs: /artist/abir or /artist/abir/ -> serve artist/index.html
@@ -40,6 +48,19 @@ export default {
       const assetRequest = new Request(assetUrl.toString(), request);
       const assetResponse = await env.ASSETS.fetch(assetRequest);
       return renderArtistMeta(assetResponse, artistSlugMatch[1], url.origin, env);
+    }
+
+    // Clean team-member URLs: /team/<slug> or /team/<slug>/ -> serve
+    // team-profile/index.html (NOT team/index.html, which is the team grid
+    // page -- same split as /artists/ [grid] vs /artist/:slug/ [profile]
+    // above). This regex requires a slug segment, so bare /team/ still falls
+    // through untouched to the static team/index.html grid.
+    const teamSlugMatch = url.pathname.match(/^\/team\/([^\/]+)\/?$/);
+    if (teamSlugMatch && teamSlugMatch[1] !== 'index.html') {
+      const assetUrl = new URL('/team-profile/', url.origin);
+      const assetRequest = new Request(assetUrl.toString(), request);
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      return renderTeamMeta(assetResponse, teamSlugMatch[1], url.origin, env);
     }
 
     // Clean culture-article URLs: /culture/<slug> or /culture/<slug>/ -> serve
@@ -116,6 +137,55 @@ async function renderArtistMeta(assetResponse, slug, origin, env) {
     .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
     .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
     .on('h1#hero-name', { element: function (el) { el.setInnerContent(artist.name); } });
+
+  if (image) {
+    rewriter
+      .on('meta#og-image', { element: function (el) { el.setAttribute('content', image); } })
+      .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } });
+  }
+
+  return rewriter.transform(assetResponse);
+}
+
+// ---------- Server-rendered team-member meta tags ----------
+//
+// Same pattern as renderArtistMeta above: team-profile/index.html ships with
+// empty <title>/meta description/canonical/OG tags and fills them in
+// client-side via JS once artists.json loads. This rewrites those tags (and
+// the visible <h1> name) server-side first, so link-preview bots and search
+// engines see the real name/role/photo immediately.
+async function renderTeamMeta(assetResponse, slug, origin, env) {
+  let member;
+  try {
+    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
+    if (!dataRes.ok) return assetResponse;
+    const data = await dataRes.json();
+    member = (data.team || []).find(function (m) { return m.id === slug; });
+  } catch (e) {
+    console.error('renderTeamMeta: could not load artists.json', e);
+    return assetResponse;
+  }
+
+  if (!member) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
+
+  const pageUrl = origin + '/team/' + member.id + '/';
+  const title = member.name + ' — ARTISTTAAN';
+  const ogTitle = member.name + ' | ARTISTTAAN';
+  const description = member.full_bio || member.bio || '';
+  const shortDescription = member.bio || description;
+  const imageSrc = member.cover || member.photo;
+  const image = imageSrc ? origin + '/' + String(imageSrc).replace(/^\/+/, '') : '';
+
+  const rewriter = new HTMLRewriter()
+    .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
+    .on('meta#meta-description', { element: function (el) { el.setAttribute('content', description); } })
+    .on('link#canonical-url', { element: function (el) { el.setAttribute('href', pageUrl); } })
+    .on('meta#og-url', { element: function (el) { el.setAttribute('content', pageUrl); } })
+    .on('meta#og-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#og-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
+    .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
+    .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
+    .on('h1#hero-name', { element: function (el) { el.setInnerContent(member.name); } });
 
   if (image) {
     rewriter
@@ -473,4 +543,136 @@ function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
   }
   return btoa(binary);
+}
+
+// ---------- Spotify top tracks ----------
+//
+// Pulls an artist's top tracks straight from Spotify's own Web API using the
+// "Client Credentials" flow -- this is app-to-app authentication, not tied
+// to any Spotify user login. Requires SPOTIFY_CLIENT_ID and
+// SPOTIFY_CLIENT_SECRET (see the file header above).
+//
+// CURRENTLY UNREACHABLE: since Nov 27 2024, Spotify gated this exact
+// endpoint (GET /artists/{id}/top-tracks) behind "Extended Quota Mode",
+// which requires a registered business + 250k/mo active users + a launched
+// consumer service. A normal Development-Mode Spotify app gets a 403 here
+// no matter how correct the client ID/secret are, which the try/catch below
+// turns into the 502 you'll see client-side. There is no code-side fix for
+// this -- it's a Spotify access-tier restriction, not a bug. The artist
+// page now renders top tracks from the hand-curated "top_tracks" array in
+// assets/data/artists.json instead (see readme.md). This endpoint is left
+// in place, unused, in case Extended Quota Mode is ever granted later.
+//
+// Note on "monthly listeners": Spotify's public API does not expose that
+// number anywhere -- it only exists on open.spotify.com's own private
+// frontend, so it isn't something this endpoint (or any legitimate
+// integration) can pull in. Top tracks, however, is a fully supported
+// public endpoint and is what this powers.
+
+let cachedSpotifyToken = null; // { token, expiresAt } -- reused across requests within the same Worker isolate
+
+async function getSpotifyToken(env) {
+  if (cachedSpotifyToken && cachedSpotifyToken.expiresAt > Date.now()) {
+    return cachedSpotifyToken.token;
+  }
+  if (!env.SPOTIFY_CLIENT_ID || !env.SPOTIFY_CLIENT_SECRET) {
+    throw new Error('Spotify credentials are not configured.');
+  }
+  const basic = btoa(env.SPOTIFY_CLIENT_ID + ':' + env.SPOTIFY_CLIENT_SECRET);
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Basic ' + basic,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials',
+  });
+  if (!res.ok) throw new Error('Could not get a Spotify access token (status ' + res.status + ').');
+  const data = await res.json();
+  cachedSpotifyToken = {
+    token: data.access_token,
+    expiresAt: Date.now() + (data.expires_in - 60) * 1000, // refresh a minute early, just in case
+  };
+  return cachedSpotifyToken.token;
+}
+
+// Pulls the Spotify artist ID out of a full profile URL, e.g.
+// "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO?si=abc123"
+// -> "0XHapa0VH6XHwA3wlqextO". Works with or without a trailing query string.
+function extractSpotifyArtistId(spotifyUrl) {
+  if (!spotifyUrl) return null;
+  const match = String(spotifyUrl).match(/artist\/([A-Za-z0-9]+)/);
+  return match ? match[1] : null;
+}
+
+function formatDuration(ms) {
+  const totalSeconds = Math.round(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return minutes + ':' + String(seconds).padStart(2, '0');
+}
+
+async function handleSpotifyTopTracks(request, env, ctx, artistSlug) {
+  // Cache the finished JSON response for a few hours -- top tracks don't
+  // change often, and this keeps us well within Spotify's rate limits
+  // regardless of how much traffic the site gets.
+  const cache = caches.default;
+  const cacheKey = new Request('https://artisttaanmusic.com/__cache/spotify-top-tracks/' + artistSlug);
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
+  let artist;
+  try {
+    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', request.url));
+    const data = await dataRes.json();
+    artist = (data.artists || []).find(function (a) { return a.id === artistSlug; });
+  } catch (e) {
+    console.error('handleSpotifyTopTracks: could not load artists.json', e);
+    return jsonResponse({ error: 'Could not load artist data.' }, 500);
+  }
+
+  if (!artist) return jsonResponse({ error: 'Unknown artist.' }, 404);
+
+  const spotifyArtistId = extractSpotifyArtistId(artist.spotify_url);
+  if (!spotifyArtistId) return jsonResponse({ error: 'No Spotify link on file for this artist.' }, 404);
+
+  let token;
+  try {
+    token = await getSpotifyToken(env);
+  } catch (e) {
+    console.error('handleSpotifyTopTracks: token error', e);
+    return jsonResponse({ error: 'Spotify is not configured yet.' }, 500);
+  }
+
+  let tracks;
+  try {
+    const res = await fetch(
+      'https://api.spotify.com/v1/artists/' + spotifyArtistId + '/top-tracks?market=IN',
+      { headers: { Authorization: 'Bearer ' + token } }
+    );
+    if (!res.ok) throw new Error('Spotify API returned status ' + res.status);
+    const data = await res.json();
+    tracks = (data.tracks || []).slice(0, 5).map(function (t) {
+      return {
+        name: t.name,
+        album: t.album ? t.album.name : '',
+        image: t.album && t.album.images && t.album.images[0] ? t.album.images[0].url : '',
+        url: t.external_urls ? t.external_urls.spotify : '',
+        duration: formatDuration(t.duration_ms),
+      };
+    });
+  } catch (e) {
+    console.error('handleSpotifyTopTracks: fetch error', e);
+    return jsonResponse({ error: 'Could not load top tracks right now.' }, 502);
+  }
+
+  const response = new Response(JSON.stringify({ tracks: tracks }), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+      'Cache-Control': 'public, max-age=21600', // 6 hours
+    },
+  });
+  ctx.waitUntil(cache.put(cacheKey, response.clone()));
+  return response;
 }

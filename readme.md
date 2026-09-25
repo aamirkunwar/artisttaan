@@ -165,6 +165,83 @@ artist/?artist=apoorvv
    - Example: `assets/decks/abir-deck.pdf`
 3. Update the `deck_pdf` field in `assets/data/artists.json`
 
+### Team Member Profile Pages
+
+Each person in the `team` array in `assets/data/artists.json` automatically
+gets their own page at `/team/<id>/` (e.g. `/team/shashank-sharma/`), linked
+from the "View Profile" button on their card on `/team/`. The page is
+rendered by `team-profile/index.html` (routed by the Worker the same way
+`/artist/:id/` is -- see `src/index.js`).
+
+Fields on each team member:
+
+```json
+{
+  "id": "shashank-sharma",
+  "name": "Shashank Sharma",
+  "role": "Video Director & A&R",
+  "location": "New Delhi, India",
+  "photo": "assets/images/team/shashank-sharma.jpg",
+  "cover": "assets/images/team/covers/shashank-cover.jpg",
+  "bio": "Short bio shown on the /team/ grid card and page hero.",
+  "full_bio": "Longer bio for the About section. Leave blank to reuse bio.",
+  "since": "2019",
+  "instagram": "https://instagram.com/...",
+  "instagram_handle": "@...",
+  "website": "https://...",
+  "youtube": "https://...",
+  "vimeo": "https://...",
+  "behance": "https://...",
+  "gallery": ["assets/images/team/gallery/shashank-1.jpg"],
+  "projects": [
+    {
+      "title": "Kaagaz Aur Daag",
+      "role": "Director",
+      "year": "2025",
+      "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+      "video": "https://www.youtube.com/embed/VIDEO_ID",
+      "description": "One line on the project.",
+      "link": "https://... (optional, used instead of video for non-video projects)"
+    }
+  ]
+}
+```
+
+Notes:
+- `cover` is the wide hero banner; `photo` is the profile photo. If only
+  `photo` is set, it's used for both and no small avatar overlay is shown.
+  If both are set, `photo` appears as a circular avatar over the `cover`.
+- `location`, `website`, `youtube`, `vimeo`, `behance`, `since` are all
+  optional -- leave as `""` to hide that row/link entirely.
+- A `projects` entry with `video` gets a click-to-play embed (same pattern
+  as the artist videos section). A project with no `video` but a `link`
+  becomes a plain "View Project" card instead. A project with neither is
+  just a cover + caption.
+- `gallery` is an optional strip of extra photos shown at the bottom of the
+  About tab.
+
+### Top Tracks (Artist Page)
+
+Each artist page shows a "Top Tracks on Spotify" list, curated by hand in the
+`top_tracks` array for that artist (Spotify's API no longer allows fetching
+this automatically for apps without Extended Quota Mode -- see the comment
+above `renderTopTracks()` in `artist/index.html` for why). Add up to 5:
+
+```json
+"top_tracks": [
+  {
+    "name": "Song Title",
+    "url": "https://open.spotify.com/track/ABC123",
+    "duration": "3:24",
+    "image": "assets/images/releases/song-title.jpg"
+  }
+]
+```
+
+`image` is optional -- if omitted, the track row just won't show a thumbnail.
+Leave the array empty (`"top_tracks": []`) to hide the section entirely for
+that artist.
+
 ### Artist Page Data Fields
 
 Each artist in `artists.json` now supports:

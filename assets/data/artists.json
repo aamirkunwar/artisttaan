@@ -30,7 +30,8 @@
       "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir's music resonates with audiences across India.",
       "id": "abir",
       "deck_pdf": "assets/decks/abir-deck.pdf",
-      "contact_email": "abir@artisttaan.com"
+      "contact_email": "abir@artisttaan.com",
+      "top_tracks": []
     },
     {
       "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
@@ -60,7 +61,8 @@
       "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following.",
       "id": "shrey",
       "deck_pdf": "assets/decks/shrey-deck.pdf",
-      "contact_email": "shrey@artisttaan.com"
+      "contact_email": "shrey@artisttaan.com",
+      "top_tracks": []
     },
     {
       "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
@@ -90,7 +92,8 @@
       "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop.",
       "id": "slay",
       "deck_pdf": "assets/decks/slay-deck.pdf",
-      "contact_email": "slay@artisttaan.com"
+      "contact_email": "slay@artisttaan.com",
+      "top_tracks": []
     },
     {
       "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
@@ -121,7 +124,8 @@
       "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating love and loss.",
       "id": "apoorvv",
       "deck_pdf": "assets/decks/apoorvv-deck.pdf",
-      "contact_email": "apoorvv@artisttaan.com"
+      "contact_email": "apoorvv@artisttaan.com",
+      "top_tracks": []
     },
     {
       "soundcloud": "",
@@ -150,7 +154,26 @@
       "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between artists and audiences.",
       "id": "faraz",
       "deck_pdf": "assets/decks/faraz-deck.pdf",
-      "contact_email": "faraz@artisttaan.com"
+      "contact_email": "faraz@artisttaan.com",
+      "top_tracks": []
+    },
+    {
+      "bio": "Sam Rajput is a singer and trained vocalist from Agra, India, known for his versatile vocal ability and emotive approach to music. With a strong foundation in vocal training, Sam has developed a sound that blends contemporary Indian pop with influences from multiple musical genres.",
+      "spotify_url": "https://open.spotify.com/artist/13PyGUDm2rsm7dGG2QzkWm?si=h6o-noa8ToiXi9SzCeGttw",
+      "name": "Sam Rajput",
+      "banner": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "featured": true,
+      "square_photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "genres": [
+        "Classical",
+        "Pop"
+      ],
+      "photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "instagram": "https://www.instagram.com/officialsam_rajput/",
+      "role": "Singer",
+      "full_bio": "Sam Rajput is a singer and trained vocalist from Agra, India, known for his versatile vocal ability and emotive approach to music. With a strong foundation in vocal training, Sam has developed a sound that blends contemporary Indian pop with influences from multiple musical genres.\n\nA professionally trained musician, Sam studied at KMMC – A.R. Rahman’s Music College, where he further developed his understanding of music and vocal performance.\n\nSam gained recognition with his song “Naam Tumhara,” released in 2020, which became one of the defining tracks of his early career. Since then, he has continued to explore different sounds and styles through releases including Tere Na Hue To, Tere Sang, Ro Hi Padi, Aise Kyun, and Barsaat.\n\nWith his trained vocals, wide-ranging musicality, and ability to adapt across genres, Sam Rajput continues to build his identity as a contemporary Indian vocalist while bringing his own emotional character to every song.",
+      "id": "Sam",
+      "top_tracks": []
     }
   ],
   "releases": [
@@ -165,15 +188,15 @@
       "type": "EP"
     },
     {
-      "title": "Namaskar",
       "artist": "Slay",
-      "artist_id": "slay",
-      "year": "2026",
       "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
+      "artist_id": "slay",
       "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
+      "lyrics": "Namaskar, namaskar\nThis is just a sample line to test rendering\nSecond line here\n\nThird line after a blank line",
       "cover": "/assets/images/namaskar.jpg",
+      "title": "Namaskar",
       "type": "single",
-      "lyrics": "Namaskar, namaskar\nThis is just a sample line to test rendering\nSecond line here\n\nThird line after a blank line"
+      "year": "2026"
     },
     {
       "title": "Mila Tu",
@@ -443,16 +466,6 @@
       "spotify_url": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA",
       "spotify_embed": "https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA",
       "cover": "assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg",
-      "type": "single"
-    },
-    {
-      "title": "Ishq Adhoora",
-      "artist": "Apoorvv",
-      "artist_id": "apoorvv",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/1z2KFhYRc6wk44FUQRIono",
-      "spotify_embed": "https://open.spotify.com/embed/track/1z2KFhYRc6wk44FUQRIono",
-      "cover": "assets/images/releases-posters/releases/release-18-ishq-adhoora-2020.jpg",
       "type": "single"
     },
     {
@@ -1044,6 +1057,36 @@
       "spotify_embed": null,
       "cover": "assets/images/releases-posters/releases/release-46-likhaari-2016.jpg",
       "type": "single"
+    },
+    {
+      "type": "single",
+      "title": "Naam Tumhara",
+      "artist": "Sam Rajput",
+      "artist_id": "Sam",
+      "year": "2020",
+      "spotify_url": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab?si=318c9ff6e64f4c5d",
+      "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/2PC9awuNAM5zoTmqVEqjUy?utm_source=generator&si=3f7e2c0e0af94b27\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+      "cover": "/assets/images/naam-tumhara_300x300.jpg"
+    },
+    {
+      "type": "single",
+      "title": "Kaanch ki Tarah",
+      "artist": "Sam Rajput",
+      "artist_id": "Sam",
+      "year": "2020",
+      "spotify_url": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA?si=f54fd34d93c94275",
+      "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA?utm_source=generator&si=143faca1215447d5\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+      "cover": "/assets/images/kaanch-ki-tarah_300x300.jpg"
+    },
+    {
+      "type": "single",
+      "title": "Tha ek chehra",
+      "artist": "Apoorvv, Slay",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d",
+      "spotify_embed": "",
+      "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg",
+      "artist_id": "Apoorvv, Slay"
     }
   ],
   "socials": [
@@ -1086,7 +1129,17 @@
       "photo": "assets/images/team/aamir-kunwar.jpg",
       "bio": "Founder of ARTISTTAAN and the driving force behind its roster. Aamir built the label from the streets of East Delhi in 2016 and now leads A&R — scouting, signing, and developing talent.",
       "instagram_handle": "@aamirkunwar",
-      "instagram": "https://instagram.com/aamirkunwar"
+      "instagram": "https://instagram.com/aamirkunwar",
+      "location": "",
+      "cover": "",
+      "since": "2016",
+      "projects": [],
+      "full_bio": "",
+      "gallery": [],
+      "website": "",
+      "youtube": "",
+      "vimeo": "",
+      "behance": ""
     },
     {
       "id": "shashank-sharma",
@@ -1095,7 +1148,66 @@
       "photo": "assets/images/team/shashank-sharma.jpg",
       "bio": "Video Director and A&R at ARTISTTAAN, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists.",
       "instagram_handle": "@shshank.here",
-      "instagram": "https://instagram.com/shshank.here"
+      "instagram": "https://instagram.com/shshank.here",
+      "location": "",
+      "cover": "",
+      "since": "",
+      "projects": [
+        {
+          "title": "Kaagaz Aur Daag",
+          "role": "Director",
+          "year": "2025",
+          "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+          "video": "https://www.youtube.com/embed/ZYln3iWRxDk",
+          "description": "Music video for Shrey."
+        },
+        {
+          "title": "Sifarishein",
+          "role": "Director",
+          "year": "2025",
+          "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+          "video": "https://www.youtube.com/embed/rcKlMq2uDlk",
+          "description": "Music video for Shrey."
+        },
+        {
+          "title": "Thoda Aur",
+          "role": "Director",
+          "year": "2025",
+          "cover": "/assets/images/thoda-aur_640x640.jpg",
+          "video": "https://www.youtube.com/embed/Q5E5t5VbVeo",
+          "description": "Music video for Shrey."
+        },
+        {
+          "title": "Marz",
+          "role": "Director",
+          "year": "2024",
+          "cover": "/assets/images/marz_640x640.jpg",
+          "video": "https://www.youtube.com/embed/U7AdDdqJWUg",
+          "description": "Music video for Abir."
+        },
+        {
+          "title": "Kaho Na",
+          "role": "Director",
+          "year": "2023",
+          "cover": "/assets/images/kaho-na_640x640.jpg",
+          "video": "https://www.youtube.com/embed/lC9X-FtN7AI",
+          "description": "Music video for Abir."
+        },
+        {
+          "title": "Namaskar",
+          "role": "Director",
+          "year": "2026",
+          "cover": "/assets/images/namaskar.jpg",
+          "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
+          "description": "Music video for Slay."
+        }
+      ],
+      "full_bio": "",
+      "gallery": [],
+      "website": "",
+      "youtube": "",
+      "vimeo": "",
+      "behance": ""
     },
     {
       "id": "nino-rawat",
@@ -1104,7 +1216,17 @@
       "photo": "assets/images/team/nino-rawat.jpg",
       "bio": "Head of A&R at ARTISTTAAN, Nino leads the search for new talent and the development of the label's roster — discovering artists, shaping their sound, and guiding projects from first listen to final release.",
       "instagram_handle": "@ninorawat",
-      "instagram": "https://instagram.com/ninorawat"
+      "instagram": "https://instagram.com/ninorawat",
+      "location": "",
+      "cover": "",
+      "since": "",
+      "projects": [],
+      "full_bio": "",
+      "gallery": [],
+      "website": "",
+      "youtube": "",
+      "vimeo": "",
+      "behance": ""
     }
   ],
   "upcoming": [
@@ -1142,6 +1264,11 @@
     "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb"
   },
   "videos": [
+    {
+      "title": "NATHULI ",
+      "artist": "Slay",
+      "youtube_url": "https://youtu.be/QQZSNUV0fT4?si=zR7yt4eM3_nsf6oy"
+    },
     {
       "title": "MEDITATE",
       "artist": "Slay",
