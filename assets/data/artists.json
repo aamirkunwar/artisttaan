@@ -1169,7 +1169,7 @@
           "title": "Kaagaz Aur Daag",
           "role": "Director",
           "year": "2025",
-          "cover": "",
+          "cover": "https://youtu.be/ZYln3iWRxDk?si=NDE7xA-6sQ-Z_hVd",
           "video": "https://www.youtube.com/embed/ZYln3iWRxDk",
           "description": "Music video for Shrey."
         },
@@ -1177,7 +1177,7 @@
           "title": "Sifarishein",
           "role": "Director",
           "year": "2025",
-          "cover": "",
+          "cover": "https://youtu.be/rcKlMq2uDlk?si=YMw4eNzuAj7g0hVs",
           "video": "https://www.youtube.com/embed/rcKlMq2uDlk",
           "description": "Music video for Shrey."
         },
@@ -1196,6 +1196,10 @@
           "cover": "",
           "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
           "description": "Music video for Slay."
+        },
+        {
+          "title": "Nathuli",
+          "video": "https://www.youtube.com/embed/BsJOe-luhps?si=mL5ThfG4XqInLGUn"
         }
       ],
       "since": "",
