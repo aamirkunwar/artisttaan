@@ -16,6 +16,7 @@
         "R&B"
       ],
       "photo": "assets/images/artists/abir.jpg",
+      "top_tracks": [],
       "instagram": "https://instagram.com/luvabiirr",
       "top_cities": [
         "Delhi",
@@ -30,8 +31,7 @@
       "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir's music resonates with audiences across India.",
       "id": "abir",
       "deck_pdf": "assets/decks/abir-deck.pdf",
-      "contact_email": "abir@artisttaan.com",
-      "top_tracks": []
+      "contact_email": "abir@artisttaan.com"
     },
     {
       "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
@@ -48,6 +48,7 @@
         "Hip-Hop"
       ],
       "photo": "assets/images/artists/shrey.jpg",
+      "top_tracks": [],
       "instagram": "https://instagram.com/shrey0000001",
       "top_cities": [
         "Delhi",
@@ -61,8 +62,7 @@
       "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following.",
       "id": "shrey",
       "deck_pdf": "assets/decks/shrey-deck.pdf",
-      "contact_email": "shrey@artisttaan.com",
-      "top_tracks": []
+      "contact_email": "shrey@artisttaan.com"
     },
     {
       "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
@@ -79,6 +79,7 @@
         "Hip-Hop"
       ],
       "photo": "assets/images/artists/slay.jpg",
+      "top_tracks": [],
       "instagram": "https://instagram.com/slaywav",
       "top_cities": [
         "Mumbai",
@@ -92,8 +93,7 @@
       "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop.",
       "id": "slay",
       "deck_pdf": "assets/decks/slay-deck.pdf",
-      "contact_email": "slay@artisttaan.com",
-      "top_tracks": []
+      "contact_email": "slay@artisttaan.com"
     },
     {
       "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
@@ -111,6 +111,7 @@
         "Indie"
       ],
       "photo": "assets/images/artists/apoorvv.jpg",
+      "top_tracks": [],
       "instagram": "https://instagram.com/apoorvvwho",
       "top_cities": [
         "Delhi",
@@ -124,8 +125,7 @@
       "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating love and loss.",
       "id": "apoorvv",
       "deck_pdf": "assets/decks/apoorvv-deck.pdf",
-      "contact_email": "apoorvv@artisttaan.com",
-      "top_tracks": []
+      "contact_email": "apoorvv@artisttaan.com"
     },
     {
       "soundcloud": "",
@@ -142,6 +142,7 @@
         "Vocal"
       ],
       "photo": "assets/images/artists/faraz.jpg",
+      "top_tracks": [],
       "instagram": "https://instagram.com/faraz",
       "top_cities": [
         "Agra",
@@ -154,8 +155,7 @@
       "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between artists and audiences.",
       "id": "faraz",
       "deck_pdf": "assets/decks/faraz-deck.pdf",
-      "contact_email": "faraz@artisttaan.com",
-      "top_tracks": []
+      "contact_email": "faraz@artisttaan.com"
     },
     {
       "bio": "Sam Rajput is a singer and trained vocalist from Agra, India, known for his versatile vocal ability and emotive approach to music. With a strong foundation in vocal training, Sam has developed a sound that blends contemporary Indian pop with influences from multiple musical genres.",
@@ -169,11 +169,11 @@
         "Pop"
       ],
       "photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "top_tracks": [],
       "instagram": "https://www.instagram.com/officialsam_rajput/",
       "role": "Singer",
       "full_bio": "Sam Rajput is a singer and trained vocalist from Agra, India, known for his versatile vocal ability and emotive approach to music. With a strong foundation in vocal training, Sam has developed a sound that blends contemporary Indian pop with influences from multiple musical genres.\n\nA professionally trained musician, Sam studied at KMMC – A.R. Rahman’s Music College, where he further developed his understanding of music and vocal performance.\n\nSam gained recognition with his song “Naam Tumhara,” released in 2020, which became one of the defining tracks of his early career. Since then, he has continued to explore different sounds and styles through releases including Tere Na Hue To, Tere Sang, Ro Hi Padi, Aise Kyun, and Barsaat.\n\nWith his trained vocals, wide-ranging musicality, and ability to adapt across genres, Sam Rajput continues to build his identity as a contemporary Indian vocalist while bringing his own emotional character to every song.",
-      "id": "Sam",
-      "top_tracks": []
+      "id": "Sam"
     }
   ],
   "releases": [
@@ -1123,43 +1123,47 @@
   ],
   "team": [
     {
-      "id": "aamir-kunwar",
-      "name": "Aamir Kunwar",
-      "role": "Founder & A&R",
-      "photo": "assets/images/team/aamir-kunwar.jpg",
-      "bio": "Founder of ARTISTTAAN and the driving force behind its roster. Aamir built the label from the streets of East Delhi in 2016 and now leads A&R — scouting, signing, and developing talent.",
-      "instagram_handle": "@aamirkunwar",
-      "instagram": "https://instagram.com/aamirkunwar",
-      "location": "",
-      "cover": "",
-      "since": "2016",
-      "projects": [],
-      "full_bio": "",
-      "gallery": [],
-      "website": "",
       "youtube": "",
       "vimeo": "",
-      "behance": "",
+      "bio": "Founder of ARTISTTAAN and the driving force behind its roster. Aamir built the label from the streets of East Delhi in 2016 and now leads A&R — scouting, signing, and developing talent.",
+      "name": "Aamir Kunwar",
       "pronouns": "",
+      "photo": "assets/images/team/aamir-kunwar.jpg",
+      "gallery": [],
+      "instagram": "https://instagram.com/aamirkunwar",
+      "behance": "",
+      "instagram_handle": "@aamirkunwar",
+      "location": "",
+      "role": "Founder & A&R",
+      "cover": "",
+      "full_bio": "",
+      "projects": [],
+      "since": "2016",
+      "website": "",
+      "id": "aamir-kunwar",
       "email": ""
     },
     {
-      "id": "shashank-sharma",
-      "name": "Shashank Sharma",
-      "role": "Video Director & A&R",
-      "photo": "assets/images/team/shashank-sharma.jpg",
+      "youtube": "",
+      "vimeo": "",
       "bio": "Video Director and A&R at ARTISTTAAN, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists.",
-      "instagram_handle": "@shshank.here",
+      "name": "Shashank Sharma",
+      "pronouns": "",
+      "photo": "assets/images/team/shashank-sharma.jpg",
+      "gallery": [],
       "instagram": "https://instagram.com/shshank.here",
+      "behance": "",
+      "instagram_handle": "@shshank.here",
       "location": "",
+      "role": "Video Director & A&R",
       "cover": "",
-      "since": "",
+      "full_bio": "",
       "projects": [
         {
           "title": "Kaagaz Aur Daag",
           "role": "Director",
           "year": "2025",
-          "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+          "cover": "https://youtu.be/ZYln3iWRxDk?si=NDE7xA-6sQ-Z_hVd",
           "video": "https://www.youtube.com/embed/ZYln3iWRxDk",
           "description": "Music video for Shrey."
         },
@@ -1167,7 +1171,7 @@
           "title": "Sifarishein",
           "role": "Director",
           "year": "2025",
-          "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+          "cover": "https://youtu.be/rcKlMq2uDlk?si=qGjIrgJQKeGt8_oN",
           "video": "https://www.youtube.com/embed/rcKlMq2uDlk",
           "description": "Music video for Shrey."
         },
@@ -1180,22 +1184,6 @@
           "description": "Music video for Shrey."
         },
         {
-          "title": "Marz",
-          "role": "Director",
-          "year": "2024",
-          "cover": "/assets/images/marz_640x640.jpg",
-          "video": "https://www.youtube.com/embed/U7AdDdqJWUg",
-          "description": "Music video for Abir."
-        },
-        {
-          "title": "Kaho Na",
-          "role": "Director",
-          "year": "2023",
-          "cover": "/assets/images/kaho-na_640x640.jpg",
-          "video": "https://www.youtube.com/embed/lC9X-FtN7AI",
-          "description": "Music video for Abir."
-        },
-        {
           "title": "Namaskar",
           "role": "Director",
           "year": "2026",
@@ -1204,34 +1192,30 @@
           "description": "Music video for Slay."
         }
       ],
-      "full_bio": "",
-      "gallery": [],
+      "since": "",
       "website": "",
-      "youtube": "",
-      "vimeo": "",
-      "behance": "",
-      "pronouns": "",
+      "id": "shashank-sharma",
       "email": ""
     },
     {
-      "id": "nino-rawat",
-      "name": "Nino Rawat",
-      "role": "Head A&R",
-      "photo": "assets/images/team/nino-rawat.jpg",
-      "bio": "Head of A&R at ARTISTTAAN, Nino leads the search for new talent and the development of the label's roster — discovering artists, shaping their sound, and guiding projects from first listen to final release.",
-      "instagram_handle": "@ninorawat",
-      "instagram": "https://instagram.com/ninorawat",
-      "location": "",
-      "cover": "",
-      "since": "",
-      "projects": [],
-      "full_bio": "",
-      "gallery": [],
-      "website": "",
       "youtube": "",
       "vimeo": "",
-      "behance": "",
+      "bio": "Head of A&R at ARTISTTAAN, Nino leads the search for new talent and the development of the label's roster — discovering artists, shaping their sound, and guiding projects from first listen to final release.",
+      "name": "Nino Rawat",
       "pronouns": "",
+      "photo": "assets/images/team/nino-rawat.jpg",
+      "gallery": [],
+      "instagram": "https://instagram.com/ninorawat",
+      "behance": "",
+      "instagram_handle": "@ninorawat",
+      "location": "",
+      "role": "Head A&R",
+      "cover": "",
+      "full_bio": "",
+      "projects": [],
+      "since": "",
+      "website": "",
+      "id": "nino-rawat",
       "email": ""
     }
   ],
