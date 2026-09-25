@@ -102,6 +102,17 @@ collections:
               - { label: Top Cities, name: top_cities, widget: list, required: false }
               - { label: Genres, name: genres, widget: list, required: false }
               - { label: Contact Email, name: contact_email, widget: string, required: false }
+              - label: Top Tracks (Spotify)
+                name: top_tracks
+                widget: list
+                required: false
+                hint: "Up to 5 tracks shown in the 'Top Tracks on Spotify' section on the artist page. Spotify no longer allows fetching this automatically (see readme), so add them here by hand."
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Track Name, name: name, widget: string }
+                  - { label: Spotify Track URL, name: url, widget: string, hint: "e.g. https://open.spotify.com/track/..." }
+                  - { label: Duration, name: duration, widget: string, hint: "e.g. 3:24", required: false }
+                  - { label: Cover Image, name: image, widget: image, required: false }
 
           - label: Upcoming
             name: upcoming
@@ -153,13 +164,43 @@ collections:
             required: false
             summary: "{{fields.name}} — {{fields.role}}"
             fields:
-              - { label: ID, name: id, widget: string }
+              - { label: ID, name: id, widget: string, hint: "lowercase, no spaces, e.g. shashank-sharma — this becomes the URL: /team/shashank-sharma/" }
               - { label: Name, name: name, widget: string }
               - { label: Role, name: role, widget: string }
-              - { label: Photo, name: photo, widget: image }
-              - { label: Bio, name: bio, widget: text }
-              - { label: Instagram Handle, name: instagram_handle, widget: string }
-              - { label: Instagram URL, name: instagram, widget: string }
+              - { label: Pronouns, name: pronouns, widget: string, required: false, hint: "e.g. he/him — leave blank to hide" }
+              - { label: Location, name: location, widget: string, required: false, hint: "e.g. New Delhi, India — leave blank to hide" }
+              - { label: Email, name: email, widget: string, required: false, hint: "Shown as a clickable mailto: link on their profile page — leave blank to hide" }
+              - { label: Profile Photo, name: photo, widget: image, hint: "Shown as the round avatar on the profile page and on the /team/ grid card" }
+              - { label: Cover Banner Image, name: cover, widget: image, required: false, hint: "Wide banner image behind the profile card. Leave blank for a plain background." }
+              - { label: Short Bio, name: bio, widget: text, hint: "Shown on the /team/ grid card and in the profile sidebar" }
+              - { label: Full Bio, name: full_bio, widget: text, required: false, hint: "Longer bio shown in the About section further down the profile page. Leave blank to skip the About section (unless Gallery Photos are set below)." }
+              - { label: With ARTISTTAAN Since, name: since, widget: string, required: false, hint: "e.g. 2019 — leave blank to hide" }
+              - { label: Instagram Handle, name: instagram_handle, widget: string, required: false }
+              - { label: Instagram URL, name: instagram, widget: string, required: false }
+              - { label: Website URL, name: website, widget: string, required: false }
+              - { label: YouTube URL, name: youtube, widget: string, required: false }
+              - { label: Vimeo URL, name: vimeo, widget: string, required: false }
+              - { label: Behance URL, name: behance, widget: string, required: false }
+              - label: Gallery Photos
+                name: gallery
+                widget: list
+                required: false
+                field: { label: Photo, name: image, widget: image }
+                hint: "Extra photo strip shown in the About section at the bottom of the profile page"
+              - label: Projects
+                name: projects
+                widget: list
+                required: false
+                summary: "{{fields.title}}"
+                hint: "Shown as the video/work grid on their profile page, like a Vimeo portfolio"
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Role on this Project, name: role, widget: string, required: false, hint: "e.g. Director, Editor" }
+                  - { label: Year, name: year, widget: string, required: false }
+                  - { label: Duration, name: duration, widget: string, required: false, hint: "e.g. 3:24 — shown as a badge on the thumbnail. Leave blank if unknown." }
+                  - { label: Thumbnail Image, name: cover, widget: image }
+                  - { label: Video Embed URL, name: video, widget: string, required: false, hint: "YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID — clicking the thumbnail plays it inline. Leave blank if this project has no video." }
+                  - { label: External Link, name: link, widget: string, required: false, hint: "Only used when there's no video above — clicking the thumbnail opens this URL instead (e.g. a Behance case study)." }
 
           - label: Site Settings
             name: settings
