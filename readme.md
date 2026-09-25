@@ -171,7 +171,9 @@ Each person in the `team` array in `assets/data/artists.json` automatically
 gets their own page at `/team/<id>/` (e.g. `/team/shashank-sharma/`), linked
 from the "View Profile" button on their card on `/team/`. The page is
 rendered by `team-profile/index.html` (routed by the Worker the same way
-`/artist/:id/` is -- see `src/index.js`).
+`/artist/:id/` is -- see `src/index.js`), laid out like a portfolio profile:
+a cover banner, a floating profile card (avatar, pronouns, location, role,
+email, links) and a grid of project thumbnails with duration badges.
 
 Fields on each team member:
 
@@ -180,11 +182,13 @@ Fields on each team member:
   "id": "shashank-sharma",
   "name": "Shashank Sharma",
   "role": "Video Director & A&R",
+  "pronouns": "he/him",
   "location": "New Delhi, India",
+  "email": "shashank@artisttaanmusic.com",
   "photo": "assets/images/team/shashank-sharma.jpg",
   "cover": "assets/images/team/covers/shashank-cover.jpg",
-  "bio": "Short bio shown on the /team/ grid card and page hero.",
-  "full_bio": "Longer bio for the About section. Leave blank to reuse bio.",
+  "bio": "Short bio shown on the /team/ grid card and in the profile sidebar.",
+  "full_bio": "Longer bio for the About section further down the page.",
   "since": "2019",
   "instagram": "https://instagram.com/...",
   "instagram_handle": "@...",
@@ -198,9 +202,9 @@ Fields on each team member:
       "title": "Kaagaz Aur Daag",
       "role": "Director",
       "year": "2025",
+      "duration": "3:24",
       "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
       "video": "https://www.youtube.com/embed/VIDEO_ID",
-      "description": "One line on the project.",
       "link": "https://... (optional, used instead of video for non-video projects)"
     }
   ]
@@ -208,17 +212,19 @@ Fields on each team member:
 ```
 
 Notes:
-- `cover` is the wide hero banner; `photo` is the profile photo. If only
-  `photo` is set, it's used for both and no small avatar overlay is shown.
-  If both are set, `photo` appears as a circular avatar over the `cover`.
-- `location`, `website`, `youtube`, `vimeo`, `behance`, `since` are all
-  optional -- leave as `""` to hide that row/link entirely.
-- A `projects` entry with `video` gets a click-to-play embed (same pattern
-  as the artist videos section). A project with no `video` but a `link`
-  becomes a plain "View Project" card instead. A project with neither is
-  just a cover + caption.
-- `gallery` is an optional strip of extra photos shown at the bottom of the
-  About tab.
+- `cover` is the wide banner behind the profile card; `photo` is the round
+  avatar. If `cover` is blank, the banner just shows a plain tinted
+  background -- it isn't required.
+- `pronouns`, `location`, `email`, `since`, and every social link field are
+  all optional -- leave as `""` to hide that row entirely.
+- A `projects` entry with `video` gets a click-to-play embed. `duration`
+  (e.g. `"3:24"`) shows as a small badge on the thumbnail, matching the
+  Vimeo-style grid -- leave it out if you don't know the runtime. A project
+  with no `video` but a `link` becomes a clickable card that opens that URL
+  instead of playing inline.
+- The "About" section (full bio + `gallery` photo strip) only appears if
+  `full_bio` or `gallery` is set -- otherwise the page ends after the
+  projects grid.
 
 ### Top Tracks (Artist Page)
 

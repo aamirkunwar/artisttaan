@@ -26,13 +26,12 @@
     :root {
       --paper: #fafaf8;
       --paper-tint: #f2f0e9;
+      --card: #ffffff;
       --ink: #16150f;
       --line: #e4e0d5;
       --mute: #8c8676;
       --gold: #a97a1f;
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -43,16 +42,15 @@
     }
 
     a { color: inherit; }
-
     .display { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px;
-      background: rgba(250, 250, 248, 0.9);
+      background: rgba(250, 250, 248, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -65,144 +63,98 @@
     .nav-back svg { transition: transform 0.2s; }
     .nav-back:hover svg { transform: translateX(-3px); }
 
-    /* ── HERO ── */
-    .hero {
-      margin-top: 64px;
-      max-width: 1320px; margin-left: auto; margin-right: auto;
-      padding: 120px 48px 96px;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 64px;
-      align-items: start;
+    /* ── COVER ── */
+    .cover-banner {
+      width: 100%; height: 320px; background: var(--paper-tint);
+      background-image: linear-gradient(135deg, #efece2, #e4dfcf);
+      overflow: hidden; position: relative;
     }
-    .hero-eyebrow {
-      font-size: 12px; color: var(--mute); margin-bottom: 28px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.05s;
-    }
-    .hero-name {
-      font-size: clamp(48px, 6.4vw, 92px);
-      font-weight: 400; letter-spacing: -0.01em; line-height: 0.98;
-      margin-bottom: 20px;
-      opacity: 0; animation: rise 0.8s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.12s;
-    }
-    .hero-role-line {
-      display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px;
-      font-size: 15px; color: var(--mute); margin-bottom: 32px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.2s;
-    }
-    .hero-role-line .dot-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--mute); flex-shrink: 0; }
-    .hero-location { display: inline-flex; align-items: center; gap: 6px; }
-    .hero-location svg { flex-shrink: 0; }
-    .hero-bio {
-      font-size: 16px; line-height: 1.8; color: #46443c;
-      max-width: 480px; margin-bottom: 40px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.28s;
-    }
-    .hero-actions {
-      display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin-bottom: 56px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.36s;
-    }
-    .btn-solid {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 28px; background: var(--ink); color: #fff;
-      font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: opacity 0.2s;
-    }
-    .btn-solid:hover { opacity: 0.8; }
-    .link-quiet {
-      font-size: 13px; font-weight: 500; color: var(--mute);
-      text-decoration: none; border-bottom: 1px solid transparent;
-      padding-bottom: 2px; transition: all 0.2s;
-    }
-    .link-quiet:hover { color: var(--ink); border-color: var(--ink); }
+    .cover-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .hero-stats {
-      display: flex; gap: 40px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.44s;
-    }
-    .hero-stat p:first-child {
-      font-family: 'Archivo Black'; font-size: 26px; letter-spacing: -0.01em; line-height: 1;
-    }
-    .hero-stat p:last-child {
-      font-size: 12px; color: var(--mute); margin-top: 6px;
+    /* ── LAYOUT ── */
+    .profile-layout {
+      max-width: 1320px; margin: -96px auto 0; padding: 0 48px 120px;
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: start;
     }
 
-    .hero-portrait {
-      position: relative;
-      aspect-ratio: 4 / 5; overflow: hidden; background: #e5e2d8;
-      opacity: 0; animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.18s;
+    /* ── SIDEBAR CARD ── */
+    .profile-card {
+      background: var(--card); border: 1px solid var(--line);
+      padding: 32px; position: sticky; top: 96px;
     }
-    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.05); display: block; }
-    .hero-avatar {
-      position: absolute; left: 20px; bottom: 20px;
-      width: 84px; height: 84px; border-radius: 50%; overflow: hidden;
-      border: 3px solid var(--paper); box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      background: #e5e2d8;
+    .profile-avatar {
+      width: 112px; height: 112px; border-radius: 50%; overflow: hidden;
+      border: 4px solid var(--card); box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+      background: #e5e2d8; margin-bottom: 24px;
     }
-    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ── INDEX NAV ── */
-    .indexnav {
-      position: sticky; top: 64px; z-index: 90;
-      background: var(--paper);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      display: flex; gap: 32px; padding: 0 48px;
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .profile-name { font-size: 24px; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .profile-pronouns { font-size: 13px; color: var(--mute); margin-bottom: 20px; }
+    .profile-meta-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13.5px; color: #46443c; margin-bottom: 14px; line-height: 1.5;
     }
-    .idx {
-      padding: 18px 0; font-size: 13px; font-weight: 500; color: var(--mute);
-      border-bottom: 2px solid transparent; margin-bottom: -1px;
-      cursor: pointer; background: none; border-top: none; border-left: none; border-right: none;
+    .profile-meta-row svg { flex-shrink: 0; margin-top: 2px; color: var(--mute); }
+    .profile-meta-row a { text-decoration: none; word-break: break-word; }
+    .profile-meta-row a:hover { color: var(--gold); }
+    .profile-bio { font-size: 13.5px; line-height: 1.75; color: #5a5748; margin: 18px 0 4px; }
+    .profile-links { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px; }
+    .profile-link-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13.5px; font-weight: 500; text-decoration: none; color: var(--ink);
       transition: color 0.2s;
     }
-    .idx:hover { color: var(--ink); }
-    .idx.active { color: var(--ink); border-bottom-color: var(--gold); }
+    .profile-link-row svg { flex-shrink: 0; color: var(--mute); transition: color 0.2s; }
+    .profile-link-row:hover { color: var(--gold); }
+    .profile-link-row:hover svg { color: var(--gold); }
+    .profile-stats-row { display: flex; gap: 24px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .profile-stat p:first-child { font-family: 'Archivo Black'; font-size: 20px; letter-spacing: -0.01em; }
+    .profile-stat p:last-child { font-size: 11.5px; color: var(--mute); margin-top: 4px; }
 
-    /* ── SECTIONS ── */
-    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
-    .section { padding: 96px 0; }
-    .sec-title {
-      font-family: 'Archivo Black'; font-size: clamp(26px, 2.6vw, 34px);
-      font-weight: 400; letter-spacing: -0.01em; margin-bottom: 48px;
+    /* ── PROJECTS ── */
+    .projects-head {
+      display: flex; align-items: center; gap: 14px; margin: 18px 0 28px;
     }
-    .empty-note { font-size: 14px; color: var(--mute); padding: 20px 0; }
-
-    /* ── PROJECTS (WORK) ── */
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 40px; }
+    .projects-count {
+      display: inline-flex; align-items: center; padding: 7px 16px;
+      background: var(--card); border: 1px solid var(--line);
+      font-size: 12.5px; font-weight: 600; color: var(--mute);
+    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px 24px; }
     .project-card { display: block; text-decoration: none; color: var(--ink); }
-    .project-frame { aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
-    .project-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+    .project-thumb-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
+    .project-thumb-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
     .vid-card { position: relative; width: 100%; height: 100%; cursor: pointer; overflow: hidden; background: #1a1a1a; }
     .vid-card.no-video { cursor: default; }
-    .vid-thumb { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.4); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s; }
-    .vid-card:hover .vid-thumb { transform: scale(1.04); filter: grayscale(0) brightness(0.65); }
-    .vid-card.no-video:hover .vid-thumb { transform: none; filter: grayscale(0.15) brightness(0.9); }
-    .vid-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.88); width: 48px; height: 48px; border-radius: 50%; background: rgba(250,250,248,0.94); display: flex; align-items: center; justify-content: center; opacity: 0.92; transition: transform 0.3s, opacity 0.3s; }
-    .vid-card:hover .vid-play-btn { transform: translate(-50%,-50%) scale(1); opacity: 1; }
-    .project-meta { margin-top: 16px; }
-    .project-title { font-size: 19px; letter-spacing: -0.01em; }
-    .project-sub { font-size: 12px; color: var(--gold); font-weight: 600; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .project-desc { font-size: 14px; line-height: 1.7; color: #5a5748; margin-top: 10px; }
-    .project-link-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink); margin-top: 10px; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+    .vid-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .vid-card:hover .vid-thumb { transform: scale(1.045); }
+    .vid-play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.88);
+      width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,0.94);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: transform 0.25s, opacity 0.25s;
+    }
+    .vid-card:hover .vid-play-btn { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    .project-duration {
+      position: absolute; right: 8px; bottom: 8px;
+      background: rgba(0,0,0,0.78); color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+      padding: 3px 7px; border-radius: 3px;
+    }
+    .project-meta { margin-top: 14px; }
+    .project-title { font-size: 15px; font-weight: 600; letter-spacing: -0.005em; line-height: 1.4; }
+    .project-caption { font-size: 12.5px; color: var(--mute); margin-top: 5px; }
 
-    /* ── ABOUT ── */
-    #about { background: var(--paper-tint); }
-    .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start; }
-    .about-photo { aspect-ratio: 3 / 4; overflow: hidden; background: #e5e2d8; }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
-    .about-bio { font-size: 16px; line-height: 1.9; color: #46443c; margin-bottom: 28px; white-space: pre-line; }
-    .about-location-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--mute); margin-bottom: 28px; }
-    .platform-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 8px; }
-    .platform-link { font-size: 13px; font-weight: 500; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color 0.2s; }
-    .platform-link:hover { border-color: var(--ink); }
-
-    /* ── GALLERY ── */
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+    /* ── ABOUT / GALLERY ── */
+    .section-divider { border-top: 1px solid var(--line); margin: 72px 0 48px; }
+    .sec-title { font-family: 'Archivo Black'; font-size: 22px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 24px; }
+    .about-full-bio { font-size: 15px; line-height: 1.85; color: #46443c; max-width: 640px; white-space: pre-line; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 32px; }
     .gallery-item { aspect-ratio: 1; overflow: hidden; background: #e5e2d8; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter 0.4s, transform 0.5s; display: block; }
-    .gallery-item:hover img { filter: grayscale(0); transform: scale(1.05); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .empty-note { font-size: 14px; color: var(--mute); }
 
     /* ── FOOTER ── */
     footer {
@@ -215,14 +167,9 @@
 
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
-      .hero { grid-template-columns: 1fr; padding: 96px 24px 64px; gap: 40px; }
-      .hero-portrait { max-width: 320px; }
-      .indexnav { padding: 0 24px; gap: 24px; }
-      .wrap { padding: 0 24px; }
-      .section { padding: 64px 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo { max-width: 320px; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .cover-banner { height: 200px; }
+      .profile-layout { grid-template-columns: 1fr; margin-top: -64px; padding: 0 20px 80px; gap: 24px; }
+      .profile-card { position: static; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 36px 24px; }
     }
@@ -238,64 +185,50 @@
   </a>
 </nav>
 
-<div class="hero">
+<div class="cover-banner">
+  <img id="cover-img" src="" alt="" style="display:none;" />
+</div>
+
+<div class="profile-layout">
+
+  <aside class="profile-card">
+    <div class="profile-avatar"><img id="profile-avatar" src="" alt="" /></div>
+    <h1 class="profile-name display" id="hero-name"></h1>
+    <p class="profile-pronouns" id="profile-pronouns" style="display:none;"></p>
+
+    <div class="profile-meta-row" id="profile-location-row" style="display:none;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <span id="profile-location-text"></span>
+    </div>
+    <div class="profile-meta-row" id="profile-role-row" style="display:none;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7h-4V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM10 4h4v3h-4z"/></svg>
+      <span id="profile-role-text"></span>
+    </div>
+    <div class="profile-meta-row" id="profile-email-row" style="display:none;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4V4zm0 0l8 9 8-9"/></svg>
+      <a id="profile-email-text" href=""></a>
+    </div>
+
+    <p class="profile-bio" id="profile-bio"></p>
+
+    <div class="profile-links" id="profile-links"></div>
+    <div class="profile-stats-row" id="profile-stats"></div>
+  </aside>
+
   <div>
-    <p class="hero-eyebrow">ARTISTTAAN — Team</p>
-    <h1 class="hero-name display" id="hero-name"></h1>
-    <div class="hero-role-line">
-      <span id="hero-role"></span>
-      <span class="dot-sep" id="hero-sep" style="display:none;"></span>
-      <span class="hero-location" id="hero-location" style="display:none;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        <span id="hero-location-text"></span>
-      </span>
+    <div class="projects-head">
+      <span class="projects-count" id="projects-count">0 Projects</span>
     </div>
-    <p class="hero-bio" id="hero-bio"></p>
-    <div class="hero-actions" id="hero-actions"></div>
-    <div class="hero-stats" id="hero-stats"></div>
-  </div>
-  <div class="hero-portrait">
-    <img id="hero-img" src="" alt="" />
-    <div class="hero-avatar" id="hero-avatar-wrap" style="display:none;">
-      <img id="hero-avatar" src="" alt="" />
-    </div>
-  </div>
-</div>
+    <div class="projects-grid" id="projects-grid"></div>
 
-<div class="indexnav">
-  <button class="idx active" data-target="work">Work</button>
-  <button class="idx" data-target="about">About</button>
-</div>
-
-<div id="work">
-  <div class="wrap">
-    <div class="section">
-      <h2 class="sec-title display" id="work-title">Selected Work</h2>
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-  </div>
-</div>
-
-<div id="about">
-  <div class="wrap">
-    <div class="section">
-      <div class="about-grid">
-        <div class="about-photo">
-          <img id="about-photo" src="" alt="" />
-        </div>
-        <div>
-          <h2 class="sec-title display" id="about-title"></h2>
-          <div class="about-location-row" id="about-location-row" style="display:none;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <span id="about-location-text"></span>
-          </div>
-          <p class="about-bio" id="about-bio"></p>
-          <div class="platform-links" id="platform-links"></div>
-        </div>
-      </div>
+    <div id="about-block" style="display:none;">
+      <div class="section-divider"></div>
+      <h2 class="sec-title display">About</h2>
+      <p class="about-full-bio" id="about-full-bio"></p>
       <div class="gallery-grid" id="gallery-grid"></div>
     </div>
   </div>
+
 </div>
 
 <footer>
@@ -338,62 +271,77 @@
       document.getElementById('twitter-image').content = `https://artisttaanmusic.com${assetPath(heroImage)}`;
     }
 
+    // Cover banner -- falls back to the plain tinted background (set in CSS)
+    // if no cover image is set.
+    if (m.cover) {
+      const coverImg = document.getElementById('cover-img');
+      coverImg.src = assetPath(m.cover);
+      coverImg.alt = m.name;
+      coverImg.style.display = 'block';
+    }
+
+    document.getElementById('profile-avatar').src = assetPath(m.photo || m.cover);
+    document.getElementById('profile-avatar').alt = m.name;
     document.getElementById('hero-name').textContent = m.name;
-    document.getElementById('hero-role').textContent = m.role || '';
-    document.getElementById('hero-bio').textContent = m.bio || '';
-    document.getElementById('hero-img').src = assetPath(m.cover || m.photo);
-    document.getElementById('hero-img').alt = m.name;
 
+    if (m.pronouns) {
+      document.getElementById('profile-pronouns').style.display = 'block';
+      document.getElementById('profile-pronouns').textContent = m.pronouns;
+    }
     if (m.location) {
-      document.getElementById('hero-sep').style.display = 'inline-block';
-      document.getElementById('hero-location').style.display = 'inline-flex';
-      document.getElementById('hero-location-text').textContent = m.location;
+      document.getElementById('profile-location-row').style.display = 'flex';
+      document.getElementById('profile-location-text').textContent = m.location;
+    }
+    if (m.role) {
+      document.getElementById('profile-role-row').style.display = 'flex';
+      document.getElementById('profile-role-text').textContent = m.role;
+    }
+    if (m.email) {
+      document.getElementById('profile-email-row').style.display = 'flex';
+      const emailEl = document.getElementById('profile-email-text');
+      emailEl.href = `mailto:${m.email}`;
+      emailEl.textContent = m.email;
     }
 
-    // Small circular avatar overlay on the cover -- only shown when a
-    // separate cover image is set (otherwise the portrait IS the photo,
-    // so a duplicate avatar over itself would look redundant).
-    if (m.cover && m.photo) {
-      document.getElementById('hero-avatar-wrap').style.display = 'block';
-      document.getElementById('hero-avatar').src = assetPath(m.photo);
-      document.getElementById('hero-avatar').alt = m.name;
-    }
+    document.getElementById('profile-bio').textContent = m.bio || '';
 
-    const acts = [];
-    if (m.instagram) acts.push(`<a href="${m.instagram}" target="_blank" rel="noopener noreferrer" class="btn-solid">Instagram</a>`);
-    if (m.website) acts.push(`<a href="${m.website}" target="_blank" rel="noopener noreferrer" class="link-quiet">Website</a>`);
-    if (m.youtube) acts.push(`<a href="${m.youtube}" target="_blank" rel="noopener noreferrer" class="link-quiet">YouTube</a>`);
-    if (m.vimeo) acts.push(`<a href="${m.vimeo}" target="_blank" rel="noopener noreferrer" class="link-quiet">Vimeo</a>`);
-    if (m.behance) acts.push(`<a href="${m.behance}" target="_blank" rel="noopener noreferrer" class="link-quiet">Behance</a>`);
-    document.getElementById('hero-actions').innerHTML = acts.join('');
+    const linkIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 13a5 5 0 007.07 0l2.83-2.83a5 5 0 00-7.07-7.07L11.5 4.5M14 11a5 5 0 00-7.07 0L4.1 13.83a5 5 0 007.07 7.07L12.5 19.5"/></svg>`;
+    const links = [
+      m.instagram ? { label: m.instagram_handle || 'Instagram', url: m.instagram } : null,
+      m.website ? { label: 'Website', url: m.website } : null,
+      m.youtube ? { label: 'YouTube', url: m.youtube } : null,
+      m.vimeo ? { label: 'Vimeo', url: m.vimeo } : null,
+      m.behance ? { label: 'Behance', url: m.behance } : null,
+    ].filter(Boolean);
+    document.getElementById('profile-links').innerHTML = links.map(l => `
+      <a class="profile-link-row" href="${l.url}" target="_blank" rel="noopener noreferrer">${linkIcon}${l.label}</a>
+    `).join('');
 
     const projects = m.projects || [];
-    const stats = [`<div class="hero-stat"><p>${projects.length}</p><p>Projects</p></div>`];
-    if (m.since) stats.push(`<div class="hero-stat"><p>${m.since}</p><p>With ARTISTTAAN Since</p></div>`);
-    document.getElementById('hero-stats').innerHTML = stats.join('');
+    const stats = [`<div class="profile-stat"><p>${projects.length}</p><p>Projects</p></div>`];
+    if (m.since) stats.push(`<div class="profile-stat"><p>${m.since}</p><p>Since</p></div>`);
+    document.getElementById('profile-stats').innerHTML = stats.join('');
 
-    document.getElementById('work-title').textContent = projects.length ? 'Selected Work' : 'Work';
-    const playIconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#16150f"><path d="M8 5v14l11-7z"/></svg>`;
+    document.getElementById('projects-count').textContent = `${projects.length} Project${projects.length === 1 ? '' : 's'}`;
+    const playIconSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="#16150f"><path d="M8 5v14l11-7z"/></svg>`;
     document.getElementById('projects-grid').innerHTML = projects.length
       ? projects.map(p => {
           const hasVideo = !!p.video;
           const wrapOpen = (!hasVideo && p.link) ? `<a class="project-card" href="${p.link}" target="_blank" rel="noopener noreferrer">` : `<div class="project-card">`;
           const wrapClose = (!hasVideo && p.link) ? `</a>` : `</div>`;
+          const caption = [p.role, p.year].filter(Boolean).join(' · ');
           return `
         ${wrapOpen}
-          <div class="project-frame">
+          <div class="project-thumb-wrap">
             <div class="vid-card${hasVideo ? '' : ' no-video'}" ${hasVideo ? `data-embed="${p.video}"` : ''}>
               <img class="vid-thumb" src="${assetPath(p.cover)}" alt="${p.title}" loading="lazy" />
               ${hasVideo ? `<div class="vid-play-btn">${playIconSvg}</div>` : ''}
+              ${p.duration ? `<span class="project-duration">${p.duration}</span>` : ''}
             </div>
           </div>
           <div class="project-meta">
-            <p class="project-title display">${p.title}</p>
-            ${(p.role || p.year) ? `<p class="project-sub">${[p.role, p.year].filter(Boolean).join(' · ')}</p>` : ''}
-            ${p.description ? `<p class="project-desc">${p.description}</p>` : ''}
-            ${(!hasVideo && p.link) ? `<span class="project-link-cta">View Project
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </span>` : ''}
+            <p class="project-title">${p.title}</p>
+            ${caption ? `<p class="project-caption">${caption}</p>` : ''}
           </div>
         ${wrapClose}`;
         }).join('')
@@ -402,49 +350,21 @@
     document.querySelectorAll('.vid-card[data-embed]').forEach(el => {
       el.addEventListener('click', () => {
         const embed = el.getAttribute('data-embed');
-        const frame = el.closest('.project-frame');
+        const frame = el.closest('.project-thumb-wrap');
         frame.innerHTML = `<iframe src="${embed}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       }, { once: true });
     });
 
-    document.getElementById('about-title').textContent = m.name;
-    document.getElementById('about-bio').textContent = m.full_bio || m.bio || '';
-    document.getElementById('about-photo').src = assetPath(m.photo || m.cover);
-    document.getElementById('about-photo').alt = m.name;
-    if (m.location) {
-      document.getElementById('about-location-row').style.display = 'flex';
-      document.getElementById('about-location-text').textContent = m.location;
-    }
-
-    const plats = [];
-    if (m.instagram) plats.push(`<a href="${m.instagram}" target="_blank" rel="noopener noreferrer" class="platform-link">Instagram</a>`);
-    if (m.website) plats.push(`<a href="${m.website}" target="_blank" rel="noopener noreferrer" class="platform-link">Website</a>`);
-    if (m.youtube) plats.push(`<a href="${m.youtube}" target="_blank" rel="noopener noreferrer" class="platform-link">YouTube</a>`);
-    if (m.vimeo) plats.push(`<a href="${m.vimeo}" target="_blank" rel="noopener noreferrer" class="platform-link">Vimeo</a>`);
-    if (m.behance) plats.push(`<a href="${m.behance}" target="_blank" rel="noopener noreferrer" class="platform-link">Behance</a>`);
-    document.getElementById('platform-links').innerHTML = plats.join('');
-
+    const fullBio = m.full_bio || '';
     const gallery = m.gallery || [];
-    document.getElementById('gallery-grid').innerHTML = gallery.map(g => `
-      <div class="gallery-item"><img src="${assetPath(g)}" alt="${m.name}" loading="lazy" /></div>
-    `).join('');
+    if (fullBio || gallery.length) {
+      document.getElementById('about-block').style.display = 'block';
+      document.getElementById('about-full-bio').textContent = fullBio;
+      document.getElementById('gallery-grid').innerHTML = gallery.map(g => `
+        <div class="gallery-item"><img src="${assetPath(g)}" alt="${m.name}" loading="lazy" /></div>
+      `).join('');
+    }
   }
-
-  document.querySelectorAll('.idx').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const el = document.getElementById(tab.dataset.target);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-  const idxSections = ['work', 'about'];
-  window.addEventListener('scroll', () => {
-    let cur = 'work';
-    idxSections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 140) cur = id;
-    });
-    document.querySelectorAll('.idx').forEach(t => t.classList.toggle('active', t.dataset.target === cur));
-  });
 
   document.addEventListener('DOMContentLoaded', init);
 </script>
