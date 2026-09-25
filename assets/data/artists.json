@@ -1166,6 +1166,23 @@
           "video": "https://youtu.be/Z279HSknKmU?si=LpHSoAwAEJSKrmuD"
         },
         {
+          "title": "Namaskar",
+          "role": "Director",
+          "year": "2026",
+          "cover": "",
+          "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
+          "description": "Music video for Slay."
+        },
+        {
+          "title": "Nathuli",
+          "video": "https://www.youtube.com/embed/QQZSNUV0fT4?si=Oeyy8XjofNp7Ej0Y",
+          "role": "Director"
+        },
+        {
+          "title": "Meditate",
+          "video": "https://www.youtube.com/embed/BsJOe-luhps?si=mL5ThfG4XqInLGUn"
+        },
+        {
           "title": "Kaagaz Aur Daag",
           "role": "Director",
           "year": "2025",
@@ -1188,23 +1205,6 @@
           "cover": "",
           "video": "https://www.youtube.com/embed/Q5E5t5VbVeo",
           "description": "Music video for Shrey."
-        },
-        {
-          "title": "Namaskar",
-          "role": "Director",
-          "year": "2026",
-          "cover": "",
-          "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
-          "description": "Music video for Slay."
-        },
-        {
-          "title": "Meditate",
-          "video": "https://www.youtube.com/embed/BsJOe-luhps?si=mL5ThfG4XqInLGUn"
-        },
-        {
-          "title": "Nathuli",
-          "video": "https://www.youtube.com/embed/QQZSNUV0fT4?si=Oeyy8XjofNp7Ej0Y",
-          "role": "Director"
         }
       ],
       "since": "",
