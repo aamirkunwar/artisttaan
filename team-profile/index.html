@@ -246,6 +246,25 @@
     return '/' + String(p).replace(/^\/+/, '');
   }
 
+  // Pulls the 11-character video ID out of any common YouTube URL format --
+  // an /embed/ link, a normal /watch?v= link, a youtu.be short link, or a
+  // /shorts/ link -- so people can just paste whatever link YouTube gave
+  // them rather than needing to know the /embed/ format specifically.
+  function extractYouTubeId(url) {
+    if (!url) return null;
+    const patterns = [
+      /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
+      /youtube\.com\/watch\?(?:.*&)?v=([a-zA-Z0-9_-]{11})/,
+      /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/,
+      /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+    ];
+    for (const re of patterns) {
+      const m = url.match(re);
+      if (m) return m[1];
+    }
+    return null;
+  }
+
   async function init() {
     try {
       const res = await fetch('/assets/data/artists.json');
@@ -327,14 +346,25 @@
     document.getElementById('projects-grid').innerHTML = projects.length
       ? projects.map(p => {
           const hasVideo = !!p.video;
+          // If it's a recognizable YouTube link (embed, watch, youtu.be, or
+          // shorts -- in any order/format someone might paste), pull the
+          // real thumbnail straight from YouTube and normalize the URL to a
+          // proper /embed/ link for playback, instead of requiring a
+          // manually uploaded Thumbnail Image. A manually set Thumbnail
+          // Image always wins if one is provided (e.g. to use a custom
+          // crop), and non-YouTube video links (Vimeo, etc.) still need a
+          // manual thumbnail since there's no universal way to fetch those.
+          const ytId = hasVideo ? extractYouTubeId(p.video) : null;
+          const embedSrc = ytId ? `https://www.youtube.com/embed/${ytId}` : p.video;
+          const thumbSrc = p.cover ? assetPath(p.cover) : (ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : '');
           const wrapOpen = (!hasVideo && p.link) ? `<a class="project-card" href="${p.link}" target="_blank" rel="noopener noreferrer">` : `<div class="project-card">`;
           const wrapClose = (!hasVideo && p.link) ? `</a>` : `</div>`;
           const caption = [p.role, p.year].filter(Boolean).join(' · ');
           return `
         ${wrapOpen}
           <div class="project-thumb-wrap">
-            <div class="vid-card${hasVideo ? '' : ' no-video'}" ${hasVideo ? `data-embed="${p.video}"` : ''}>
-              <img class="vid-thumb" src="${assetPath(p.cover)}" alt="${p.title}" loading="lazy" />
+            <div class="vid-card${hasVideo ? '' : ' no-video'}" ${hasVideo ? `data-embed="${embedSrc}"` : ''}>
+              ${thumbSrc ? `<img class="vid-thumb" src="${thumbSrc}" alt="${p.title}" loading="lazy" />` : ''}
               ${hasVideo ? `<div class="vid-play-btn">${playIconSvg}</div>` : ''}
               ${p.duration ? `<span class="project-duration">${p.duration}</span>` : ''}
             </div>

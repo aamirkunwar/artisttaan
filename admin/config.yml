@@ -198,8 +198,8 @@ collections:
                   - { label: Role on this Project, name: role, widget: string, required: false, hint: "e.g. Director, Editor" }
                   - { label: Year, name: year, widget: string, required: false }
                   - { label: Duration, name: duration, widget: string, required: false, hint: "e.g. 3:24 — shown as a badge on the thumbnail. Leave blank if unknown." }
-                  - { label: Thumbnail Image, name: cover, widget: image }
-                  - { label: Video Embed URL, name: video, widget: string, required: false, hint: "YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID — clicking the thumbnail plays it inline. Leave blank if this project has no video." }
+                  - { label: Thumbnail Image, name: cover, widget: image, required: false, hint: "Optional if the Video URL below is a YouTube link — the real YouTube thumbnail is pulled in automatically. Upload one here to override that, or if it's not a YouTube video." }
+                  - { label: Video URL, name: video, widget: string, required: false, hint: "Paste any normal YouTube link — a youtube.com/watch?v=... link, a youtu.be/... link, or an /embed/ link all work. Clicking the thumbnail plays it inline. Leave blank if this project has no video." }
                   - { label: External Link, name: link, widget: string, required: false, hint: "Only used when there's no video above — clicking the thumbnail opens this URL instead (e.g. a Behance case study)." }
 
           - label: Site Settings

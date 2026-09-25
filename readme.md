@@ -217,11 +217,14 @@ Notes:
   background -- it isn't required.
 - `pronouns`, `location`, `email`, `since`, and every social link field are
   all optional -- leave as `""` to hide that row entirely.
-- A `projects` entry with `video` gets a click-to-play embed. `duration`
-  (e.g. `"3:24"`) shows as a small badge on the thumbnail, matching the
-  Vimeo-style grid -- leave it out if you don't know the runtime. A project
-  with no `video` but a `link` becomes a clickable card that opens that URL
-  instead of playing inline.
+- A `projects` entry with `video` gets a click-to-play embed. If `video` is
+  a YouTube link (any normal format -- a `youtube.com/watch?v=...` link, a
+  `youtu.be/...` link, or an `/embed/...` link), the real YouTube thumbnail
+  is pulled in automatically and `cover` can be left blank; set `cover`
+  anyway to override it, or if the video isn't on YouTube. `duration` (e.g.
+  `"3:24"`) shows as a small badge on the thumbnail -- leave it out if you
+  don't know the runtime. A project with no `video` but a `link` becomes a
+  clickable card that opens that URL instead of playing inline.
 - The "About" section (full bio + `gallery` photo strip) only appears if
   `full_bio` or `gallery` is set -- otherwise the page ends after the
   projects grid.
