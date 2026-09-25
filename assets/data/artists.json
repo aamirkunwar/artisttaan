@@ -1160,6 +1160,12 @@
       "full_bio": "",
       "projects": [
         {
+          "title": "Phataphat",
+          "role": "Director",
+          "year": "2026",
+          "video": "https://youtu.be/Z279HSknKmU?si=LpHSoAwAEJSKrmuD"
+        },
+        {
           "title": "Kaagaz Aur Daag",
           "role": "Director",
           "year": "2025",
@@ -1190,12 +1196,6 @@
           "cover": "",
           "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
           "description": "Music video for Slay."
-        },
-        {
-          "title": "Phataphat",
-          "role": "Director",
-          "year": "2026",
-          "video": "https://youtu.be/Z279HSknKmU?si=LpHSoAwAEJSKrmuD"
         }
       ],
       "since": "",
