@@ -24,7 +24,7 @@ export default {
     }
 
     if (request.method === 'POST' && url.pathname === '/demo') {
-      return handleDemo(request, env);
+      return handleDemo(request, env, ctx);
     }
 
     const topTracksMatch = url.pathname.match(/^\/api\/spotify-top-tracks\/([^\/]+)\/?$/);
@@ -74,7 +74,7 @@ export default {
       const assetUrl = new URL('/culture/', url.origin);
       const assetRequest = new Request(assetUrl.toString(), request);
       const assetResponse = await env.ASSETS.fetch(assetRequest);
-      return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin);
+      return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin, ctx);
     }
 
     // Clean release URLs: /release/<slug> or /release/<slug>/ -> serve
@@ -106,12 +106,35 @@ export default {
 // using Cloudflare's streaming HTMLRewriter so we don't have to buffer or
 // re-parse the whole page. The client-side JS still runs afterwards and sets
 // the same values again, so nothing changes if this ever fails open.
+// ---------- Shared, cached artists.json loader ----------
+//
+// Every meta-rewrite function below (artist, team, release) plus the Spotify
+// endpoint used to each independently re-fetch and re-parse this ~40KB file
+// on EVERY request -- four separate copies of the same fetch+JSON.parse work
+// on the hot path of the most-visited pages on the site. This caches the
+// parsed object in module scope (shared across requests handled by the same
+// Worker isolate, exactly like cachedSpotifyToken below) for a few minutes.
+// artists.json only changes on deploy, and a fresh isolate always re-fetches
+// on cold start, so a short TTL just avoids repeat work within a burst of
+// traffic without ever serving badly stale data for long.
+let cachedArtistsData = null; // { data, expiresAt }
+const ARTISTS_CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
+async function getArtistsData(origin, env) {
+  if (cachedArtistsData && cachedArtistsData.expiresAt > Date.now()) {
+    return cachedArtistsData.data;
+  }
+  const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
+  if (!dataRes.ok) throw new Error('artists.json fetch failed with status ' + dataRes.status);
+  const data = await dataRes.json();
+  cachedArtistsData = { data: data, expiresAt: Date.now() + ARTISTS_CACHE_TTL_MS };
+  return data;
+}
+
 async function renderArtistMeta(assetResponse, slug, origin, env) {
   let artist;
   try {
-    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
-    if (!dataRes.ok) return assetResponse;
-    const data = await dataRes.json();
+    const data = await getArtistsData(origin, env);
     artist = (data.artists || []).find(function (a) { return a.id === slug; });
   } catch (e) {
     console.error('renderArtistMeta: could not load artists.json', e);
@@ -157,9 +180,7 @@ async function renderArtistMeta(assetResponse, slug, origin, env) {
 async function renderTeamMeta(assetResponse, slug, origin, env) {
   let member;
   try {
-    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
-    if (!dataRes.ok) return assetResponse;
-    const data = await dataRes.json();
+    const data = await getArtistsData(origin, env);
     member = (data.team || []).find(function (m) { return m.id === slug; });
   } catch (e) {
     console.error('renderTeamMeta: could not load artists.json', e);
@@ -211,9 +232,7 @@ function slugify(s) {
 async function renderReleaseMeta(assetResponse, slug, origin, env) {
   let release, artist;
   try {
-    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', origin));
-    if (!dataRes.ok) return assetResponse;
-    const data = await dataRes.json();
+    const data = await getArtistsData(origin, env);
     release = (data.releases || []).find(function (r) { return slugify(r.title) === slug; });
     if (release) {
       artist = (data.artists || []).find(function (a) { return a.id === release.artist_id; });
@@ -287,22 +306,42 @@ function parseFrontMatter(text) {
   return { meta: meta, body: match[2].trim() };
 }
 
-async function renderCultureMeta(assetResponse, slug, origin) {
+async function renderCultureMeta(assetResponse, slug, origin, ctx) {
   // Guard against a malicious/odd slug being used to build the GitHub URL.
   if (!/^[A-Za-z0-9._-]+$/.test(slug)) return assetResponse;
 
+  // This used to hit raw.githubusercontent.com on EVERY request for every
+  // culture article -- an uncached external round-trip on the hot path of a
+  // page people actually read and share. Cache the parsed frontmatter at
+  // Cloudflare's edge (same caches.default + ctx.waitUntil pattern already
+  // used for Spotify top tracks below) for 10 minutes. A freshly published
+  // post is still live almost immediately, and every request after the
+  // first one for a given slug skips GitHub entirely.
+  const cache = caches.default;
+  const cacheKey = new Request('https://artisttaanmusic.com/__cache/culture-meta/' + slug);
+
   let meta;
-  try {
-    const rawUrl =
-      'https://raw.githubusercontent.com/' + CULTURE_REPO_OWNER + '/' + CULTURE_REPO_NAME +
-      '/' + CULTURE_REPO_BRANCH + '/culture/posts/' + slug + '.md';
-    const res = await fetch(rawUrl);
-    if (!res.ok) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
-    const text = await res.text();
-    meta = parseFrontMatter(text).meta;
-  } catch (e) {
-    console.error('renderCultureMeta: could not load post from GitHub', e);
-    return assetResponse;
+  const cachedHit = await cache.match(cacheKey);
+  if (cachedHit) {
+    meta = await cachedHit.json();
+  } else {
+    try {
+      const rawUrl =
+        'https://raw.githubusercontent.com/' + CULTURE_REPO_OWNER + '/' + CULTURE_REPO_NAME +
+        '/' + CULTURE_REPO_BRANCH + '/culture/posts/' + slug + '.md';
+      const res = await fetch(rawUrl);
+      if (!res.ok) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
+      const text = await res.text();
+      meta = parseFrontMatter(text).meta;
+
+      const cacheResponse = new Response(JSON.stringify(meta), {
+        headers: { 'content-type': 'application/json', 'Cache-Control': 'public, max-age=600' },
+      });
+      if (ctx) ctx.waitUntil(cache.put(cacheKey, cacheResponse));
+    } catch (e) {
+      console.error('renderCultureMeta: could not load post from GitHub', e);
+      return assetResponse;
+    }
   }
 
   if (!meta || !meta.title) return assetResponse;
@@ -397,7 +436,7 @@ async function handleSubscribe(request, env) {
 
 // ---------- Demo submission ----------
 
-async function handleDemo(request, env) {
+async function handleDemo(request, env, ctx) {
   let form;
   try {
     form = await request.formData();
@@ -456,38 +495,44 @@ async function handleDemo(request, env) {
     textContent: textContent,
   };
 
-  // Add the submitter to the Brevo "Demo Submissions" list. This runs
-  // separately from (and doesn't block) the team-notification email below --
-  // if Brevo's contacts API hiccups, we still want the team to get the demo,
-  // so any failure here is just logged, not surfaced to the submitter.
-  try {
-    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
-        'api-key': env.BREVO_API_KEY,
-        'content-type': 'application/json',
+  // Add the submitter to the Brevo "Demo Submissions" list. The comment here
+  // always said this "doesn't block" the team-notification email, but the
+  // code used to `await` it right before sending that email anyway -- two
+  // sequential external API calls on the response path for no reason, since
+  // nothing below depends on this one's result. ctx.waitUntil actually makes
+  // it non-blocking: the response goes out as soon as the email send below
+  // finishes, and this keeps running in the background. Any failure here is
+  // still just logged, never surfaced to the submitter.
+  const contactAddPromise = fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'api-key': env.BREVO_API_KEY,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      email: email,
+      listIds: [BREVO_LIST_ID],
+      updateEnabled: true,
+      attributes: {
+        ARTIST_NAME: artistName,
+        INSTAGRAM: instagram,
+        DEMO_LINK: demoLink,
       },
-      body: JSON.stringify({
-        email: email,
-        listIds: [BREVO_LIST_ID],
-        updateEnabled: true,
-        attributes: {
-          ARTIST_NAME: artistName,
-          INSTAGRAM: instagram,
-          DEMO_LINK: demoLink,
-        },
-      }),
-    });
-    if (!contactResponse.ok) {
-      const contactError = await contactResponse.json().catch(function () { return {}; });
-      if (contactError.code !== 'duplicate_parameter') {
-        console.error('Brevo contacts API error (demo):', contactResponse.status, contactError);
+    }),
+  })
+    .then(async function (contactResponse) {
+      if (!contactResponse.ok) {
+        const contactError = await contactResponse.json().catch(function () { return {}; });
+        if (contactError.code !== 'duplicate_parameter') {
+          console.error('Brevo contacts API error (demo):', contactResponse.status, contactError);
+        }
       }
-    }
-  } catch (err) {
-    console.error('Brevo contacts add error (demo):', err);
-  }
+    })
+    .catch(function (err) {
+      console.error('Brevo contacts add error (demo):', err);
+    });
+  if (ctx) ctx.waitUntil(contactAddPromise);
 
   // Attach the demo file if one was uploaded, up to ~8MB.
   const file = form.get('attachment');
@@ -623,8 +668,7 @@ async function handleSpotifyTopTracks(request, env, ctx, artistSlug) {
 
   let artist;
   try {
-    const dataRes = await env.ASSETS.fetch(new URL('/assets/data/artists.json', request.url));
-    const data = await dataRes.json();
+    const data = await getArtistsData(request.url, env);
     artist = (data.artists || []).find(function (a) { return a.id === artistSlug; });
   } catch (e) {
     console.error('handleSpotifyTopTracks: could not load artists.json', e);
