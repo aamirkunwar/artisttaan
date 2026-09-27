@@ -39,15 +39,17 @@ export default {
     // code -- see https://developers.cloudflare.com/workers/static-assets/redirects/
     const artistSlugMatch = url.pathname.match(/^\/artist\/([^\/]+)\/?$/);
     if (artistSlugMatch && artistSlugMatch[1] !== 'index.html') {
-      // Request the FOLDER path ("/artist/"), not the literal filename
-      // ("/artist/index.html"). Requesting the filename directly triggers
-      // Cloudflare's default html_handling redirect chain
-      // (/artist/index.html -> 307 -> /artist -> 307 -> /artist/), which is
-      // exactly what was sending every visitor back to the bare /artist/ URL.
-      const assetUrl = new URL('/artist/', url.origin);
-      const assetRequest = new Request(assetUrl.toString(), request);
-      const assetResponse = await env.ASSETS.fetch(assetRequest);
-      return renderArtistMeta(assetResponse, artistSlugMatch[1], url.origin, env);
+      return withEdgeCache(ctx, 'artist:' + artistSlugMatch[1], 300, async function () {
+        // Request the FOLDER path ("/artist/"), not the literal filename
+        // ("/artist/index.html"). Requesting the filename directly triggers
+        // Cloudflare's default html_handling redirect chain
+        // (/artist/index.html -> 307 -> /artist -> 307 -> /artist/), which is
+        // exactly what was sending every visitor back to the bare /artist/ URL.
+        const assetUrl = new URL('/artist/', url.origin);
+        const assetRequest = new Request(assetUrl.toString(), request);
+        const assetResponse = await env.ASSETS.fetch(assetRequest);
+        return renderArtistMeta(assetResponse, artistSlugMatch[1], url.origin, env);
+      });
     }
 
     // Clean team-member URLs: /team/<slug> or /team/<slug>/ -> serve
@@ -57,10 +59,12 @@ export default {
     // through untouched to the static team/index.html grid.
     const teamSlugMatch = url.pathname.match(/^\/team\/([^\/]+)\/?$/);
     if (teamSlugMatch && teamSlugMatch[1] !== 'index.html') {
-      const assetUrl = new URL('/team-profile/', url.origin);
-      const assetRequest = new Request(assetUrl.toString(), request);
-      const assetResponse = await env.ASSETS.fetch(assetRequest);
-      return renderTeamMeta(assetResponse, teamSlugMatch[1], url.origin, env);
+      return withEdgeCache(ctx, 'team:' + teamSlugMatch[1], 300, async function () {
+        const assetUrl = new URL('/team-profile/', url.origin);
+        const assetRequest = new Request(assetUrl.toString(), request);
+        const assetResponse = await env.ASSETS.fetch(assetRequest);
+        return renderTeamMeta(assetResponse, teamSlugMatch[1], url.origin, env);
+      });
     }
 
     // Clean culture-article URLs: /culture/<slug> or /culture/<slug>/ -> serve
@@ -71,10 +75,12 @@ export default {
     // excluded explicitly for clarity.
     const cultureSlugMatch = url.pathname.match(/^\/culture\/([^\/]+)\/?$/);
     if (cultureSlugMatch && cultureSlugMatch[1] !== 'index.html' && cultureSlugMatch[1] !== 'posts') {
-      const assetUrl = new URL('/culture/', url.origin);
-      const assetRequest = new Request(assetUrl.toString(), request);
-      const assetResponse = await env.ASSETS.fetch(assetRequest);
-      return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin, ctx);
+      return withEdgeCache(ctx, 'culture:' + cultureSlugMatch[1], 300, async function () {
+        const assetUrl = new URL('/culture/', url.origin);
+        const assetRequest = new Request(assetUrl.toString(), request);
+        const assetResponse = await env.ASSETS.fetch(assetRequest);
+        return renderCultureMeta(assetResponse, cultureSlugMatch[1], url.origin, ctx);
+      });
     }
 
     // Clean release URLs: /release/<slug> or /release/<slug>/ -> serve
@@ -84,16 +90,47 @@ export default {
     // song title/cover/description immediately, without executing JS.
     const releaseSlugMatch = url.pathname.match(/^\/release\/([^\/]+)\/?$/);
     if (releaseSlugMatch && releaseSlugMatch[1] !== 'index.html') {
-      const assetUrl = new URL('/release/', url.origin);
-      const assetRequest = new Request(assetUrl.toString(), request);
-      const assetResponse = await env.ASSETS.fetch(assetRequest);
-      return renderReleaseMeta(assetResponse, releaseSlugMatch[1], url.origin, env);
+      return withEdgeCache(ctx, 'release:' + releaseSlugMatch[1], 300, async function () {
+        const assetUrl = new URL('/release/', url.origin);
+        const assetRequest = new Request(assetUrl.toString(), request);
+        const assetResponse = await env.ASSETS.fetch(assetRequest);
+        return renderReleaseMeta(assetResponse, releaseSlugMatch[1], url.origin, env);
+      });
     }
 
     // Anything else: serve the static website files as normal.
     return env.ASSETS.fetch(request);
   },
 };
+
+// ---------- Whole-page edge cache for the meta-rewrite routes ----------
+//
+// Before this, an artist/team/culture/release page re-ran its full Worker
+// logic (fetch the HTML asset, load artists.json, run HTMLRewriter) on EVERY
+// request, even back-to-back requests for the identical URL. This puts the
+// finished, already-rewritten response into Cloudflare's edge cache
+// (caches.default -- the same cache used for Spotify top tracks below) keyed
+// by slug, so repeat traffic to a popular artist/release page is served
+// straight from cache with none of that work re-run. 5 minutes keeps this in
+// step with the artists.json cache above, so a slug never serves stale meta
+// for longer than the underlying data itself is considered fresh. Only
+// successful (200) responses are cached, since 404s should keep re-checking
+// in case an artist/post is added under that slug shortly after.
+async function withEdgeCache(ctx, cacheKeySuffix, ttlSeconds, computeResponse) {
+  const cache = caches.default;
+  const cacheKey = new Request('https://artisttaanmusic.com/__page-cache/' + cacheKeySuffix);
+
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
+  const response = await computeResponse();
+  if (response.status !== 200) return response;
+
+  const cacheableResponse = new Response(response.body, response);
+  cacheableResponse.headers.set('Cache-Control', 'public, max-age=' + ttlSeconds);
+  ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
+  return cacheableResponse;
+}
 
 // ---------- Server-rendered artist meta tags ----------
 //
