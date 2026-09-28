@@ -394,7 +394,21 @@
   // "top_tracks" array in assets/data/artists.json.
   function renderTopTracks(artist) {
     const tracks = artist.top_tracks || [];
-    if (!tracks.length) return;
+    if (!tracks.length) {
+      // No hand-curated list: show Spotify's own live artist player, which
+      // lists the artist's current popular tracks and updates automatically.
+      // This is an embed, not an API call, so the Web API restrictions
+      // don't apply.
+      const m = (artist.spotify_url || '').match(/\/artist\/([A-Za-z0-9]+)/);
+      if (!m) return;
+      document.getElementById('top-tracks-list').innerHTML =
+        '<iframe title="Top tracks on Spotify" style="border-radius:12px; border:0;" ' +
+        'src="https://open.spotify.com/embed/artist/' + m[1] + '" ' +
+        'width="100%" height="352" frameborder="0" loading="lazy" ' +
+        'allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>';
+      document.getElementById('top-tracks-section').style.display = 'block';
+      return;
+    }
 
     document.getElementById('top-tracks-list').innerHTML = tracks.map((t, i) => `
       <a class="track-row" href="${t.url}" target="_blank" rel="noopener noreferrer">
