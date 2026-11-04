@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./assets/css/tailwind-src.css -o ./assets/css/tailwind.css --minify",
+    "build:sitemap": "node scripts/build-sitemap.js",
     "watch:css": "tailwindcss -i ./assets/css/tailwind-src.css -o ./assets/css/tailwind.css --watch"
   },
   "devDependencies": {
