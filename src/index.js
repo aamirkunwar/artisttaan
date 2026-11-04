@@ -98,6 +98,19 @@ export default {
       });
     }
 
+    // /releases/ (the full discography grid). The grid is normally built by
+    // client-side JS, so a crawler that doesn't run JS (or hasn't rendered it
+    // yet) sees an empty page with ZERO links to the ~90 release pages --
+    // which is a big reason those pages weren't being discovered/indexed.
+    // Here the same cards are written into the HTML server-side as real
+    // <a href> links. The client script still replaces them on load.
+    if (request.method === 'GET' && (url.pathname === '/releases/' || url.pathname === '/releases')) {
+      const assetResponse = await env.ASSETS.fetch(request);
+      const ctype = assetResponse.headers.get('content-type') || '';
+      if (assetResponse.status !== 200 || ctype.indexOf('text/html') === -1) return assetResponse;
+      return renderReleasesGrid(assetResponse, url.origin, env);
+    }
+
     // Anything else: serve the static website files as normal.
     return env.ASSETS.fetch(request);
   },
@@ -168,19 +181,122 @@ async function getArtistsData(origin, env) {
   return data;
 }
 
+// ---------- Small helpers shared by the server-rendering functions ----------
+
+function escHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// JSON for an inline <script type="application/ld+json">. "<" is escaped so
+// a value containing "</script>" can never break out of the tag.
+function jsonLd(obj) {
+  return JSON.stringify(obj).replace(/</g, '\\u003c');
+}
+
+// Canonical URLs always use the real domain, even if the page is reached via
+// a *.workers.dev address -- otherwise that address would compete with the
+// real site as a duplicate.
+const SITE_ORIGIN = 'https://artisttaanmusic.com';
+
+// A release belongs to an artist if artist_id matches, or (for rows that
+// never had artist_id filled in) the artist name matches exactly.
+function releaseBelongsTo(r, a) {
+  if (!r || !a) return false;
+  if (r.artist_id) return r.artist_id === a.id;
+  return !!r.artist && !!a.name && String(r.artist).trim().toLowerCase() === String(a.name).trim().toLowerCase();
+}
+
+function assetUrlPath(p) {
+  return p ? '/' + String(p).replace(/^\/+/, '') : '';
+}
+
+// Unknown /release/<slug>/ and /artist/<slug>/ URLs used to return the empty
+// template with HTTP 200 (a "soft 404" -- Google reports those as an indexing
+// problem). Return a real 404 status instead; the page body is unchanged so
+// the client-side "not found" message still shows for visitors.
+function notFoundResponse(assetResponse) {
+  return new Response(assetResponse.body, {
+    status: 404,
+    statusText: 'Not Found',
+    headers: assetResponse.headers
+  });
+}
+
+function firstSentences(text, maxChars) {
+  const t = String(text || '').replace(/\s+/g, ' ').trim();
+  if (t.length <= maxChars) return t;
+  const cut = t.slice(0, maxChars);
+  const lastStop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));
+  return lastStop > 60 ? cut.slice(0, lastStop + 1) : cut.replace(/\s+\S*$/, '') + '…';
+}
+
+function joinNames(names) {
+  if (names.length <= 1) return names.join('');
+  return names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
+}
+
+// ---------- Server-rendered /releases/ grid (crawlable links) ----------
+
+async function renderReleasesGrid(assetResponse, origin, env) {
+  let releases;
+  try {
+    const data = await getArtistsData(origin, env);
+    releases = data.releases || [];
+  } catch (e) {
+    console.error('renderReleasesGrid: could not load artists.json', e);
+    return assetResponse;
+  }
+  if (!releases.length) return assetResponse;
+
+  const seen = {};
+  const cards = [];
+  releases.forEach(function (r) {
+    const slug = slugify(r.title);
+    if (!slug || seen[slug]) return; // skip untitled rows and duplicate slugs
+    seen[slug] = true;
+    cards.push(
+      '<a class="release-card" href="/release/' + slug + '/">' +
+        '<div class="poster"><img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" loading="lazy"/></div>' +
+        '<p class="release-title">' + escHtml(r.title) + '</p>' +
+        '<p class="release-artist">' + escHtml(r.artist) + '</p>' +
+        '<p class="release-year">' + escHtml(r.year) + '</p>' +
+      '</a>'
+    );
+  });
+
+  const countText = cards.length + ' releases';
+  return new HTMLRewriter()
+    .on('div#releases-grid', { element: function (el) { el.setInnerContent(cards.join(''), { html: true }); } })
+    .on('#release-count', { element: function (el) { el.setInnerContent(countText); } })
+    .transform(assetResponse);
+}
+
 async function renderArtistMeta(assetResponse, slug, origin, env) {
-  let artist;
+  let artist, artistReleases = [];
   try {
     const data = await getArtistsData(origin, env);
     artist = (data.artists || []).find(function (a) { return a.id === slug; });
+    if (artist) {
+      const seenSlugs = {};
+      artistReleases = (data.releases || []).filter(function (r) {
+        const s = slugify(r.title);
+        if (!releaseBelongsTo(r, artist) || !s || seenSlugs[s]) return false;
+        seenSlugs[s] = true;
+        return true;
+      });
+    }
   } catch (e) {
     console.error('renderArtistMeta: could not load artists.json', e);
     return assetResponse;
   }
 
-  if (!artist) return assetResponse; // Unknown slug -- let the client-side "Artist not found" state handle it.
+  if (!artist) return notFoundResponse(assetResponse); // Unknown slug -> real 404 (client-side "Artist not found" still shows).
 
-  const pageUrl = origin + '/artist/' + artist.id + '/';
+  const pageUrl = SITE_ORIGIN + '/artist/' + artist.id + '/';
   const title = artist.name + ' — ARTISTTAAN';
   const ogTitle = artist.name + ' | ARTISTTAAN';
   const description = artist.full_bio || artist.bio || '';
@@ -197,6 +313,67 @@ async function renderArtistMeta(assetResponse, slug, origin, env) {
     .on('meta#twitter-title', { element: function (el) { el.setAttribute('content', ogTitle); } })
     .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', shortDescription); } })
     .on('h1#hero-name', { element: function (el) { el.setInnerContent(artist.name); } });
+
+  // Visible page content, written into the HTML server-side so it exists
+  // without running any JS (the client script rewrites the same elements
+  // with identical values afterwards).
+  const heroImg = assetUrlPath(artist.banner || artist.photo);
+  const aboutPhoto = assetUrlPath(artist.photo);
+  const releaseRows = artistReleases.map(function (r, i) {
+    return '<a class="track-row" href="/release/' + slugify(r.title) + '/">' +
+      '<span class="track-num display">' + String(i + 1).padStart(2, '0') + '</span>' +
+      '<span class="track-title">' + escHtml(r.title) + '</span>' +
+      '<span class="track-year">' + escHtml(r.year) + '</span>' +
+      '<span class="track-cta">Listen</span>' +
+      '<div class="track-thumb"><img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" loading="lazy" /></div>' +
+    '</a>';
+  }).join('');
+  const genreTags = (Array.isArray(artist.genres) ? artist.genres : []).map(function (g) {
+    return '<span class="genre-tag">' + escHtml(g) + '</span>';
+  }).join('');
+
+  rewriter
+    .on('span#hero-role', { element: function (el) { el.setInnerContent(artist.role || ''); } })
+    .on('p#hero-role2', { element: function (el) { el.setInnerContent(artist.role || ''); } })
+    .on('p#hero-bio', { element: function (el) { el.setInnerContent(artist.bio || ''); } })
+    .on('h2#about-title', { element: function (el) { el.setInnerContent(artist.name); } })
+    .on('p#about-bio', { element: function (el) { el.setInnerContent(artist.full_bio || artist.bio || ''); } })
+    .on('h2#music-title', { element: function (el) { el.setInnerContent(artist.name + "'s Music"); } })
+    .on('div#genres', { element: function (el) { if (genreTags) el.setInnerContent(genreTags, { html: true }); } })
+    .on('div#releases-grid', { element: function (el) { if (releaseRows) el.setInnerContent(releaseRows, { html: true }); } })
+    .on('img#hero-img', { element: function (el) { if (heroImg) el.setAttribute('src', heroImg); el.setAttribute('alt', artist.name); } })
+    .on('img#about-photo', { element: function (el) { if (aboutPhoto) el.setAttribute('src', aboutPhoto); el.setAttribute('alt', artist.name); } });
+
+  const sameAs = [artist.spotify_url, artist.apple_music_url, artist.youtube_url, artist.instagram]
+    .filter(function (u) { return u && /^https?:\/\//.test(u); });
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'MusicGroup',
+        'name': artist.name,
+        'url': pageUrl,
+        'description': firstSentences(artist.full_bio || artist.bio || '', 300),
+        'image': image || undefined,
+        'genre': Array.isArray(artist.genres) ? artist.genres : undefined,
+        'sameAs': sameAs.length ? sameAs : undefined,
+        'album': artistReleases.slice(0, 20).map(function (r) {
+          return { '@type': 'MusicRecording', 'name': r.title, 'url': origin + '/release/' + slugify(r.title) + '/' };
+        })
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': origin + '/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Artists', 'item': origin + '/artists/' },
+          { '@type': 'ListItem', 'position': 3, 'name': artist.name, 'item': pageUrl }
+        ]
+      }
+    ]
+  };
+  rewriter.on('head', {
+    element: function (el) { el.append('<script type="application/ld+json">' + jsonLd(ld) + '</script>', { html: true }); }
+  });
 
   if (image) {
     rewriter
@@ -267,25 +444,104 @@ function slugify(s) {
 }
 
 async function renderReleaseMeta(assetResponse, slug, origin, env) {
-  let release, artist;
+  let release, artist, allData;
   try {
     const data = await getArtistsData(origin, env);
+    allData = data;
     release = (data.releases || []).find(function (r) { return slugify(r.title) === slug; });
     if (release) {
-      artist = (data.artists || []).find(function (a) { return a.id === release.artist_id; });
+      artist = (data.artists || []).find(function (a) { return releaseBelongsTo(release, a); });
     }
   } catch (e) {
     console.error('renderReleaseMeta: could not load artists.json', e);
     return assetResponse;
   }
 
-  if (!release) return assetResponse; // Unknown slug -- let the client-side "not found" state handle it.
+  if (!release) return notFoundResponse(assetResponse); // Unknown slug -> real 404 (client-side "not found" still shows).
 
-  const pageUrl = origin + '/release/' + slug + '/';
+  const pageUrl = SITE_ORIGIN + '/release/' + slug + '/';
   const type = (release.type || 'release').toLowerCase();
   const title = release.title + ' by ' + release.artist + ' | ARTISTTAAN';
   const description = 'Stream "' + release.title + '" by ' + release.artist + ' (' + (release.year || '') + ') — a ' + type + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
   const image = release.cover ? origin + '/' + String(release.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
+
+  // ----- Real, page-specific content (so the page isn't a near-empty template) -----
+  const allReleases = (allData && allData.releases) || [];
+  const seenSlugs = {};
+  seenSlugs[slug] = true;
+  const sameArtist = [];
+  const sameYear = [];
+  allReleases.forEach(function (r) {
+    const s = slugify(r.title);
+    if (!s || seenSlugs[s]) return;
+    const isSame = (r.artist_id && release.artist_id && r.artist_id === release.artist_id) ||
+      (r.artist && release.artist && r.artist.toLowerCase() === release.artist.toLowerCase());
+    if (isSame) { seenSlugs[s] = true; sameArtist.push(r); }
+    else if (r.year && r.year === release.year) { sameYear.push(r); }
+  });
+  const related = sameArtist.slice(0, 6);
+  sameYear.forEach(function (r) {
+    const s = slugify(r.title);
+    if (related.length < 6 && !related.some(function (x) { return slugify(x.title) === s; })) related.push(r);
+  });
+
+  const aboutParts = [
+    '"' + release.title + '" is a ' + type + ' by ' + release.artist + (release.year ? ', released in ' + release.year : '') +
+      ' via ARTISTTAAN — India\'s hip-hop & indie music label.'
+  ];
+  if (artist && (artist.bio || artist.full_bio)) {
+    aboutParts.push(firstSentences(artist.bio || artist.full_bio, 220));
+  }
+  if (sameArtist.length) {
+    aboutParts.push('Other releases from ' + release.artist + ' on ARTISTTAAN include ' +
+      joinNames(sameArtist.slice(0, 3).map(function (r) { return '“' + r.title + '”'; })) + '.');
+  }
+  aboutParts.push('Stream "' + release.title + '" on Spotify, or explore the full ARTISTTAAN discography.');
+  const aboutText = aboutParts.join(' ');
+
+  const artistHtml = artist
+    ? '<a href="/artist/' + escHtml(artist.id) + '/">' + escHtml(release.artist) + '</a>'
+    : escHtml(release.artist);
+  const listenHtml = (release.spotify_url && release.spotify_url !== '#' && /^https?:\/\//.test(release.spotify_url))
+    ? '<a class="listen-btn" href="' + escHtml(release.spotify_url) + '" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>'
+    : '';
+  const moreFromHtml = artist
+    ? '<a data-more-artist="1" href="/artist/' + escHtml(artist.id) + '/">More from ' + escHtml(release.artist) + ' &#8594;</a>'
+    : '';
+  const relatedHtml = related.length
+    ? '<section class="related"><h2>' + (sameArtist.length ? 'More from ' + escHtml(release.artist) : 'More ARTISTTAAN releases') + '</h2><ul>' +
+      related.map(function (r) {
+        return '<li><a href="/release/' + slugify(r.title) + '/">' +
+          '<img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" width="64" height="64" loading="lazy"/>' +
+          '<span><strong>' + escHtml(r.title) + '</strong><em>' + escHtml(r.artist) + (r.year ? ' · ' + escHtml(r.year) : '') + '</em></span></a></li>';
+      }).join('') + '</ul></section>'
+    : '';
+
+  const isAlbum = /^(album|ep)$/i.test(release.type || '');
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': isAlbum ? 'MusicAlbum' : 'MusicRecording',
+        'name': release.title,
+        'url': pageUrl,
+        'byArtist': { '@type': 'MusicGroup', 'name': release.artist, 'url': artist ? origin + '/artist/' + artist.id + '/' : undefined },
+        'datePublished': release.year || undefined,
+        'image': image,
+        'description': description,
+        'publisher': { '@type': 'Organization', 'name': 'ARTISTTAAN', 'url': origin + '/' },
+        'sameAs': (release.spotify_url && /^https?:\/\//.test(release.spotify_url)) ? [release.spotify_url] : undefined
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': origin + '/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Releases', 'item': origin + '/releases/' },
+          { '@type': 'ListItem', 'position': 3, 'name': release.title, 'item': pageUrl }
+        ]
+      }
+    ]
+  };
 
   // Embed the already-fetched release (and matching artist) data directly into
   // the page as inline JSON. Without this, the browser has to fetch and parse
@@ -308,7 +564,27 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     .on('meta#twitter-description', { element: function (el) { el.setAttribute('content', description); } })
     .on('meta#twitter-image', { element: function (el) { el.setAttribute('content', image); } })
     .on('h1#rel-title', { element: function (el) { el.setInnerContent(release.title); } })
+    .on('img#rel-cover', { element: function (el) {
+      if (release.cover) el.setAttribute('src', assetUrlPath(release.cover));
+      el.setAttribute('alt', release.title + ' cover art');
+    } })
+    .on('span#rel-type', { element: function (el) { el.setInnerContent(release.type || 'Release'); } })
+    .on('p#rel-year', { element: function (el) { el.setInnerContent(String(release.year || '')); } })
+    .on('span#rel-artist', { element: function (el) { el.setInnerContent(artistHtml, { html: true }); } })
+    .on('div#rel-listen', { element: function (el) { if (listenHtml) el.setInnerContent(listenHtml, { html: true }); } })
+    .on('p#rel-about', { element: function (el) { el.setInnerContent(aboutText); } })
+    .on('div#rel-more', { element: function (el) {
+      if (moreFromHtml) el.prepend(moreFromHtml, { html: true });
+      if (relatedHtml) el.before(relatedHtml, { html: true });
+    } })
+    .on('script#ld-json', { element: function (el) { el.setInnerContent(jsonLd(ld), { html: true }); } })
     .on('head', { element: function (el) { el.append(inlineData, { html: true }); } });
+
+  if (release.lyrics && String(release.lyrics).trim()) {
+    rewriter
+      .on('div#lyrics-section', { element: function (el) { el.setAttribute('style', 'display:block'); } })
+      .on('p#lyrics-text', { element: function (el) { el.setInnerContent(String(release.lyrics).trim()); } });
+  }
 
   return rewriter.transform(assetResponse);
 }
