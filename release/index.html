@@ -51,6 +51,14 @@
     .more{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5;display:flex;gap:24px;flex-wrap:wrap}
     .more a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0a0a0a;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
     .more a:hover{text-decoration:underline}
+    .related{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5}
+    .related h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:16px}
+    .related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+    .related a{display:flex;align-items:center;gap:12px;text-decoration:none;color:#0a0a0a}
+    .related img{width:64px;height:64px;object-fit:cover;border-radius:4px;background:#1a1a1a;flex:none}
+    .related strong{display:block;font-size:14px;font-weight:700}
+    .related em{display:block;font-size:12px;font-style:normal;color:#888;margin-top:2px}
+    .related a:hover strong{text-decoration:underline}
     .not-found{text-align:center;padding:140px 20px;font-size:14px;color:#888}
     footer{background:#0a0a0a;color:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:space-between}
     footer p{font-size:12px;color:#555}
@@ -167,15 +175,20 @@
     document.getElementById('twitter-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
     document.getElementById('twitter-description').content = description;
     document.getElementById('twitter-image').content = coverAbs;
-    document.getElementById('ld-json').textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'MusicRecording',
-      'name': r.title,
-      'byArtist': { '@type': 'MusicGroup', 'name': r.artist },
-      'datePublished': year,
-      'image': coverAbs,
-      'url': pageUrl
-    });
+    // The Worker already writes a fuller JSON-LD block into the HTML; only
+    // fill it in here as a fallback (e.g. local dev without the Worker).
+    const ldEl = document.getElementById('ld-json');
+    if (!ldEl.textContent.trim()) {
+      ldEl.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'MusicRecording',
+        'name': r.title,
+        'byArtist': { '@type': 'MusicGroup', 'name': r.artist },
+        'datePublished': year,
+        'image': coverAbs,
+        'url': pageUrl
+      });
+    }
 
     document.getElementById('rel-cover').src = assetPath(r.cover);
     document.getElementById('rel-cover').alt = r.title + ' cover art';
@@ -199,7 +212,12 @@
       document.getElementById('rel-embed').innerHTML = '<iframe style="border-radius:12px" src="' + r.spotify_embed + '" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
     }
 
-    document.getElementById('rel-about').textContent = '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
+    // The Worker writes a fuller, page-specific "about" text server-side;
+    // keep it if present, otherwise fall back to the generic sentence.
+    const aboutEl = document.getElementById('rel-about');
+    if (!aboutEl.textContent.trim()) {
+      aboutEl.textContent = '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
+    }
 
     if (r.lyrics && r.lyrics.trim()) {
       document.getElementById('lyrics-text').textContent = r.lyrics.trim();
@@ -208,7 +226,10 @@
 
     if (artist) {
       const moreEl = document.getElementById('rel-more');
-      moreEl.insertAdjacentHTML('afterbegin', '<a href="/artist/' + artist.id + '/">More from ' + r.artist + ' &#8594;</a>');
+      // Skip if the Worker already rendered this link server-side.
+      if (!moreEl.querySelector('[data-more-artist]')) {
+        moreEl.insertAdjacentHTML('afterbegin', '<a data-more-artist="1" href="/artist/' + artist.id + '/">More from ' + r.artist + ' &#8594;</a>');
+      }
     }
   }
 
