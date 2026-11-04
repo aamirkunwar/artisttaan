@@ -450,7 +450,17 @@
     if (a.instagram) acts.push(`<a href="${a.instagram}" target="_blank" class="link-quiet">Instagram</a>`);
     document.getElementById('hero-actions').innerHTML = acts.join('');
 
-    const releases = allReleases.filter(r => r.artist_id === a.id);
+    // Same rule as the Worker: match by artist_id, or by exact artist name for
+    // rows where artist_id was never filled in.
+    const seenRel = {};
+    const releases = allReleases.filter(r => {
+      const mine = r.artist_id ? r.artist_id === a.id
+        : (r.artist || '').trim().toLowerCase() === (a.name || '').trim().toLowerCase();
+      const s = slugify(r.title);
+      if (!mine || !s || seenRel[s]) return false;
+      seenRel[s] = true;
+      return true;
+    });
     const stats = [];
     if (a.total_streams && a.total_streams !== '—') stats.push(`<div class="hero-stat"><p>${a.total_streams}</p><p>Total Streams</p></div>`);
     stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
