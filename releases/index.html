@@ -3,23 +3,16 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title id="page-title">Release | ARTISTTAAN</title>
-  <meta name="description" id="meta-description" content=""/>
-  <link rel="canonical" id="canonical-url" href="" />
-  <meta property="og:type" content="music.song" />
-  <meta property="og:site_name" content="ARTISTTAAN" />
-  <meta property="og:url" id="og-url" content="" />
-  <meta property="og:title" id="og-title" content="" />
-  <meta property="og:description" id="og-description" content="" />
-  <meta property="og:image" id="og-image" content="" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" id="twitter-title" content="" />
-  <meta name="twitter:description" id="twitter-description" content="" />
-  <meta name="twitter:image" id="twitter-image" content="" />
-  <link rel="icon" type="image/png" href="/assets/images/logo/logo-icon.png"/>
+  <title>Releases — ARTISTTAAN</title>
+  <meta name="description" content="Full discography of ARTISTTAAN. 90+ releases from 2016 to today."/>
+  <link rel="canonical" href="https://artisttaanmusic.com/releases/" />
+  <meta property="og:url" content="https://artisttaanmusic.com/releases/" />
+  <meta property="og:title" content="Releases | ARTISTTAAN" />
+  <meta property="og:description" content="Full discography of ARTISTTAAN. 90+ releases from 2016 to today." />
+  <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script type="application/ld+json" id="ld-json"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{background:#fafaf8;color:#0a0a0a;font-family:'Inter',sans-serif;overflow-x:hidden}
@@ -28,212 +21,219 @@
     .nav-links{display:flex;gap:28px}
     .nav-links a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;color:#888;transition:color 0.2s}
     .nav-links a:hover,.nav-links a.active{color:#0a0a0a}
-    .wrap{max-width:900px;margin:0 auto;padding:100px 32px 60px}
-    .crumb{font-size:11px;color:#888;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px}
-    .crumb:hover{color:#000}
-    .release-hero{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin-bottom:36px}
-    .cover{width:280px;height:280px;object-fit:cover;background:#1a1a1a;border-radius:6px}
-    .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#888;background:#f0f0ed;padding:4px 10px;border-radius:2px;width:fit-content;margin-bottom:14px;display:inline-block}
-    h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:10px}
-    .by{font-size:16px;color:#555;margin-bottom:6px}
-    .by a{color:#0a0a0a;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc}
-    .by a:hover{border-color:#000}
-    .year{font-size:12px;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px}
-    .listen-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#0a0a0a;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:3px;transition:opacity 0.2s}
-    .listen-btn:hover{opacity:0.85}
-    .embed-wrap{margin:28px 0;border-radius:12px;overflow:hidden}
-    .about{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5}
-    .about h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
-    .about p{font-size:15px;line-height:1.7;color:#333;max-width:640px}
-    .lyrics{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5;display:none}
-    .lyrics h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
-    .lyrics p{font-size:15px;line-height:1.9;color:#222;max-width:640px;white-space:pre-line}
-    .more{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5;display:flex;gap:24px;flex-wrap:wrap}
-    .more a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0a0a0a;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-    .more a:hover{text-decoration:underline}
-    .related{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5}
-    .related h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:16px}
-    .related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-    .related a{display:flex;align-items:center;gap:12px;text-decoration:none;color:#0a0a0a}
-    .related img{width:64px;height:64px;object-fit:cover;border-radius:4px;background:#1a1a1a;flex:none}
-    .related strong{display:block;font-size:14px;font-weight:700}
-    .related em{display:block;font-size:12px;font-style:normal;color:#888;margin-top:2px}
-    .related a:hover strong{text-decoration:underline}
-    .not-found{text-align:center;padding:140px 20px;font-size:14px;color:#888}
-    footer{background:#0a0a0a;color:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:space-between}
+    .header{margin-top:60px;padding:40px 32px 24px;border-bottom:1px solid #e5e5e5}
+    .header-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .header-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:8px}
+    .header-title{font-size:clamp(32px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1}
+    .header-count{font-size:13px;color:#888;align-self:flex-end}
+    .filters{padding:16px 32px;border-bottom:1px solid #e5e5e5;background:#fafaf8;position:sticky;top:60px;z-index:90;display:flex;flex-direction:column;gap:10px}
+    .filter-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+    .filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;min-width:48px}
+    .filter-btn{padding:5px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border:1px solid #e0e0e0;background:transparent;cursor:pointer;transition:all 0.2s;color:#888;border-radius:2px}
+    .filter-btn:hover{border-color:#000;color:#000}
+    .filter-btn.active{background:#000;color:#fff;border-color:#000}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px;padding:28px 32px;max-width:1600px;margin:0 auto}
+    .release-card{cursor:pointer;text-decoration:none;display:block}
+    .release-card-noLink{cursor:default}
+    .poster{aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative;margin-bottom:8px}
+    .poster img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+    .release-card:hover .poster img{transform:scale(1.06)}
+    .poster-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;transition:background 0.3s}
+    .release-card:hover .poster-overlay{background:rgba(0,0,0,0.55)}
+    .play-icon{opacity:0;transition:opacity 0.3s;color:#fff}
+    .release-card:hover .play-icon{opacity:1}
+    .release-title{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .release-artist{font-size:11px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+    .release-year{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:0.06em}
+    .no-results{grid-column:1/-1;text-align:center;padding:80px 0;color:#888;font-size:14px}
+    .latest{padding:28px 32px 4px;max-width:1600px;margin:0 auto}
+    .latest-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#aaa;margin-bottom:14px}
+    .ls{position:relative;overflow:hidden;border-radius:4px}
+    .ls-track{display:flex;transition:transform 0.5s cubic-bezier(.22,1,.36,1)}
+    .ls-slide{flex:0 0 100%;display:grid;grid-template-columns:200px 1fr;gap:28px;background:#0a0a0a;color:#fff;padding:28px}
+    .ls-poster{width:200px;height:200px;overflow:hidden;background:#1a1a1a;flex-shrink:0}
+    .ls-poster img{width:100%;height:100%;object-fit:cover}
+    .ls-info{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
+    .ls-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#fff;background:rgba(255,255,255,0.12);padding:4px 10px;border-radius:2px;width:fit-content;margin-bottom:8px}
+    .ls-title{font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ls-artist{font-size:14px;color:rgba(255,255,255,0.7);margin-top:4px}
+    .ls-year{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
+    .ls-actions{margin-top:16px}
+    .ls-actions a{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;color:#0a0a0a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:2px;transition:opacity 0.2s}
+    .ls-actions a:hover{opacity:0.85}
+    .ls-arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.14);color:#fff;border:none;cursor:pointer;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background 0.2s;z-index:2}
+    .ls-arrow:hover{background:rgba(255,255,255,0.28)}
+    .ls-prev{left:10px}
+    .ls-next{right:10px}
+    .ls-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+    .ls-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:background 0.2s,width 0.2s}
+    .ls-dot.active{background:#fff;width:18px;border-radius:3px}
+    @media(max-width:640px){.ls-slide{grid-template-columns:1fr;padding:20px}.ls-poster{width:100%;height:auto;aspect-ratio:1}}
+    footer{background:#0a0a0a;color:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:space-between;margin-top:40px}
     footer p{font-size:12px;color:#555}
     footer a{font-size:12px;color:#555;text-decoration:none;transition:color 0.2s}
     footer a:hover{color:#fff}
-    @media(max-width:640px){
-      nav{padding:0 16px}
-      .wrap{padding:88px 16px 40px}
-      .release-hero{grid-template-columns:1fr;gap:20px}
-      .cover{width:100%;height:auto;aspect-ratio:1}
-      footer{flex-direction:column;gap:12px;text-align:center}
-    }
+    @media(max-width:768px){nav{padding:0 16px}.header,.filters{padding-left:16px;padding-right:16px}.grid{padding:16px;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}footer{flex-direction:column;gap:12px;text-align:center}.latest{padding:20px 16px 4px}}
   </style>
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-logo"><img src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
+  <a href="../" class="nav-logo"><img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
   <div class="nav-links">
-    <a href="/artists/">Artists</a>
-    <a href="/releases/" class="active">Releases</a>
-    <a href="/videos/">Videos</a>
-    <a href="/culture/">Culture</a>
-    <a href="/demos/">Submit Demo</a>
+    <a href="../artists/">Artists</a>
+    <a href="./" class="active">Releases</a>
+    <a href="../videos/">Videos</a>
+    <a href="../culture/">Culture</a>
+    <a href="../demos/">Submit Demo</a>
   </div>
 </nav>
-<div id="page-content">
-  <div class="wrap">
-    <a href="/releases/" class="crumb">&#8592; All Releases</a>
-    <div class="release-hero">
-      <img class="cover" id="rel-cover" src="" alt="" fetchpriority="high"/>
-      <div>
-        <span class="tag" id="rel-type"></span>
-        <h1 id="rel-title"></h1>
-        <p class="by">By <span id="rel-artist"></span></p>
-        <p class="year" id="rel-year"></p>
-        <div id="rel-listen"></div>
-      </div>
+<div class="header">
+  <div class="header-top">
+    <div>
+      <p class="header-label">Discography</p>
+      <h1 class="header-title">All Releases</h1>
     </div>
-    <div class="embed-wrap" id="rel-embed"></div>
-    <div class="about">
-      <h2>About this release</h2>
-      <p id="rel-about"></p>
-    </div>
-    <div class="lyrics" id="lyrics-section">
-      <h2>Lyrics</h2>
-      <p id="lyrics-text"></p>
-    </div>
-    <div class="more" id="rel-more">
-      <a href="/releases/">Browse all releases &#8594;</a>
-    </div>
+    <p class="header-count" id="release-count">91 releases</p>
   </div>
 </div>
+<div class="latest" id="latest-release">
+  <p class="latest-label">Latest Releases</p>
+  <div class="ls" id="ls">
+    <div class="ls-track" id="ls-track"></div>
+    <button class="ls-arrow ls-prev" id="ls-prev" aria-label="Previous">&#8249;</button>
+    <button class="ls-arrow ls-next" id="ls-next" aria-label="Next">&#8250;</button>
+    <div class="ls-dots" id="ls-dots"></div>
+  </div>
+</div>
+<div class="filters">
+  <div class="filter-row">
+    <span class="filter-label">Year</span>
+    <button class="filter-btn active" data-type="year" data-value="all">All</button>
+    <button class="filter-btn" data-type="year" data-value="2026">2026</button><button class="filter-btn" data-type="year" data-value="2025">2025</button><button class="filter-btn" data-type="year" data-value="2024">2024</button><button class="filter-btn" data-type="year" data-value="2023">2023</button><button class="filter-btn" data-type="year" data-value="2021">2021</button><button class="filter-btn" data-type="year" data-value="2020">2020</button><button class="filter-btn" data-type="year" data-value="2019">2019</button><button class="filter-btn" data-type="year" data-value="2018">2018</button><button class="filter-btn" data-type="year" data-value="2017">2017</button><button class="filter-btn" data-type="year" data-value="2016">2016</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Artist</span>
+    <button class="filter-btn active" data-type="artist" data-value="all">All</button>
+    <button class="filter-btn" data-type="artist" data-value="Abir">Abir</button><button class="filter-btn" data-type="artist" data-value="Amie">Amie</button><button class="filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button><button class="filter-btn" data-type="artist" data-value="Faraz">Faraz</button><button class="filter-btn" data-type="artist" data-value="Harjas">Harjas</button><button class="filter-btn" data-type="artist" data-value="Kay J">Kay J</button><button class="filter-btn" data-type="artist" data-value="Luck">Luck</button><button class="filter-btn" data-type="artist" data-value="Lukka">Lukka</button><button class="filter-btn" data-type="artist" data-value="Manisten">Manisten</button><button class="filter-btn" data-type="artist" data-value="Mr A">Mr A</button><button class="filter-btn" data-type="artist" data-value="Muhfaad">Muhfaad</button><button class="filter-btn" data-type="artist" data-value="Newtone">Newtone</button><button class="filter-btn" data-type="artist" data-value="Raga">Raga</button><button class="filter-btn" data-type="artist" data-value="Rigul">Rigul</button><button class="filter-btn" data-type="artist" data-value="Rish">Rish</button><button class="filter-btn" data-type="artist" data-value="Sam Rajput">Sam Rajput</button><button class="filter-btn" data-type="artist" data-value="Shrey">Shrey</button><button class="filter-btn" data-type="artist" data-value="Slay">Slay</button><button class="filter-btn" data-type="artist" data-value="Talwar">Talwar</button><button class="filter-btn" data-type="artist" data-value="Talwiinder">Talwiinder</button><button class="filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
+  </div>
+</div>
+<div class="grid" id="releases-grid"></div>
 <footer>
-  <p>&copy; 2026 ARTISTTAAN &middot; All Rights Reserved</p>
-  <a href="/">&#8592; Back to ARTISTTAAN</a>
+  <p>© 2026 ARTISTTAAN · All Rights Reserved</p>
+  <a href="../">← Back to ARTISTTAAN</a>
 </footer>
 <script>
-  // Supports /release/<slug>/ (canonical) — slug is derived from the release title.
-  const pathParts = window.location.pathname.split('/').filter(Boolean); // ['release','namaskar']
-  const releaseSlug = (pathParts[0] === 'release' && pathParts[1]) ? pathParts[1] : null;
+let releases = [];
 
-  function slugify(s) {
-    if (!s) return '';
-    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+// Some records in artists.json store image paths with a leading "/" and
+// some without. Normalize here so both forms resolve correctly regardless
+// of which style was used.
+function assetPath(p) {
+  if (!p) return '';
+  return '../' + String(p).replace(/^\/+/, '');
+}
+
+function slugify(s) {
+  if (!s) return '';
+  return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function initLatestSlideshow(){
+  const slides=releases.slice(0,6);
+  const track=document.getElementById('ls-track');
+  const dotsEl=document.getElementById('ls-dots');
+  const prevBtn=document.getElementById('ls-prev');
+  const nextBtn=document.getElementById('ls-next');
+  if(!slides.length){document.getElementById('latest-release').style.display='none';return;}
+  track.innerHTML=slides.map(r=>`
+    <div class="ls-slide">
+      <div class="ls-poster"><img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy"/></div>
+      <div class="ls-info">
+        <span class="ls-tag">New</span>
+        <p class="ls-title">${r.title}</p>
+        <p class="ls-artist">${r.artist}</p>
+        <p class="ls-year">${r.year}</p>
+        <div class="ls-actions"><a href="../release/${slugify(r.title)}/">View Release</a></div>
+      </div>
+    </div>`).join('');
+  dotsEl.innerHTML=slides.map((_,i)=>`<span class="ls-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
+  const dots=[...dotsEl.children];
+  let idx=0,timer;
+  function go(i){
+    idx=(i+slides.length)%slides.length;
+    track.style.transform=`translateX(-${idx*100}%)`;
+    dots.forEach((d,j)=>d.classList.toggle('active',j===idx));
   }
+  function startTimer(){timer=setInterval(()=>go(idx+1),5000);}
+  function stopTimer(){clearInterval(timer);}
+  prevBtn.addEventListener('click',()=>{go(idx-1);stopTimer();startTimer();});
+  nextBtn.addEventListener('click',()=>{go(idx+1);stopTimer();startTimer();});
+  dots.forEach(d=>d.addEventListener('click',()=>{go(+d.dataset.i);stopTimer();startTimer();}));
+  const box=document.getElementById('ls');
+  box.addEventListener('mouseenter',stopTimer);
+  box.addEventListener('mouseleave',startTimer);
+  if(slides.length<2){prevBtn.style.display='none';nextBtn.style.display='none';dotsEl.style.display='none';}
+  else{startTimer();}
+}
 
-  function assetPath(p) {
-    if (!p) return '';
-    return '/' + String(p).replace(/^\/+/, '');
+let activeYear='all', activeArtist='all';
+function filterReleases(){
+  return releases.filter(r=>{
+    const y=activeYear==='all'||r.year===activeYear;
+    const a=activeArtist==='all'||r.artist.includes(activeArtist);
+    return y&&a;
+  });
+}
+function render(){
+  const grid=document.getElementById('releases-grid');
+  const filtered=filterReleases();
+  document.getElementById('release-count').textContent=filtered.length+' releases';
+  if(!filtered.length){grid.innerHTML='<div class="no-results">No releases found.</div>';return;}
+  grid.innerHTML=filtered.map(r=>{
+    const slug = slugify(r.title);
+    const hasLink = !!slug;
+    const tag = hasLink ? 'a' : 'div';
+    const attrs = hasLink ? `href="../release/${slug}/"` : 'aria-disabled="true"';
+    return `
+    <${tag} class="release-card${hasLink ? '' : ' release-card-noLink'}" ${attrs}>
+      <div class="poster">
+        <img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy"/>
+        ${hasLink ? `<div class="poster-overlay">
+          <svg class="play-icon" width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm4.5 12.3l-6 4.5c-.3.2-.5.1-.5-.3V7.5c0-.4.2-.5.5-.3l6 4.5c.3.2.3.6 0 .6z"/></svg>
+        </div>` : ''}
+      </div>
+      <p class="release-title">${r.title}</p>
+      <p class="release-artist">${r.artist}</p>
+      <p class="release-year">${r.year}</p>
+    </${tag}>`;
+  }).join('');
+}
+document.querySelectorAll('[data-type="year"]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-type="year"]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');activeYear=btn.dataset.value;render();
+  });
+});
+document.querySelectorAll('[data-type="artist"]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-type="artist"]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');activeArtist=btn.dataset.value;render();
+  });
+});
+
+async function init(){
+  try{
+    const res=await fetch('../assets/data/artists.json');
+    const data=await res.json();
+    releases=data.releases||[];
+  }catch(e){
+    console.error('Failed to load releases data:',e);
+    releases=[];
   }
-
-  async function init() {
-    // The Worker (src/index.js) already looks up this release server-side to
-    // rewrite the meta tags, and embeds the result as window.__RELEASE_DATA__.
-    // Use that directly so the browser doesn't have to fetch and parse the
-    // ~40KB artists.json a second time -- that duplicate fetch was the main
-    // cause of the delay before the cover image and "about" text appeared.
-    // Falls back to fetching (e.g. local dev without the Worker) if it's missing.
-    if (window.__RELEASE_DATA__ && window.__RELEASE_DATA__.release) {
-      render(window.__RELEASE_DATA__.release, window.__RELEASE_DATA__.artist ? [window.__RELEASE_DATA__.artist] : []);
-      return;
-    }
-    try {
-      const res = await fetch('/assets/data/artists.json');
-      const data = await res.json();
-      const releases = data.releases || [];
-      const artists = data.artists || [];
-      const r = releases.find(function (x) { return slugify(x.title) === releaseSlug; });
-      if (!r) {
-        document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
-        return;
-      }
-      render(r, artists);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  function render(r, artists) {
-    const year = r.year || '';
-    const type = r.type || 'Release';
-    const typeLower = type.toLowerCase();
-    const pageUrl = 'https://artisttaanmusic.com/release/' + slugify(r.title) + '/';
-    const description = 'Stream "' + r.title + '" by ' + r.artist + ' (' + year + ') — a ' + typeLower + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
-    const coverAbs = r.cover ? 'https://artisttaanmusic.com' + assetPath(r.cover) : 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg';
-
-    document.getElementById('page-title').textContent = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
-    document.getElementById('meta-description').content = description;
-    document.getElementById('canonical-url').href = pageUrl;
-    document.getElementById('og-url').content = pageUrl;
-    document.getElementById('og-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
-    document.getElementById('og-description').content = description;
-    document.getElementById('og-image').content = coverAbs;
-    document.getElementById('twitter-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
-    document.getElementById('twitter-description').content = description;
-    document.getElementById('twitter-image').content = coverAbs;
-    // The Worker already writes a fuller JSON-LD block into the HTML; only
-    // fill it in here as a fallback (e.g. local dev without the Worker).
-    const ldEl = document.getElementById('ld-json');
-    if (!ldEl.textContent.trim()) {
-      ldEl.textContent = JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'MusicRecording',
-        'name': r.title,
-        'byArtist': { '@type': 'MusicGroup', 'name': r.artist },
-        'datePublished': year,
-        'image': coverAbs,
-        'url': pageUrl
-      });
-    }
-
-    document.getElementById('rel-cover').src = assetPath(r.cover);
-    document.getElementById('rel-cover').alt = r.title + ' cover art';
-    document.getElementById('rel-type').textContent = type;
-    document.getElementById('rel-title').textContent = r.title;
-    document.getElementById('rel-year').textContent = year;
-
-    const artist = artists.find(function (a) { return a.id === r.artist_id; });
-    const artistEl = document.getElementById('rel-artist');
-    if (artist) {
-      artistEl.innerHTML = '<a href="/artist/' + artist.id + '/">' + r.artist + '</a>';
-    } else {
-      artistEl.textContent = r.artist;
-    }
-
-    if (r.spotify_url && r.spotify_url !== '#') {
-      document.getElementById('rel-listen').innerHTML = '<a class="listen-btn" href="' + r.spotify_url + '" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>';
-    }
-
-    if (r.spotify_embed) {
-      document.getElementById('rel-embed').innerHTML = '<iframe style="border-radius:12px" src="' + r.spotify_embed + '" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
-    }
-
-    // The Worker writes a fuller, page-specific "about" text server-side;
-    // keep it if present, otherwise fall back to the generic sentence.
-    const aboutEl = document.getElementById('rel-about');
-    if (!aboutEl.textContent.trim()) {
-      aboutEl.textContent = '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
-    }
-
-    if (r.lyrics && r.lyrics.trim()) {
-      document.getElementById('lyrics-text').textContent = r.lyrics.trim();
-      document.getElementById('lyrics-section').style.display = 'block';
-    }
-
-    if (artist) {
-      const moreEl = document.getElementById('rel-more');
-      // Skip if the Worker already rendered this link server-side.
-      if (!moreEl.querySelector('[data-more-artist]')) {
-        moreEl.insertAdjacentHTML('afterbegin', '<a data-more-artist="1" href="/artist/' + artist.id + '/">More from ' + r.artist + ' &#8594;</a>');
-      }
-    }
-  }
-
-  init();
+  initLatestSlideshow();
+  render();
+}
+init();
 </script>
 </body>
 </html>
