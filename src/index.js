@@ -479,10 +479,10 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     if (isSame) { seenSlugs[s] = true; sameArtist.push(r); }
     else if (r.year && r.year === release.year) { sameYear.push(r); }
   });
-  const related = sameArtist.slice(0, 6);
+  const shownSameArtist = sameArtist.slice(0, 6);
+  const fillers = [];
   sameYear.forEach(function (r) {
-    const s = slugify(r.title);
-    if (related.length < 6 && !related.some(function (x) { return slugify(x.title) === s; })) related.push(r);
+    if (shownSameArtist.length + fillers.length < 6) fillers.push(r);
   });
 
   const aboutParts = [
@@ -508,14 +508,20 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
   const moreFromHtml = artist
     ? '<a data-more-artist="1" href="/artist/' + escHtml(artist.id) + '/">More from ' + escHtml(release.artist) + ' &#8594;</a>'
     : '';
-  const relatedHtml = related.length
-    ? '<section class="related"><h2>' + (sameArtist.length ? 'More from ' + escHtml(release.artist) : 'More ARTISTTAAN releases') + '</h2><ul>' +
-      related.map(function (r) {
+  function relatedList(items, heading) {
+    if (!items.length) return '';
+    return '<section class="related"><h2>' + heading + '</h2><ul>' +
+      items.map(function (r) {
         return '<li><a href="/release/' + slugify(r.title) + '/">' +
           '<img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" width="64" height="64" loading="lazy"/>' +
-          '<span><strong>' + escHtml(r.title) + '</strong><em>' + escHtml(r.artist) + (r.year ? ' · ' + escHtml(r.year) : '') + '</em></span></a></li>';
-      }).join('') + '</ul></section>'
-    : '';
+          '<span><strong>' + escHtml(r.title) + '</strong><em>' + escHtml(r.artist) + (r.year ? ' \u00B7 ' + escHtml(r.year) : '') + '</em></span></a></li>';
+      }).join('') + '</ul></section>';
+  }
+  // Same-artist releases get their own heading; other releases are labelled
+  // separately so "More from <artist>" is never wrong.
+  const relatedHtml =
+    relatedList(shownSameArtist, 'More from ' + escHtml(release.artist)) +
+    relatedList(fillers, 'More from ARTISTTAAN');
 
   const isAlbum = /^(album|ep)$/i.test(release.type || '');
   const ld = {
