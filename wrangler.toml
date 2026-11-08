@@ -7,4 +7,5 @@ keep_vars = true
 [assets]
 directory = "."
 binding = "ASSETS"
-run_worker_first = ["/artist/*", "/culture/*", "/release/*"]
+not_found_handling = "404-page"
+run_worker_first = ["/artist/*", "/culture/*", "/release/*", "/releases", "/releases/"]

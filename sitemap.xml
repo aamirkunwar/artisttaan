@@ -36,6 +36,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://artisttaanmusic.com/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://artisttaanmusic.com/videos/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -84,6 +89,26 @@
     <loc>https://artisttaanmusic.com/artist/faraz/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://artisttaanmusic.com/artist/Sam/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://artisttaanmusic.com/release/saza/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://artisttaanmusic.com/release/labra-chori/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://artisttaanmusic.com/release/tha-ek-chehra/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://artisttaanmusic.com/release/flavours/</loc>
@@ -227,11 +252,6 @@
   </url>
   <url>
     <loc>https://artisttaanmusic.com/release/kaanch-ki-tarah/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://artisttaanmusic.com/release/ishq-adhoora/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

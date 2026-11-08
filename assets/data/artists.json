@@ -178,6 +178,32 @@
   ],
   "releases": [
     {
+      "type": "single",
+      "title": "Saza",
+      "artist": "Abir",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/album/5aITt1o9FKm1JGAjIknaTD?si=MSKRdJcFS76naRIJKVNbrQ",
+      "cover": "/assets/images/saza-abir-3-1-.jpg"
+    },
+    {
+      "type": "single",
+      "title": "Labra chori",
+      "artist": "Shrey",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/track/36pSsYfS7CJ20QzORh8Cse?si=9cdb6e04e9d344f4",
+      "cover": "/assets/images/labra-poster-1-.jpg"
+    },
+    {
+      "type": "single",
+      "title": "Tha ek chehra",
+      "artist": "Apoorvv, Slay",
+      "year": "2026",
+      "spotify_url": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d",
+      "spotify_embed": "",
+      "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg",
+      "artist_id": "Apoorvv, Slay"
+    },
+    {
       "title": "Flavours",
       "artist": "Slay",
       "artist_id": "slay",
@@ -1060,16 +1086,6 @@
     },
     {
       "type": "single",
-      "title": "Naam Tumhara",
-      "artist": "Sam Rajput",
-      "artist_id": "Sam",
-      "year": "2020",
-      "spotify_url": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab?si=318c9ff6e64f4c5d",
-      "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/2PC9awuNAM5zoTmqVEqjUy?utm_source=generator&si=3f7e2c0e0af94b27\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
-      "cover": "/assets/images/naam-tumhara_300x300.jpg"
-    },
-    {
-      "type": "single",
       "title": "Kaanch ki Tarah",
       "artist": "Sam Rajput",
       "artist_id": "Sam",
@@ -1077,16 +1093,6 @@
       "spotify_url": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA?si=f54fd34d93c94275",
       "spotify_embed": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA?utm_source=generator&si=143faca1215447d5\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
       "cover": "/assets/images/kaanch-ki-tarah_300x300.jpg"
-    },
-    {
-      "type": "single",
-      "title": "Tha ek chehra",
-      "artist": "Apoorvv, Slay",
-      "year": "2026",
-      "spotify_url": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d",
-      "spotify_embed": "",
-      "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg",
-      "artist_id": "Apoorvv, Slay"
     }
   ],
   "socials": [
@@ -1146,7 +1152,7 @@
     {
       "youtube": "",
       "vimeo": "",
-      "bio": "Video Director and A&R at ARTISTTAAN, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists.",
+      "bio": "Video Director and A&R, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists.",
       "name": "Shashank Sharma",
       "pronouns": "",
       "photo": "assets/images/team/shashank-sharma.jpg",
@@ -1160,10 +1166,34 @@
       "full_bio": "",
       "projects": [
         {
+          "title": "Phataphat",
+          "role": "Director",
+          "year": "2026",
+          "video": "https://youtu.be/Z279HSknKmU?si=LpHSoAwAEJSKrmuD"
+        },
+        {
+          "title": "Namaskar",
+          "role": "Director",
+          "year": "2026",
+          "cover": "",
+          "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
+          "description": "Music video for Slay."
+        },
+        {
+          "title": "Nathuli",
+          "video": "https://www.youtube.com/embed/QQZSNUV0fT4?si=Oeyy8XjofNp7Ej0Y",
+          "role": "Director"
+        },
+        {
+          "title": "Meditate",
+          "video": "https://www.youtube.com/embed/BsJOe-luhps?si=mL5ThfG4XqInLGUn",
+          "role": "Director"
+        },
+        {
           "title": "Kaagaz Aur Daag",
           "role": "Director",
           "year": "2025",
-          "cover": "https://youtu.be/ZYln3iWRxDk?si=NDE7xA-6sQ-Z_hVd",
+          "cover": "",
           "video": "https://www.youtube.com/embed/ZYln3iWRxDk",
           "description": "Music video for Shrey."
         },
@@ -1171,7 +1201,7 @@
           "title": "Sifarishein",
           "role": "Director",
           "year": "2025",
-          "cover": "https://youtu.be/rcKlMq2uDlk?si=qGjIrgJQKeGt8_oN",
+          "cover": "",
           "video": "https://www.youtube.com/embed/rcKlMq2uDlk",
           "description": "Music video for Shrey."
         },
@@ -1179,17 +1209,9 @@
           "title": "Thoda Aur",
           "role": "Director",
           "year": "2025",
-          "cover": "/assets/images/thoda-aur_640x640.jpg",
+          "cover": "",
           "video": "https://www.youtube.com/embed/Q5E5t5VbVeo",
           "description": "Music video for Shrey."
-        },
-        {
-          "title": "Namaskar",
-          "role": "Director",
-          "year": "2026",
-          "cover": "/assets/images/namaskar.jpg",
-          "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
-          "description": "Music video for Slay."
         }
       ],
       "since": "",
@@ -1254,6 +1276,16 @@
     "hero_cta_primary_url": "https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb"
   },
   "videos": [
+    {
+      "title": "LABRA CHORI ",
+      "artist": "Shrey",
+      "youtube_url": "https://youtu.be/KiaBfziOrX8?si=hWNAR64S00Cv8LLi"
+    },
+    {
+      "title": "SAZA",
+      "artist": "Abir",
+      "youtube_url": "https://youtu.be/TrimMQMBc7s?si=3Cm12es9kPY3m3Xg"
+    },
     {
       "title": "NATHULI ",
       "artist": "Slay",
