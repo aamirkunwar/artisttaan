@@ -1164,7 +1164,13 @@
       "role": "Video Director",
       "cover": "",
       "full_bio": "",
-      "projects": [],
+      "projects": [
+        {
+          "video": "https://youtu.be/U0EI7XFkkV4?si=EBNsFR3OFO56Udia",
+          "role": "Director",
+          "title": "Taare"
+        }
+      ],
       "since": "",
       "website": "",
       "id": "sahil-akhtar",
