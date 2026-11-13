@@ -218,7 +218,7 @@
       "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
       "artist_id": "slay",
       "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
-      "lyrics": "Namaskar, namaskar\nThis is just a sample line to test rendering\nSecond line here\n\nThird line after a blank line",
+      "lyrics": "",
       "cover": "/assets/images/namaskar.jpg",
       "title": "Namaskar",
       "type": "single",
