@@ -76,7 +76,7 @@
 <body>
 
   <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="../" class="flex items-center gap-2">
         <img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
@@ -89,6 +89,21 @@
         <a href="../videos/" class="text-sm font-medium text-secondary hover:text-primary transition">Videos</a>
         <a href="../team/" class="text-sm font-medium text-primary transition">Our Team</a>
         <a href="../demos/" class="text-sm font-medium text-secondary hover:text-primary transition">Submit Demo</a>
+      </div>
+      <button id="mobile-nav-toggle" class="md:hidden flex items-center justify-center w-10 h-10" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-nav-panel" class="hidden md:hidden border-t border-subtle bg-white">
+      <div class="px-6 py-6 flex flex-col gap-5">
+        <a href="../about/" class="text-base font-medium text-secondary hover:text-primary">About</a>
+        <a href="../artists/" class="text-base font-medium text-secondary hover:text-primary">Artists</a>
+        <a href="../releases/" class="text-base font-medium text-secondary hover:text-primary">Releases</a>
+        <a href="../videos/" class="text-base font-medium text-secondary hover:text-primary">Videos</a>
+        <a href="../culture/" class="text-base font-medium text-secondary hover:text-primary">Culture</a>
+        <a href="../team/" class="text-base font-medium text-secondary hover:text-primary">Our Team</a>
+        <a href="../demos/" class="text-base font-medium text-secondary hover:text-primary">Submit Demo</a>
       </div>
     </div>
   </nav>
@@ -195,5 +210,40 @@
 
     document.addEventListener('DOMContentLoaded', loadTeam);
   </script>
+
+<script>
+(function(){
+  var btn=document.getElementById('mobile-nav-toggle');
+  var panel=document.getElementById('mobile-nav-panel');
+  var iconOpen=document.getElementById('icon-open');
+  var iconClose=document.getElementById('icon-close');
+  if(!btn||!panel)return;
+  btn.addEventListener('click',function(){
+    var open=!panel.classList.contains('hidden');
+    // toggle: if currently hidden, open it
+    if(panel.classList.contains('hidden')){
+      panel.classList.remove('hidden');
+      open=true;
+    } else {
+      panel.classList.add('hidden');
+      open=false;
+    }
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    if(iconOpen)iconOpen.classList.toggle('hidden',open);
+    if(iconClose)iconClose.classList.toggle('hidden',!open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      panel.classList.add('hidden');
+      btn.setAttribute('aria-expanded','false');
+      if(iconOpen)iconOpen.classList.remove('hidden');
+      if(iconClose)iconClose.classList.add('hidden');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
