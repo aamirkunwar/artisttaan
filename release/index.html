@@ -48,6 +48,12 @@
     .video-frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
     .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     .video-link{display:inline-block;margin-top:10px;font-size:13px;color:#0a0a0a}
+    .credits:empty{display:none}
+    .credits{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5}
+    .credits h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
+    .credits dl{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:8px 20px;max-width:640px;font-size:15px;line-height:1.5}
+    .credits dt{color:#888}
+    .credits dd{margin:0;color:#0a0a0a;font-weight:600}
     .about{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5}
     .about h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
     .about p{font-size:15px;line-height:1.7;color:#333;max-width:640px}
@@ -105,6 +111,7 @@
     </div>
     <div class="embed-wrap" id="rel-embed"></div>
     <div class="video-wrap" id="rel-video"></div>
+    <div class="credits" id="rel-credits"></div>
     <div class="about">
       <h2>About this release</h2>
       <p id="rel-about"></p>
@@ -219,6 +226,15 @@
       document.getElementById('rel-embed').innerHTML = '<iframe style="border-radius:12px" src="' + r.spotify_embed + '" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
     }
 
+    // Credits (the Worker renders this server-side; fallback for local dev).
+    const creditsEl = document.getElementById('rel-credits');
+    if (Array.isArray(r.credits) && r.credits.length && !creditsEl.innerHTML.trim()) {
+      const esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+      creditsEl.innerHTML = '<h2>Credits</h2><dl>' + r.credits.map(function (c) {
+        return '<dt>' + esc(c.role) + '</dt><dd>' + esc(c.name) + '</dd>';
+      }).join('') + '</dl>';
+    }
+
     // YouTube video (the Worker renders this server-side; only fill it in
     // here if it's missing, e.g. local dev without the Worker).
     const videoEl = document.getElementById('rel-video');
@@ -234,7 +250,7 @@
     // keep it if present, otherwise fall back to the generic sentence.
     const aboutEl = document.getElementById('rel-about');
     if (!aboutEl.textContent.trim()) {
-      aboutEl.textContent = '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
+      aboutEl.textContent = (r.description && r.description.trim()) ? r.description.trim() : '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
     }
 
     if (r.lyrics && r.lyrics.trim()) {
