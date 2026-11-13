@@ -470,7 +470,8 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
   const pageUrl = SITE_ORIGIN + '/release/' + slug + '/';
   const type = (release.type || 'release').toLowerCase();
   const title = release.title + ' by ' + release.artist + ' | ARTISTTAAN';
-  const description = 'Stream "' + release.title + '" by ' + release.artist + ' (' + (release.year || '') + ') — a ' + type + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
+  const customMeta = String(release.description || '').trim().replace(/\s+/g, ' ');
+  const description = customMeta ? (customMeta.length > 155 ? customMeta.slice(0, 152).replace(/\s+\S*$/, '') + '…' : customMeta) : 'Stream "' + release.title + '" by ' + release.artist + ' (' + (release.year || '') + ') — a ' + type + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
   const image = release.cover ? origin + '/' + String(release.cover).replace(/^\/+/, '') : origin + '/assets/images/logo/og-image.jpg';
 
   // ----- Real, page-specific content (so the page isn't a near-empty template) -----
@@ -493,9 +494,10 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     if (shownSameArtist.length + fillers.length < 6) fillers.push(r);
   });
 
+  const customDesc = String(release.description || '').trim();
   const aboutParts = [
-    '"' + release.title + '" is a ' + type + ' by ' + release.artist + (release.year ? ', released in ' + release.year : '') +
-      ' via ARTISTTAAN — India\'s hip-hop & indie music label.'
+    customDesc || ('"' + release.title + '" is a ' + type + ' by ' + release.artist + (release.year ? ', released in ' + release.year : '') +
+      ' via ARTISTTAAN — India\'s hip-hop & indie music label.')
   ];
   if (artist && (artist.bio || artist.full_bio)) {
     aboutParts.push(firstSentences(artist.bio || artist.full_bio, 220));
@@ -536,6 +538,12 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     ? '<h2>Watch</h2><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + ytId +
       '" title="' + escHtml(release.title + ' video') + '" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
       '<a class="video-link" href="https://www.youtube.com/watch?v=' + ytId + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &#8594;</a>'
+    : '';
+
+  const creditsHtml = (Array.isArray(release.credits) && release.credits.length)
+    ? '<h2>Credits</h2><dl>' + release.credits.filter(function (c) { return c && c.role && c.name; }).map(function (c) {
+        return '<dt>' + escHtml(c.role) + '</dt><dd>' + escHtml(c.name) + '</dd>';
+      }).join('') + '</dl>'
     : '';
 
   const isAlbum = /^(album|ep)$/i.test(release.type || '');
@@ -605,6 +613,7 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     .on('p#rel-year', { element: function (el) { el.setInnerContent(String(release.year || '')); } })
     .on('span#rel-artist', { element: function (el) { el.setInnerContent(artistHtml, { html: true }); } })
     .on('div#rel-listen', { element: function (el) { if (listenHtml) el.setInnerContent(listenHtml, { html: true }); } })
+    .on('div#rel-credits', { element: function (el) { if (creditsHtml) el.setInnerContent(creditsHtml, { html: true }); } })
     .on('div#rel-video', { element: function (el) { if (videoHtml) el.setInnerContent(videoHtml, { html: true }); } })
     .on('p#rel-about', { element: function (el) { el.setInnerContent(aboutText); } })
     .on('div#rel-more', { element: function (el) {
