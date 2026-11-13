@@ -73,6 +73,8 @@ collections:
               - { label: Spotify URL, name: spotify_url, widget: string, hint: "Full track or album link, e.g. https://open.spotify.com/track/..." }
               - { label: Spotify Embed URL, name: spotify_embed, widget: string, required: false,
                   hint: "Same as Spotify URL but with '/embed' after open.spotify.com — e.g. https://open.spotify.com/embed/track/..." }
+              - { label: YouTube Video URL, name: youtube_url, widget: string, required: false,
+                  hint: "Optional. Official video / audio link for this song, e.g. https://www.youtube.com/watch?v=... or https://youtu.be/... When set, the video is embedded on the release page." }
               - { label: Cover Image, name: cover, widget: image, required: false, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
               - { label: Lyrics, name: lyrics, widget: text, required: false, hint: "Optional. Paste the full lyrics here — line breaks are preserved on the release page. Leave blank to hide the Lyrics section." }
 
