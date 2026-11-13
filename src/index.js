@@ -90,7 +90,9 @@ export default {
     // song title/cover/description immediately, without executing JS.
     const releaseSlugMatch = url.pathname.match(/^\/release\/([^\/]+)\/?$/);
     if (releaseSlugMatch && releaseSlugMatch[1] !== 'index.html') {
-      return withEdgeCache(ctx, 'release:' + releaseSlugMatch[1], 300, async function () {
+      // 15 min edge cache — artists.json only changes on deploy, so longer TTL
+      // is safe and keeps popular release pages fast even after isolate recycling.
+      return withEdgeCache(ctx, 'release:' + releaseSlugMatch[1], 900, async function () {
         const assetUrl = new URL('/release/', url.origin);
         const assetRequest = new Request(assetUrl.toString(), request);
         const assetResponse = await env.ASSETS.fetch(assetRequest);
@@ -168,7 +170,7 @@ async function withEdgeCache(ctx, cacheKeySuffix, ttlSeconds, computeResponse) {
 // on cold start, so a short TTL just avoids repeat work within a burst of
 // traffic without ever serving badly stale data for long.
 let cachedArtistsData = null; // { data, expiresAt }
-const ARTISTS_CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+const ARTISTS_CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes — only changes on deploy
 
 async function getArtistsData(origin, env) {
   if (cachedArtistsData && cachedArtistsData.expiresAt > Date.now()) {
@@ -513,37 +515,44 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     ? '<a href="/artist/' + escHtml(artist.id) + '/">' + escHtml(release.artist) + '</a>'
     : escHtml(release.artist);
   const listenHtml = (release.spotify_url && release.spotify_url !== '#' && /^https?:\/\//.test(release.spotify_url))
-    ? '<a class="listen-btn" href="' + escHtml(release.spotify_url) + '" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>'
+    ? '<a class="btn btn-primary" href="' + escHtml(release.spotify_url) + '" target="_blank" rel="noopener noreferrer">' +
+      '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>' +
+      'Listen on Spotify</a>'
     : '';
   const moreFromHtml = artist
-    ? '<a data-more-artist="1" href="/artist/' + escHtml(artist.id) + '/">More from ' + escHtml(release.artist) + ' &#8594;</a>'
+    ? '<a data-more-artist="1" class="more-link" href="/artist/' + escHtml(artist.id) + '/">More from ' + escHtml(release.artist) + ' →</a>'
     : '';
   function relatedList(items, heading) {
     if (!items.length) return '';
-    return '<section class="related"><h2>' + heading + '</h2><ul>' +
-      items.map(function (r) {
-        return '<li><a href="/release/' + slugify(r.title) + '/">' +
-          '<img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" width="64" height="64" loading="lazy"/>' +
-          '<span><strong>' + escHtml(r.title) + '</strong><em>' + escHtml(r.artist) + (r.year ? ' \u00B7 ' + escHtml(r.year) : '') + '</em></span></a></li>';
-      }).join('') + '</ul></section>';
+    // Side-card friendly markup used by the new release page
+    return items.map(function (r) {
+      return '<a class="related-item" href="/release/' + slugify(r.title) + '/">' +
+        '<img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" width="56" height="56" loading="lazy"/>' +
+        '<span><strong>' + escHtml(r.title) + '</strong><em>' + escHtml(r.artist) + (r.year ? ' · ' + escHtml(r.year) : '') + '</em></span></a>';
+    }).join('');
   }
   // Same-artist releases get their own heading; other releases are labelled
   // separately so "More from <artist>" is never wrong.
-  const relatedHtml =
-    relatedList(shownSameArtist, 'More from ' + escHtml(release.artist)) +
-    relatedList(fillers, 'More from ARTISTTAAN');
+  // Prefer same-artist releases; fall back to same-year fillers.
+  // New page renders these inside #related-list / #related-card.
+  const relatedItems = (shownSameArtist.length ? shownSameArtist : fillers).slice(0, 6);
+  const relatedHeading = shownSameArtist.length
+    ? ('More from ' + escHtml(release.artist))
+    : 'More from ARTISTTAAN';
+  const relatedHtml = relatedList(relatedItems, relatedHeading);
 
   const ytId = youtubeId(release.youtube_url);
   const videoHtml = ytId
-    ? '<h2>Watch</h2><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + ytId +
+    ? '<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + ytId +
       '" title="' + escHtml(release.title + ' video') + '" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
-      '<a class="video-link" href="https://www.youtube.com/watch?v=' + ytId + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &#8594;</a>'
+      '<a class="video-link" href="https://www.youtube.com/watch?v=' + ytId + '" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>'
     : '';
 
+  // Matches the new Genius-style side-card markup (no <h2>, just rows)
   const creditsHtml = (Array.isArray(release.credits) && release.credits.length)
-    ? '<h2>Credits</h2><dl>' + release.credits.filter(function (c) { return c && c.role && c.name; }).map(function (c) {
-        return '<dt>' + escHtml(c.role) + '</dt><dd>' + escHtml(c.name) + '</dd>';
-      }).join('') + '</dl>'
+    ? release.credits.filter(function (c) { return c && c.role && c.name; }).map(function (c) {
+        return '<div class="credit-row"><span class="credit-role">' + escHtml(c.role) + '</span><span class="credit-name">' + escHtml(c.name) + '</span></div>';
+      }).join('')
     : '';
 
   const isAlbum = /^(album|ep)$/i.test(release.type || '');
@@ -591,7 +600,11 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
   // that duplicate round trip was the main cause of the 3-4s delay before
   // content appeared. release/index.html's script reads window.__RELEASE_DATA__
   // first and only falls back to fetching if it's missing (e.g. local dev).
-  const inlineData = '<script>window.__RELEASE_DATA__=' + JSON.stringify({ release: release, artist: artist || null }) + ';</script>';
+  // CRITICAL: escape "<" so lyrics/description containing "</script>" can
+  // never break out of the tag and produce an empty/broken page body.
+  const inlineData = '<script>window.__RELEASE_DATA__=' +
+    JSON.stringify({ release: release, artist: artist || null }).replace(/</g, '\\u003c') +
+    ';</script>';
 
   const rewriter = new HTMLRewriter()
     .on('title#page-title', { element: function (el) { el.setInnerContent(title); } })
@@ -609,24 +622,44 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
       if (release.cover) el.setAttribute('src', assetUrlPath(release.cover));
       el.setAttribute('alt', release.title + ' cover art');
     } })
-    .on('span#rel-type', { element: function (el) { el.setInnerContent(release.type || 'Release'); } })
-    .on('p#rel-year', { element: function (el) { el.setInnerContent(String(release.year || '')); } })
+    .on('#rel-type', { element: function (el) { el.setInnerContent(release.type || 'Release'); } })
+    .on('#rel-year', { element: function (el) {
+      const y = release.year ? String(release.year) + ' · ARTISTTAAN' : 'ARTISTTAAN';
+      el.setInnerContent(y);
+    } })
     .on('span#rel-artist', { element: function (el) { el.setInnerContent(artistHtml, { html: true }); } })
     .on('div#rel-listen', { element: function (el) { if (listenHtml) el.setInnerContent(listenHtml, { html: true }); } })
     .on('div#rel-credits', { element: function (el) { if (creditsHtml) el.setInnerContent(creditsHtml, { html: true }); } })
     .on('div#rel-video', { element: function (el) { if (videoHtml) el.setInnerContent(videoHtml, { html: true }); } })
     .on('p#rel-about', { element: function (el) { el.setInnerContent(aboutText); } })
     .on('div#rel-more', { element: function (el) {
-      if (moreFromHtml) el.prepend(moreFromHtml, { html: true });
-      if (relatedHtml) el.before(relatedHtml, { html: true });
+      if (moreFromHtml) el.setInnerContent(moreFromHtml, { html: true });
+    } })
+    .on('#related-list', { element: function (el) {
+      if (relatedHtml) el.setInnerContent(relatedHtml, { html: true });
+    } })
+    .on('#related-card', { element: function (el) {
+      if (relatedHtml) el.setAttribute('style', 'display:block');
+    } })
+    .on('#related-heading', { element: function (el) {
+      if (relatedHtml) el.setInnerContent(relatedHeading, { html: true });
     } })
     .on('script#ld-json', { element: function (el) { el.setInnerContent(jsonLd(ld), { html: true }); } })
     .on('head', { element: function (el) { el.append(inlineData, { html: true }); } });
 
   if (release.lyrics && String(release.lyrics).trim()) {
     rewriter
-      .on('div#lyrics-section', { element: function (el) { el.setAttribute('style', 'display:block'); } })
-      .on('p#lyrics-text', { element: function (el) { el.setInnerContent(String(release.lyrics).trim()); } });
+      .on('#lyrics-section', { element: function (el) { el.setAttribute('class', 'section has-content'); } })
+      .on('#lyrics-text', { element: function (el) { el.setInnerContent(String(release.lyrics).trim()); } });
+  }
+  if (creditsHtml) {
+    rewriter.on('#credits-section', { element: function (el) { el.setAttribute('class', 'side-card has-content'); } });
+  }
+  if (videoHtml) {
+    rewriter.on('#video-section', { element: function (el) { el.setAttribute('class', 'section has-content'); } });
+  }
+  if (aboutText) {
+    rewriter.on('#about-section', { element: function (el) { el.setAttribute('class', 'section has-content'); } });
   }
 
   return rewriter.transform(assetResponse);
