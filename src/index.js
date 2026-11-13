@@ -438,6 +438,14 @@ async function renderTeamMeta(assetResponse, slug, origin, env) {
 // JS once artists.json loads. This rewrites those tags server-side first,
 // matching the release by slugifying each release's title the same way the
 // client-side JS and the Releases-grid links already do.
+// Extracts the 11-character video ID from any common YouTube URL form
+// (watch?v=, youtu.be/, /embed/, /shorts/, /live/). Returns '' if not valid.
+function youtubeId(url) {
+  if (!url) return '';
+  const m = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : '';
+}
+
 function slugify(s) {
   if (!s) return '';
   return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -523,6 +531,13 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     relatedList(shownSameArtist, 'More from ' + escHtml(release.artist)) +
     relatedList(fillers, 'More from ARTISTTAAN');
 
+  const ytId = youtubeId(release.youtube_url);
+  const videoHtml = ytId
+    ? '<h2>Watch</h2><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + ytId +
+      '" title="' + escHtml(release.title + ' video') + '" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
+      '<a class="video-link" href="https://www.youtube.com/watch?v=' + ytId + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &#8594;</a>'
+    : '';
+
   const isAlbum = /^(album|ep)$/i.test(release.type || '');
   const ld = {
     '@context': 'https://schema.org',
@@ -536,8 +551,20 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
         'image': image,
         'description': description,
         'publisher': { '@type': 'Organization', 'name': 'ARTISTTAAN', 'url': origin + '/' },
-        'sameAs': (release.spotify_url && /^https?:\/\//.test(release.spotify_url)) ? [release.spotify_url] : undefined
+        'sameAs': [
+          (release.spotify_url && /^https?:\/\//.test(release.spotify_url)) ? release.spotify_url : null,
+          ytId ? 'https://www.youtube.com/watch?v=' + ytId : null
+        ].filter(Boolean)
       },
+      ytId ? {
+        '@type': 'VideoObject',
+        'name': release.title + ' by ' + release.artist,
+        'description': description,
+        'thumbnailUrl': 'https://i.ytimg.com/vi/' + ytId + '/hqdefault.jpg',
+        'uploadDate': /^\d{4}$/.test(String(release.year || '')) ? release.year + '-01-01' : undefined,
+        'embedUrl': 'https://www.youtube.com/embed/' + ytId,
+        'contentUrl': 'https://www.youtube.com/watch?v=' + ytId
+      } : null,
       {
         '@type': 'BreadcrumbList',
         'itemListElement': [
@@ -546,7 +573,7 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
           { '@type': 'ListItem', 'position': 3, 'name': release.title, 'item': pageUrl }
         ]
       }
-    ]
+    ].filter(Boolean)
   };
 
   // Embed the already-fetched release (and matching artist) data directly into
@@ -578,6 +605,7 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     .on('p#rel-year', { element: function (el) { el.setInnerContent(String(release.year || '')); } })
     .on('span#rel-artist', { element: function (el) { el.setInnerContent(artistHtml, { html: true }); } })
     .on('div#rel-listen', { element: function (el) { if (listenHtml) el.setInnerContent(listenHtml, { html: true }); } })
+    .on('div#rel-video', { element: function (el) { if (videoHtml) el.setInnerContent(videoHtml, { html: true }); } })
     .on('p#rel-about', { element: function (el) { el.setInnerContent(aboutText); } })
     .on('div#rel-more', { element: function (el) {
       if (moreFromHtml) el.prepend(moreFromHtml, { html: true });
