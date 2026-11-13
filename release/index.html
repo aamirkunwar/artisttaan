@@ -61,14 +61,56 @@
       transition: border-color 0.2s;
     }
     nav.scrolled { border-bottom-color: var(--border); }
-    .nav-logo img { height: 28px; width: auto; }
-    .nav-links { display: flex; gap: 26px; }
+    .nav-logo {
+      display: flex; align-items: center;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .nav-logo img { height: 28px; width: auto; display: block; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
     .nav-links a {
       font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--text-secondary);
       transition: color 0.15s;
+      white-space: nowrap;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* Hamburger (hidden on desktop) */
+    .nav-toggle {
+      display: none;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      padding: 0; z-index: 2;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px; height: 2px;
+      background: var(--text);
+      border-radius: 1px;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: '';
+      position: absolute; left: 0;
+      width: 20px; height: 2px;
+      background: var(--text);
+      border-radius: 1px;
+      transition: transform 0.2s, top 0.2s;
+    }
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after { top: 6px; }
+    nav.open .nav-toggle span { background: transparent; }
+    nav.open .nav-toggle span::before { top: 0; transform: rotate(45deg); }
+    nav.open .nav-toggle span::after { top: 0; transform: rotate(-45deg); }
 
     /* ===== HERO ===== */
     .hero {
@@ -353,10 +395,34 @@
       .page { grid-template-columns: 1fr; gap: 36px; }
       .side-col { position: static; }
     }
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       nav { padding: 0 16px; }
-      .nav-links { gap: 16px; }
-      .nav-links a { font-size: 11px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 100dvh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.25s, visibility 0.25s;
+      }
+      nav.open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .nav-links a {
+        font-size: 18px;
+        letter-spacing: 0.08em;
+        color: var(--text);
+      }
       .hero { padding: 84px 0 32px; }
       .hero-inner {
         grid-template-columns: 1fr;
@@ -376,7 +442,10 @@
 <body>
 <nav id="main-nav">
   <a href="/" class="nav-logo"><img src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
-  <div class="nav-links">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
     <a href="/artists/">Artists</a>
     <a href="/releases/" class="active">Releases</a>
     <a href="/videos/">Videos</a>
@@ -670,6 +739,28 @@
   window.addEventListener('scroll', function () {
     document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
+
+  // Mobile hamburger menu
+  (function () {
+    var nav = document.getElementById('main-nav');
+    var toggle = document.getElementById('nav-toggle');
+    if (!nav || !toggle) return;
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    // Close menu when a link is tapped
+    nav.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+      });
+    });
+  })();
 
   init();
 })();
