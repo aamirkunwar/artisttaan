@@ -18,75 +18,363 @@
   <meta name="twitter:image" id="twitter-image" content="" />
   <link rel="icon" type="image/png" href="/assets/images/logo/logo-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script type="application/ld+json" id="ld-json"></script>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{background:#fafaf8;color:#0a0a0a;font-family:'Inter',sans-serif;overflow-x:hidden}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo img{height:32px;width:auto}
-    .nav-links{display:flex;gap:28px}
-    .nav-links a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;color:#888;transition:color 0.2s}
-    .nav-links a:hover,.nav-links a.active{color:#0a0a0a}
-    .wrap{max-width:900px;margin:0 auto;padding:100px 32px 60px}
-    .crumb{font-size:11px;color:#888;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px}
-    .crumb:hover{color:#000}
-    .release-hero{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin-bottom:36px}
-    .cover{width:280px;height:280px;object-fit:cover;background:#1a1a1a;border-radius:6px}
-    .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#888;background:#f0f0ed;padding:4px 10px;border-radius:2px;width:fit-content;margin-bottom:14px;display:inline-block}
-    h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:10px}
-    .by{font-size:16px;color:#555;margin-bottom:6px}
-    .by a{color:#0a0a0a;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc}
-    .by a:hover{border-color:#000}
-    .year{font-size:12px;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px}
-    .listen-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#0a0a0a;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:3px;transition:opacity 0.2s}
-    .listen-btn:hover{opacity:0.85}
-    .embed-wrap{margin:28px 0;border-radius:12px;overflow:hidden}
-    .video-wrap:empty{display:none}
-    .video-wrap{margin:28px 0}
-    .video-wrap h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
-    .video-frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
-    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .video-link{display:inline-block;margin-top:10px;font-size:13px;color:#0a0a0a}
-    .credits:empty{display:none}
-    .credits{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5}
-    .credits h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
-    .credits dl{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:8px 20px;max-width:640px;font-size:15px;line-height:1.5}
-    .credits dt{color:#888}
-    .credits dd{margin:0;color:#0a0a0a;font-weight:600}
-    .about{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5}
-    .about h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
-    .about p{font-size:15px;line-height:1.7;color:#333;max-width:640px}
-    .lyrics{margin-top:36px;padding-top:28px;border-top:1px solid #e5e5e5;display:none}
-    .lyrics h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:12px}
-    .lyrics p{font-size:15px;line-height:1.9;color:#222;max-width:640px;white-space:pre-line}
-    .more{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5;display:flex;gap:24px;flex-wrap:wrap}
-    .more a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0a0a0a;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-    .more a:hover{text-decoration:underline}
-    .related{margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5}
-    .related h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:16px}
-    .related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-    .related a{display:flex;align-items:center;gap:12px;text-decoration:none;color:#0a0a0a}
-    .related img{width:64px;height:64px;object-fit:cover;border-radius:4px;background:#1a1a1a;flex:none}
-    .related strong{display:block;font-size:14px;font-weight:700}
-    .related em{display:block;font-size:12px;font-style:normal;color:#888;margin-top:2px}
-    .related a:hover strong{text-decoration:underline}
-    .not-found{text-align:center;padding:140px 20px;font-size:14px;color:#888}
-    footer{background:#0a0a0a;color:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:space-between}
-    footer p{font-size:12px;color:#555}
-    footer a{font-size:12px;color:#555;text-decoration:none;transition:color 0.2s}
-    footer a:hover{color:#fff}
-    @media(max-width:640px){
-      nav{padding:0 16px}
-      .wrap{padding:88px 16px 40px}
-      .release-hero{grid-template-columns:1fr;gap:20px}
-      .cover{width:100%;height:auto;aspect-ratio:1}
-      footer{flex-direction:column;gap:12px;text-align:center}
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #121212;
+      --bg-card: #181818;
+      --border: #282828;
+      --text: #ffffff;
+      --text-secondary: #b3b3b3;
+      --text-muted: #6a6a6a;
+      --accent: #1ed760;
+      --accent-hover: #1fdf64;
+      --radius: 8px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-links { display: flex; gap: 26px; }
+    .nav-links a {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-secondary);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* ===== HERO (Genius-style gradient header) ===== */
+    .hero {
+      position: relative;
+      padding: 100px 0 48px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, #3a3a3a 0%, var(--bg) 100%);
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: end;
+    }
+    .cover-wrap {
+      position: relative;
+      width: 280px; aspect-ratio: 1;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
+      background: #1a1a1a;
+    }
+    .cover-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero-meta { padding-bottom: 4px; }
+    .type-badge {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      text-wrap: balance;
+    }
+    .hero-by {
+      font-size: 18px; font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .hero-by a { color: var(--text); }
+    .hero-by a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .hero-year {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 44px; padding: 0 22px;
+      border-radius: 999px;
+      font-size: 14px; font-weight: 700;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, background 0.15s, opacity 0.15s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--accent); color: #000;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ===== MAIN LAYOUT ===== */
+    .page {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+    .main-col { min-width: 0; }
+    .side-col {
+      position: sticky; top: 88px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Spotify embed */
+    .embed-frame {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-card);
+      min-height: 152px;
+    }
+    .embed-frame iframe {
+      width: 100%; height: 152px; border: 0; display: block;
+    }
+
+    /* Lyrics (Genius-like) */
+    .lyrics-body {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--text);
+      white-space: pre-line;
+      max-width: 560px;
+    }
+    .lyrics-body .section-header {
+      display: block;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin: 22px 0 8px;
+      text-transform: uppercase;
+    }
+    .lyrics-body .section-header:first-child { margin-top: 0; }
+
+    /* About */
+    .about-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* Credits */
+    .credits-list {
+      display: grid;
+      gap: 10px;
+    }
+    .credit-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      font-size: 14px;
+    }
+    .credit-role { color: var(--text-muted); font-weight: 500; }
+    .credit-name { color: var(--text); font-weight: 600; }
+
+    /* Video */
+    .video-frame {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/9;
+    }
+    .video-frame iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+    .video-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .video-link:hover { color: var(--text); }
+
+    /* Related */
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .related-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .related-item:hover { background: var(--bg-card); }
+    .related-item img {
+      width: 56px; height: 56px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #1a1a1a;
+      flex-shrink: 0;
+    }
+    .related-item strong {
+      display: block;
+      font-size: 14px; font-weight: 600;
+      line-height: 1.3;
+    }
+    .related-item em {
+      display: block;
+      font-size: 12px; font-style: normal;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Side card */
+    .side-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .side-card h3 {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    /* More from artist link */
+    .more-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600;
+      color: var(--text);
+      margin-top: 8px;
+    }
+    .more-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Empty / not found */
+    .not-found {
+      text-align: center;
+      padding: 160px 20px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto;
+    }
+    footer p, footer a { font-size: 12px; color: var(--text-muted); }
+    footer a:hover { color: var(--text); }
+
+    /* Crumb */
+    .crumb {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      position: relative; z-index: 2;
+    }
+    .crumb:hover { color: var(--text); }
+
+    /* Hidden by default until data fills */
+    #lyrics-section, #credits-section, #video-section, #about-section { display: none; }
+    #lyrics-section.has-content,
+    #credits-section.has-content,
+    #video-section.has-content,
+    #about-section.has-content { display: block; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 200px 1fr; gap: 28px; }
+      .cover-wrap { width: 200px; }
+      .page { grid-template-columns: 1fr; gap: 36px; }
+      .side-col { position: static; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 11px; }
+      .hero { padding: 84px 0 32px; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 16px;
+        text-align: center;
+      }
+      .cover-wrap { width: 220px; margin: 0 auto; }
+      .hero-actions { justify-content: center; }
+      .page { padding: 0 16px 60px; }
+      .hero-title { font-size: 28px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 16px; }
+      .credit-row { grid-template-columns: 90px 1fr; }
     }
   </style>
 </head>
 <body>
-<nav>
+<nav id="main-nav">
   <a href="/" class="nav-logo"><img src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
   <div class="nav-links">
     <a href="/artists/">Artists</a>
@@ -96,42 +384,83 @@
     <a href="/demos/">Submit Demo</a>
   </div>
 </nav>
+
 <div id="page-content">
-  <div class="wrap">
-    <a href="/releases/" class="crumb">&#8592; All Releases</a>
-    <div class="release-hero">
-      <img class="cover" id="rel-cover" src="" alt="" fetchpriority="high"/>
-      <div>
-        <span class="tag" id="rel-type"></span>
-        <h1 id="rel-title"></h1>
-        <p class="by">By <span id="rel-artist"></span></p>
-        <p class="year" id="rel-year"></p>
-        <div id="rel-listen"></div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="cover-wrap">
+        <img id="rel-cover" src="" alt="" fetchpriority="high" width="280" height="280"/>
+      </div>
+      <div class="hero-meta">
+        <a href="/releases/" class="crumb">← All Releases</a>
+        <div class="type-badge" id="rel-type">Single</div>
+        <h1 class="hero-title" id="rel-title"></h1>
+        <p class="hero-by">By <span id="rel-artist"></span></p>
+        <p class="hero-year" id="rel-year"></p>
+        <div class="hero-actions" id="rel-listen">
+          <!-- filled by JS / Worker -->
+        </div>
       </div>
     </div>
-    <div class="embed-wrap" id="rel-embed"></div>
-    <div class="video-wrap" id="rel-video"></div>
-    <div class="credits" id="rel-credits"></div>
-    <div class="about">
-      <h2>About this release</h2>
-      <p id="rel-about"></p>
+  </header>
+
+  <!-- BODY -->
+  <div class="page">
+    <div class="main-col">
+      <!-- Spotify embed -->
+      <div class="section" id="embed-section" style="display:none">
+        <div class="embed-frame" id="rel-embed"></div>
+      </div>
+
+      <!-- Lyrics -->
+      <section class="section" id="lyrics-section">
+        <h2 class="section-title">Lyrics</h2>
+        <div class="lyrics-body" id="lyrics-text"></div>
+      </section>
+
+      <!-- About -->
+      <section class="section" id="about-section">
+        <h2 class="section-title">About</h2>
+        <p class="about-text" id="rel-about"></p>
+      </section>
+
+      <!-- Video -->
+      <section class="section" id="video-section">
+        <h2 class="section-title">Video</h2>
+        <div id="rel-video"></div>
+      </section>
     </div>
-    <div class="lyrics" id="lyrics-section">
-      <h2>Lyrics</h2>
-      <p id="lyrics-text"></p>
-    </div>
-    <div class="more" id="rel-more">
-      <a href="/releases/">Browse all releases &#8594;</a>
-    </div>
+
+    <aside class="side-col">
+      <!-- Credits -->
+      <div class="side-card" id="credits-section">
+        <h3>Credits</h3>
+        <div class="credits-list" id="rel-credits"></div>
+      </div>
+
+      <!-- More from artist / related -->
+      <div class="side-card" id="related-card" style="display:none">
+        <h3 id="related-heading">More from ARTISTTAAN</h3>
+        <div class="related-grid" id="related-list"></div>
+      </div>
+
+      <div id="rel-more" style="margin-top:8px">
+        <!-- more-from-artist link injected here -->
+      </div>
+    </aside>
   </div>
 </div>
+
 <footer>
-  <p>&copy; 2026 ARTISTTAAN &middot; All Rights Reserved</p>
-  <a href="/">&#8592; Back to ARTISTTAAN</a>
+  <p>© 2026 ARTISTTAAN · All Rights Reserved</p>
+  <a href="/">← Back to ARTISTTAAN</a>
 </footer>
+
 <script>
-  // Supports /release/<slug>/ (canonical) — slug is derived from the release title.
-  const pathParts = window.location.pathname.split('/').filter(Boolean); // ['release','namaskar']
+(function () {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
   const releaseSlug = (pathParts[0] === 'release' && pathParts[1]) ? pathParts[1] : null;
 
   function slugify(s) {
@@ -144,17 +473,183 @@
     return '/' + String(p).replace(/^\/+/, '');
   }
 
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // Format lyrics with [Section] headers like Genius
+  function formatLyrics(raw) {
+    if (!raw) return '';
+    return String(raw)
+      .replace(/\[([^\]]+)\]/g, '<span class="section-header">[$1]</span>')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      // restore the span we just escaped
+      .replace(/&lt;span class="section-header"&gt;/g, '<span class="section-header">')
+      .replace(/&lt;\/span&gt;/g, '</span>');
+  }
+
+  // Simple dominant-ish color approximation from cover for hero gradient
+  // (no external lib — just a soft tint based on title hash so every page feels different)
+  function tintFromTitle(title) {
+    let h = 0;
+    const s = String(title || '');
+    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    const hue = h % 360;
+    return `hsl(${hue}, 28%, 22%)`;
+  }
+
+  function render(r, artists) {
+    if (!r) {
+      document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
+      return;
+    }
+
+    const year = r.year || '';
+    const type = (r.type || 'Release');
+    const typeLower = type.toLowerCase();
+    const pageUrl = 'https://artisttaanmusic.com/release/' + slugify(r.title) + '/';
+    const description = (r.description && r.description.trim())
+      ? r.description.trim().slice(0, 160)
+      : 'Stream "' + r.title + '" by ' + r.artist + ' (' + year + ') — a ' + typeLower + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
+    const coverAbs = r.cover
+      ? 'https://artisttaanmusic.com' + assetPath(r.cover)
+      : 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg';
+
+    // Meta
+    document.getElementById('page-title').textContent = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('meta-description').content = description;
+    document.getElementById('canonical-url').href = pageUrl;
+    document.getElementById('og-url').content = pageUrl;
+    document.getElementById('og-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('og-description').content = description;
+    document.getElementById('og-image').content = coverAbs;
+    document.getElementById('twitter-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('twitter-description').content = description;
+    document.getElementById('twitter-image').content = coverAbs;
+
+    // Hero tint
+    const tint = tintFromTitle(r.title);
+    document.getElementById('hero-bg').style.background =
+      'linear-gradient(180deg, ' + tint + ' 0%, #0a0a0a 100%)';
+
+    // Cover
+    const coverEl = document.getElementById('rel-cover');
+    if (r.cover) {
+      coverEl.src = assetPath(r.cover);
+      coverEl.alt = r.title + ' cover art';
+    }
+
+    // Type / title / artist / year
+    document.getElementById('rel-type').textContent = type;
+    document.getElementById('rel-title').textContent = r.title;
+    document.getElementById('rel-year').textContent = year ? year + ' · ARTISTTAAN' : 'ARTISTTAAN';
+
+    const artist = (artists || []).find(function (a) {
+      if (r.artist_id) return a.id === r.artist_id;
+      return a.name && r.artist && a.name.toLowerCase() === String(r.artist).toLowerCase();
+    });
+
+    const artistSpan = document.getElementById('rel-artist');
+    if (artist) {
+      artistSpan.innerHTML = '<a href="/artist/' + esc(artist.id) + '/">' + esc(r.artist) + '</a>';
+    } else {
+      artistSpan.textContent = r.artist || '';
+    }
+
+    // Listen buttons
+    const listenEl = document.getElementById('rel-listen');
+    let listenHtml = '';
+    if (r.spotify_url && r.spotify_url !== '#' && /^https?:\/\//.test(r.spotify_url)) {
+      listenHtml += '<a class="btn btn-primary" href="' + esc(r.spotify_url) + '" target="_blank" rel="noopener noreferrer">' +
+        '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>' +
+        'Listen on Spotify</a>';
+    }
+    if (r.youtube_url) {
+      listenHtml += '<a class="btn btn-secondary" href="' + esc(r.youtube_url) + '" target="_blank" rel="noopener noreferrer">Watch Video</a>';
+    }
+    listenEl.innerHTML = listenHtml;
+
+    // Spotify embed
+    if (r.spotify_embed && /^https?:\/\//.test(r.spotify_embed)) {
+      const emb = document.getElementById('rel-embed');
+      emb.innerHTML = '<iframe src="' + esc(r.spotify_embed) + '?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+      document.getElementById('embed-section').style.display = 'block';
+    }
+
+    // Lyrics
+    if (r.lyrics && String(r.lyrics).trim()) {
+      document.getElementById('lyrics-text').innerHTML = formatLyrics(r.lyrics.trim());
+      document.getElementById('lyrics-section').classList.add('has-content');
+    }
+
+    // About
+    const aboutEl = document.getElementById('rel-about');
+    if (aboutEl.textContent.trim()) {
+      // Worker already wrote it
+      document.getElementById('about-section').classList.add('has-content');
+    } else {
+      const about = (r.description && r.description.trim())
+        ? r.description.trim()
+        : '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist +
+          (year ? ', released in ' + year : '') +
+          ' via ARTISTTAAN — India\'s hip-hop & indie label.';
+      aboutEl.textContent = about;
+      document.getElementById('about-section').classList.add('has-content');
+    }
+
+    // Credits
+    if (Array.isArray(r.credits) && r.credits.length) {
+      const credHtml = r.credits
+        .filter(function (c) { return c && c.role && c.name; })
+        .map(function (c) {
+          return '<div class="credit-row"><span class="credit-role">' + esc(c.role) + '</span><span class="credit-name">' + esc(c.name) + '</span></div>';
+        }).join('');
+      if (credHtml) {
+        document.getElementById('rel-credits').innerHTML = credHtml;
+        document.getElementById('credits-section').classList.add('has-content');
+      }
+    }
+
+    // Video (Worker may already have filled #rel-video)
+    const videoEl = document.getElementById('rel-video');
+    if (r.youtube_url && !videoEl.innerHTML.trim()) {
+      const m = String(r.youtube_url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
+      if (m) {
+        videoEl.innerHTML =
+          '<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + m[1] +
+          '" title="' + esc(r.title) + ' video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
+          '<a class="video-link" href="https://www.youtube.com/watch?v=' + m[1] + '" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>';
+        document.getElementById('video-section').classList.add('has-content');
+      }
+    } else if (videoEl.innerHTML.trim()) {
+      document.getElementById('video-section').classList.add('has-content');
+    }
+
+    // More from artist
+    const moreEl = document.getElementById('rel-more');
+    if (artist && !moreEl.querySelector('[data-more-artist]')) {
+      moreEl.innerHTML = '<a data-more-artist="1" class="more-link" href="/artist/' + esc(artist.id) + '/">More from ' + esc(r.artist) + ' →</a>';
+    }
+  }
+
   async function init() {
-    // The Worker (src/index.js) already looks up this release server-side to
-    // rewrite the meta tags, and embeds the result as window.__RELEASE_DATA__.
-    // Use that directly so the browser doesn't have to fetch and parse the
-    // ~40KB artists.json a second time -- that duplicate fetch was the main
-    // cause of the delay before the cover image and "about" text appeared.
-    // Falls back to fetching (e.g. local dev without the Worker) if it's missing.
+    // Prefer the data the Worker already embedded (avoids a second fetch of artists.json)
     if (window.__RELEASE_DATA__ && window.__RELEASE_DATA__.release) {
       render(window.__RELEASE_DATA__.release, window.__RELEASE_DATA__.artist ? [window.__RELEASE_DATA__.artist] : []);
       return;
     }
+
+    if (!releaseSlug) {
+      document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
+      return;
+    }
+
     try {
       const res = await fetch('/assets/data/artists.json');
       const data = await res.json();
@@ -168,106 +663,17 @@
       render(r, artists);
     } catch (e) {
       console.error(e);
+      document.getElementById('page-content').innerHTML = '<p class="not-found">Could not load release.</p>';
     }
   }
 
-  function render(r, artists) {
-    const year = r.year || '';
-    const type = r.type || 'Release';
-    const typeLower = type.toLowerCase();
-    const pageUrl = 'https://artisttaanmusic.com/release/' + slugify(r.title) + '/';
-    const description = 'Stream "' + r.title + '" by ' + r.artist + ' (' + year + ') — a ' + typeLower + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
-    const coverAbs = r.cover ? 'https://artisttaanmusic.com' + assetPath(r.cover) : 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg';
-
-    document.getElementById('page-title').textContent = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
-    document.getElementById('meta-description').content = description;
-    document.getElementById('canonical-url').href = pageUrl;
-    document.getElementById('og-url').content = pageUrl;
-    document.getElementById('og-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
-    document.getElementById('og-description').content = description;
-    document.getElementById('og-image').content = coverAbs;
-    document.getElementById('twitter-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
-    document.getElementById('twitter-description').content = description;
-    document.getElementById('twitter-image').content = coverAbs;
-    // The Worker already writes a fuller JSON-LD block into the HTML; only
-    // fill it in here as a fallback (e.g. local dev without the Worker).
-    const ldEl = document.getElementById('ld-json');
-    if (!ldEl.textContent.trim()) {
-      ldEl.textContent = JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'MusicRecording',
-        'name': r.title,
-        'byArtist': { '@type': 'MusicGroup', 'name': r.artist },
-        'datePublished': year,
-        'image': coverAbs,
-        'url': pageUrl
-      });
-    }
-
-    document.getElementById('rel-cover').src = assetPath(r.cover);
-    document.getElementById('rel-cover').alt = r.title + ' cover art';
-    document.getElementById('rel-type').textContent = type;
-    document.getElementById('rel-title').textContent = r.title;
-    document.getElementById('rel-year').textContent = year;
-
-    const artist = artists.find(function (a) { return a.id === r.artist_id; });
-    const artistEl = document.getElementById('rel-artist');
-    if (artist) {
-      artistEl.innerHTML = '<a href="/artist/' + artist.id + '/">' + r.artist + '</a>';
-    } else {
-      artistEl.textContent = r.artist;
-    }
-
-    if (r.spotify_url && r.spotify_url !== '#') {
-      document.getElementById('rel-listen').innerHTML = '<a class="listen-btn" href="' + r.spotify_url + '" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>';
-    }
-
-    if (r.spotify_embed) {
-      document.getElementById('rel-embed').innerHTML = '<iframe style="border-radius:12px" src="' + r.spotify_embed + '" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
-    }
-
-    // Credits (the Worker renders this server-side; fallback for local dev).
-    const creditsEl = document.getElementById('rel-credits');
-    if (Array.isArray(r.credits) && r.credits.length && !creditsEl.innerHTML.trim()) {
-      const esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
-      creditsEl.innerHTML = '<h2>Credits</h2><dl>' + r.credits.map(function (c) {
-        return '<dt>' + esc(c.role) + '</dt><dd>' + esc(c.name) + '</dd>';
-      }).join('') + '</dl>';
-    }
-
-    // YouTube video (the Worker renders this server-side; only fill it in
-    // here if it's missing, e.g. local dev without the Worker).
-    const videoEl = document.getElementById('rel-video');
-    if (r.youtube_url && !videoEl.innerHTML.trim()) {
-      const m = String(r.youtube_url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
-      if (m) {
-        videoEl.innerHTML = '<h2>Watch</h2><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + m[1] + '" title="' + r.title.replace(/"/g, '&quot;') + ' video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
-          '<a class="video-link" href="https://www.youtube.com/watch?v=' + m[1] + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &#8594;</a>';
-      }
-    }
-
-    // The Worker writes a fuller, page-specific "about" text server-side;
-    // keep it if present, otherwise fall back to the generic sentence.
-    const aboutEl = document.getElementById('rel-about');
-    if (!aboutEl.textContent.trim()) {
-      aboutEl.textContent = (r.description && r.description.trim()) ? r.description.trim() : '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist + ', released in ' + year + ' via ARTISTTAAN — India\'s hip-hop & indie label. Stream it on Spotify above, or explore more from ' + r.artist + ' and the rest of the ARTISTTAAN roster.';
-    }
-
-    if (r.lyrics && r.lyrics.trim()) {
-      document.getElementById('lyrics-text').textContent = r.lyrics.trim();
-      document.getElementById('lyrics-section').style.display = 'block';
-    }
-
-    if (artist) {
-      const moreEl = document.getElementById('rel-more');
-      // Skip if the Worker already rendered this link server-side.
-      if (!moreEl.querySelector('[data-more-artist]')) {
-        moreEl.insertAdjacentHTML('afterbegin', '<a data-more-artist="1" href="/artist/' + artist.id + '/">More from ' + r.artist + ' &#8594;</a>');
-      }
-    }
-  }
+  // Sticky nav border
+  window.addEventListener('scroll', function () {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
 
   init();
+})();
 </script>
 </body>
 </html>
