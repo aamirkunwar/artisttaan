@@ -75,6 +75,17 @@ collections:
                   hint: "Same as Spotify URL but with '/embed' after open.spotify.com — e.g. https://open.spotify.com/embed/track/..." }
               - { label: YouTube Video URL, name: youtube_url, widget: string, required: false,
                   hint: "Optional. Official video / audio link for this song, e.g. https://www.youtube.com/watch?v=... or https://youtu.be/... When set, the video is embedded on the release page." }
+              - { label: Description, name: description, widget: text, required: false,
+                  hint: "Optional. 2–4 sentences about the song (what it is, who made it, the story). Shown under 'About this release' and used as the page's search description. Leave blank to use the auto-generated text." }
+              - label: Credits
+                name: credits
+                widget: list
+                required: false
+                summary: "{{fields.role}}: {{fields.name}}"
+                hint: "Optional. One row per credit, e.g. Role = Produced by, Name = Moit. Shown in a Credits section on the release page."
+                fields:
+                  - { label: Role, name: role, widget: string }
+                  - { label: Name, name: name, widget: string }
               - { label: Cover Image, name: cover, widget: image, required: false, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
               - { label: Lyrics, name: lyrics, widget: text, required: false, hint: "Optional. Paste the full lyrics here — line breaks are preserved on the release page. Leave blank to hide the Lyrics section." }
 
