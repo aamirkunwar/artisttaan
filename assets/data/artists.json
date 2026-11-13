@@ -805,14 +805,25 @@
       "type": "single"
     },
     {
-      "title": "Rap Ka Mausam",
       "artist": "Raga",
-      "artist_id": null,
-      "year": "2019",
       "spotify_url": "#",
+      "artist_id": null,
       "spotify_embed": null,
       "cover": "assets/images/releases-posters/releases/release-67-rap-ka-mausam-2019.jpg",
-      "type": "single"
+      "title": "Rap Ka Mausam",
+      "credits": [
+        {
+          "role": "Music producer",
+          "name": "Moit"
+        },
+        {
+          "role": "Video Director",
+          "name": "Ashar"
+        }
+      ],
+      "type": "single",
+      "description": "Rap Ka Mausam” is the first single from Raga’s album of the same name, released in 2019 by ARTISTTAAN and Sony Music. Written and performed by Raga, the track was produced by Moit and mixed and mastered by Uzi. The official music video was directed by Ashar, with concept by Aamir Kunwar and cinematography by Nitin Goyal. Stream the album on Spotify, Apple Music, JioSaavn, Gaana, Wynk, Hungama and Amazon Music.",
+      "year": "2019"
     },
     {
       "title": "Raahat",
