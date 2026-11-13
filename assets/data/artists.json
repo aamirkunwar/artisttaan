@@ -355,14 +355,15 @@
       "type": "single"
     },
     {
-      "title": "Jaqeen",
       "artist": "Talwiinder, Rish",
-      "artist_id": null,
-      "year": "2021",
       "spotify_url": "https://open.spotify.com/track/1nJy3ZevNvqBOZcBaS7Wnc",
+      "artist_id": null,
       "spotify_embed": "https://open.spotify.com/embed/track/1nJy3ZevNvqBOZcBaS7Wnc",
       "cover": "assets/images/releases-posters/releases/release-04-jaqeen-2021.jpg",
-      "type": "single"
+      "title": "Jaqeen",
+      "type": "single",
+      "description": "“Jaqeen” is a single by Talwiinder and Rish, released in 2021 by ARTISTTAAN and Sony Music. Written and composed by Talwiinder and Rish, the track was produced by Moit. The official music video was directed by Crevixa, who also handled art direction and post-production, and stars Livia Del Bianco. Stream “Jaqeen” on Spotify and all major platforms.",
+      "year": "2021"
     },
     {
       "title": "Rageshwar",
