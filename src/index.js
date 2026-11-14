@@ -241,6 +241,52 @@ function joinNames(names) {
   return names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
 }
 
+// Build a case-insensitive map of display names -> profile path.
+// Roster artists -> /artist/<id>/   |   Team members -> /team/<id>/
+// Only names in our data are linked; external collaborators stay plain text.
+function buildPeopleLinkMap(data) {
+  const map = {};
+  (data && data.team || []).forEach(function (m) {
+    if (!m || !m.id || !m.name) return;
+    map[String(m.name).trim().toLowerCase()] = '/team/' + m.id + '/';
+  });
+  (data && data.artists || []).forEach(function (a) {
+    if (!a || !a.id || !a.name) return;
+    map[String(a.name).trim().toLowerCase()] = '/artist/' + a.id + '/';
+  });
+  return map;
+}
+
+// If name matches a roster artist or team member, return an <a> tag.
+function personNameLink(name, peopleMap) {
+  if (!name) return escHtml(name);
+  const key = String(name).trim().toLowerCase();
+  const href = peopleMap && peopleMap[key];
+  if (href) {
+    return '<a href="' + escHtml(href) + '" class="person-link">' + escHtml(name) + '</a>';
+  }
+  return escHtml(name);
+}
+
+// Replace known artist/team names inside free text with links.
+// Longest names first so partial overlaps don't break.
+function linkifyPeopleInText(text, peopleMap) {
+  if (!text || !peopleMap) return escHtml(text);
+  const names = Object.keys(peopleMap).sort(function (a, b) { return b.length - a.length; });
+  if (!names.length) return escHtml(text);
+  let out = escHtml(text);
+  names.forEach(function (key) {
+    const parts = key.split(/\s+/).map(function (w) {
+      return w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    });
+    const re = new RegExp('\\b' + parts.join('\\s+') + '\\b', 'gi');
+    out = out.replace(re, function (match) {
+      return '<a href="' + escHtml(peopleMap[key]) + '" class="person-link">' + match + '</a>';
+    });
+  });
+  return out;
+}
+
 // ---------- Server-rendered /releases/ grid (crawlable links) ----------
 
 async function renderReleasesGrid(assetResponse, origin, env) {
@@ -496,6 +542,8 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     if (shownSameArtist.length + fillers.length < 6) fillers.push(r);
   });
 
+  const peopleMap = buildPeopleLinkMap(allData);
+
   const customDesc = String(release.description || '').trim();
   const aboutParts = [
     customDesc || ('"' + release.title + '" is a ' + type + ' by ' + release.artist + (release.year ? ', released in ' + release.year : '') +
@@ -509,7 +557,8 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
       joinNames(sameArtist.slice(0, 3).map(function (r) { return '“' + r.title + '”'; })) + '.');
   }
   aboutParts.push('Stream "' + release.title + '" on Spotify, or explore the full ARTISTTAAN discography.');
-  const aboutText = aboutParts.join(' ');
+  // Link roster artist + team names inside the about paragraph
+  const aboutText = linkifyPeopleInText(aboutParts.join(' '), peopleMap);
 
   const artistHtml = artist
     ? '<a href="/artist/' + escHtml(artist.id) + '/">' + escHtml(release.artist) + '</a>'
@@ -548,10 +597,11 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
       '<a class="video-link" href="https://www.youtube.com/watch?v=' + ytId + '" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>'
     : '';
 
-  // Matches the new Genius-style side-card markup (no <h2>, just rows)
+  // Matches the new Genius-style side-card markup (no <h2>, just rows).
+  // Credit names that match roster artists or team members become profile links.
   const creditsHtml = (Array.isArray(release.credits) && release.credits.length)
     ? release.credits.filter(function (c) { return c && c.role && c.name; }).map(function (c) {
-        return '<div class="credit-row"><span class="credit-role">' + escHtml(c.role) + '</span><span class="credit-name">' + escHtml(c.name) + '</span></div>';
+        return '<div class="credit-row"><span class="credit-role">' + escHtml(c.role) + '</span><span class="credit-name">' + personNameLink(c.name, peopleMap) + '</span></div>';
       }).join('')
     : '';
 
@@ -603,7 +653,7 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
   // CRITICAL: escape "<" so lyrics/description containing "</script>" can
   // never break out of the tag and produce an empty/broken page body.
   const inlineData = '<script>window.__RELEASE_DATA__=' +
-    JSON.stringify({ release: release, artist: artist || null }).replace(/</g, '\\u003c') +
+    JSON.stringify({ release: release, artist: artist || null, people: peopleMap }).replace(/</g, '\\u003c') +
     ';</script>';
 
   const rewriter = new HTMLRewriter()
@@ -631,7 +681,7 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     .on('div#rel-listen', { element: function (el) { if (listenHtml) el.setInnerContent(listenHtml, { html: true }); } })
     .on('div#rel-credits', { element: function (el) { if (creditsHtml) el.setInnerContent(creditsHtml, { html: true }); } })
     .on('div#rel-video', { element: function (el) { if (videoHtml) el.setInnerContent(videoHtml, { html: true }); } })
-    .on('p#rel-about', { element: function (el) { el.setInnerContent(aboutText); } })
+    .on('p#rel-about', { element: function (el) { el.setInnerContent(aboutText, { html: true }); } })
     .on('div#rel-more', { element: function (el) {
       if (moreFromHtml) el.setInnerContent(moreFromHtml, { html: true });
     } })
