@@ -276,6 +276,18 @@
     }
     .credit-role { color: var(--text-muted); font-weight: 500; }
     .credit-name { color: var(--text); font-weight: 600; }
+    .person-link {
+      color: inherit;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(0,0,0,0.25);
+      text-underline-offset: 2px;
+      transition: text-decoration-color 0.15s, color 0.15s;
+    }
+    .person-link:hover {
+      color: #000;
+      text-decoration-color: #000;
+    }
 
     /* Video */
     .video-frame {
@@ -550,6 +562,42 @@
       .replace(/"/g, '&quot;');
   }
 
+  // Build name -> profile path map from roster artists + team only
+  function buildPeopleMap(artists, team) {
+    var map = {};
+    (team || []).forEach(function (m) {
+      if (m && m.id && m.name) map[String(m.name).trim().toLowerCase()] = '/team/' + m.id + '/';
+    });
+    (artists || []).forEach(function (a) {
+      if (a && a.id && a.name) map[String(a.name).trim().toLowerCase()] = '/artist/' + a.id + '/';
+    });
+    return map;
+  }
+
+  function personLink(name, peopleMap) {
+    if (!name) return esc(name);
+    var href = peopleMap && peopleMap[String(name).trim().toLowerCase()];
+    if (href) return '<a href="' + esc(href) + '" class="person-link">' + esc(name) + '</a>';
+    return esc(name);
+  }
+
+  function linkifyPeople(text, peopleMap) {
+    if (!text || !peopleMap) return esc(text);
+    var names = Object.keys(peopleMap).sort(function (a, b) { return b.length - a.length; });
+    if (!names.length) return esc(text);
+    var out = esc(text);
+    names.forEach(function (key) {
+      var parts = key.split(/\s+/).map(function (w) {
+        return w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      });
+      var re = new RegExp('\\b' + parts.join('\\s+') + '\\b', 'gi');
+      out = out.replace(re, function (match) {
+        return '<a href="' + esc(peopleMap[key]) + '" class="person-link">' + match + '</a>';
+      });
+    });
+    return out;
+  }
+
   // Format lyrics with [Section] headers like Genius
   function formatLyrics(raw) {
     if (!raw) return '';
@@ -572,11 +620,12 @@
     return `hsl(${hue}, 18%, 94%)`;
   }
 
-  function render(r, artists) {
+  function render(r, artists, peopleMap) {
     if (!r) {
       document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
       return;
     }
+    peopleMap = peopleMap || {};
 
     const year = r.year || '';
     const type = (r.type || 'Release');
@@ -656,10 +705,10 @@
       document.getElementById('lyrics-section').classList.add('has-content');
     }
 
-    // About
+    // About — link roster artists + team names
     const aboutEl = document.getElementById('rel-about');
-    if (aboutEl.textContent.trim()) {
-      // Worker already wrote it
+    if (aboutEl.innerHTML.trim() && aboutEl.querySelector('a.person-link, a.team-link')) {
+      // Worker already wrote linked about text
       document.getElementById('about-section').classList.add('has-content');
     } else {
       const about = (r.description && r.description.trim())
@@ -667,16 +716,16 @@
         : '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist +
           (year ? ', released in ' + year : '') +
           ' via ARTISTTAAN — India\'s hip-hop & indie label.';
-      aboutEl.textContent = about;
+      aboutEl.innerHTML = linkifyPeople(about, peopleMap);
       document.getElementById('about-section').classList.add('has-content');
     }
 
-    // Credits
+    // Credits — link roster artists + team members to their profiles
     if (Array.isArray(r.credits) && r.credits.length) {
       const credHtml = r.credits
         .filter(function (c) { return c && c.role && c.name; })
         .map(function (c) {
-          return '<div class="credit-row"><span class="credit-role">' + esc(c.role) + '</span><span class="credit-name">' + esc(c.name) + '</span></div>';
+          return '<div class="credit-row"><span class="credit-role">' + esc(c.role) + '</span><span class="credit-name">' + personLink(c.name, peopleMap) + '</span></div>';
         }).join('');
       if (credHtml) {
         document.getElementById('rel-credits').innerHTML = credHtml;
@@ -709,7 +758,9 @@
   async function init() {
     // Prefer the data the Worker already embedded (avoids a second fetch of artists.json)
     if (window.__RELEASE_DATA__ && window.__RELEASE_DATA__.release) {
-      render(window.__RELEASE_DATA__.release, window.__RELEASE_DATA__.artist ? [window.__RELEASE_DATA__.artist] : []);
+      var rd = window.__RELEASE_DATA__;
+      var pmap = rd.people || buildPeopleMap(rd.artist ? [rd.artist] : [], null);
+      render(rd.release, rd.artist ? [rd.artist] : [], pmap);
       return;
     }
 
@@ -728,7 +779,7 @@
         document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
         return;
       }
-      render(r, artists);
+      render(r, artists, buildPeopleMap(artists, data.team || []));
     } catch (e) {
       console.error(e);
       document.getElementById('page-content').innerHTML = '<p class="not-found">Could not load release.</p>';
