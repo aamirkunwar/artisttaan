@@ -1,496 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Official Merchandise | ARTISTTAAN</title>
-  <meta name="description" content="Shop official ARTISTTAAN merchandise. T-shirts, hoodies, caps, and more featuring your favorite artists from India's leading independent music label." />
-  <meta name="keywords" content="ARTISTTAAN merchandise, artist merch, Indian hip-hop merchandise, band shirts, music apparel" />
-  <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
-  <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png" />
-  <meta property="og:type" content="website" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Release | ARTISTTAAN</title>
+  <meta name="description" id="meta-description" content=""/>
+  <link rel="canonical" id="canonical-url" href="" />
+  <meta property="og:type" content="music.song" />
   <meta property="og:site_name" content="ARTISTTAAN" />
-  <link rel="canonical" href="https://artisttaanmusic.com/merchandise/" />
-  <meta property="og:url" content="https://artisttaanmusic.com/merchandise/" />
-  <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
-  <meta property="og:title" content="Merchandise | ARTISTTAAN" />
-  <meta property="og:description" content="Shop official ARTISTTAAN merchandise and support the artists." />
+  <meta property="og:url" id="og-url" content="" />
+  <meta property="og:title" id="og-title" content="" />
+  <meta property="og:description" id="og-description" content="" />
+  <meta property="og:image" id="og-image" content="" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Merchandise | ARTISTTAAN" />
-  <meta name="twitter:description" content="Shop official ARTISTTAAN merchandise." />
-  <meta name="twitter:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
-  <link rel="stylesheet" href="../assets/css/tailwind.css" />
+  <meta name="twitter:title" id="twitter-title" content="" />
+  <meta name="twitter:description" id="twitter-description" content="" />
+  <meta name="twitter:image" id="twitter-image" content="" />
+  <link rel="icon" type="image/png" href="/assets/images/logo/logo-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json" id="ld-json"></script>
   <style>
-    .merch-hero { padding-top: 120px; padding-bottom: 60px; }
-    .product-card { transition: all 0.3s ease; }
-    .product-card:hover { transform: translateY(-4px); }
-    .product-image { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
-    .product-title { font-size: 1.125rem; font-weight: 600; margin-top: 1rem; }
-    .product-price { font-size: 1.25rem; font-weight: 700; color: #000; margin-top: 0.5rem; }
-    .product-size { display: inline-block; padding: 0.5rem 1rem; border: 1px solid #e5e5e5; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; cursor: pointer; transition: all 0.2s; }
-    .product-size:hover { border-color: #000; background: #f5f5f5; }
-    .product-size.active { background: #000; color: #fff; border-color: #000; }
-    .add-to-cart-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: #000; color: #fff; font-size: 0.875rem; font-weight: 700; border-radius: 4px; transition: all 0.3s; text-decoration: none; border: none; cursor: pointer; }
-    .add-to-cart-btn:hover { background: #333; transform: translateY(-2px); }
-    .add-to-cart-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
-    .filter-btn { padding: 0.5rem 1rem; border: 1px solid #e5e5e5; background: #fff; border-radius: 4px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-    .filter-btn:hover { border-color: #000; }
-    .filter-btn.active { background: #000; color: #fff; border-color: #000; }
-    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #666; transition: color 0.3s; text-decoration: none; }
-    .back-link:hover { color: #000; }
-    .cart-badge { position: absolute; top: 20px; right: 30px; background: #000; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
-    .empty-state { text-align: center; padding: 3rem 1rem; }
-  </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://artisttaanmusic.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Merchandise",
-      "item": "https://artisttaanmusic.com/merchandise/"
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #121212;
+      --bg-card: #181818;
+      --border: #282828;
+      --text: #ffffff;
+      --text-secondary: #b3b3b3;
+      --text-muted: #6a6a6a;
+      --accent: #1ed760;
+      --accent-hover: #1fdf64;
+      --radius: 8px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
-  ]
-}
-  </script>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-links { display: flex; gap: 26px; }
+    .nav-links a {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-secondary);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* ===== HERO (Genius-style gradient header) ===== */
+    .hero {
+      position: relative;
+      padding: 100px 0 48px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, #3a3a3a 0%, var(--bg) 100%);
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: end;
+    }
+    .cover-wrap {
+      position: relative;
+      width: 280px; aspect-ratio: 1;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
+      background: #1a1a1a;
+    }
+    .cover-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero-meta { padding-bottom: 4px; }
+    .type-badge {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      text-wrap: balance;
+    }
+    .hero-by {
+      font-size: 18px; font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .hero-by a { color: var(--text); }
+    .hero-by a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .hero-year {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 44px; padding: 0 22px;
+      border-radius: 999px;
+      font-size: 14px; font-weight: 700;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, background 0.15s, opacity 0.15s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--accent); color: #000;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ===== MAIN LAYOUT ===== */
+    .page {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+    .main-col { min-width: 0; }
+    .side-col {
+      position: sticky; top: 88px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Spotify embed */
+    .embed-frame {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-card);
+      min-height: 152px;
+    }
+    .embed-frame iframe {
+      width: 100%; height: 152px; border: 0; display: block;
+    }
+
+    /* Lyrics (Genius-like) */
+    .lyrics-body {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--text);
+      white-space: pre-line;
+      max-width: 560px;
+    }
+    .lyrics-body .section-header {
+      display: block;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin: 22px 0 8px;
+      text-transform: uppercase;
+    }
+    .lyrics-body .section-header:first-child { margin-top: 0; }
+
+    /* About */
+    .about-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* Credits */
+    .credits-list {
+      display: grid;
+      gap: 10px;
+    }
+    .credit-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      font-size: 14px;
+    }
+    .credit-role { color: var(--text-muted); font-weight: 500; }
+    .credit-name { color: var(--text); font-weight: 600; }
+
+    /* Video */
+    .video-frame {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/9;
+    }
+    .video-frame iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+    .video-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .video-link:hover { color: var(--text); }
+
+    /* Related */
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .related-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .related-item:hover { background: var(--bg-card); }
+    .related-item img {
+      width: 56px; height: 56px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #1a1a1a;
+      flex-shrink: 0;
+    }
+    .related-item strong {
+      display: block;
+      font-size: 14px; font-weight: 600;
+      line-height: 1.3;
+    }
+    .related-item em {
+      display: block;
+      font-size: 12px; font-style: normal;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Side card */
+    .side-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .side-card h3 {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    /* More from artist link */
+    .more-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600;
+      color: var(--text);
+      margin-top: 8px;
+    }
+    .more-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Empty / not found */
+    .not-found {
+      text-align: center;
+      padding: 160px 20px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto;
+    }
+    footer p, footer a { font-size: 12px; color: var(--text-muted); }
+    footer a:hover { color: var(--text); }
+
+    /* Crumb */
+    .crumb {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      position: relative; z-index: 2;
+    }
+    .crumb:hover { color: var(--text); }
+
+    /* Hidden by default until data fills */
+    #lyrics-section, #credits-section, #video-section, #about-section { display: none; }
+    #lyrics-section.has-content,
+    #credits-section.has-content,
+    #video-section.has-content,
+    #about-section.has-content { display: block; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 200px 1fr; gap: 28px; }
+      .cover-wrap { width: 200px; }
+      .page { grid-template-columns: 1fr; gap: 36px; }
+      .side-col { position: static; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 11px; }
+      .hero { padding: 84px 0 32px; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 16px;
+        text-align: center;
+      }
+      .cover-wrap { width: 220px; margin: 0 auto; }
+      .hero-actions { justify-content: center; }
+      .page { padding: 0 16px 60px; }
+      .hero-title { font-size: 28px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 16px; }
+      .credit-row { grid-template-columns: 90px 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="../" class="flex items-center gap-2">
-        <img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
-      </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="../index.html#about" class="text-sm font-medium text-secondary hover:text-primary transition">About</a>
-        <a href="../index.html#roster" class="text-sm font-medium text-secondary hover:text-primary transition">Roster</a>
-        <a href="../index.html#releases" class="text-sm font-medium text-secondary hover:text-primary transition">Releases</a>
-        <a href="../upcoming/" class="text-sm font-medium text-secondary hover:text-primary transition">Upcoming</a>
-        <a href="../team/" class="text-sm font-medium text-secondary hover:text-primary transition">Our Team</a>
-        <a href="../merchandise/" class="text-sm font-medium text-primary transition">Merchandise</a>
-      </div>
-      <div class="relative">
-        <button id="cartBtn" class="text-sm font-medium text-secondary hover:text-primary transition">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-        </button>
-        <div id="cartBadge" class="cart-badge hidden">0</div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HEADER -->
-  <section class="merch-hero">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-caption mb-3">Official Drops</p>
-      <h1 class="text-hero font-display mb-6">ARTISTTAAN Merch</h1>
-      <p class="text-body max-w-lg mx-auto">Wear the movement. Shop exclusive ARTISTTAAN merchandise and support the artists directly.</p>
-    </div>
-  </section>
-
-  <div class="divider max-w-7xl mx-auto"></div>
-
-  <!-- MERCHANDISE SECTION -->
-  <section class="section-pad">
-    <div class="max-w-7xl mx-auto">
-      <!-- Filters -->
-      <div class="mb-12 flex flex-wrap gap-3">
-        <button class="filter-btn active" data-filter="all">All Products</button>
-        <button class="filter-btn" data-filter="apparel">Apparel</button>
-        <button class="filter-btn" data-filter="accessories">Accessories</button>
-        <button class="filter-btn" data-filter="limited">Limited Edition</button>
-      </div>
-
-      <!-- Products Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="products-container">
-        <div class="skeleton rounded-none aspect-square"></div>
-        <div class="skeleton rounded-none aspect-square"></div>
-        <div class="skeleton rounded-none aspect-square"></div>
-        <div class="skeleton rounded-none aspect-square"></div>
-      </div>
-
-      <!-- Empty State -->
-      <div id="empty-state" class="empty-state hidden">
-        <p class="text-muted text-lg">No products available yet.</p>
-        <a href="../" class="back-link mt-6 justify-center">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          Back to Home
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider max-w-7xl mx-auto"></div>
-
-  <!-- CART MODAL -->
-  <div id="cartModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="sticky top-0 bg-white border-b border-subtle p-6 flex items-center justify-between">
-        <h2 class="text-2xl font-black">Shopping Cart</h2>
-        <button id="closeCartBtn" class="text-2xl font-light text-muted hover:text-primary">&times;</button>
-      </div>
-      
-      <div id="cartItems" class="p-6 space-y-6">
-        <!-- Cart items will be rendered here -->
-      </div>
-
-      <div class="border-t border-subtle p-6">
-        <div class="flex justify-between items-center mb-6">
-          <span class="text-lg font-semibold">Total:</span>
-          <span id="cartTotal" class="text-2xl font-black">₹0</span>
-        </div>
-        <button id="checkoutBtn" class="btn-primary w-full">Proceed to Checkout</button>
-        <p class="text-xs text-muted text-center mt-4">Checkout integration coming soon</p>
-      </div>
-    </div>
+<nav id="main-nav">
+  <a href="/" class="nav-logo"><img src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
+  <div class="nav-links">
+    <a href="/artists/">Artists</a>
+    <a href="/releases/" class="active">Releases</a>
+    <a href="/videos/">Videos</a>
+    <a href="/culture/">Culture</a>
+    <a href="/demos/">Submit Demo</a>
   </div>
+</nav>
 
-  <div class="divider max-w-7xl mx-auto"></div>
-
-  <!-- INFO SECTION -->
-  <section class="section-pad bg-secondary">
-    <div class="max-w-3xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-8 text-center">
-        <div>
-          <p class="text-caption mb-2">Shipping</p>
-          <p class="text-body">Fast delivery across India</p>
-        </div>
-        <div>
-          <p class="text-caption mb-2">Quality</p>
-          <p class="text-body">Premium materials & printing</p>
-        </div>
-        <div>
-          <p class="text-caption mb-2">Support</p>
-          <p class="text-body">Direct support to artists</p>
+<div id="page-content">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="cover-wrap">
+        <img id="rel-cover" src="" alt="" fetchpriority="high" width="280" height="280"/>
+      </div>
+      <div class="hero-meta">
+        <a href="/releases/" class="crumb">← All Releases</a>
+        <div class="type-badge" id="rel-type">Single</div>
+        <h1 class="hero-title" id="rel-title"></h1>
+        <p class="hero-by">By <span id="rel-artist"></span></p>
+        <p class="hero-year" id="rel-year"></p>
+        <div class="hero-actions" id="rel-listen">
+          <!-- filled by JS / Worker -->
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <div class="divider max-w-7xl mx-auto"></div>
+  <!-- BODY -->
+  <div class="page">
+    <div class="main-col">
+      <!-- Spotify embed -->
+      <div class="section" id="embed-section" style="display:none">
+        <div class="embed-frame" id="rel-embed"></div>
+      </div>
 
-  <!-- FOOTER -->
-  <footer class="bg-primary text-white py-16 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-12 mb-12">
-        <div>
-          <img src="../assets/images/logo/logo-white.png" alt="ARTISTTAAN" class="h-8 w-auto mb-4" />
-          <p class="text-sm text-gray-400">India's hip-hop & indie powerhouse. Founded in 2016 by Aamir Kunwar.</p>
-        </div>
-        <div>
-          <h3 class="text-caption text-gray-400 mb-4">Links</h3>
-          <div class="space-y-2">
-            <a href="../index.html#about" class="block text-sm hover:text-gray-300 transition">About</a>
-            <a href="../index.html#roster" class="block text-sm hover:text-gray-300 transition">Roster</a>
-            <a href="../index.html#releases" class="block text-sm hover:text-gray-300 transition">Releases</a>
-            <a href="../upcoming/" class="block text-sm hover:text-gray-300 transition">Upcoming</a>
-            <a href="../team/" class="block text-sm hover:text-gray-300 transition">Our Team</a>
-            <a href="../merchandise/" class="block text-sm hover:text-gray-300 transition">Merchandise</a>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-caption text-gray-400 mb-4">Social</h3>
-          <div class="space-y-2">
-            <a href="https://instagram.com/artisttaan" target="_blank" rel="noopener noreferrer" class="block text-sm hover:text-gray-300 transition">Instagram</a>
-            <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" class="block text-sm hover:text-gray-300 transition">YouTube</a>
-            <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" class="block text-sm hover:text-gray-300 transition">Spotify</a>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-xs text-gray-500">&copy; 2026 ARTISTTAAN. All rights reserved.</p>
-        <p class="text-xs text-gray-500">Founded by Aamir Kunwar</p>
-      </div>
+      <!-- Lyrics -->
+      <section class="section" id="lyrics-section">
+        <h2 class="section-title">Lyrics</h2>
+        <div class="lyrics-body" id="lyrics-text"></div>
+      </section>
+
+      <!-- About -->
+      <section class="section" id="about-section">
+        <h2 class="section-title">About</h2>
+        <p class="about-text" id="rel-about"></p>
+      </section>
+
+      <!-- Video -->
+      <section class="section" id="video-section">
+        <h2 class="section-title">Video</h2>
+        <div id="rel-video"></div>
+      </section>
     </div>
-  </footer>
 
-  <script>
-    // Sample merchandise data - can be replaced with API data later
-    const merchandiseData = [
-      {
-        id: 1,
-        name: 'ARTISTTAAN Logo T-Shirt',
-        price: 599,
-        category: 'apparel',
-        image: 'https://via.placeholder.com/400?text=ARTISTTAAN+Tee',
-        sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        colors: ['Black', 'White'],
-        description: 'Classic black t-shirt with embroidered ARTISTTAAN logo.'
-      },
-      {
-        id: 2,
-        name: 'ARTISTTAAN Hoodie',
-        price: 1299,
-        category: 'apparel',
-        image: 'https://via.placeholder.com/400?text=ARTISTTAAN+Hoodie',
-        sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        colors: ['Black', 'Charcoal'],
-        description: 'Premium hoodie with printed logo and kangaroo pockets.'
-      },
-      {
-        id: 3,
-        name: 'Artist Series Cap',
-        price: 399,
-        category: 'accessories',
-        image: 'https://via.placeholder.com/400?text=Artist+Cap',
-        sizes: ['One Size'],
-        colors: ['Black', 'White'],
-        description: 'Adjustable cap featuring artist names.'
-      },
-      {
-        id: 4,
-        name: 'Limited Edition Vinyl Sticker Pack',
-        price: 149,
-        category: 'limited',
-        image: 'https://via.placeholder.com/400?text=Sticker+Pack',
-        sizes: ['One Size'],
-        colors: ['Multi'],
-        description: 'Set of 5 limited edition vinyl stickers.'
-      },
-      {
-        id: 5,
-        name: 'ARTISTTAAN Tote Bag',
-        price: 499,
-        category: 'accessories',
-        image: 'https://via.placeholder.com/400?text=Tote+Bag',
-        sizes: ['One Size'],
-        colors: ['Black', 'Natural'],
-        description: 'Durable canvas tote bag with screen-printed design.'
-      },
-      {
-        id: 6,
-        name: 'Limited Collab Jacket',
-        price: 2499,
-        category: 'limited',
-        image: 'https://via.placeholder.com/400?text=Collab+Jacket',
-        sizes: ['XS', 'S', 'M', 'L', 'XL'],
-        colors: ['Black'],
-        description: 'Exclusive limited edition collaboration jacket. Only 200 pieces.'
-      }
-    ];
+    <aside class="side-col">
+      <!-- Credits -->
+      <div class="side-card" id="credits-section">
+        <h3>Credits</h3>
+        <div class="credits-list" id="rel-credits"></div>
+      </div>
 
-    let cart = [];
-    let currentFilter = 'all';
+      <!-- More from artist / related -->
+      <div class="side-card" id="related-card" style="display:none">
+        <h3 id="related-heading">More from ARTISTTAAN</h3>
+        <div class="related-grid" id="related-list"></div>
+      </div>
 
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      renderProducts();
-      setupEventListeners();
-      loadCart();
+      <div id="rel-more" style="margin-top:8px">
+        <!-- more-from-artist link injected here -->
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ARTISTTAAN · All Rights Reserved</p>
+  <a href="/">← Back to ARTISTTAAN</a>
+</footer>
+
+<script>
+(function () {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const releaseSlug = (pathParts[0] === 'release' && pathParts[1]) ? pathParts[1] : null;
+
+  function slugify(s) {
+    if (!s) return '';
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function assetPath(p) {
+    if (!p) return '';
+    return '/' + String(p).replace(/^\/+/, '');
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // Format lyrics with [Section] headers like Genius
+  function formatLyrics(raw) {
+    if (!raw) return '';
+    return String(raw)
+      .replace(/\[([^\]]+)\]/g, '<span class="section-header">[$1]</span>')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      // restore the span we just escaped
+      .replace(/&lt;span class="section-header"&gt;/g, '<span class="section-header">')
+      .replace(/&lt;\/span&gt;/g, '</span>');
+  }
+
+  // Simple dominant-ish color approximation from cover for hero gradient
+  // (no external lib — just a soft tint based on title hash so every page feels different)
+  function tintFromTitle(title) {
+    let h = 0;
+    const s = String(title || '');
+    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    const hue = h % 360;
+    return `hsl(${hue}, 28%, 22%)`;
+  }
+
+  function render(r, artists) {
+    if (!r) {
+      document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
+      return;
+    }
+
+    const year = r.year || '';
+    const type = (r.type || 'Release');
+    const typeLower = type.toLowerCase();
+    const pageUrl = 'https://artisttaanmusic.com/release/' + slugify(r.title) + '/';
+    const description = (r.description && r.description.trim())
+      ? r.description.trim().slice(0, 160)
+      : 'Stream "' + r.title + '" by ' + r.artist + ' (' + year + ') — a ' + typeLower + ' from ARTISTTAAN, India\'s hip-hop & indie music label.';
+    const coverAbs = r.cover
+      ? 'https://artisttaanmusic.com' + assetPath(r.cover)
+      : 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg';
+
+    // Meta
+    document.getElementById('page-title').textContent = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('meta-description').content = description;
+    document.getElementById('canonical-url').href = pageUrl;
+    document.getElementById('og-url').content = pageUrl;
+    document.getElementById('og-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('og-description').content = description;
+    document.getElementById('og-image').content = coverAbs;
+    document.getElementById('twitter-title').content = r.title + ' by ' + r.artist + ' | ARTISTTAAN';
+    document.getElementById('twitter-description').content = description;
+    document.getElementById('twitter-image').content = coverAbs;
+
+    // Hero tint
+    const tint = tintFromTitle(r.title);
+    document.getElementById('hero-bg').style.background =
+      'linear-gradient(180deg, ' + tint + ' 0%, #0a0a0a 100%)';
+
+    // Cover
+    const coverEl = document.getElementById('rel-cover');
+    if (r.cover) {
+      coverEl.src = assetPath(r.cover);
+      coverEl.alt = r.title + ' cover art';
+    }
+
+    // Type / title / artist / year
+    document.getElementById('rel-type').textContent = type;
+    document.getElementById('rel-title').textContent = r.title;
+    document.getElementById('rel-year').textContent = year ? year + ' · ARTISTTAAN' : 'ARTISTTAAN';
+
+    const artist = (artists || []).find(function (a) {
+      if (r.artist_id) return a.id === r.artist_id;
+      return a.name && r.artist && a.name.toLowerCase() === String(r.artist).toLowerCase();
     });
 
-    function setupEventListeners() {
-      // Filter buttons
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          currentFilter = e.target.dataset.filter;
-          renderProducts();
-        });
-      });
-
-      // Cart button
-      document.getElementById('cartBtn').addEventListener('click', toggleCart);
-      document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
-      document.getElementById('cartModal').addEventListener('click', (e) => {
-        if (e.target.id === 'cartModal') toggleCart();
-      });
-
-      // Checkout button
-      document.getElementById('checkoutBtn').addEventListener('click', () => {
-        if (cart.length > 0) {
-          alert('Thank you for your order! Checkout integration coming soon.');
-          cart = [];
-          saveCart();
-          updateCartBadge();
-          renderCart();
-          toggleCart();
-        }
-      });
+    const artistSpan = document.getElementById('rel-artist');
+    if (artist) {
+      artistSpan.innerHTML = '<a href="/artist/' + esc(artist.id) + '/">' + esc(r.artist) + '</a>';
+    } else {
+      artistSpan.textContent = r.artist || '';
     }
 
-    function renderProducts() {
-      const container = document.getElementById('products-container');
-      const emptyState = document.getElementById('empty-state');
+    // Listen buttons
+    const listenEl = document.getElementById('rel-listen');
+    let listenHtml = '';
+    if (r.spotify_url && r.spotify_url !== '#' && /^https?:\/\//.test(r.spotify_url)) {
+      listenHtml += '<a class="btn btn-primary" href="' + esc(r.spotify_url) + '" target="_blank" rel="noopener noreferrer">' +
+        '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>' +
+        'Listen on Spotify</a>';
+    }
+    if (r.youtube_url) {
+      listenHtml += '<a class="btn btn-secondary" href="' + esc(r.youtube_url) + '" target="_blank" rel="noopener noreferrer">Watch Video</a>';
+    }
+    listenEl.innerHTML = listenHtml;
 
-      const filtered = currentFilter === 'all' 
-        ? merchandiseData 
-        : merchandiseData.filter(p => p.category === currentFilter);
+    // Spotify embed
+    if (r.spotify_embed && /^https?:\/\//.test(r.spotify_embed)) {
+      const emb = document.getElementById('rel-embed');
+      emb.innerHTML = '<iframe src="' + esc(r.spotify_embed) + '?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+      document.getElementById('embed-section').style.display = 'block';
+    }
 
-      if (filtered.length === 0) {
-        container.innerHTML = '';
-        emptyState.classList.remove('hidden');
+    // Lyrics
+    if (r.lyrics && String(r.lyrics).trim()) {
+      document.getElementById('lyrics-text').innerHTML = formatLyrics(r.lyrics.trim());
+      document.getElementById('lyrics-section').classList.add('has-content');
+    }
+
+    // About
+    const aboutEl = document.getElementById('rel-about');
+    if (aboutEl.textContent.trim()) {
+      // Worker already wrote it
+      document.getElementById('about-section').classList.add('has-content');
+    } else {
+      const about = (r.description && r.description.trim())
+        ? r.description.trim()
+        : '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist +
+          (year ? ', released in ' + year : '') +
+          ' via ARTISTTAAN — India\'s hip-hop & indie label.';
+      aboutEl.textContent = about;
+      document.getElementById('about-section').classList.add('has-content');
+    }
+
+    // Credits
+    if (Array.isArray(r.credits) && r.credits.length) {
+      const credHtml = r.credits
+        .filter(function (c) { return c && c.role && c.name; })
+        .map(function (c) {
+          return '<div class="credit-row"><span class="credit-role">' + esc(c.role) + '</span><span class="credit-name">' + esc(c.name) + '</span></div>';
+        }).join('');
+      if (credHtml) {
+        document.getElementById('rel-credits').innerHTML = credHtml;
+        document.getElementById('credits-section').classList.add('has-content');
+      }
+    }
+
+    // Video (Worker may already have filled #rel-video)
+    const videoEl = document.getElementById('rel-video');
+    if (r.youtube_url && !videoEl.innerHTML.trim()) {
+      const m = String(r.youtube_url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
+      if (m) {
+        videoEl.innerHTML =
+          '<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + m[1] +
+          '" title="' + esc(r.title) + ' video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
+          '<a class="video-link" href="https://www.youtube.com/watch?v=' + m[1] + '" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>';
+        document.getElementById('video-section').classList.add('has-content');
+      }
+    } else if (videoEl.innerHTML.trim()) {
+      document.getElementById('video-section').classList.add('has-content');
+    }
+
+    // More from artist
+    const moreEl = document.getElementById('rel-more');
+    if (artist && !moreEl.querySelector('[data-more-artist]')) {
+      moreEl.innerHTML = '<a data-more-artist="1" class="more-link" href="/artist/' + esc(artist.id) + '/">More from ' + esc(r.artist) + ' →</a>';
+    }
+  }
+
+  async function init() {
+    // Prefer the data the Worker already embedded (avoids a second fetch of artists.json)
+    if (window.__RELEASE_DATA__ && window.__RELEASE_DATA__.release) {
+      render(window.__RELEASE_DATA__.release, window.__RELEASE_DATA__.artist ? [window.__RELEASE_DATA__.artist] : []);
+      return;
+    }
+
+    if (!releaseSlug) {
+      document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
+      return;
+    }
+
+    try {
+      const res = await fetch('/assets/data/artists.json');
+      const data = await res.json();
+      const releases = data.releases || [];
+      const artists = data.artists || [];
+      const r = releases.find(function (x) { return slugify(x.title) === releaseSlug; });
+      if (!r) {
+        document.getElementById('page-content').innerHTML = '<p class="not-found">Release not found.</p>';
         return;
       }
-
-      emptyState.classList.add('hidden');
-      container.innerHTML = filtered.map(product => `
-        <div class="product-card">
-          <div class="product-image">
-            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover rounded" loading="lazy" />
-          </div>
-          <h3 class="product-title">${product.name}</h3>
-          <p class="text-caption mt-2">${product.description}</p>
-          <p class="product-price">₹${product.price}</p>
-          
-          <div class="mt-4">
-            <p class="text-xs text-secondary mb-2 font-medium">Color:</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              ${product.colors.map(color => `
-                <span class="color-option text-xs px-2 py-1 border border-subtle rounded cursor-pointer hover:border-primary" data-color="${color}">
-                  ${color}
-                </span>
-              `).join('')}
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <p class="text-xs text-secondary mb-2 font-medium">Size:</p>
-            <div class="flex flex-wrap gap-2">
-              ${product.sizes.map(size => `
-                <button class="product-size" data-size="${size}" data-product-id="${product.id}">
-                  ${size}
-                </button>
-              `).join('')}
-            </div>
-          </div>
-
-          <button class="add-to-cart-btn mt-6 w-full justify-center" data-product-id="${product.id}">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-            Add to Cart
-          </button>
-        </div>
-      `).join('');
-
-      // Add event listeners to size buttons and add to cart buttons
-      document.querySelectorAll('.product-size').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const productCard = e.target.closest('.product-card');
-          productCard.querySelectorAll('.product-size').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-        });
-      });
-
-      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const productCard = e.target.closest('.product-card');
-          const productId = parseInt(e.target.dataset.productId);
-          const selectedSize = productCard.querySelector('.product-size.active');
-
-          if (!selectedSize) {
-            alert('Please select a size');
-            return;
-          }
-
-          addToCart(productId, selectedSize.textContent.trim());
-        });
-      });
+      render(r, artists);
+    } catch (e) {
+      console.error(e);
+      document.getElementById('page-content').innerHTML = '<p class="not-found">Could not load release.</p>';
     }
+  }
 
-    function addToCart(productId, size) {
-      const product = merchandiseData.find(p => p.id === productId);
-      if (!product) return;
+  // Sticky nav border
+  window.addEventListener('scroll', function () {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
 
-      const cartItem = cart.find(item => item.id === productId && item.size === size);
-      
-      if (cartItem) {
-        cartItem.quantity++;
-      } else {
-        cart.push({
-          id: productId,
-          name: product.name,
-          price: product.price,
-          size: size,
-          quantity: 1
-        });
-      }
-
-      saveCart();
-      updateCartBadge();
-      alert(`${product.name} (${size}) added to cart!`);
-    }
-
-    function renderCart() {
-      const container = document.getElementById('cartItems');
-      
-      if (cart.length === 0) {
-        container.innerHTML = '<p class="text-center text-muted py-8">Your cart is empty</p>';
-        document.getElementById('checkoutBtn').disabled = true;
-        return;
-      }
-
-      document.getElementById('checkoutBtn').disabled = false;
-      container.innerHTML = cart.map((item, index) => `
-        <div class="flex justify-between items-start pb-6 border-b border-subtle">
-          <div class="flex-1">
-            <h3 class="font-semibold">${item.name}</h3>
-            <p class="text-sm text-muted mt-1">Size: ${item.size}</p>
-            <p class="text-sm text-muted">Qty: ${item.quantity}</p>
-          </div>
-          <div class="text-right">
-            <p class="font-semibold">₹${item.price * item.quantity}</p>
-            <button class="text-sm text-red-500 hover:text-red-700 mt-2" onclick="removeFromCart(${index})">Remove</button>
-          </div>
-        </div>
-      `).join('');
-
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      document.getElementById('cartTotal').textContent = '₹' + total;
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      saveCart();
-      updateCartBadge();
-      renderCart();
-    }
-
-    function updateCartBadge() {
-      const badge = document.getElementById('cartBadge');
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      if (count > 0) {
-        badge.classList.remove('hidden');
-        badge.textContent = count;
-      } else {
-        badge.classList.add('hidden');
-      }
-    }
-
-    function toggleCart() {
-      const modal = document.getElementById('cartModal');
-      modal.classList.toggle('hidden');
-      if (!modal.classList.contains('hidden')) {
-        renderCart();
-      }
-    }
-
-    function saveCart() {
-      localStorage.setItem('artisttaanCart', JSON.stringify(cart));
-    }
-
-    function loadCart() {
-      const saved = localStorage.getItem('artisttaanCart');
-      if (saved) {
-        cart = JSON.parse(saved);
-        updateCartBadge();
-      }
-    }
-
-    // Make removeFromCart available globally
-    window.removeFromCart = removeFromCart;
-  </script>
+  init();
+})();
+</script>
 </body>
 </html>

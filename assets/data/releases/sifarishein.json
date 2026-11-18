@@ -1,0 +1,29 @@
+{
+  "artist": "Shrey",
+  "spotify_url": "https://open.spotify.com/track/196x0S8IsX40sd3KB12v84",
+  "external": false,
+  "artist_id": "shrey",
+  "spotify_embed": "https://open.spotify.com/embed/track/196x0S8IsX40sd3KB12v84",
+  "label": "ARTISTTAAN",
+  "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+  "title": "Sifarishein",
+  "type": "single",
+  "year": "2025",
+  "id": "sifarishein-shrey-2025",
+  "slug": "sifarishein",
+  "artist_ids": [
+    "shrey"
+  ],
+  "genres": [
+    "Hip-Hop"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/196x0S8IsX40sd3KB12v84",
+    "spotify_embed": "https://open.spotify.com/embed/track/196x0S8IsX40sd3KB12v84"
+  },
+  "from_ep": {
+    "title": "Mai",
+    "slug": "mai",
+    "artist": "Shrey"
+  }
+}

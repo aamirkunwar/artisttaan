@@ -1,0 +1,17 @@
+{
+  "artist": "Abir",
+  "spotify_url": "https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi",
+  "external": false,
+  "artist_id": "abir",
+  "spotify_embed": "https://open.spotify.com/embed/track/72cGqxSo0tjiPVwDxWEABi",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-36-tum-nahin-aaye-2020.jpg",
+  "title": "Tum Nahin Aaye",
+  "type": "single",
+  "year": "2020",
+  "slug": "tum-nahin-aaye",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/72cGqxSo0tjiPVwDxWEABi",
+    "spotify_embed": "https://open.spotify.com/embed/track/72cGqxSo0tjiPVwDxWEABi"
+  }
+}

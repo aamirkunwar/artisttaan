@@ -1,0 +1,16 @@
+{
+  "artist": "—",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-43-gunehgar-2018.jpg",
+  "title": "Gunehgar",
+  "type": "single",
+  "year": "2018",
+  "slug": "gunehgar",
+  "streaming": {
+    "spotify": "#"
+  }
+}

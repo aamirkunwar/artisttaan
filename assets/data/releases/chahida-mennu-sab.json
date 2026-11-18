@@ -1,0 +1,16 @@
+{
+  "artist": "Manisten",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-54-chahida-mennu-sab-2019.jpg",
+  "title": "Chahida Mennu Sab",
+  "type": "single",
+  "year": "2019",
+  "slug": "chahida-mennu-sab",
+  "streaming": {
+    "spotify": "#"
+  }
+}

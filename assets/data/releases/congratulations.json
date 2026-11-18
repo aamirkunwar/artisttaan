@@ -1,0 +1,17 @@
+{
+  "artist": "Manisten",
+  "spotify_url": "https://open.spotify.com/track/3erirML2bH3Jl8Hwl1qPf3",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/3erirML2bH3Jl8Hwl1qPf3",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-08-congratulations-2021.jpg",
+  "title": "Congratulations",
+  "type": "single",
+  "year": "2021",
+  "slug": "congratulations",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/3erirML2bH3Jl8Hwl1qPf3",
+    "spotify_embed": "https://open.spotify.com/embed/track/3erirML2bH3Jl8Hwl1qPf3"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "artist": "Rish",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-62-tere-utte-2019.jpg",
+  "title": "Tere Utte",
+  "type": "single",
+  "year": "2019",
+  "slug": "tere-utte",
+  "streaming": {
+    "spotify": "#"
+  }
+}

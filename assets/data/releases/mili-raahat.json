@@ -1,0 +1,16 @@
+{
+  "artist": "Raga",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-59-mili-raahat-2019.jpg",
+  "title": "Mili Raahat",
+  "type": "single",
+  "year": "2019",
+  "slug": "mili-raahat",
+  "streaming": {
+    "spotify": "#"
+  }
+}

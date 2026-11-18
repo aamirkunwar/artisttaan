@@ -1,0 +1,16 @@
+{
+  "artist": "Lukka",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-53-try-kijiye-2020.jpg",
+  "title": "Try Kijiye",
+  "type": "single",
+  "year": "2020",
+  "slug": "try-kijiye",
+  "streaming": {
+    "spotify": "#"
+  }
+}

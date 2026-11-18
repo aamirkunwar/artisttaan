@@ -1,0 +1,23 @@
+{
+  "type": "single",
+  "title": "Labra chori",
+  "artist": "Shrey",
+  "year": "2026",
+  "spotify_url": "https://open.spotify.com/track/36pSsYfS7CJ20QzORh8Cse?si=9cdb6e04e9d344f4",
+  "cover": "/assets/images/labra-poster-1-.jpg",
+  "external": false,
+  "label": "ARTISTTAAN",
+  "id": "labra-chori-shrey-2026",
+  "slug": "labra-chori",
+  "artist_ids": [
+    "shrey"
+  ],
+  "genres": [
+    "Hip-Hop",
+    "Modern Kumaon"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/36pSsYfS7CJ20QzORh8Cse?si=9cdb6e04e9d344f4"
+  },
+  "description": "Labra Chori by Shrey — a Modern Kumaon track that brings layered soundscapes and hard-hitting bars. Official music video out now."
+}

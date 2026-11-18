@@ -1,0 +1,17 @@
+{
+  "artist": "Abir",
+  "spotify_url": "https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw",
+  "external": false,
+  "artist_id": "abir",
+  "spotify_embed": "https://open.spotify.com/embed/track/5znUlfypbCVjEzqGvzy0Xw",
+  "label": "ARTISTTAAN",
+  "cover": "/assets/images/kaho-na_640x640.jpg",
+  "title": "Kaho Na",
+  "type": "single",
+  "year": "2023",
+  "slug": "kaho-na",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/5znUlfypbCVjEzqGvzy0Xw",
+    "spotify_embed": "https://open.spotify.com/embed/track/5znUlfypbCVjEzqGvzy0Xw"
+  }
+}

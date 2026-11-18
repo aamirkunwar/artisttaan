@@ -1,0 +1,17 @@
+{
+  "artist": "Yawar",
+  "spotify_url": "https://open.spotify.com/track/2cwOrW2prswLDP6FFxWOos",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/2cwOrW2prswLDP6FFxWOos",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-31-video-call-2020.jpg",
+  "title": "Video Call",
+  "type": "single",
+  "year": "2020",
+  "slug": "video-call",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/2cwOrW2prswLDP6FFxWOos",
+    "spotify_embed": "https://open.spotify.com/embed/track/2cwOrW2prswLDP6FFxWOos"
+  }
+}

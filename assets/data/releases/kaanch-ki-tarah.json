@@ -1,0 +1,17 @@
+{
+  "artist": "Faraz",
+  "spotify_url": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA",
+  "external": false,
+  "artist_id": "faraz",
+  "spotify_embed": "https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-17-kaanch-ki-tarah-2020.jpg",
+  "title": "Kaanch Ki Tarah",
+  "type": "single",
+  "year": "2020",
+  "slug": "kaanch-ki-tarah",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/33UXEFPNAJ6sMCW8hGOuEA",
+    "spotify_embed": "https://open.spotify.com/embed/track/33UXEFPNAJ6sMCW8hGOuEA"
+  }
+}

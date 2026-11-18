@@ -1,0 +1,17 @@
+{
+  "artist": "Raga",
+  "spotify_url": "https://open.spotify.com/track/1jUURRDklHcdF9wMnXO26t",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/1jUURRDklHcdF9wMnXO26t",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-34-skills-2020.jpg",
+  "title": "Skills",
+  "type": "single",
+  "year": "2020",
+  "slug": "skills",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/1jUURRDklHcdF9wMnXO26t",
+    "spotify_embed": "https://open.spotify.com/embed/track/1jUURRDklHcdF9wMnXO26t"
+  }
+}

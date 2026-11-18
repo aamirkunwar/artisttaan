@@ -48,7 +48,7 @@
 <body>
 
   <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-subtle">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="../" class="flex items-center gap-2">
         <img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN" class="h-8 w-auto" />
@@ -61,6 +61,21 @@
         <a href="../videos/" class="text-sm font-medium text-secondary hover:text-primary transition">Videos</a>
         <a href="../team/" class="text-sm font-medium text-secondary hover:text-primary transition">Our Team</a>
         <a href="../demos/" class="text-sm font-medium text-primary transition">Submit Demo</a>
+      </div>
+      <button id="mobile-nav-toggle" class="md:hidden flex items-center justify-center w-10 h-10" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-nav-panel" class="hidden md:hidden border-t border-subtle bg-white">
+      <div class="px-6 py-6 flex flex-col gap-5">
+        <a href="../about/" class="text-base font-medium text-secondary hover:text-primary">About</a>
+        <a href="../artists/" class="text-base font-medium text-secondary hover:text-primary">Artists</a>
+        <a href="../releases/" class="text-base font-medium text-secondary hover:text-primary">Releases</a>
+        <a href="../videos/" class="text-base font-medium text-secondary hover:text-primary">Videos</a>
+        <a href="../culture/" class="text-base font-medium text-secondary hover:text-primary">Culture</a>
+        <a href="../team/" class="text-base font-medium text-secondary hover:text-primary">Our Team</a>
+        <a href="../demos/" class="text-base font-medium text-secondary hover:text-primary">Submit Demo</a>
       </div>
     </div>
   </nav>
@@ -118,6 +133,27 @@
           <p class="text-xs text-muted mt-4">By submitting, you agree to our terms and confirm you own the rights to this music.</p>
         </div>
       </form>
+
+      <!-- SUCCESS STATE -->
+      <div id="demoSuccess" class="hidden text-center py-8">
+        <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-black text-white flex items-center justify-center">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h2 class="text-2xl font-bold mb-3">Demo submitted</h2>
+        <p class="text-body max-w-md mx-auto mb-8">Thanks — our A&amp;R team will review your track and get back to you within one week.</p>
+        <p class="text-caption mb-4">Stay close while you wait</p>
+        <a id="igChannelBtn"
+           href="https://www.instagram.com/channel/ki1tRNNM1NWdrl_z/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-primary inline-flex items-center justify-center gap-2 px-8 py-3">
+          Join ARTISTTAAN on Instagram
+        </a>
+        <p class="text-xs text-muted mt-6">
+          <button type="button" id="submitAnother" class="underline hover:text-primary">Submit another demo</button>
+        </p>
+      </div>
+
       <div class="mt-16 text-center">
         <a href="../" class="back-link">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
@@ -181,7 +217,12 @@
             if (res.ok && data.success) {
               demoForm.reset();
               if (fileName) { fileName.textContent = ''; fileName.classList.add('hidden'); }
+              demoForm.classList.add('hidden');
+              var successEl = document.getElementById('demoSuccess');
+              if (successEl) successEl.classList.remove('hidden');
               showToast("Demo submitted! We'll be in touch within one week.");
+              // Soft-open Instagram channel in a new tab so they can join
+              try { window.open('https://www.instagram.com/channel/ki1tRNNM1NWdrl_z/', '_blank', 'noopener'); } catch (e) {}
             } else {
               showToast(data.error || 'Submission failed. Please try again.');
             }
@@ -191,6 +232,17 @@
           }
           btn.textContent = 'Send Demo';
           btn.disabled = false;
+        });
+      }
+
+      
+      var submitAnother = document.getElementById('submitAnother');
+      if (submitAnother) {
+        submitAnother.addEventListener('click', function () {
+          var successEl = document.getElementById('demoSuccess');
+          if (successEl) successEl.classList.add('hidden');
+          demoForm.classList.remove('hidden');
+          window.scrollTo({ top: demoForm.offsetTop - 100, behavior: 'smooth' });
         });
       }
 
@@ -204,5 +256,40 @@
       }
     })();
   </script>
+
+<script>
+(function(){
+  var btn=document.getElementById('mobile-nav-toggle');
+  var panel=document.getElementById('mobile-nav-panel');
+  var iconOpen=document.getElementById('icon-open');
+  var iconClose=document.getElementById('icon-close');
+  if(!btn||!panel)return;
+  btn.addEventListener('click',function(){
+    var open=!panel.classList.contains('hidden');
+    // toggle: if currently hidden, open it
+    if(panel.classList.contains('hidden')){
+      panel.classList.remove('hidden');
+      open=true;
+    } else {
+      panel.classList.add('hidden');
+      open=false;
+    }
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    if(iconOpen)iconOpen.classList.toggle('hidden',open);
+    if(iconClose)iconClose.classList.toggle('hidden',!open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      panel.classList.add('hidden');
+      btn.setAttribute('aria-expanded','false');
+      if(iconOpen)iconOpen.classList.remove('hidden');
+      if(iconClose)iconClose.classList.add('hidden');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -1,0 +1,5 @@
+Commit these changes with GitHub Desktop
+1. This zip is the full updated project folder (artisttaan-main).
+2. Replace your local repo contents OR copy changed files into your clone.
+3. Open GitHub Desktop → see changes → Commit → Push.
+Cloudflare Pages will rebuild after push.

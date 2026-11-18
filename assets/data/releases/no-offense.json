@@ -1,0 +1,17 @@
+{
+  "artist": "Raga",
+  "spotify_url": "https://open.spotify.com/track/3vCzGpb93QN44jAkd2o7Pw",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/3vCzGpb93QN44jAkd2o7Pw",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-32-no-offense-2020.jpg",
+  "title": "No Offense",
+  "type": "single",
+  "year": "2020",
+  "slug": "no-offense",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/3vCzGpb93QN44jAkd2o7Pw",
+    "spotify_embed": "https://open.spotify.com/embed/track/3vCzGpb93QN44jAkd2o7Pw"
+  }
+}

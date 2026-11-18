@@ -1,0 +1,16 @@
+{
+  "artist": "Yawar, Harjas",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-52-sautan-2016.jpg",
+  "title": "Sautan",
+  "type": "single",
+  "year": "2016",
+  "slug": "sautan",
+  "streaming": {
+    "spotify": "#"
+  }
+}

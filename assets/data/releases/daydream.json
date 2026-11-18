@@ -1,0 +1,70 @@
+{
+  "title": "Daydream",
+  "artist": "Faraz",
+  "artist_id": "faraz",
+  "type": "EP",
+  "year": "2024",
+  "label": "Sony Music Entertainment India",
+  "external": true,
+  "host_artist": "",
+  "spotify_url": "https://open.spotify.com/album/0dEGJwkziVmWfCZC6o5K52",
+  "spotify_embed": "https://open.spotify.com/embed/album/0dEGJwkziVmWfCZC6o5K52",
+  "cover": "/assets/images/releases-posters/releases/daydream-faraz-2024.jpg",
+  "description": "Daydream is a 6-track EP by Faraz, released via Sony Music Entertainment India. A polished run of Hindi/Punjabi pop and R&B — including the Abir feature on Kharab Kar Gayi.",
+  "genres": [
+    "Pop",
+    "R&B",
+    "Indian Pop"
+  ],
+  "credits": [
+    {
+      "role": "Artist",
+      "name": "Faraz"
+    },
+    {
+      "role": "Label",
+      "name": "Sony Music Entertainment India"
+    },
+    {
+      "role": "Featured Artist",
+      "name": "Abir"
+    }
+  ],
+  "tracks": [
+    {
+      "track_number": 1,
+      "title": "Gallan",
+      "duration": "2:44"
+    },
+    {
+      "track_number": 2,
+      "title": "Dangerous",
+      "duration": "2:26"
+    },
+    {
+      "track_number": 3,
+      "title": "Let It Go",
+      "duration": "2:24"
+    },
+    {
+      "track_number": 4,
+      "title": "Bawale Se",
+      "duration": "2:33"
+    },
+    {
+      "track_number": 5,
+      "title": "Nasha Hone Do",
+      "duration": "2:50"
+    },
+    {
+      "track_number": 6,
+      "title": "Kharab Kar Gayi (feat. Abir)",
+      "duration": "2:46"
+    }
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/0dEGJwkziVmWfCZC6o5K52",
+    "spotify_embed": "https://open.spotify.com/embed/album/0dEGJwkziVmWfCZC6o5K52"
+  },
+  "slug": "daydream"
+}

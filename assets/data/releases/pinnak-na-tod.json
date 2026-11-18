@@ -1,0 +1,17 @@
+{
+  "artist": "Raga",
+  "spotify_url": "https://open.spotify.com/track/7yO8LrjdVOaNkHoqT7w9aO",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/7yO8LrjdVOaNkHoqT7w9aO",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-30-pinnak-na-tod-2020.jpg",
+  "title": "Pinnak Na Tod",
+  "type": "single",
+  "year": "2020",
+  "slug": "pinnak-na-tod",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/7yO8LrjdVOaNkHoqT7w9aO",
+    "spotify_embed": "https://open.spotify.com/embed/track/7yO8LrjdVOaNkHoqT7w9aO"
+  }
+}

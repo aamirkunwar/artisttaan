@@ -1,0 +1,16 @@
+{
+  "artist": "Yawar",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-61-bekabu-2019.jpg",
+  "title": "Bekabu",
+  "type": "single",
+  "year": "2019",
+  "slug": "bekabu",
+  "streaming": {
+    "spotify": "#"
+  }
+}

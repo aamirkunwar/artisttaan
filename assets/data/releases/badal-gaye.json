@@ -1,0 +1,17 @@
+{
+  "artist": "Faraz",
+  "spotify_url": "https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf",
+  "external": false,
+  "artist_id": "faraz",
+  "spotify_embed": "https://open.spotify.com/embed/track/0z1oc8Ej4yGgOxk39DNGkf",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-16-badal-gaye-2020.jpg",
+  "title": "Badal Gaye",
+  "type": "single",
+  "year": "2020",
+  "slug": "badal-gaye",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/0z1oc8Ej4yGgOxk39DNGkf",
+    "spotify_embed": "https://open.spotify.com/embed/track/0z1oc8Ej4yGgOxk39DNGkf"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "artist": "Slay",
+  "spotify_url": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
+  "external": false,
+  "artist_id": "slay",
+  "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO",
+  "label": "ARTISTTAAN",
+  "lyrics": "[Intro]\nNamaskaar suprabhat kaku subah uthke karte dhumrapaan\nDyaju rocket hoke pepay maare aint no lip ka baam\nAag hi aag leke chalte hum pahadi chalizard\nGhar se nikle lad jhagadke ladke reppin artistaan\nS L A to the Y meri jaan in yo city\nEk rapper jiski hil chuki hai mansic istithi\nRap karna Mufato ki Khaas ability\nMujhpe khatam meri peedi Im the last of my species\nChaini khaini with some henny fan hi hogyi teri baini meri pen kare carry mera mann mera bairi berinag se mai tehri nainital se new delhi\nTight rakhu gaane lekin Jean rkhu baggy\nPoora Scene rakhu heavy halka dimaag se mai\nGaaon se jab niklu jokhim jaan ka hai raaste mai\nJan hit mai jaari mere flow\nChand din ki baatein hai ki gaane honge blow\nIm working for my dough so homie take it seriously\nGaane meri soul tune Bech di jo Previously\nMachikne Mat kar to aesthetic pose\nSundar si kanya mujhko kar gayi teleport\nComing for the top ab na farak pade lows se\nYe zindagi hai filam aur hai mahaepisode ye\nIm trippin cause Im too high\nAgar vibe ni to gaano pe kyu koodra hai\nGati tez rakhe londe katai suiii syaaaa\nMai vo rapper jo ki mushkile se jonnjra hai\nMuje hi to dhoondra hai na\nADHD peedit ek masooom kalakaar sabko mera namaskaar x4\n\n[Verse]\nNamaskaar dyaju kya hoga fir aaj ka vichaar dyaju 4-5 utha lu londe karne intezaam\nLlelthu Lispu se bach kar ke baje furki band\nFir nepal border touch karke wapas usi shaam\nNamaskar namaskaar namaskaar\nSamay anusaar hoga Jagah jagah blast\nBolo namaskaar namaskaar namaskaar\nMai chote ek sheher ka aflatoon kalakaar\nGood night kre fir\nLonde in aankho ka dard tu dekh ni paayega\nGaram hai badan tu jhel ni payega\nFavourite bhai ka ronda hai pairo ke neeche to hate dikhayega\nTez ni bhai sahab\nBas inhe pasand hai khachra chapri type ka\nBhude mai bakra kakdi khayega\nChule mai chadake tangdi zayeka\nTagdi firm pe tagda mayeka kse kamayega kaise bajayega\nChadki chasss\n1 mai khada tum milke 10\nBhidio mat please na baby tu chidiyo mat\nKheechta gedi mai kheechta beatein to\nShyat se jaati video ban\nFeel mai rehta hu dagdi sang\nSheet pe likhu mai sutli bomb\nTo free ki pileta Dugni dum",
+  "cover": "/assets/images/namaskar.jpg",
+  "title": "Namaskar",
+  "credits": [
+    {
+      "role": "Artist",
+      "name": "SLAY"
+    },
+    {
+      "role": "Music Producer",
+      "name": "HMNXSU"
+    },
+    {
+      "role": "Video Director",
+      "name": "Shashank Sharma"
+    },
+    {
+      "role": "A&R Coordinator",
+      "name": "Nino Rawat"
+    },
+    {
+      "role": "Executive Producer",
+      "name": "Aamir Kunwar"
+    },
+    {
+      "role": "Label",
+      "name": "Artisttaan"
+    }
+  ],
+  "type": "single",
+  "description": "Artisttaan presents “Namaskar” – Hindi Rap Song by SLAY. “Namaskar” is a hard-hitting Hindi rap / Desi hip-hop track by SLAY, showcasing raw energy, confidence, and underground vibes. Produced by HMNXSU, the song represents real hustle and the new wave of Indian hip-hop culture. With powerful visuals directed by Shashank Sharma, “Namaskar” delivers attitude, bars, and authenticity.",
+  "year": "2026",
+  "id": "namaskar-slay-2026",
+  "slug": "namaskar",
+  "artist_ids": [
+    "slay"
+  ],
+  "genres": [
+    "Hip-Hop",
+    "Desi Rap"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/4fyIUj87reU7YlSM0Yr2aO",
+    "spotify_embed": "https://open.spotify.com/embed/album/4fyIUj87reU7YlSM0Yr2aO"
+  },
+  "video": {
+    "youtube_id": null
+  }
+}

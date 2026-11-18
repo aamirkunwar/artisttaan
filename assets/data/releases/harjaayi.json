@@ -1,0 +1,16 @@
+{
+  "artist": "Amie",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-75-harjaayi-2019.jpg",
+  "title": "Harjaayi",
+  "type": "single",
+  "year": "2019",
+  "slug": "harjaayi",
+  "streaming": {
+    "spotify": "#"
+  }
+}

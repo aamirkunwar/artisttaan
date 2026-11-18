@@ -3,13 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<<<<<<< HEAD
   <title>Releases | ARTISTTAAN Discography</title>
   <meta name="description" content="Full ARTISTTAAN discography: 90+ hip-hop and indie releases from 2016 to today. Browse by artist and year, then stream every song."/>
-=======
-  <title>Releases — ARTISTTAAN</title>
-  <meta name="description" content="Full discography of ARTISTTAAN. 90+ releases from 2016 to today."/>
->>>>>>> 99c56adf7769c3ec1b865bfd3e339fb2ca00df42
   <link rel="canonical" href="https://artisttaanmusic.com/releases/" />
   <meta property="og:url" content="https://artisttaanmusic.com/releases/" />
   <meta property="og:title" content="Releases | ARTISTTAAN" />
@@ -27,21 +22,21 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{background:#fafaf8;color:#0a0a0a;font-family:'Inter',sans-serif;overflow-x:hidden}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo img{height:32px;width:auto}
-    .nav-links{display:flex;gap:28px}
-    .nav-links a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;color:#888;transition:color 0.2s}
-    .nav-links a:hover,.nav-links a.active{color:#0a0a0a}
+    
+    
+    
+    
     .header{margin-top:60px;padding:40px 32px 24px;border-bottom:1px solid #e5e5e5}
     .header-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
     .header-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:8px}
     .header-title{font-size:clamp(32px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1}
     .header-count{font-size:13px;color:#888;align-self:flex-end}
-    .filters{padding:16px 32px;border-bottom:1px solid #e5e5e5;background:#fafaf8;position:sticky;top:60px;z-index:90;display:flex;flex-direction:column;gap:10px}
-    .filter-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-    .filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;min-width:48px}
-    .filter-btn{padding:5px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border:1px solid #e0e0e0;background:transparent;cursor:pointer;transition:all 0.2s;color:#888;border-radius:2px}
-    .filter-btn:hover{border-color:#000;color:#000}
-    .filter-btn.active{background:#000;color:#fff;border-color:#000}
+    .filters{padding:18px 32px 14px;border-bottom:1px solid #ebe8e2;background:#fafaf8;position:sticky;top:60px;z-index:90;display:flex;flex-direction:column;gap:12px}
+    .filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;min-width:52px}
+    .filter-btn{padding:7px 14px;font-size:12px;font-weight:600;text-transform:none;letter-spacing:0.02em;border:1px solid #ebe8e2;background:#fff;cursor:pointer;transition:all 0.15s;color:#555;border-radius:999px}
+    .filter-btn:hover{border-color:#0a0a0a;color:#0a0a0a}
+    .filter-btn.active{background:#0a0a0a;color:#fff;border-color:#0a0a0a;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px;padding:28px 32px;max-width:1600px;margin:0 auto}
     .release-card{cursor:pointer;text-decoration:none;display:block}
     .release-card-noLink{cursor:default}
@@ -84,6 +79,51 @@
     footer a{font-size:12px;color:#555;text-decoration:none;transition:color 0.2s}
     footer a:hover{color:#fff}
     @media(max-width:768px){nav{padding:0 16px}.header,.filters{padding-left:16px;padding-right:16px}.grid{padding:16px;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}footer{flex-direction:column;gap:12px;text-align:center}.latest{padding:20px 16px 4px}}
+  
+    .nav-logo{display:flex;align-items:center;flex-shrink:0;z-index:2}
+    .nav-logo img{height:32px;width:auto;display:block}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;color:#888;transition:color 0.2s;white-space:nowrap}
+    .nav-links a:hover,.nav-links a.active{color:#0a0a0a}
+    .nav-toggle{display:none;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:0;z-index:2;-webkit-tap-highlight-color:transparent}
+    .nav-toggle span{display:block;width:20px;height:2px;background:#0a0a0a;border-radius:1px;position:relative;transition:background .2s}
+    .nav-toggle span::before,.nav-toggle span::after{content:'';position:absolute;left:0;width:20px;height:2px;background:#0a0a0a;border-radius:1px;transition:transform .2s,top .2s}
+    .nav-toggle span::before{top:-6px}
+    .nav-toggle span::after{top:6px}
+    nav.open .nav-toggle span{background:transparent}
+    nav.open .nav-toggle span::before{top:0;transform:rotate(45deg)}
+    nav.open .nav-toggle span::after{top:0;transform:rotate(-45deg)}
+    @media(max-width:768px){
+      .nav-toggle{display:flex}
+      .nav-links{
+        position:fixed;top:0;left:0;right:0;height:100dvh;
+        flex-direction:column;justify-content:center;align-items:center;gap:28px;
+        background:rgba(250,250,248,0.98);backdrop-filter:blur(20px);
+        opacity:0;visibility:hidden;pointer-events:none;
+        transition:opacity .25s,visibility .25s;
+      }
+      nav.open .nav-links{opacity:1;visibility:visible;pointer-events:auto}
+      .nav-links a{font-size:18px;letter-spacing:0.08em;color:#0a0a0a}
+    }
+
+  
+    .search-sort-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:4px}
+    .search-wrap{position:relative;flex:1;min-width:200px;max-width:360px}
+    .search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#888;pointer-events:none}
+    .search-input{width:100%;height:40px;padding:0 14px 0 38px;border:1px solid #e0e0e0;border-radius:999px;background:#fff;font-size:13px;font-family:inherit;color:#0a0a0a;outline:none;transition:border-color .2s}
+    .search-input:focus{border-color:#0a0a0a}
+    .search-input::placeholder{color:#aaa}
+    .sort-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+    .sort-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-right:4px}
+    .sort-btn{padding:7px 14px;font-size:12px;font-weight:600;text-transform:none;letter-spacing:0.02em;border:1px solid #ebe8e2;background:#fff;cursor:pointer;transition:all 0.15s;color:#555;border-radius:999px}
+    .sort-btn:hover{border-color:#0a0a0a;color:#0a0a0a}
+    .sort-btn.active{background:#0a0a0a;color:#fff;border-color:#0a0a0a;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+
+  
+    .origin-badge{display:inline-block;margin-top:4px;padding:2px 8px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;background:#f0f0ed;color:#666}
+    .origin-badge.external{background:#111;color:#fff}
+    .release-meta-line{font-size:10px;color:#888;margin-top:2px;line-height:1.3}
+
   </style>
   <script type="application/ld+json">
 {
@@ -107,8 +147,9 @@
   </script>
 </head>
 <body>
-<nav>
+<nav id="main-nav">
   <a href="../" class="nav-logo"><img src="../assets/images/logo/logo-nav.png" alt="ARTISTTAAN"/></a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
   <div class="nav-links">
     <a href="../artists/">Artists</a>
     <a href="./" class="active">Releases</a>
@@ -136,6 +177,26 @@
   </div>
 </div>
 <div class="filters">
+
+  <div class="search-sort-row">
+    <div class="search-wrap">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" id="release-search" class="search-input" placeholder="Search songs or artists…" autocomplete="off" enterkeyhint="search"/>
+    </div>
+    <div class="sort-row">
+      <span class="sort-label">Sort</span>
+      <button type="button" class="sort-btn active" data-sort="latest">Latest</button>
+      <button type="button" class="sort-btn" data-sort="oldest">Oldest</button>
+    </div>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Type</span>
+    <button class="filter-btn active" data-type="format" data-value="all">All</button>
+    <button class="filter-btn" data-type="format" data-value="single">Single</button>
+    <button class="filter-btn" data-type="format" data-value="ep">EP</button>
+    <button class="filter-btn" data-type="format" data-value="album">Album</button>
+    <button class="filter-btn" data-type="format" data-value="mixtape">Mixtape</button>
+  </div>
   <div class="filter-row">
     <span class="filter-label">Year</span>
     <button class="filter-btn active" data-type="year" data-value="all">All</button>
@@ -145,6 +206,13 @@
     <span class="filter-label">Artist</span>
     <button class="filter-btn active" data-type="artist" data-value="all">All</button>
     <button class="filter-btn" data-type="artist" data-value="Abir">Abir</button><button class="filter-btn" data-type="artist" data-value="Amie">Amie</button><button class="filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button><button class="filter-btn" data-type="artist" data-value="Faraz">Faraz</button><button class="filter-btn" data-type="artist" data-value="Harjas">Harjas</button><button class="filter-btn" data-type="artist" data-value="Kay J">Kay J</button><button class="filter-btn" data-type="artist" data-value="Luck">Luck</button><button class="filter-btn" data-type="artist" data-value="Lukka">Lukka</button><button class="filter-btn" data-type="artist" data-value="Manisten">Manisten</button><button class="filter-btn" data-type="artist" data-value="Mr A">Mr A</button><button class="filter-btn" data-type="artist" data-value="Muhfaad">Muhfaad</button><button class="filter-btn" data-type="artist" data-value="Newtone">Newtone</button><button class="filter-btn" data-type="artist" data-value="Raga">Raga</button><button class="filter-btn" data-type="artist" data-value="Rigul">Rigul</button><button class="filter-btn" data-type="artist" data-value="Rish">Rish</button><button class="filter-btn" data-type="artist" data-value="Sam Rajput">Sam Rajput</button><button class="filter-btn" data-type="artist" data-value="Shrey">Shrey</button><button class="filter-btn" data-type="artist" data-value="Slay">Slay</button><button class="filter-btn" data-type="artist" data-value="Talwar">Talwar</button><button class="filter-btn" data-type="artist" data-value="Talwiinder">Talwiinder</button><button class="filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
+  </div>
+
+  <div class="filter-row">
+    <span class="filter-label">Origin</span>
+    <button class="filter-btn active" data-type="origin" data-value="all">All</button>
+    <button class="filter-btn" data-type="origin" data-value="artisttaan">ARTISTTAAN</button>
+    <button class="filter-btn" data-type="origin" data-value="external">Outside / Features</button>
   </div>
 </div>
 <div class="grid" id="releases-grid"></div>
@@ -206,21 +274,66 @@ function initLatestSlideshow(){
   else{startTimer();}
 }
 
-let activeYear='all', activeArtist='all';
+let activeYear='all', activeArtist='all', activeOrigin='all', activeFormat='all', activeSort='latest', searchQuery='';
+
+function normalizeFormat(t){
+  t=String(t||'').toLowerCase().trim();
+  if(!t||t==='single'||t==='singles') return 'single';
+  if(t==='ep'||t.indexOf('ep')!==-1) return 'ep';
+  if(t.indexOf('album')!==-1) return 'album';
+  if(t.indexOf('mixtape')!==-1||t==='mix') return 'mixtape';
+  return t;
+}
+
+
+
+
+
+function isExternalRelease(r){
+  if(r.external===true||r.external===1||r.external==='true') return true;
+  const label=String(r.label||'ARTISTTAAN').trim().toLowerCase();
+  return label && label!=='artisttaan' && label!=='artist taan';
+}
 function filterReleases(){
-  return releases.filter(r=>{
-    const y=activeYear==='all'||r.year===activeYear;
-    const a=activeArtist==='all'||r.artist.includes(activeArtist);
-    return y&&a;
+  const q=searchQuery.trim().toLowerCase();
+  let list=releases.filter(r=>{
+    const y=activeYear==='all'||String(r.year)===String(activeYear);
+    const a=activeArtist==='all'||String(r.artist).includes(activeArtist);
+    const ext=isExternalRelease(r);
+    const o=activeOrigin==='all'||(activeOrigin==='external'?ext:!ext);
+    const f=activeFormat==='all'||normalizeFormat(r.type)===activeFormat;
+    if(!y||!a||!o||!f) return false;
+    if(!q) return true;
+    const title=String(r.title||'').toLowerCase();
+    const artist=String(r.artist||'').toLowerCase();
+    const label=String(r.label||'').toLowerCase();
+    const host=String(r.host_artist||'').toLowerCase();
+    return title.includes(q)||artist.includes(q)||label.includes(q)||host.includes(q);
   });
+  list=list.slice();
+  if(activeSort==='oldest'){
+    list.sort((a,b)=>{
+      const dy=(parseInt(a.year,10)||0)-(parseInt(b.year,10)||0);
+      if(dy) return dy;
+      return String(a.title).localeCompare(String(b.title));
+    });
+  } else {
+    // latest (default)
+    list.sort((a,b)=>{
+      const dy=(parseInt(b.year,10)||0)-(parseInt(a.year,10)||0);
+      if(dy) return dy;
+      return String(a.title).localeCompare(String(b.title));
+    });
+  }
+  return list;
 }
 function render(){
   const grid=document.getElementById('releases-grid');
   const filtered=filterReleases();
-  document.getElementById('release-count').textContent=filtered.length+' releases';
+  document.getElementById('release-count').textContent=filtered.length+' release'+(filtered.length===1?'':'s');
   if(!filtered.length){grid.innerHTML='<div class="no-results">No releases found.</div>';return;}
   grid.innerHTML=filtered.map(r=>{
-    const slug = slugify(r.title);
+    const slug = r.slug || slugify(r.title);
     const hasLink = !!slug;
     const tag = hasLink ? 'a' : 'div';
     const attrs = hasLink ? `href="../release/${slug}/"` : 'aria-disabled="true"';
@@ -235,6 +348,7 @@ function render(){
       <p class="release-title">${r.title}</p>
       <p class="release-artist">${r.artist}</p>
       <p class="release-year">${r.year}</p>
+      ${isExternalRelease(r) ? `<p class="release-meta-line">Released by ${r.label||'another label'}${r.host_artist ? ' · '+r.host_artist : ''}</p><span class="origin-badge external">Outside</span>` : `<span class="origin-badge">ARTISTTAAN</span>`}
     </${tag}>`;
   }).join('');
 }
@@ -244,20 +358,50 @@ document.querySelectorAll('[data-type="year"]').forEach(btn=>{
     btn.classList.add('active');activeYear=btn.dataset.value;render();
   });
 });
+
+document.querySelectorAll('[data-type="origin"]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-type="origin"]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');activeOrigin=btn.dataset.value;render();
+  });
+});
+
+document.querySelectorAll('[data-type="format"]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-type="format"]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');activeFormat=btn.dataset.value;render();
+  });
+});
+
 document.querySelectorAll('[data-type="artist"]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('[data-type="artist"]').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');activeArtist=btn.dataset.value;render();
   });
 });
+document.querySelectorAll('[data-sort]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-sort]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');activeSort=btn.dataset.sort;render();
+  });
+});
+const searchInput=document.getElementById('release-search');
+if(searchInput){
+  let t=null;
+  searchInput.addEventListener('input',()=>{
+    clearTimeout(t);
+    t=setTimeout(()=>{searchQuery=searchInput.value||'';render();},120);
+  });
+}
 
 async function init(){
   try{
-    const res=await fetch('../assets/data/artists.json');
+    // Light index only — full credits/tracks load on individual release pages
+    const res=await fetch('../assets/data/releases-index.json');
     const data=await res.json();
     releases=data.releases||[];
   }catch(e){
-    console.error('Failed to load releases data:',e);
+    console.error('Failed to load releases index:',e);
     releases=[];
   }
   initLatestSlideshow();
@@ -265,5 +409,27 @@ async function init(){
 }
 init();
 </script>
+
+<script>
+(function(){
+  var nav=document.querySelector('nav');
+  if(!nav)return;
+  var toggle=nav.querySelector('.nav-toggle');
+  if(!toggle)return;
+  toggle.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

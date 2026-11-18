@@ -1,0 +1,17 @@
+{
+  "artist": "Manisten",
+  "spotify_url": "https://open.spotify.com/album/12g4L6k0bVk8BcakDHxTG2",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/album/12g4L6k0bVk8BcakDHxTG2",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-11-triggered-2021.jpg",
+  "title": "Triggered",
+  "type": "single",
+  "year": "2021",
+  "slug": "triggered",
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/12g4L6k0bVk8BcakDHxTG2",
+    "spotify_embed": "https://open.spotify.com/embed/album/12g4L6k0bVk8BcakDHxTG2"
+  }
+}

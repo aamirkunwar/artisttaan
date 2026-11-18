@@ -1,0 +1,17 @@
+{
+  "artist": "Abir",
+  "spotify_url": "https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol",
+  "external": true,
+  "artist_id": "abir",
+  "spotify_embed": "https://open.spotify.com/embed/track/5snmOSMT761hHpVZ4Eovol",
+  "label": "T-Series",
+  "cover": "/assets/images/marz_640x640.jpg",
+  "title": "Marz",
+  "type": "single",
+  "year": "2024",
+  "slug": "marz",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/5snmOSMT761hHpVZ4Eovol",
+    "spotify_embed": "https://open.spotify.com/embed/track/5snmOSMT761hHpVZ4Eovol"
+  }
+}

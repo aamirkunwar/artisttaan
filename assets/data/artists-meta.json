@@ -1,0 +1,347 @@
+{
+  "artists": [
+    {
+      "youtube": "https://youtube.com/results?search_query=Abir+artisttaan",
+      "soundcloud": "https://soundcloud.com/abir",
+      "bio": "Singer/songwriter from Agra, India. His music reflects soul and pop depth. 103K+ monthly listeners on Spotify.",
+      "spotify_url": "https://open.spotify.com/artist/0XHapa0VH6XHwA3wlqextO",
+      "name": "Abir",
+      "banner": "assets/images/artists/abir-banner.jpg",
+      "monthly_listeners": "103,560",
+      "featured": true,
+      "square_photo": "assets/images/artists/abir-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/abir/1509067765",
+      "genres": [
+        "Pop",
+        "R&B"
+      ],
+      "photo": "assets/images/artists/abir.jpg",
+      "top_tracks": [],
+      "instagram": "https://instagram.com/luvabiirr",
+      "top_cities": [
+        "Delhi",
+        "Mumbai",
+        "Bangalore",
+        "Pune"
+      ],
+      "youtube_url": "https://youtube.com/watch?v=U7AdDdqJWUg",
+      "twitter": "https://twitter.com/abir",
+      "role": "Pop / RnB",
+      "total_streams": "2.1M+",
+      "full_bio": "Abir is a Pop and RnB artist hailing from Agra, India. His music blends smooth pop melodies with the emotional depth of RnB storytelling. With over 103,000 monthly listeners on Spotify, Abir's music resonates with audiences across India.",
+      "id": "abir",
+      "deck_pdf": "assets/decks/abir-deck.pdf",
+      "contact_email": "abir@artisttaan.com"
+    },
+    {
+      "youtube": "https://youtube.com/results?search_query=Shrey+artisttaan",
+      "soundcloud": "https://soundcloud.com/shrey",
+      "bio": "Layered soundscapes and hard-hitting bars. Known for tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag'.",
+      "spotify_url": "https://open.spotify.com/artist/760KQ4PXRrEyJW9SU44ABS",
+      "name": "Shrey",
+      "banner": "assets/images/artists/shrey-banner.jpg",
+      "monthly_listeners": "—",
+      "featured": true,
+      "square_photo": "assets/images/artists/shrey-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/shrey/1485842716",
+      "genres": [
+        "Hip-Hop"
+      ],
+      "photo": "assets/images/artists/shrey.jpg",
+      "top_tracks": [],
+      "instagram": "https://instagram.com/shrey0000001",
+      "top_cities": [
+        "Delhi",
+        "Chandigarh",
+        "Jaipur"
+      ],
+      "youtube_url": "https://youtube.com/watch?v=ZYln3iWRxDk",
+      "twitter": "https://twitter.com/shrey",
+      "role": "Hip-Hop",
+      "total_streams": "800K+",
+      "full_bio": "Shrey is a hip-hop artist whose music explores the spaces between silence and sound. With tracks like 'Sifarishein', 'Khuda', and 'Kaagaz aur Daag', Shrey has built a dedicated following.",
+      "id": "shrey",
+      "deck_pdf": "assets/decks/shrey-deck.pdf",
+      "contact_email": "shrey@artisttaan.com"
+    },
+    {
+      "youtube": "https://youtube.com/results?search_query=Slay+artisttaan",
+      "soundcloud": "https://soundcloud.com/slay",
+      "bio": "Born to perform. Slay brings relentless energy and precision lyricism. Latest drop: 'Namaskar' (2026).",
+      "spotify_url": "https://open.spotify.com/artist/2E1ceqTF8kEm7UDucwGosW",
+      "name": "Slay",
+      "banner": "assets/images/artists/slay-banner.jpg",
+      "monthly_listeners": "—",
+      "featured": false,
+      "square_photo": "assets/images/artists/slay-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/slay/1638763358",
+      "genres": [
+        "Hip-Hop"
+      ],
+      "photo": "assets/images/artists/slay.jpg",
+      "top_tracks": [],
+      "instagram": "https://instagram.com/slaywav",
+      "top_cities": [
+        "Mumbai",
+        "Delhi",
+        "Hyderabad"
+      ],
+      "youtube_url": "https://youtube.com/watch?v=bLTVqTJ1hUQ",
+      "twitter": "https://twitter.com/slay",
+      "role": "Hip-Hop",
+      "total_streams": "500K+",
+      "full_bio": "Slay is the embodiment of raw hip-hop energy. With his latest drop 'Namaskar' making waves in 2026, Slay has established himself as one of the most exciting voices in Indian hip-hop.",
+      "id": "slay",
+      "deck_pdf": "assets/decks/slay-deck.pdf",
+      "contact_email": "slay@artisttaan.com"
+    },
+    {
+      "youtube": "https://youtube.com/results?search_query=Apoorvv+artisttaan",
+      "soundcloud": "https://soundcloud.com/apoorvv",
+      "bio": "Independent artist blending stories, emotion, and smooth vibes. 22K+ monthly listeners. Known for 'Ishq Adhoora'.",
+      "spotify_url": "https://open.spotify.com/artist/4E0fJNDzJG3ROUPKaztyis",
+      "name": "Apoorvv",
+      "banner": "assets/images/artists/apoorvv-banner.jpg",
+      "monthly_listeners": "22,656",
+      "featured": false,
+      "square_photo": "assets/images/artists/apoorvv-square.jpg",
+      "apple_music_url": "https://music.apple.com/in/artist/apoorvv/1773371021",
+      "genres": [
+        "Pop",
+        "Indie"
+      ],
+      "photo": "assets/images/artists/apoorvv.jpg",
+      "top_tracks": [],
+      "instagram": "https://instagram.com/apoorvvwho",
+      "top_cities": [
+        "Delhi",
+        "Lucknow",
+        "Kanpur"
+      ],
+      "youtube_url": "https://youtube.com/@artisttaan",
+      "twitter": "https://twitter.com/apoorvv",
+      "role": "Pop / Indie",
+      "total_streams": "350K+",
+      "full_bio": "Apoorvv is a Pop and Indie artist who weaves stories through melody. With over 22,000 monthly listeners on Spotify, his track 'Ishq Adhoora' has become an anthem for those navigating love and loss.",
+      "id": "apoorvv",
+      "deck_pdf": "assets/decks/apoorvv-deck.pdf",
+      "contact_email": "apoorvv@artisttaan.com"
+    },
+    {
+      "soundcloud": "",
+      "bio": "Producer, singer and RnB artist from Agra. Faraz brings a unique blend of production excellence, vocal artistry and RnB flavor to ARTISTTAAN.",
+      "spotify_url": "https://open.spotify.com/artist/5v97XScMyk02FNVZhHX2TR",
+      "name": "Faraz",
+      "monthly_listeners": "—",
+      "featured": false,
+      "square_photo": "assets/images/artists/faraz-square.jpg",
+      "apple_music_url": "",
+      "genres": [
+        "Production",
+        "R&B",
+        "Vocal"
+      ],
+      "photo": "assets/images/artists/faraz.jpg",
+      "top_tracks": [],
+      "instagram": "https://instagram.com/faraz",
+      "top_cities": [
+        "Agra",
+        "Delhi"
+      ],
+      "youtube_url": "https://youtube.com/@artisttaan",
+      "twitter": "",
+      "role": "Producer / Singer / RnB",
+      "total_streams": "—",
+      "full_bio": "Faraz is a talented producer, singer and RnB artist hailing from Agra. With a deep understanding of production, performance and RnB, Faraz creates music that bridges the gap between artists and audiences.",
+      "id": "faraz",
+      "deck_pdf": "assets/decks/faraz-deck.pdf",
+      "contact_email": "faraz@artisttaan.com"
+    },
+    {
+      "bio": "Sam Rajput is a singer and trained vocalist from Agra, India, known for his versatile vocal ability and emotive approach to music. With a strong foundation in vocal training, Sam has developed a sound that blends contemporary Indian pop with influences from multiple musical genres.",
+      "spotify_url": "https://open.spotify.com/artist/13PyGUDm2rsm7dGG2QzkWm?si=h6o-noa8ToiXi9SzCeGttw",
+      "name": "Sam Rajput",
+      "banner": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "featured": true,
+      "square_photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "genres": [
+        "Classical",
+        "Pop"
+      ],
+      "photo": "/assets/images/490448129_18399646015111779_4500456068656346681_n.webp",
+      "top_tracks": [],
+      "instagram": "https://www.instagram.com/officialsam_rajput/",
+      "role": "Singer",
+      "full_bio": "Sam Rajput is a singer and trained vocalist from Agra, India, known for his versatile vocal ability and emotive approach to music. With a strong foundation in vocal training, Sam has developed a sound that blends contemporary Indian pop with influences from multiple musical genres.\n\nA professionally trained musician, Sam studied at KMMC – A.R. Rahman’s Music College, where he further developed his understanding of music and vocal performance.\n\nSam gained recognition with his song “Naam Tumhara,” released in 2020, which became one of the defining tracks of his early career. Since then, he has continued to explore different sounds and styles through releases including Tere Na Hue To, Tere Sang, Ro Hi Padi, Aise Kyun, and Barsaat.\n\nWith his trained vocals, wide-ranging musicality, and ability to adapt across genres, Sam Rajput continues to build his identity as a contemporary Indian vocalist while bringing his own emotional character to every song.",
+      "id": "Sam"
+    }
+  ],
+  "team": [
+    {
+      "youtube": "",
+      "vimeo": "",
+      "bio": "Founder of ARTISTTAAN and the driving force behind its roster. Aamir built the label from the streets of East Delhi in 2016 and now leads A&R — scouting, signing, and developing talent.",
+      "name": "Aamir Kunwar",
+      "pronouns": "",
+      "photo": "assets/images/team/aamir-kunwar.jpg",
+      "gallery": [],
+      "instagram": "https://instagram.com/aamirkunwar",
+      "behance": "",
+      "instagram_handle": "@aamirkunwar",
+      "location": "",
+      "role": "Founder & A&R",
+      "cover": "",
+      "full_bio": "",
+      "projects": [],
+      "since": "2016",
+      "website": "",
+      "id": "aamir-kunwar",
+      "email": ""
+    },
+    {
+      "youtube": "",
+      "vimeo": "",
+      "bio": "As a Video Director, Sahil brings music to life on screen — directing music videos and crafting visual stories that capture the identity, emotion, and energy of every artist he works with.",
+      "name": "Sahil Akhtar",
+      "pronouns": "",
+      "photo": "/assets/images/img_9188.jpg",
+      "gallery": [],
+      "instagram": "https://www.instagram.com/therandomlens/",
+      "behance": "",
+      "instagram_handle": "@therandomlens",
+      "location": "Lucknow",
+      "role": "Video Director",
+      "cover": "",
+      "full_bio": "",
+      "projects": [
+        {
+          "video": "https://youtu.be/U0EI7XFkkV4?si=EBNsFR3OFO56Udia",
+          "role": "Director",
+          "title": "Taare"
+        },
+        {
+          "title": "Marz",
+          "role": "Director",
+          "video": "https://www.youtube.com/watch?v=U7AdDdqJWUg"
+        },
+        {
+          "video": "https://www.youtube.com/watch?v=hUDrfmmDE0Q",
+          "role": "Director",
+          "title": "Dooriyan"
+        },
+        {
+          "title": "Saza",
+          "role": "Director",
+          "video": "https://www.youtube.com/watch?v=TrimMQMBc7s"
+        },
+        {
+          "title": "Khaali Ghar",
+          "video": "https://www.youtube.com/watch?v=KiFfXHRu3Sk"
+        },
+        {
+          "video": "https://www.youtube.com/watch?v=ZGyEc_iQrFM",
+          "title": "Roll"
+        },
+        {
+          "title": "Cold",
+          "video": "https://www.youtube.com/watch?v=lvFWHGb4M-w"
+        }
+      ],
+      "since": "",
+      "website": "",
+      "id": "sahil-akhtar",
+      "email": ""
+    },
+    {
+      "youtube": "",
+      "vimeo": "",
+      "bio": "Video Director and A&R, Shashank shapes both the look and the lineup of the label. He directs the music videos and visual stories behind the roster while working closely with artists.",
+      "name": "Shashank Sharma",
+      "pronouns": "",
+      "photo": "assets/images/team/shashank-sharma.jpg",
+      "gallery": [],
+      "instagram": "https://instagram.com/shshank.here",
+      "behance": "",
+      "instagram_handle": "@shshank.here",
+      "location": "",
+      "role": "Video Director & A&R",
+      "cover": "",
+      "full_bio": "",
+      "projects": [
+        {
+          "title": "Phataphat",
+          "role": "Director",
+          "year": "2026",
+          "video": "https://youtu.be/Z279HSknKmU?si=LpHSoAwAEJSKrmuD"
+        },
+        {
+          "title": "Namaskar",
+          "role": "Director",
+          "year": "2026",
+          "cover": "",
+          "video": "https://www.youtube.com/embed/bLTVqTJ1hUQ",
+          "description": "Music video for Slay."
+        },
+        {
+          "title": "Nathuli",
+          "video": "https://www.youtube.com/embed/QQZSNUV0fT4?si=Oeyy8XjofNp7Ej0Y",
+          "role": "Director"
+        },
+        {
+          "title": "Meditate",
+          "video": "https://www.youtube.com/embed/BsJOe-luhps?si=mL5ThfG4XqInLGUn",
+          "role": "Director"
+        },
+        {
+          "title": "Kaagaz Aur Daag",
+          "role": "Director",
+          "year": "2025",
+          "cover": "",
+          "video": "https://www.youtube.com/embed/ZYln3iWRxDk",
+          "description": "Music video for Shrey."
+        },
+        {
+          "title": "Sifarishein",
+          "role": "Director",
+          "year": "2025",
+          "cover": "",
+          "video": "https://www.youtube.com/embed/rcKlMq2uDlk",
+          "description": "Music video for Shrey."
+        },
+        {
+          "title": "Thoda Aur",
+          "role": "Director",
+          "year": "2025",
+          "cover": "",
+          "video": "https://www.youtube.com/embed/Q5E5t5VbVeo",
+          "description": "Music video for Shrey."
+        }
+      ],
+      "since": "",
+      "website": "",
+      "id": "shashank-sharma",
+      "email": ""
+    },
+    {
+      "youtube": "",
+      "vimeo": "",
+      "bio": "Head of A&R at ARTISTTAAN, Nino leads the search for new talent and the development of the label's roster — discovering artists, shaping their sound, and guiding projects from first listen to final release.",
+      "name": "Nino Rawat",
+      "pronouns": "",
+      "photo": "assets/images/team/nino-rawat.jpg",
+      "gallery": [],
+      "instagram": "https://instagram.com/ninorawat",
+      "behance": "",
+      "instagram_handle": "@ninorawat",
+      "location": "",
+      "role": "Head A&R",
+      "cover": "",
+      "full_bio": "",
+      "projects": [],
+      "since": "",
+      "website": "",
+      "id": "nino-rawat",
+      "email": ""
+    }
+  ]
+}

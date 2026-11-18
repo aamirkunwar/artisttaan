@@ -1,0 +1,17 @@
+{
+  "artist": "Rigul, Yawar",
+  "spotify_url": "https://open.spotify.com/track/5k2g1PqmdHGHdOQzTmhrg6",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/5k2g1PqmdHGHdOQzTmhrg6",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-06-look-at-me-2021.jpg",
+  "title": "Look at Me",
+  "type": "single",
+  "year": "2021",
+  "slug": "look-at-me",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/5k2g1PqmdHGHdOQzTmhrg6",
+    "spotify_embed": "https://open.spotify.com/embed/track/5k2g1PqmdHGHdOQzTmhrg6"
+  }
+}

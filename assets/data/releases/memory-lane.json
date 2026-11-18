@@ -1,0 +1,69 @@
+{
+  "title": "Memory Lane",
+  "artist": "Abir",
+  "artist_id": "abir",
+  "type": "EP",
+  "year": "2024",
+  "label": "Sony Music Entertainment India",
+  "external": true,
+  "spotify_url": "https://open.spotify.com/album/3Fb4LigELi4LdpyE3czz6C",
+  "spotify_embed": "https://open.spotify.com/embed/album/3Fb4LigELi4LdpyE3czz6C",
+  "cover": "/assets/images/releases-posters/releases/memory-lane-abir-2024.jpg",
+  "description": "Memory Lane is a 5-track EP by Abir, released via Sony Music Entertainment India — Hindi/Punjabi pop about love, distance, and looking back. Features Faraz on Main Ni Tera.",
+  "genres": [
+    "Pop",
+    "R&B",
+    "Indian Pop"
+  ],
+  "credits": [
+    {
+      "role": "Artist",
+      "name": "Abir"
+    },
+    {
+      "role": "Featured Artist",
+      "name": "Faraz"
+    },
+    {
+      "role": "Label",
+      "name": "Sony Music Entertainment India"
+    }
+  ],
+  "tracks": [
+    {
+      "track_number": 1,
+      "title": "Meri Hoyi Ni",
+      "duration": "2:07",
+      "spotify_url": "https://open.spotify.com/track/57fWILOdFXgzQ6lJTxH5Hc"
+    },
+    {
+      "track_number": 2,
+      "title": "Jaane Kyun",
+      "duration": "3:02",
+      "spotify_url": "https://open.spotify.com/track/2jmpq74cVTWGRYGx58eRH2"
+    },
+    {
+      "track_number": 3,
+      "title": "Main Ni Tera (feat. Faraz)",
+      "duration": "2:33",
+      "spotify_url": "https://open.spotify.com/track/0QR9waJ2NPl8PSi8HFxcwJ"
+    },
+    {
+      "track_number": 4,
+      "title": "Raha Woh Nahin",
+      "duration": "3:07",
+      "spotify_url": "https://open.spotify.com/track/3Ikfemth83jnYuROCOwMWy"
+    },
+    {
+      "track_number": 5,
+      "title": "Last Flight",
+      "duration": "2:26",
+      "spotify_url": "https://open.spotify.com/track/5EBQpCCMSj9SB3WRZbbU5g"
+    }
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/3Fb4LigELi4LdpyE3czz6C",
+    "spotify_embed": "https://open.spotify.com/embed/album/3Fb4LigELi4LdpyE3czz6C"
+  },
+  "slug": "memory-lane"
+}

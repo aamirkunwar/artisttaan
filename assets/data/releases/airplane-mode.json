@@ -1,0 +1,17 @@
+{
+  "artist": "Manisten",
+  "spotify_url": "https://open.spotify.com/album/2qVqgj0hMXTfP7cdRUb6zf",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/album/2qVqgj0hMXTfP7cdRUb6zf",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-10-airplane-mode-2021.jpg",
+  "title": "Airplane Mode",
+  "type": "single",
+  "year": "2021",
+  "slug": "airplane-mode",
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/2qVqgj0hMXTfP7cdRUb6zf",
+    "spotify_embed": "https://open.spotify.com/embed/album/2qVqgj0hMXTfP7cdRUb6zf"
+  }
+}

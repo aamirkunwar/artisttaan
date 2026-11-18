@@ -1,0 +1,16 @@
+{
+  "artist": "Muhfaad",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-51-sach-too-much-hai-2016.jpg",
+  "title": "Sach Too Much Hai",
+  "type": "single",
+  "year": "2016",
+  "slug": "sach-too-much-hai",
+  "streaming": {
+    "spotify": "#"
+  }
+}

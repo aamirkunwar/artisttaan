@@ -1,0 +1,26 @@
+{
+  "artist": "Apoorvv, Slay",
+  "spotify_url": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d",
+  "external": false,
+  "artist_id": "Apoorvv, Slay",
+  "spotify_embed": "",
+  "label": "ARTISTTAAN",
+  "cover": "/assets/images/tha-ek-chehra_300x300-2-.jpg",
+  "title": "Tha ek chehra",
+  "type": "single",
+  "year": "2026",
+  "id": "tha-ek-chehra-2026",
+  "slug": "tha-ek-chehra",
+  "artist_ids": [
+    "apoorvv",
+    "slay"
+  ],
+  "genres": [
+    "Hip-Hop",
+    "Indie"
+  ],
+  "description": "Tha Ek Chehra — a collaboration between Apoorvv and Slay under ARTISTTAAN.",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/4LyR7z70cF2dh46saTV1TM?si=9efa79bec1a54c1d"
+  }
+}

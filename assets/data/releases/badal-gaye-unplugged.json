@@ -1,0 +1,17 @@
+{
+  "artist": "Faraz",
+  "spotify_url": "https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9",
+  "external": false,
+  "artist_id": "faraz",
+  "spotify_embed": "https://open.spotify.com/embed/track/1C9BpHayhV4XHvc9I2PsN9",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-24-badal-gaye-unplugged--2020.jpg",
+  "title": "Badal Gaye Unplugged",
+  "type": "single",
+  "year": "2020",
+  "slug": "badal-gaye-unplugged",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/1C9BpHayhV4XHvc9I2PsN9",
+    "spotify_embed": "https://open.spotify.com/embed/track/1C9BpHayhV4XHvc9I2PsN9"
+  }
+}

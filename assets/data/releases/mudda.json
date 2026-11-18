@@ -1,0 +1,16 @@
+{
+  "artist": "Raga, Yawar",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-69-mudda-2019.jpg",
+  "title": "Mudda",
+  "type": "single",
+  "year": "2019",
+  "slug": "mudda",
+  "streaming": {
+    "spotify": "#"
+  }
+}

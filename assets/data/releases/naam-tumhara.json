@@ -1,0 +1,17 @@
+{
+  "artist": "Sam Rajput",
+  "spotify_url": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/64tbEVvEnMxtOGPPmZDcab",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-19-naam-tumhara-2020.jpg",
+  "title": "Naam Tumhara",
+  "type": "single",
+  "year": "2020",
+  "slug": "naam-tumhara",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/64tbEVvEnMxtOGPPmZDcab",
+    "spotify_embed": "https://open.spotify.com/embed/track/64tbEVvEnMxtOGPPmZDcab"
+  }
+}

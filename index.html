@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLGKQSGFKP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VLGKQSGFKP');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ARTISTTAAN is India's hip-hop and indie music label, founded in 2016. Meet Abir, Shrey, Slay, Apoorvv & Faraz, stream music and submit your demo." />
@@ -13,6 +21,12 @@
   <meta property="og:url" content="https://artisttaanmusic.com/" />
   <meta property="og:site_name" content="ARTISTTAAN" />
   <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ARTISTTAAN, India's hip-hop and indie music label" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:image:alt" content="ARTISTTAAN, India's hip-hop and indie music label" />
+  <meta name="theme-color" content="#000000" />
   <meta property="og:title" content="ARTISTTAAN | India's Leading Hip-Hop & Indie Music Label" />
   <meta property="og:description" content="Discover India's top independent hip-hop and indie artists. Home to Abir, Shrey, Slay, Apoorvv & Faraz. Stream music and watch videos." />
   <meta name="twitter:card" content="summary_large_image" />
@@ -125,6 +139,43 @@
     .ls-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:background 0.2s,width 0.2s;}
     .ls-dot.active{background:#fff;width:18px;border-radius:3px;}
     @media(max-width:640px){.ls-slide{grid-template-columns:1fr;padding:20px;}.ls-poster{width:100%;height:auto;aspect-ratio:1;}}
+
+    /* Homepage release filters — refined chip groups */
+    .home-filters{margin-bottom:8px;}
+    .home-search-wrap{position:relative;margin-bottom:16px;}
+    .home-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#999;pointer-events:none;}
+    .home-search-input{width:100%;height:44px;padding:0 16px 0 42px;border:1px solid #e8e6e1;border-radius:12px;background:#fff;font-size:14px;font-family:inherit;color:#0a0a0a;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;}
+    .home-search-input:focus{border-color:#0a0a0a;box-shadow:0 0 0 3px rgba(10,10,10,0.06);}
+    .home-search-input::placeholder{color:#aaa;}
+    .home-filter-group{margin-bottom:12px;}
+    .home-filter-label{
+      display:block;font-size:10px;font-weight:700;letter-spacing:0.12em;
+      text-transform:uppercase;color:#aaa;margin:0 0 8px;
+    }
+    .home-filter-scroll{
+      display:flex;flex-wrap:nowrap;gap:8px;align-items:center;
+      overflow-x:auto;-webkit-overflow-scrolling:touch;
+      scrollbar-width:none;padding-bottom:2px;
+    }
+    .home-filter-scroll::-webkit-scrollbar{display:none;}
+    .home-filter-scroll .release-filter-btn{
+      flex:0 0 auto;white-space:nowrap;
+      padding:8px 14px;font-size:12px;font-weight:600;
+      letter-spacing:0.02em;text-transform:none;
+      border:1px solid #ebe8e2;background:#fff;cursor:pointer;
+      border-radius:999px;color:#555;transition:all .15s;
+    }
+    .home-filter-scroll .release-filter-btn:hover{border-color:#0a0a0a;color:#0a0a0a;}
+    .home-filter-scroll .release-filter-btn.active{
+      background:#0a0a0a;color:#fff;border-color:#0a0a0a;
+      box-shadow:0 1px 3px rgba(0,0,0,0.12);
+    }
+    .home-filter-scroll .release-filter-btn.sort-btn{text-transform:none;}
+    .home-filter-sep{width:1px;height:18px;background:#e0e0e0;flex:0 0 auto;margin:0 4px;}
+    .home-release-count{font-size:12px;color:#999;margin:6px 0 16px;}
+    @media(min-width:768px){
+      .home-filter-scroll{flex-wrap:wrap;overflow:visible;}
+    }
 
     /* Newsletter popup */
     .nl-popup-overlay{position:fixed;inset:0;background:rgba(10,10,10,0.65);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity 0.3s ease;}
@@ -269,7 +320,7 @@
     <!-- Content -->
     <div class="relative max-w-4xl mx-auto text-center px-6 pt-20 pb-16" style="z-index:2;">
       <p class="fade-up fade-up-delay-1 mb-6" style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">India's Hip-Hop & Indie Powerhouse</p>
-      <h1 class="fade-up fade-up-delay-2 mb-8" style="font-size:clamp(64px,10vw,120px);font-weight:900;letter-spacing:-0.04em;line-height:0.9;color:#fff;">ARTISTTAAN</h1>
+      <h1 class="fade-up fade-up-delay-2 mb-8" style="font-size:clamp(64px,10vw,120px);font-weight:900;letter-spacing:-0.04em;line-height:0.9;color:#fff;">ARTISTTAAN<span style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> - India's hip-hop and indie music label</span></h1>
       <div class="flex flex-wrap gap-4 justify-center fade-up fade-up-delay-3">
         <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:#fff;color:#000;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">Listen on Spotify</a>
         <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='#fff';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='transparent'">Watch on YouTube</a>
@@ -375,27 +426,66 @@
         <button class="ls-arrow ls-next" id="latest-ls-next" aria-label="Next">&#8250;</button>
         <div class="ls-dots" id="latest-ls-dots"></div>
       </div>
-      <!-- Filter tabs -->
-      <div class="flex flex-wrap gap-2 mb-6" id="release-filters">
-        <button class="release-filter-btn active" data-type="year" data-value="all">All</button>
-        <button class="release-filter-btn" data-type="year" data-value="2026">2026</button>
-        <button class="release-filter-btn" data-type="year" data-value="2025">2025</button>
-        <button class="release-filter-btn" data-type="year" data-value="2024">2024</button>
-        <button class="release-filter-btn" data-type="year" data-value="2023">2023</button>
-        <button class="release-filter-btn" data-type="year" data-value="2021">2021</button>
-        <button class="release-filter-btn" data-type="year" data-value="2020">2020</button>
-      </div>
-      <div class="flex flex-wrap gap-2 mb-10" id="artist-filters">
-        <button class="release-filter-btn active" data-type="artist" data-value="all">All Artists</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Abir">Abir</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Shrey">Shrey</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Slay">Slay</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Faraz">Faraz</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Raga">Raga</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Rish">Rish</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
-        <button class="release-filter-btn" data-type="artist" data-value="Manisten">Manisten</button>
+      <!-- Filters: search + labeled chip groups -->
+      <div class="home-filters">
+        <div class="home-search-wrap">
+          <svg class="home-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="search" id="home-release-search" placeholder="Search title, artist..." class="home-search-input" />
+        </div>
+
+        <div class="home-filter-group">
+          <span class="home-filter-label">Type</span>
+          <div class="home-filter-scroll" id="type-filters">
+            <button type="button" class="release-filter-btn active" data-type="format" data-value="all">All</button>
+            <button type="button" class="release-filter-btn" data-type="format" data-value="single">Single</button>
+            <button type="button" class="release-filter-btn" data-type="format" data-value="ep">EP</button>
+            <button type="button" class="release-filter-btn" data-type="format" data-value="album">Album</button>
+            <button type="button" class="release-filter-btn" data-type="format" data-value="mixtape">Mixtape</button>
+          </div>
+        </div>
+
+        <div class="home-filter-group">
+          <span class="home-filter-label">Origin</span>
+          <div class="home-filter-scroll" id="origin-filters">
+            <button type="button" class="release-filter-btn active" data-type="origin" data-value="all">All</button>
+            <button type="button" class="release-filter-btn" data-type="origin" data-value="artisttaan">ARTISTTAAN</button>
+            <button type="button" class="release-filter-btn" data-type="origin" data-value="external">Outside</button>
+            <span class="home-filter-sep" aria-hidden="true"></span>
+            <button type="button" class="release-filter-btn active sort-btn" data-sort="latest">Latest</button>
+            <button type="button" class="release-filter-btn sort-btn" data-sort="oldest">Oldest</button>
+          </div>
+        </div>
+
+        <div class="home-filter-group">
+          <span class="home-filter-label">Year</span>
+          <div class="home-filter-scroll" id="release-filters">
+            <button class="release-filter-btn active" data-type="year" data-value="all">All</button>
+            <button class="release-filter-btn" data-type="year" data-value="2026">2026</button>
+            <button class="release-filter-btn" data-type="year" data-value="2025">2025</button>
+            <button class="release-filter-btn" data-type="year" data-value="2024">2024</button>
+            <button class="release-filter-btn" data-type="year" data-value="2023">2023</button>
+            <button class="release-filter-btn" data-type="year" data-value="2021">2021</button>
+            <button class="release-filter-btn" data-type="year" data-value="2020">2020</button>
+          </div>
+        </div>
+
+        <div class="home-filter-group">
+          <span class="home-filter-label">Artist</span>
+          <div class="home-filter-scroll" id="artist-filters">
+            <button class="release-filter-btn active" data-type="artist" data-value="all">All</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Abir">Abir</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Shrey">Shrey</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Slay">Slay</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Faraz">Faraz</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Raga">Raga</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Rish">Rish</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
+            <button class="release-filter-btn" data-type="artist" data-value="Manisten">Manisten</button>
+          </div>
+        </div>
+
+        <p id="home-release-count" class="home-release-count"></p>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3" id="releases-grid" style="min-height:200px;"></div>
       <div class="mt-10 text-center md:hidden">
@@ -409,9 +499,28 @@
     let releases = [];
     let activeYear = 'all';
     let activeArtist = 'all';
+    let activeOrigin = 'all';
+    let activeFormat = 'all';
+    let activeSort = 'latest';
+    let searchQuery = '';
+
+    function normalizeFormat(t) {
+      t = String(t || '').toLowerCase().trim();
+      if (!t || t === 'single' || t === 'singles') return 'single';
+      if (t === 'ep' || t.indexOf('ep') !== -1) return 'ep';
+      if (t.indexOf('album') !== -1) return 'album';
+      if (t.indexOf('mixtape') !== -1 || t === 'mix') return 'mixtape';
+      return t;
+    }
 
     function slugify(s) {
       return s ? String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') : '';
+    }
+
+    function isExternalRelease(r) {
+      if (r.external === true || r.external === 1 || r.external === 'true') return true;
+      const label = String(r.label || 'ARTISTTAAN').trim().toLowerCase();
+      return label && label !== 'artisttaan' && label !== 'artist taan';
     }
 
     function initHeroBanner() {
@@ -494,24 +603,55 @@
     }
 
     function filterReleases() {
-      return releases.filter(r => {
-        const yearMatch = activeYear === 'all' || r.year === activeYear;
-        const artistMatch = activeArtist === 'all' || r.artist.includes(activeArtist);
-        return yearMatch && artistMatch;
+      const q = searchQuery.trim().toLowerCase();
+      let list = releases.filter(r => {
+        const yearMatch = activeYear === 'all' || String(r.year) === String(activeYear);
+        const artistMatch = activeArtist === 'all' || String(r.artist || '').includes(activeArtist);
+        const ext = isExternalRelease(r);
+        const originMatch = activeOrigin === 'all' || (activeOrigin === 'external' ? ext : !ext);
+        const formatMatch = activeFormat === 'all' || normalizeFormat(r.type) === activeFormat;
+        if (!yearMatch || !artistMatch || !originMatch || !formatMatch) return false;
+        if (!q) return true;
+        const title = String(r.title || '').toLowerCase();
+        const artist = String(r.artist || '').toLowerCase();
+        const label = String(r.label || '').toLowerCase();
+        const host = String(r.host_artist || '').toLowerCase();
+        return title.includes(q) || artist.includes(q) || label.includes(q) || host.includes(q);
       });
+      list = list.slice();
+      if (activeSort === 'oldest') {
+        list.sort((a, b) => {
+          const dy = (parseInt(a.year, 10) || 0) - (parseInt(b.year, 10) || 0);
+          if (dy) return dy;
+          return String(a.title).localeCompare(String(b.title));
+        });
+      } else {
+        list.sort((a, b) => {
+          const dy = (parseInt(b.year, 10) || 0) - (parseInt(a.year, 10) || 0);
+          if (dy) return dy;
+          return String(a.title).localeCompare(String(b.title));
+        });
+      }
+      return list;
     }
 
     function renderReleases() {
       const grid = document.getElementById('releases-grid');
       if (!grid) return;
       const filtered = filterReleases();
+      const countEl = document.getElementById('home-release-count');
+      if (countEl) countEl.textContent = filtered.length + ' release' + (filtered.length === 1 ? '' : 's');
       if (filtered.length === 0) {
         grid.innerHTML = '<p style="color:#888;font-size:13px;grid-column:1/-1;text-align:center;padding:40px 0;">No releases found.</p>';
         return;
       }
       grid.innerHTML = filtered.map(r => {
+        const ext = isExternalRelease(r);
+        const badge = ext
+          ? '<span style="display:inline-block;margin-top:4px;padding:2px 7px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;border-radius:2px;background:#111;color:#fff;">Outside</span>'
+          : '<span style="display:inline-block;margin-top:4px;padding:2px 7px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;border-radius:2px;background:#f0f0ed;color:#666;">ARTISTTAAN</span>';
         return `
-        <a href="/release/${slugify(r.title)}/" style="text-decoration:none;color:inherit;display:block;">
+        <a href="/release/${r.slug || slugify(r.title)}/" style="text-decoration:none;color:inherit;display:block;">
           <div style="aspect-ratio:1;overflow:hidden;background:#111;position:relative;margin-bottom:8px;border-radius:2px;">
             <img src="${r.cover}" alt="${r.title}" loading="lazy"
               style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;"
@@ -524,6 +664,7 @@
           </div>
           <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</p>
           <p style="font-size:11px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.artist} · ${r.year}</p>
+          ${badge}
         </a>`;
       }).join('');
     }
@@ -537,6 +678,15 @@
       });
     });
 
+    document.querySelectorAll('[data-type="origin"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type="origin"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeOrigin = btn.dataset.value;
+        renderReleases();
+      });
+    });
+
     document.querySelectorAll('[data-type="artist"]').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('[data-type="artist"]').forEach(b => b.classList.remove('active'));
@@ -546,13 +696,46 @@
       });
     });
 
+    document.querySelectorAll('[data-type="format"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type="format"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFormat = btn.dataset.value;
+        renderReleases();
+      });
+    });
+
+    document.querySelectorAll('[data-sort]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeSort = btn.dataset.sort;
+        renderReleases();
+      });
+    });
+
+    const searchInput = document.getElementById('home-release-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value || '';
+        renderReleases();
+      });
+    }
+
     async function initReleases() {
       try {
-        const res = await fetch('assets/data/artists.json');
+        // Light index only — full credits/tracks load on individual release pages
+        const res = await fetch('assets/data/releases-index.json');
         const data = await res.json();
         releases = data.releases || [];
+        releases.sort(function (a, b) {
+          var ya = parseInt(a.year, 10) || 0;
+          var yb = parseInt(b.year, 10) || 0;
+          if (yb !== ya) return yb - ya;
+          return String(a.title || '').localeCompare(String(b.title || ''));
+        });
       } catch (e) {
-        console.error('Failed to load releases data:', e);
+        console.error('Failed to load releases index:', e);
         releases = [];
       }
       initHeroBanner();
@@ -727,6 +910,15 @@
           </div>
         </div>
       </div>
+      <nav aria-label="Our artists" class="mb-8 text-sm text-gray-400">
+        <span class="text-caption text-gray-400 mr-3">Artists</span>
+        <a href="artist/abir/" class="mr-4 hover:text-white transition">Abir</a>
+        <a href="artist/shrey/" class="mr-4 hover:text-white transition">Shrey</a>
+        <a href="artist/slay/" class="mr-4 hover:text-white transition">Slay</a>
+        <a href="artist/apoorvv/" class="mr-4 hover:text-white transition">Apoorvv</a>
+        <a href="artist/faraz/" class="mr-4 hover:text-white transition">Faraz</a>
+        <a href="artist/Sam/" class="mr-4 hover:text-white transition">Sam Rajput</a>
+      </nav>
       <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-xs text-gray-500">&copy; 2026 ARTISTTAAN. All rights reserved.</p>
         <p class="text-xs text-gray-500">Founded by Aamir Kunwar</p>

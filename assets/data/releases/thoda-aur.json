@@ -1,0 +1,18 @@
+{
+  "artist": "Shrey",
+  "spotify_url": "https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz",
+  "external": "true",
+  "artist_id": "shrey",
+  "spotify_embed": "https://open.spotify.com/embed/track/6gAEHCnOcfK4sLjA7Zc1Nz",
+  "label": "Tarun Bisht",
+  "cover": "/assets/images/thoda-aur_640x640.jpg",
+  "title": "Thoda Aur",
+  "type": "single",
+  "year": "2025",
+  "host_artist": "Tarun Bisht",
+  "slug": "thoda-aur",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/6gAEHCnOcfK4sLjA7Zc1Nz",
+    "spotify_embed": "https://open.spotify.com/embed/track/6gAEHCnOcfK4sLjA7Zc1Nz"
+  }
+}

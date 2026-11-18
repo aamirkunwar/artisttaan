@@ -17,335 +17,490 @@
   <meta name="twitter:title" id="twitter-title" content="" />
   <meta name="twitter:description" id="twitter-description" content="" />
   <meta name="twitter:image" id="twitter-image" content="" />
+  <script type="application/ld+json" id="ld-json"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --paper: #fafaf8;
-      --paper-tint: #f2f0e9;
-      --ink: #16150f;
-      --line: #e4e0d5;
-      --mute: #8c8676;
-      --gold: #a97a1f;
+      --bg: #fafaf8;
+      --bg-elevated: #f3f2ed;
+      --bg-card: #eceae3;
+      --text: #0a0a0a;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --border: #e5e5e5;
+      --radius: 12px;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      line-height: 1.5;
     }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-    a { color: inherit; }
-
-    .display { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; }
-
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 64px;
+      height: 60px;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px;
-      background: rgba(250, 250, 248, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
+      padding: 0 28px;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-logo { height: 24px; width: auto; }
+    .nav-logo img { height: 26px; width: auto; }
     .nav-back {
-      font-size: 13px; font-weight: 500; text-decoration: none; color: var(--mute);
-      display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+      font-size: 13px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.15s;
     }
-    .nav-back:hover { color: var(--ink); }
-    .nav-back svg { transition: transform 0.2s; }
-    .nav-back:hover svg { transform: translateX(-3px); }
+    .nav-back:hover { color: var(--text); }
 
-    /* ── HERO ── */
     .hero {
-      margin-top: 64px;
-      max-width: 1320px; margin-left: auto; margin-right: auto;
-      padding: 120px 48px 96px;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 64px;
-      align-items: start;
+      margin-top: 60px;
+      padding: 48px 28px 40px;
+      max-width: 1100px;
+      margin-left: auto; margin-right: auto;
     }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
     .hero-eyebrow {
-      font-size: 12px; color: var(--mute); margin-bottom: 28px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.05s;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 12px;
     }
     .hero-name {
-      font-size: clamp(48px, 6.4vw, 92px);
-      font-weight: 400; letter-spacing: -0.01em; line-height: 0.98;
-      margin-bottom: 28px;
-      opacity: 0; animation: rise 0.8s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.12s;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.05; margin-bottom: 10px;
     }
     .hero-role {
-      font-size: 15px; color: var(--mute); margin-bottom: 32px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.2s;
+      font-size: 16px; color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .genre-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 18px;
+    }
+    .genre-tag {
+      padding: 5px 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
     }
     .hero-bio {
-      font-size: 16px; line-height: 1.8; color: #46443c;
-      max-width: 480px; margin-bottom: 40px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.28s;
+      font-size: 15px; line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: 22px;
     }
     .hero-actions {
-      display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin-bottom: 56px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.36s;
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 28px;
     }
-    .btn-solid {
+    .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 28px; background: var(--ink); color: #fff;
-      font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: opacity 0.2s;
+      padding: 12px 20px; border-radius: 999px;
+      font-size: 14px; font-weight: 600;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
     }
-    .btn-solid:hover { opacity: 0.8; }
-    .link-quiet {
-      font-size: 13px; font-weight: 500; color: var(--mute);
-      text-decoration: none; border-bottom: 1px solid transparent;
-      padding-bottom: 2px; transition: all 0.2s;
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: #0a0a0a; color: #fff; }
+    .btn-primary:hover { background: #222; }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
     }
-    .link-quiet:hover { color: var(--ink); border-color: var(--ink); }
-
+    .btn-secondary:hover { border-color: #0a0a0a; }
+    .btn svg { width: 16px; height: 16px; }
+    .social-icons {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      align-items: center;
+    }
+    .social-icon {
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+    }
+    .social-icon:hover {
+      background: #0a0a0a; color: #fff; border-color: #0a0a0a;
+      transform: translateY(-1px);
+    }
+    .social-icon svg { width: 20px; height: 20px; display: block; }
+    .hero-actions .social-icon { width: 44px; height: 44px; }
     .hero-stats {
-      display: flex; gap: 40px;
-      opacity: 0; animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.44s;
+      display: flex; flex-wrap: wrap; gap: 28px;
     }
-    .hero-stat p:first-child {
-      font-family: 'Archivo Black'; font-size: 26px; letter-spacing: -0.01em; line-height: 1;
+    .stat-item strong {
+      display: block; font-size: 20px; font-weight: 700;
+      letter-spacing: -0.02em;
     }
-    .hero-stat p:last-child {
-      font-size: 12px; color: var(--mute); margin-top: 6px;
+    .stat-item span {
+      font-size: 12px; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.04em;
     }
 
-    .hero-portrait {
+    .sec-nav {
+      position: sticky; top: 60px; z-index: 50;
+      background: rgba(250,250,248,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+    }
+    .sec-nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .sec-nav-inner::-webkit-scrollbar { display: none; }
+    .sec-nav-btn {
+      flex: 0 0 auto;
+      padding: 14px 16px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-muted);
+      background: none; border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .sec-nav-btn:hover { color: var(--text); }
+    .sec-nav-btn.active {
+      color: var(--text);
+      border-bottom-color: #0a0a0a;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .section-title {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; margin-bottom: 24px;
+    }
+    .section-head .section-title { margin-bottom: 0; }
+
+    .featured {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      padding: 20px;
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      margin-bottom: 40px;
+      align-items: center;
+    }
+    .featured-cover {
+      aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+      background: #111;
+    }
+    .featured-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .featured-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .featured-title {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .featured-meta {
+      font-size: 13px; color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .featured-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .discog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px 16px;
+    }
+    .discog-card { display: block; color: inherit; }
+    .discog-cover {
+      aspect-ratio: 1; border-radius: 8px; overflow: hidden;
+      background: #111; margin-bottom: 10px;
       position: relative;
-      aspect-ratio: 4 / 5; overflow: hidden; background: #e5e2d8;
-      opacity: 0; animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 0.18s;
     }
-    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.05); display: block; }
+    .discog-cover img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.35s;
+    }
+    .discog-card:hover .discog-cover img { transform: scale(1.04); }
+    .discog-title {
+      font-size: 13px; font-weight: 600;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+    .discog-meta {
+      font-size: 12px; color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .origin-badge {
+      display: inline-block;
+      padding: 2px 7px; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      border-radius: 2px; background: #f0f0ed; color: #666;
+    }
+    .origin-badge.external { background: #111; color: #fff; }
 
-    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ── INDEX NAV ── */
-    .indexnav {
-      position: sticky; top: 64px; z-index: 90;
-      background: var(--paper);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      display: flex; gap: 32px; padding: 0 48px;
+    .tracklist {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
-    .idx {
-      padding: 18px 0; font-size: 13px; font-weight: 500; color: var(--mute);
-      border-bottom: 2px solid transparent; margin-bottom: -1px;
-      cursor: pointer; background: none; border-top: none; border-left: none; border-right: none;
-      transition: color 0.2s;
-    }
-    .idx:hover { color: var(--ink); }
-    .idx.active { color: var(--ink); border-bottom-color: var(--gold); }
-
-    /* ── SECTIONS ── */
-    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
-    .section { padding: 96px 0; }
-    .sec-title {
-      font-family: 'Archivo Black'; font-size: clamp(26px, 2.6vw, 34px);
-      font-weight: 400; letter-spacing: -0.01em; margin-bottom: 48px;
-    }
-
-    /* ── FEATURED RELEASE STRIP ── */
-    .ls { position: relative; overflow: hidden; border: 1px solid var(--line); margin-bottom: 64px; }
-    .ls-track { display: flex; transition: transform 0.5s cubic-bezier(.22,1,.36,1); }
-    .ls-slide {
-      flex: 0 0 100%; display: grid; grid-template-columns: 156px 1fr; gap: 32px;
-      padding: 32px; align-items: center;
-    }
-    .ls-poster { width: 156px; height: 156px; overflow: hidden; background: #e5e2d8; flex-shrink: 0; }
-    .ls-poster img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter 0.4s; }
-    .ls-slide:hover .ls-poster img { filter: grayscale(0); }
-    .ls-info { min-width: 0; }
-    .ls-tag {
-      font-size: 11px; font-weight: 600; color: var(--gold); display: block; margin-bottom: 10px;
-    }
-    .ls-title { font-family: 'Archivo Black'; font-size: clamp(19px, 2.2vw, 28px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .ls-year { font-size: 12px; color: var(--mute); margin-top: 6px; }
-    .ls-actions { margin-top: 18px; }
-    .ls-actions a {
-      display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600;
-      color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px;
-    }
-    .ls-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
-      border-radius: 50%; background: var(--paper); border: 1px solid var(--line); color: var(--ink);
-      cursor: pointer; font-size: 16px; line-height: 1; display: flex; align-items: center;
-      justify-content: center; transition: border-color 0.2s; z-index: 2;
-    }
-    .ls-arrow:hover { border-color: var(--ink); }
-    .ls-prev { left: 12px; }
-    .ls-next { right: 12px; }
-    .ls-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
-    .ls-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line); cursor: pointer; transition: all 0.2s; }
-    .ls-dot.active { background: var(--gold); width: 16px; border-radius: 3px; }
-    @media (max-width: 600px) { .ls-slide { grid-template-columns: 1fr; padding: 24px; } .ls-poster { width: 100%; height: auto; aspect-ratio: 1; } }
-
-    /* ── TRACKLIST ── */
-    .tracklist { border-top: 1px solid var(--line); }
     .track-row {
-      position: relative; display: flex; align-items: center; gap: 20px;
-      padding: 20px 0; border-bottom: 1px solid var(--line);
-      text-decoration: none; color: var(--ink);
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
     }
-    .track-num { font-family: 'Archivo Black'; font-size: 13px; color: var(--mute); width: 32px; flex-shrink: 0; transition: color 0.2s; }
-    .track-row:hover .track-num { color: var(--gold); }
-    .track-title { flex: 1; font-size: 17px; font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: transform 0.25s; }
-    .track-row:hover .track-title { transform: translateX(6px); }
-    .track-year { font-size: 12px; color: var(--mute); width: 48px; flex-shrink: 0; }
-    .track-cta { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--gold); opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
-    .track-row:hover .track-cta { opacity: 1; }
-    .track-thumb {
-      position: absolute; right: 0; top: 50%; width: 68px; height: 68px;
-      transform: translateY(-50%) translateX(16px) scale(0.94);
-      opacity: 0; pointer-events: none; overflow: hidden; z-index: 3;
-      transition: all 0.3s cubic-bezier(0.16,1,0.3,1); background: #e5e2d8;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+    .track-row:last-child { border-bottom: none; }
+    .track-row:hover { background: var(--bg-elevated); }
+    .track-num {
+      width: 20px; font-size: 12px; font-weight: 600;
+      color: var(--text-muted); text-align: right; flex-shrink: 0;
     }
-    .track-row:hover .track-thumb { opacity: 1; transform: translateY(-50%) translateX(0) scale(1); }
-    .track-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .empty-note { font-size: 14px; color: var(--mute); padding: 20px 0; }
-
-    /* ── ABOUT ── */
-    #about { background: var(--paper-tint); }
-    .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start; }
-    .about-photo { aspect-ratio: 3 / 4; overflow: hidden; background: #e5e2d8; }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
-    .about-bio { font-size: 16px; line-height: 1.9; color: #46443c; margin-bottom: 36px; }
-    .genre-tag {
-      display: inline-block; padding: 6px 14px; border: 1px solid var(--line);
-      font-size: 12px; color: var(--mute); margin: 0 8px 8px 0;
+    .track-title {
+      flex: 1; min-width: 0;
+      font-size: 14px; font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .platform-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 32px; }
-    .platform-link { font-size: 13px; font-weight: 500; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color 0.2s; }
-    .platform-link:hover { border-color: var(--ink); }
+    .track-cta {
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .track-row:hover .track-cta { color: var(--text); }
 
-    /* ── VIDEOS ── */
-    .videos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .vid-label { font-size: 14px; font-weight: 500; margin-top: 14px; }
-    .vid-frame { aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
-    .vid-frame iframe { width: 100%; height: 100%; border: none; display: block; }
-    .vid-card { position: relative; cursor: pointer; overflow: hidden; background: #1a1a1a; }
-    .vid-thumb { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.4); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s; }
-    .vid-card:hover .vid-thumb { transform: scale(1.04); filter: grayscale(0) brightness(0.65); }
-    .vid-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.88); width: 48px; height: 48px; border-radius: 50%; background: rgba(250,250,248,0.94); display: flex; align-items: center; justify-content: center; opacity: 0.92; transition: transform 0.3s, opacity 0.3s; }
-    .vid-card:hover .vid-play-btn { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .about-text {
+      font-size: 15px; line-height: 1.8;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+    }
+    .about-side {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .side-card {
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .side-card h3 {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 12px;
+    }
+    .city-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .city-tag {
+      padding: 6px 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
+      background: #fff; border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .press-links {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .press-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 500;
+      color: var(--text);
+    }
+    .press-link:hover { text-decoration: underline; }
 
-    /* ── FOOTER ── */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .vid-card {
+      border-radius: 10px; overflow: hidden;
+      background: #111; cursor: pointer;
+      position: relative; aspect-ratio: 16/9;
+    }
+    .vid-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.9; transition: opacity 0.2s;
+    }
+    .vid-card:hover img { opacity: 1; }
+    .vid-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vid-play span {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vid-play svg { width: 18px; height: 18px; margin-left: 2px; }
+    .vid-label {
+      font-size: 13px; font-weight: 500;
+      margin-top: 10px;
+    }
+    .empty-note {
+      font-size: 14px; color: var(--text-muted);
+      padding: 24px 0;
+    }
+
     footer {
-      background: var(--ink); color: #fff;
-      padding: 48px; display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding: 32px 28px;
+      text-align: center;
+      font-size: 13px; color: var(--text-muted);
     }
-    footer p { font-size: 12px; color: #777; }
-    footer a { font-size: 12px; color: #777; text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: #fff; }
+    footer a {
+      display: inline-block; margin-top: 8px;
+      font-weight: 500; color: var(--text-secondary);
+    }
+    footer a:hover { color: var(--text); }
 
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .hero { grid-template-columns: 1fr; padding: 96px 24px 64px; gap: 40px; }
-      .hero-portrait { max-width: 320px; }
-      .indexnav { padding: 0 24px; gap: 24px; }
-      .wrap { padding: 0 24px; }
-      .section { padding: 64px 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo { max-width: 320px; }
-      .videos-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 36px 24px; }
+    @media (max-width: 800px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+      .hero-photo { max-width: 240px; margin: 0 auto; }
+      .hero-bio { margin-left: auto; margin-right: auto; }
+      .hero-actions, .genre-tags, .hero-stats { justify-content: center; }
+      .featured { grid-template-columns: 120px 1fr; gap: 16px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .discog-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 600px) {
-      .track-thumb { display: none; }
-      .track-cta { display: none; }
+    @media (max-width: 480px) {
+      nav, .sec-nav { padding-left: 16px; padding-right: 16px; }
+      .hero, .wrap, footer { padding-left: 16px; padding-right: 16px; }
+      .hero { padding-top: 32px; }
+      .featured { grid-template-columns: 1fr; }
+      .featured-cover { max-width: 160px; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="/"><img class="nav-logo" src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN" /></a>
+  <a href="/" class="nav-logo">
+    <img src="/assets/images/logo/logo-nav.png" alt="ARTISTTAAN" />
+  </a>
   <a href="/artists/" class="nav-back">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-    All Artists
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    All artists
   </a>
 </nav>
 
-<div class="hero">
-  <div>
-    <p class="hero-eyebrow">ARTISTTAAN — <span id="hero-role"></span></p>
-    <h1 class="hero-name display" id="hero-name"></h1>
-    <p class="hero-role" id="hero-role2"></p>
-    <p class="hero-bio" id="hero-bio"></p>
-    <div class="hero-actions" id="hero-actions"></div>
-    <div class="hero-stats" id="hero-stats"></div>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-photo">
+      <img id="hero-img" src="" alt="" />
+    </div>
+    <div>
+      <p class="hero-eyebrow">ARTISTTAAN Artist</p>
+      <h1 class="hero-name" id="hero-name"></h1>
+      <p class="hero-role" id="hero-role"></p>
+      <div class="genre-tags" id="hero-genres" style="display:none"></div>
+      <p class="hero-bio" id="hero-bio"></p>
+      <div class="hero-actions" id="hero-actions"></div>
+      <div class="hero-stats" id="hero-stats"></div>
+    </div>
   </div>
-  <div class="hero-portrait">
-    <img id="hero-img" src="" alt="" />
+</header>
+
+<div class="sec-nav">
+  <div class="sec-nav-inner">
+    <button type="button" class="sec-nav-btn active" data-target="music">Music</button>
+    <button type="button" class="sec-nav-btn" data-target="about">About</button>
+    <button type="button" class="sec-nav-btn" data-target="videos">Videos</button>
   </div>
 </div>
 
-<div class="indexnav">
-  <button class="idx active" data-target="music">Music</button>
-  <button class="idx" data-target="about">About</button>
-  <button class="idx" data-target="videos">Videos</button>
-</div>
-
-<div id="music">
+<section id="music">
   <div class="wrap">
     <div class="section">
-      <h2 class="sec-title display" id="music-title">Music</h2>
-      <div id="latest-release-panel"></div>
-      <div id="top-tracks-section" style="display:none; margin-bottom: 64px;">
-        <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">Top Tracks on Spotify</p>
+      <div class="section-head">
+        <h2 class="section-title">Music</h2>
+      </div>
+      <div id="featured-release"></div>
+      <div id="top-tracks-block" style="display:none; margin-bottom: 40px;">
+        <h3 class="section-title">Top tracks</h3>
         <div class="tracklist" id="top-tracks-list"></div>
       </div>
-      <div class="tracklist" id="releases-grid"></div>
+      <h3 class="section-title">Discography</h3>
+      <div class="discog-grid" id="releases-grid"></div>
+      <p class="empty-note" id="releases-empty" style="display:none">No releases yet.</p>
     </div>
   </div>
-</div>
+</section>
 
-<div id="about">
+<section id="about">
   <div class="wrap">
     <div class="section">
+      <h2 class="section-title">About</h2>
       <div class="about-grid">
-        <div class="about-photo">
-          <img id="about-photo" src="" alt="" />
-        </div>
         <div>
-          <h2 class="sec-title display" id="about-title"></h2>
-          <p class="about-bio" id="about-bio"></p>
-          <div id="genres"></div>
-          <div class="platform-links" id="platform-links"></div>
+          <p class="about-text" id="about-bio"></p>
+        </div>
+        <div class="about-side">
+          <div class="side-card" id="platforms-card" style="display:none">
+            <h3>Listen &amp; follow</h3>
+            <div class="social-icons" id="platform-links"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div id="videos">
+<section id="videos">
   <div class="wrap">
     <div class="section">
-      <h2 class="sec-title display">Videos</h2>
+      <h2 class="section-title">Videos</h2>
       <div class="videos-grid" id="videos-grid"></div>
     </div>
   </div>
-</div>
+</section>
 
 <footer>
-  <p>© 2026 ARTISTTAAN</p>
+  <p>© 2026 ARTISTTAAN · All Rights Reserved</p>
   <a href="/">← Back to ARTISTTAAN</a>
 </footer>
 
 <script>
+(function () {
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   const pathSlug = (pathParts[0] === 'artist' && pathParts[1]) ? pathParts[1] : null;
   const artistId = new URLSearchParams(window.location.search).get('artist') || pathSlug;
@@ -354,235 +509,246 @@
     if (!p) return '';
     return '/' + String(p).replace(/^\/+/, '');
   }
-
   function slugify(s) {
     if (!s) return '';
     return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+  function isExternalRelease(r) {
+    if (r.external === true || r.external === 1 || r.external === 'true') return true;
+    const label = String(r.label || 'ARTISTTAAN').trim().toLowerCase();
+    return label && label !== 'artisttaan' && label !== 'artist taan';
+  }
 
   const artistVideos = {
-    shrey: [{t:'Kaagaz Aur Daag',e:'https://www.youtube.com/embed/ZYln3iWRxDk'},{t:'Sifarishein',e:'https://www.youtube.com/embed/rcKlMq2uDlk'},{t:'Thoughts Are Poison',e:'https://www.youtube.com/embed/afRnyWvO6PU'},{t:'Thoda Aur',e:'https://www.youtube.com/embed/Q5E5t5VbVeo'}],
-    abir: [{t:'Marz',e:'https://www.youtube.com/embed/U7AdDdqJWUg'},{t:'Kaho Na',e:'https://www.youtube.com/embed/lC9X-FtN7AI'}],
-    slay: [{t:'Namaskar',e:'https://www.youtube.com/embed/bLTVqTJ1hUQ'}],
-    apoorvv: [], faraz: []
+    shrey: [
+      { t: 'Kaagaz Aur Daag', e: 'https://www.youtube.com/embed/ZYln3iWRxDk' },
+      { t: 'Sifarishein', e: 'https://www.youtube.com/embed/rcKlMq2uDlk' },
+      { t: 'Thoughts Are Poison', e: 'https://www.youtube.com/embed/afRnyWvO6PU' },
+      { t: 'Thoda Aur', e: 'https://www.youtube.com/embed/Q5E5t5VbVeo' }
+    ],
+    abir: [
+      { t: 'Marz', e: 'https://www.youtube.com/embed/U7AdDdqJWUg' },
+      { t: 'Kaho Na', e: 'https://www.youtube.com/embed/lC9X-FtN7AI' }
+    ],
+    slay: [
+      { t: 'Namaskar', e: 'https://www.youtube.com/embed/bLTVqTJ1hUQ' }
+    ],
+    apoorvv: [],
+    faraz: []
   };
+
+  const ICONS = {
+    spotify: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.46-.6 11.64 1.32.3.18.42.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-.96-.18-1.08-.66-.12-.48.18-.96.66-1.08 4.32-1.32 9.72-.66 13.38 1.62.42.24.54.84.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.56.3z"/></svg>',
+    apple: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.543 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.039-3.039 2.48-4.494 2.59-4.559-1.429-2.066-3.623-2.293-4.393-2.347-2-.156-3.675 1.062-4.6 1.062zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>',
+    youtube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>'
+  };
+  function socialBtn(href, icon, label) {
+    return '<a class="social-icon" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(label) + '" aria-label="' + esc(label) + '">' + icon + '</a>';
+  }
 
   async function init() {
     try {
       const res = await fetch('/assets/data/artists.json');
       const data = await res.json();
-      const artist = data.artists.find(a => a.id === artistId);
-      if (!artist) { document.body.innerHTML = '<p style="text-align:center;padding:160px 20px;font-size:14px;color:#8c8676;">Artist not found.</p>'; return; }
+      const artist = (data.artists || []).find(function (a) { return a.id === artistId; });
+      if (!artist) {
+        document.body.innerHTML = '<p style="text-align:center;padding:160px 20px;font-size:14px;color:#999;">Artist not found.</p>';
+        return;
+      }
       render(artist, data.releases || []);
-      renderTopTracks(artist);
-    } catch(e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
-  // Renders the artist's top tracks straight from the "top_tracks" array on
-  // the artist object in artists.json.
-  //
-  // NOTE: this used to fetch /api/spotify-top-tracks/:id, which called
-  // Spotify's "Get Artist's Top Tracks" endpoint live via the Worker. As of
-  // Nov 27 2024, Spotify restricted that endpoint (along with
-  // related-artists/recommendations) to apps with Extended Quota Mode --
-  // which requires a registered business + 250k/mo active users + a live
-  // consumer service. A normal Development-Mode app (what any new Spotify
-  // dev app gets) receives a 403 from Spotify, which the Worker turned into
-  // a 502. There's no code fix for this on our side; Spotify just doesn't
-  // grant that access tier for this kind of use case. So top tracks are
-  // curated by hand here instead -- update them by editing each artist's
-  // "top_tracks" array in assets/data/artists.json.
-  function renderTopTracks(artist) {
-    const tracks = artist.top_tracks || [];
-    if (!tracks.length) {
-      // No hand-curated list: show Spotify's own live artist player, which
-      // lists the artist's current popular tracks and updates automatically.
-      // This is an embed, not an API call, so the Web API restrictions
-      // don't apply.
-      const m = (artist.spotify_url || '').match(/\/artist\/([A-Za-z0-9]+)/);
-      if (!m) return;
-      document.getElementById('top-tracks-list').innerHTML =
-        '<iframe title="Top tracks on Spotify" style="border-radius:12px; border:0;" ' +
-        'src="https://open.spotify.com/embed/artist/' + m[1] + '" ' +
-        'width="100%" height="352" frameborder="0" loading="lazy" ' +
-        'allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>';
-      document.getElementById('top-tracks-section').style.display = 'block';
-      return;
-    }
-
-    document.getElementById('top-tracks-list').innerHTML = tracks.map((t, i) => `
-      <a class="track-row" href="${t.url}" target="_blank" rel="noopener noreferrer">
-        <span class="track-num display">${String(i + 1).padStart(2, '0')}</span>
-        <span class="track-title">${t.name}</span>
-        <span class="track-year">${t.duration || ''}</span>
-        <span class="track-cta">Play on Spotify
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </span>
-        ${t.image ? `<div class="track-thumb"><img src="${t.image}" alt="${t.name}" loading="lazy" /></div>` : ''}
-      </a>`).join('');
-    document.getElementById('top-tracks-section').style.display = 'block';
+  function artistReleases(allReleases, a) {
+    const seen = {};
+    return allReleases.filter(function (r) {
+      const ids = String(r.artist_id || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      const nameMatch = (r.artist || '').toLowerCase().includes((a.name || '').toLowerCase());
+      const mine = ids.length ? ids.indexOf(a.id) !== -1 : nameMatch;
+      const s = slugify(r.title);
+      if (!mine || !s || seen[s]) return false;
+      seen[s] = true;
+      return true;
+    }).sort(function (x, y) {
+      return (parseInt(y.year, 10) || 0) - (parseInt(x.year, 10) || 0);
+    });
   }
 
   function render(a, allReleases) {
-    document.getElementById('page-title').textContent = `${a.name} — ARTISTTAAN`;
-    document.getElementById('meta-description').content = a.full_bio || a.bio;
-    document.getElementById('og-title').content = `${a.name} | ARTISTTAAN`;
-    document.getElementById('og-description').content = a.bio;
-    document.getElementById('og-url').content = `https://artisttaanmusic.com/artist/${a.id}/`;
-    document.getElementById('canonical-url').href = `https://artisttaanmusic.com/artist/${a.id}/`;
-    document.getElementById('twitter-title').content = `${a.name} | ARTISTTAAN`;
-    document.getElementById('twitter-description').content = a.bio;
-    if (a.square_photo) {
-      document.getElementById('og-image').content = `https://artisttaanmusic.com${assetPath(a.square_photo)}`;
-      document.getElementById('twitter-image').content = `https://artisttaanmusic.com${assetPath(a.square_photo)}`;
+    const releases = artistReleases(allReleases, a);
+    const pageUrl = 'https://artisttaanmusic.com/artist/' + encodeURIComponent(a.id) + '/';
+    const photo = assetPath(a.photo || a.square_photo || a.banner);
+    const desc = (a.bio || a.full_bio || '').trim().slice(0, 160) ||
+      (a.name + ' — ARTISTTAAN artist.');
+
+    document.getElementById('page-title').textContent = a.name + ' | ARTISTTAAN';
+    document.getElementById('meta-description').content = desc;
+    document.getElementById('canonical-url').href = pageUrl;
+    document.getElementById('og-url').content = pageUrl;
+    document.getElementById('og-title').content = a.name + ' | ARTISTTAAN';
+    document.getElementById('og-description').content = desc;
+    document.getElementById('og-image').content = photo ? ('https://artisttaanmusic.com' + photo) : 'https://artisttaanmusic.com/assets/images/logo/og-image.jpg';
+    document.getElementById('twitter-title').content = a.name + ' | ARTISTTAAN';
+    document.getElementById('twitter-description').content = desc;
+    document.getElementById('twitter-image').content = document.getElementById('og-image').content;
+
+    try {
+      document.getElementById('ld-json').textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": a.name,
+        "url": pageUrl,
+        "image": photo ? ('https://artisttaanmusic.com' + photo) : undefined,
+        "description": desc,
+        "genre": a.genres || undefined
+      });
+    } catch (e) {}
+
+    document.getElementById('hero-name').textContent = a.name || '';
+    document.getElementById('hero-role').textContent = a.role || '';
+    document.getElementById('hero-bio').textContent = a.bio || '';
+    const img = document.getElementById('hero-img');
+    if (photo) { img.src = photo; img.alt = a.name; }
+
+    if (Array.isArray(a.genres) && a.genres.length) {
+      const g = document.getElementById('hero-genres');
+      g.innerHTML = a.genres.map(function (x) {
+        return '<span class="genre-tag">' + esc(x) + '</span>';
+      }).join('');
+      g.style.display = 'flex';
     }
 
-    document.getElementById('hero-role').textContent = a.role;
-    document.getElementById('hero-role2').textContent = a.role;
-    document.getElementById('hero-name').textContent = a.name;
-    document.getElementById('hero-bio').textContent = a.bio;
-    document.getElementById('hero-img').src = assetPath(a.banner || a.photo);
-    document.getElementById('hero-img').alt = a.name;
+    var actions = '<div class="social-icons">';
+    if (a.spotify_url) actions += socialBtn(a.spotify_url, ICONS.spotify, 'Spotify');
+    if (a.apple_music_url) actions += socialBtn(a.apple_music_url, ICONS.apple, 'Apple Music');
+    if (a.youtube_url || a.youtube) actions += socialBtn(a.youtube_url || a.youtube, ICONS.youtube, 'YouTube');
+    if (a.instagram) actions += socialBtn(a.instagram, ICONS.instagram, 'Instagram');
+    actions += '</div>';
+    document.getElementById('hero-actions').innerHTML = actions;
 
-    const acts = [];
-    if (a.spotify_url) acts.push(`<a href="${a.spotify_url}" target="_blank" class="btn-solid">Listen on Spotify</a>`);
-    if (a.apple_music_url) acts.push(`<a href="${a.apple_music_url}" target="_blank" class="link-quiet">Apple Music</a>`);
-    if (a.instagram) acts.push(`<a href="${a.instagram}" target="_blank" class="link-quiet">Instagram</a>`);
-    document.getElementById('hero-actions').innerHTML = acts.join('');
+    document.getElementById('hero-stats').innerHTML = '';
+    document.getElementById('hero-stats').style.display = 'none';
 
-    // Same rule as the Worker: match by artist_id, or by exact artist name for
-    // rows where artist_id was never filled in.
-    const seenRel = {};
-    const releases = allReleases.filter(r => {
-      const mine = r.artist_id ? r.artist_id === a.id
-        : (r.artist || '').trim().toLowerCase() === (a.name || '').trim().toLowerCase();
-      const s = slugify(r.title);
-      if (!mine || !s || seenRel[s]) return false;
-      seenRel[s] = true;
-      return true;
-    });
-    const stats = [];
-    if (a.total_streams && a.total_streams !== '—') stats.push(`<div class="hero-stat"><p>${a.total_streams}</p><p>Total Streams</p></div>`);
-    stats.push(`<div class="hero-stat"><p>${releases.length}</p><p>Releases</p></div>`);
-    document.getElementById('hero-stats').innerHTML = stats.join('');
+    var feat = document.getElementById('featured-release');
+    if (releases.length) {
+      var r0 = releases[0];
+      var type = (r0.type || 'Release');
+      feat.innerHTML =
+        '<a class="featured" href="/release/' + slugify(r0.title) + '/">' +
+          '<div class="featured-cover"><img src="' + esc(assetPath(r0.cover)) + '" alt="' + esc(r0.title) + '" loading="lazy"/></div>' +
+          '<div>' +
+            '<p class="featured-label">Latest release</p>' +
+            '<p class="featured-title">' + esc(r0.title) + '</p>' +
+            '<p class="featured-meta">' + esc(type) + ' · ' + esc(r0.year || '') + '</p>' +
+            '<div class="featured-actions"><span class="btn btn-secondary" style="padding:8px 14px;font-size:12px;">View release</span></div>' +
+          '</div>' +
+        '</a>';
+    }
 
-    const latestPanel = document.getElementById('latest-release-panel');
-    const slides = releases.slice(0, 5);
-    if (slides.length) {
-      latestPanel.innerHTML = `
-        <div class="ls" id="ls">
-          <div class="ls-track" id="ls-track"></div>
-          <button class="ls-arrow ls-prev" id="ls-prev" aria-label="Previous">&#8249;</button>
-          <button class="ls-arrow ls-next" id="ls-next" aria-label="Next">&#8250;</button>
-          <div class="ls-dots" id="ls-dots"></div>
-        </div>`;
-      const track = document.getElementById('ls-track');
-      const dotsEl = document.getElementById('ls-dots');
-      const prevBtn = document.getElementById('ls-prev');
-      const nextBtn = document.getElementById('ls-next');
-      track.innerHTML = slides.map((r, i) => `
-        <div class="ls-slide">
-          <div class="ls-poster"><img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy" /></div>
-          <div class="ls-info">
-            <span class="ls-tag">${i === 0 ? 'Latest Release' : 'Recent Release'}</span>
-            <p class="ls-title display">${r.title}</p>
-            <p class="ls-year">${r.year}</p>
-            <div class="ls-actions"><a href="/release/${slugify(r.title)}/">View Release</a></div>
-          </div>
-        </div>`).join('');
-      dotsEl.innerHTML = slides.map((_, i) => `<span class="ls-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('');
-      const dots = [...dotsEl.children];
-      let idx = 0, timer;
-      function go(i) {
-        idx = (i + slides.length) % slides.length;
-        track.style.transform = `translateX(-${idx * 100}%)`;
-        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
-      }
-      function startTimer() { timer = setInterval(() => go(idx + 1), 5000); }
-      function stopTimer() { clearInterval(timer); }
-      prevBtn.addEventListener('click', () => { go(idx - 1); stopTimer(); startTimer(); });
-      nextBtn.addEventListener('click', () => { go(idx + 1); stopTimer(); startTimer(); });
-      dots.forEach(d => d.addEventListener('click', () => { go(+d.dataset.i); stopTimer(); startTimer(); }));
-      const box = document.getElementById('ls');
-      box.addEventListener('mouseenter', stopTimer);
-      box.addEventListener('mouseleave', startTimer);
-      if (slides.length < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsEl.style.display = 'none'; }
-      else { startTimer(); }
+    var grid = document.getElementById('releases-grid');
+    if (!releases.length) {
+      document.getElementById('releases-empty').style.display = 'block';
+      grid.innerHTML = '';
     } else {
-      latestPanel.innerHTML = '';
+      grid.innerHTML = releases.map(function (r) {
+        var ext = isExternalRelease(r);
+        var badge = ext
+          ? '<span class="origin-badge external">Outside</span>'
+          : '<span class="origin-badge">ARTISTTAAN</span>';
+        return (
+          '<a class="discog-card" href="/release/' + slugify(r.title) + '/">' +
+            '<div class="discog-cover"><img src="' + esc(assetPath(r.cover)) + '" alt="' + esc(r.title) + '" loading="lazy"/></div>' +
+            '<p class="discog-title">' + esc(r.title) + '</p>' +
+            '<p class="discog-meta">' + esc(r.type || 'Release') + ' · ' + esc(r.year || '') + '</p>' +
+            badge +
+          '</a>'
+        );
+      }).join('');
     }
 
-    document.getElementById('music-title').textContent = `${a.name}'s Music`;
-    document.getElementById('releases-grid').innerHTML = releases.length
-      ? releases.map((r, i) => `
-        <a class="track-row" href="/release/${slugify(r.title)}/">
-          <span class="track-num display">${String(i + 1).padStart(2, '0')}</span>
-          <span class="track-title">${r.title}</span>
-          <span class="track-year">${r.year}</span>
-          <span class="track-cta">Listen
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </span>
-          <div class="track-thumb"><img src="${assetPath(r.cover)}" alt="${r.title}" loading="lazy" /></div>
-        </a>`).join('')
-      : '<p class="empty-note">Releases coming soon.</p>';
+    var tracks = Array.isArray(a.top_tracks) ? a.top_tracks.filter(function (t) { return t && t.name; }) : [];
+    if (tracks.length) {
+      document.getElementById('top-tracks-block').style.display = 'block';
+      document.getElementById('top-tracks-list').innerHTML = tracks.map(function (t, i) {
+        var row =
+          '<span class="track-num">' + (i + 1) + '</span>' +
+          '<span class="track-title">' + esc(t.name) + '</span>' +
+          (t.url ? '<span class="track-cta">Play →</span>' : '');
+        if (t.url) {
+          return '<a class="track-row" href="' + esc(t.url) + '" target="_blank" rel="noopener noreferrer">' + row + '</a>';
+        }
+        return '<div class="track-row">' + row + '</div>';
+      }).join('');
+    }
 
-    document.getElementById('about-title').textContent = a.name;
-    document.getElementById('about-bio').textContent = a.full_bio || a.bio;
-    document.getElementById('about-photo').src = assetPath(a.photo);
-    document.getElementById('about-photo').alt = a.name;
-    if (a.genres) document.getElementById('genres').innerHTML = a.genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
+    document.getElementById('about-bio').textContent = a.full_bio || a.bio || '';
 
-    const plats = [];
-    if (a.spotify_url) plats.push(`<a href="${a.spotify_url}" target="_blank" class="platform-link">Spotify</a>`);
-    if (a.apple_music_url) plats.push(`<a href="${a.apple_music_url}" target="_blank" class="platform-link">Apple Music</a>`);
-    if (a.youtube_url) plats.push(`<a href="${a.youtube_url}" target="_blank" class="platform-link">YouTube</a>`);
-    if (a.instagram) plats.push(`<a href="${a.instagram}" target="_blank" class="platform-link">Instagram</a>`);
-    document.getElementById('platform-links').innerHTML = plats.join('');
+    var plats = '';
+    if (a.spotify_url) plats += socialBtn(a.spotify_url, ICONS.spotify, 'Spotify');
+    if (a.apple_music_url) plats += socialBtn(a.apple_music_url, ICONS.apple, 'Apple Music');
+    if (a.youtube_url || a.youtube) plats += socialBtn(a.youtube_url || a.youtube, ICONS.youtube, 'YouTube');
+    if (a.instagram) plats += socialBtn(a.instagram, ICONS.instagram, 'Instagram');
+    if (plats) {
+      document.getElementById('platforms-card').style.display = 'block';
+      document.getElementById('platform-links').innerHTML = plats;
+    }
 
-    const vids = artistVideos[a.id] || [];
-    const playIconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#16150f"><path d="M8 5v14l11-7z"/></svg>`;
-    document.getElementById('videos-grid').innerHTML = vids.length
-      ? vids.map(v => {
-          const id = v.e.split('/embed/')[1];
-          const thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-          return `
-        <div>
-          <div class="vid-frame">
-            <div class="vid-card" style="width:100%;height:100%;" data-embed="${v.e}">
-              <img class="vid-thumb" src="${thumb}" alt="${v.t}" loading="lazy" />
-              <div class="vid-play-btn">${playIconSvg}</div>
-            </div>
-          </div>
-          <p class="vid-label">${v.t}</p>
-        </div>`;
-        }).join('')
-      : '<p class="empty-note">Videos coming soon.</p>';
-    document.querySelectorAll('.vid-card').forEach(el => {
-      el.addEventListener('click', () => {
-        const embed = el.getAttribute('data-embed');
-        el.innerHTML = `<iframe src="${embed}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>`;
-        el.style.cursor = 'default';
-      }, { once: true });
-    });
+    var vids = artistVideos[a.id] || [];
+    var vg = document.getElementById('videos-grid');
+    if (!vids.length) {
+      vg.innerHTML = '<p class="empty-note">Videos coming soon.</p>';
+    } else {
+      vg.innerHTML = vids.map(function (v) {
+        var id = (v.e || '').split('/embed/')[1] || '';
+        var thumb = id ? ('https://img.youtube.com/vi/' + id + '/hqdefault.jpg') : '';
+        return (
+          '<div>' +
+            '<div class="vid-card" data-embed="' + esc(v.e) + '">' +
+              (thumb ? '<img src="' + thumb + '" alt="' + esc(v.t) + '" loading="lazy"/>' : '') +
+              '<div class="vid-play"><span><svg viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"/></svg></span></div>' +
+            '</div>' +
+            '<p class="vid-label">' + esc(v.t) + '</p>' +
+          '</div>'
+        );
+      }).join('');
+      vg.querySelectorAll('.vid-card').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var embed = el.getAttribute('data-embed');
+          el.innerHTML = '<iframe src="' + embed + '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>';
+          el.style.cursor = 'default';
+        }, { once: true });
+      });
+    }
   }
 
-  document.querySelectorAll('.idx').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const el = document.getElementById(tab.dataset.target);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('.sec-nav-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-  const idxSections = ['music', 'about', 'videos'];
-  window.addEventListener('scroll', () => {
-    let cur = 'music';
-    idxSections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 140) cur = id;
+  var sections = ['music', 'about', 'videos'];
+  window.addEventListener('scroll', function () {
+    var cur = 'music';
+    sections.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) cur = id;
     });
-    document.querySelectorAll('.idx').forEach(t => t.classList.toggle('active', t.dataset.target === cur));
+    document.querySelectorAll('.sec-nav-btn').forEach(function (t) {
+      t.classList.toggle('active', t.dataset.target === cur);
+    });
   });
 
   document.addEventListener('DOMContentLoaded', init);
+})();
 </script>
 </body>
 </html>

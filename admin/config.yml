@@ -70,9 +70,66 @@ collections:
                   hint: "Only set this if the release belongs to a roster artist with their own page — must exactly match that artist's Artist ID below (e.g. slay, abir, shrey, apoorvv, faraz). Leave blank for legacy/non-roster artists." }
               - { label: Year, name: year, widget: string }
               - { label: Type, name: type, widget: select, options: [single, EP, album], default: single }
+              - label: Release origin
+                name: external
+                widget: select
+                options:
+                  - { label: "ARTISTTAAN (our label)", value: "false" }
+                  - { label: "Other label / other artist", value: "true" }
+                default: "false"
+                hint: "Choose ARTISTTAAN if this is an official label release. Choose Other if your artist is only featured / the track was put out by T-Series, Sony, another artist, etc."
+              - { label: "Released by (label or artist name)", name: label, widget: string, required: false,
+                  hint: "For ARTISTTAAN releases leave blank (defaults to ARTISTTAAN). For outside releases write the real label or host — e.g. T-Series, Sony Music Entertainment, Tarun Bist." }
+              - { label: Host artist, name: host_artist, widget: string, required: false,
+                  hint: "Optional. Only for features on someone else's song — the main artist/name on the release if different from our roster artist (e.g. Tarun Bist on a track featuring Slay)." }
               - { label: Spotify URL, name: spotify_url, widget: string, hint: "Full track or album link, e.g. https://open.spotify.com/track/..." }
               - { label: Spotify Embed URL, name: spotify_embed, widget: string, required: false,
                   hint: "Same as Spotify URL but with '/embed' after open.spotify.com — e.g. https://open.spotify.com/embed/track/..." }
+              - { label: Apple Music URL, name: apple_music_url, widget: string, required: false,
+                  hint: "Optional. Full Apple Music link, e.g. https://music.apple.com/in/album/... — shows in the 'Also on' row on the release page." }
+              - { label: YouTube Music URL, name: youtube_music_url, widget: string, required: false,
+                  hint: "Optional. YouTube Music link for this track/album." }
+              - { label: JioSaavn URL, name: jiosaavn_url, widget: string, required: false,
+                  hint: "Optional. JioSaavn link for this track/album." }
+              - { label: Amazon Music URL, name: amazon_music_url, widget: string, required: false,
+                  hint: "Optional. Amazon Music link for this track/album." }
+              - { label: Gaana URL, name: gaana_url, widget: string, required: false,
+                  hint: "Optional. Gaana link for this track/album." }
+              - { label: YouTube Video URL, name: youtube_url, widget: string, required: false,
+                  hint: "Optional. Official video / audio link for this song, e.g. https://www.youtube.com/watch?v=... or https://youtu.be/... When set, the video is embedded on the release page." }
+              - { label: Description, name: description, widget: text, required: false,
+                  hint: "Optional. 2–4 sentences about the song (what it is, who made it, the story). Shown under 'About this release' and used as the page's search description. Leave blank to use the auto-generated text." }
+              - label: Tracks (for EP / Album)
+                name: tracks
+                widget: list
+                required: false
+                summary: "{{fields.track_number}}. {{fields.title}}"
+                hint: "Optional. For EPs and albums — add each track in order. Leave empty for singles. Click a track on the release page to expand its description, lyrics, and credits."
+                fields:
+                  - { label: Track number, name: track_number, widget: number, required: false, hint: "1, 2, 3… (optional — order in this list is used if blank)" }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Duration, name: duration, widget: string, required: false, hint: "e.g. 2:45" }
+                  - { label: Spotify track URL, name: spotify_url, widget: string, required: false, hint: "Optional. Link to this specific track on Spotify." }
+                  - { label: Track description, name: description, widget: text, required: false, hint: "Optional. Short note about this track only." }
+                  - { label: Track lyrics, name: lyrics, widget: text, required: false, hint: "Optional. Lyrics for this track only." }
+                  - label: Track credits
+                    name: credits
+                    widget: list
+                    required: false
+                    summary: "{{fields.role}}: {{fields.name}}"
+                    hint: "Optional. Credits specific to this track (writer, producer, etc.)."
+                    fields:
+                      - { label: Role, name: role, widget: string }
+                      - { label: Name, name: name, widget: string }
+              - label: Credits
+                name: credits
+                widget: list
+                required: false
+                summary: "{{fields.role}}: {{fields.name}}"
+                hint: "Optional. One row per credit, e.g. Role = Produced by, Name = Moit. Shown in a Credits section on the release page."
+                fields:
+                  - { label: Role, name: role, widget: string }
+                  - { label: Name, name: name, widget: string }
               - { label: Cover Image, name: cover, widget: image, required: false, hint: "Upload a poster, or leave the default placeholder if you don't have one yet" }
               - { label: Lyrics, name: lyrics, widget: text, required: false, hint: "Optional. Paste the full lyrics here — line breaks are preserved on the release page. Leave blank to hide the Lyrics section." }
 

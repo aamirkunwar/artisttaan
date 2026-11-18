@@ -1,0 +1,30 @@
+{
+  "artist": "Shrey",
+  "spotify_url": "https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx",
+  "external": false,
+  "artist_id": "shrey",
+  "spotify_embed": "https://open.spotify.com/embed/track/6KAJ0muurlS5Fwb2fj0pdx",
+  "label": "ARTISTTAAN",
+  "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+  "title": "Thoughts Are Poison",
+  "type": "single",
+  "year": "2025",
+  "id": "thoughts-are-poison-shrey-2025",
+  "slug": "thoughts-are-poison",
+  "artist_ids": [
+    "shrey"
+  ],
+  "genres": [
+    "Hip-Hop",
+    "Alternative"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/6KAJ0muurlS5Fwb2fj0pdx",
+    "spotify_embed": "https://open.spotify.com/embed/track/6KAJ0muurlS5Fwb2fj0pdx"
+  },
+  "from_ep": {
+    "title": "Mai",
+    "slug": "mai",
+    "artist": "Shrey"
+  }
+}

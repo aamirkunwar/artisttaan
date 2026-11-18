@@ -1,0 +1,17 @@
+{
+  "artist": "Raga, Rish",
+  "spotify_url": "https://open.spotify.com/album/6359k4XlwyF81N12omSDHD",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/album/6359k4XlwyF81N12omSDHD",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-03-sath-chalegi-2021.jpg",
+  "title": "Sath Chalegi",
+  "type": "single",
+  "year": "2021",
+  "slug": "sath-chalegi",
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/6359k4XlwyF81N12omSDHD",
+    "spotify_embed": "https://open.spotify.com/embed/album/6359k4XlwyF81N12omSDHD"
+  }
+}

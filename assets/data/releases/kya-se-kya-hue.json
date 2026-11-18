@@ -1,0 +1,18 @@
+{
+  "artist": "Slay",
+  "spotify_url": "https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc",
+  "external": "true",
+  "artist_id": "slay",
+  "spotify_embed": "https://open.spotify.com/embed/track/1zGi1mUUekvsGZALAee6oc",
+  "label": "Flawed",
+  "cover": "/assets/images/kya-se-kya-hue_640x640.jpg",
+  "title": "Kya Se Kya Hue",
+  "type": "single",
+  "year": "2025",
+  "host_artist": "Flawed",
+  "slug": "kya-se-kya-hue",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/1zGi1mUUekvsGZALAee6oc",
+    "spotify_embed": "https://open.spotify.com/embed/track/1zGi1mUUekvsGZALAee6oc"
+  }
+}

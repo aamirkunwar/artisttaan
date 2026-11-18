@@ -1,0 +1,17 @@
+{
+  "artist": "Apoorvv",
+  "spotify_url": "https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln",
+  "external": false,
+  "artist_id": "apoorvv",
+  "spotify_embed": "https://open.spotify.com/embed/track/33kVvuCEjFDQCnb0w41Oln",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-20-jaane-na-2020.jpg",
+  "title": "Jaane Na",
+  "type": "single",
+  "year": "2020",
+  "slug": "jaane-na",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/33kVvuCEjFDQCnb0w41Oln",
+    "spotify_embed": "https://open.spotify.com/embed/track/33kVvuCEjFDQCnb0w41Oln"
+  }
+}

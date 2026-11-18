@@ -1,0 +1,17 @@
+{
+  "artist": "Abir",
+  "spotify_url": "https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l",
+  "external": false,
+  "artist_id": "abir",
+  "spotify_embed": "https://open.spotify.com/embed/track/6RIV4XVosJpY7o2O9K5b9l",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-26-tum-badli-ho-2020.jpg",
+  "title": "Tum Badli Ho",
+  "type": "single",
+  "year": "2020",
+  "slug": "tum-badli-ho",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/6RIV4XVosJpY7o2O9K5b9l",
+    "spotify_embed": "https://open.spotify.com/embed/track/6RIV4XVosJpY7o2O9K5b9l"
+  }
+}

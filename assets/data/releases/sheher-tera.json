@@ -1,0 +1,16 @@
+{
+  "artist": "Talwar, Newtone",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-72-sheher-tera-2019.jpg",
+  "title": "Sheher Tera",
+  "type": "single",
+  "year": "2019",
+  "slug": "sheher-tera",
+  "streaming": {
+    "spotify": "#"
+  }
+}

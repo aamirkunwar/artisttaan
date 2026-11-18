@@ -1,0 +1,30 @@
+{
+  "artist": "Shrey",
+  "spotify_url": "https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm",
+  "external": false,
+  "artist_id": "shrey",
+  "spotify_embed": "https://open.spotify.com/embed/track/1N1mifOiNnHnScZwOtQ2Jm",
+  "label": "ARTISTTAAN",
+  "cover": "/assets/images/kaagaz-aur-daag_640x640.jpg",
+  "title": "Kaagaz Aur Daag",
+  "type": "single",
+  "year": "2025",
+  "id": "kaagaz-aur-daag-shrey-2025",
+  "slug": "kaagaz-aur-daag",
+  "artist_ids": [
+    "shrey"
+  ],
+  "genres": [
+    "Hip-Hop",
+    "Indie"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/1N1mifOiNnHnScZwOtQ2Jm",
+    "spotify_embed": "https://open.spotify.com/embed/track/1N1mifOiNnHnScZwOtQ2Jm"
+  },
+  "from_ep": {
+    "title": "Mai",
+    "slug": "mai",
+    "artist": "Shrey"
+  }
+}

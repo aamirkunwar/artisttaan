@@ -1,0 +1,17 @@
+{
+  "artist": "Rish",
+  "spotify_url": "https://open.spotify.com/track/5rxsGT6YS7dmfjjJGXq3N6",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/5rxsGT6YS7dmfjjJGXq3N6",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-28-ajj-vi-2020.jpg",
+  "title": "Ajj Vi",
+  "type": "single",
+  "year": "2020",
+  "slug": "ajj-vi",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/5rxsGT6YS7dmfjjJGXq3N6",
+    "spotify_embed": "https://open.spotify.com/embed/track/5rxsGT6YS7dmfjjJGXq3N6"
+  }
+}

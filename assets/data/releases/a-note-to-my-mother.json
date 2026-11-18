@@ -1,0 +1,17 @@
+{
+  "artist": "Raga",
+  "spotify_url": "https://open.spotify.com/track/4Z2HkIGd34s6q4cFpeqFNf",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/4Z2HkIGd34s6q4cFpeqFNf",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-29-a-note-to-my-mother-2020.jpg",
+  "title": "A Note to My Mother",
+  "type": "single",
+  "year": "2020",
+  "slug": "a-note-to-my-mother",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/4Z2HkIGd34s6q4cFpeqFNf",
+    "spotify_embed": "https://open.spotify.com/embed/track/4Z2HkIGd34s6q4cFpeqFNf"
+  }
+}

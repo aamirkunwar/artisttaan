@@ -1,0 +1,16 @@
+{
+  "artist": "—",
+  "spotify_url": "#",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": null,
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-42-baatein-mere-baare-mein-2018.jpg",
+  "title": "Baatein Mere Baare Mein",
+  "type": "single",
+  "year": "2018",
+  "slug": "baatein-mere-baare-mein",
+  "streaming": {
+    "spotify": "#"
+  }
+}

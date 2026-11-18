@@ -1,0 +1,62 @@
+{
+  "type": "single",
+  "title": "Saza",
+  "artist": "Abir",
+  "year": "2026",
+  "spotify_url": "https://open.spotify.com/album/5aITt1o9FKm1JGAjIknaTD?si=MSKRdJcFS76naRIJKVNbrQ",
+  "cover": "/assets/images/saza-abir-3-1-.jpg",
+  "external": false,
+  "label": "ARTISTTAAN",
+  "id": "saza-abir-2026",
+  "slug": "saza",
+  "artist_ids": [
+    "abir"
+  ],
+  "genres": [
+    "Synth-Pop",
+    "Pop",
+    "R&B"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/5aITt1o9FKm1JGAjIknaTD?si=MSKRdJcFS76naRIJKVNbrQ"
+  },
+  "description": "Some feelings never leave. They just learn to live inside the silence.\n\nSAZA is a sad synth-pop track blending dreamy retro synths and a groove that makes you feel the music even when the lyrics hurt.\n\nFor the ones who still feel everything, but have learned to hide it.\nListen with headphones. Feel every word.",
+  "credits": [
+    {
+      "role": "Artist / Lyrics / Composer",
+      "name": "Abir"
+    },
+    {
+      "role": "Music",
+      "name": "Faraz"
+    },
+    {
+      "role": "Mix",
+      "name": "Faraz"
+    },
+    {
+      "role": "Master",
+      "name": "Apoorvv"
+    },
+    {
+      "role": "Artwork & Design",
+      "name": "Itskdesigns"
+    },
+    {
+      "role": "Directed By",
+      "name": "Sahil Akhtar"
+    },
+    {
+      "role": "Shot By",
+      "name": "Sahil & Kavya Juneja"
+    },
+    {
+      "role": "Assisted By",
+      "name": "Kavya Juneja"
+    },
+    {
+      "role": "Special Thanks",
+      "name": "Akansha Negi, Pushkar Vishwakarma & Harsh Kant"
+    }
+  ]
+}

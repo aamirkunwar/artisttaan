@@ -1,0 +1,25 @@
+{
+  "artist": "Abir",
+  "spotify_url": "https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5",
+  "external": false,
+  "artist_id": "abir",
+  "spotify_embed": "https://open.spotify.com/embed/album/0guvOjewHtC0Pv6uk0pID5",
+  "label": "ARTISTTAAN",
+  "cover": "/assets/images/pehle-jaisa_640x640-1-.jpg",
+  "title": "Pehle Jaisa",
+  "type": "single",
+  "year": "2025",
+  "id": "pehle-jaisa-abir-2025",
+  "slug": "pehle-jaisa",
+  "artist_ids": [
+    "abir"
+  ],
+  "genres": [
+    "Pop",
+    "R&B"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/0guvOjewHtC0Pv6uk0pID5",
+    "spotify_embed": "https://open.spotify.com/embed/album/0guvOjewHtC0Pv6uk0pID5"
+  }
+}

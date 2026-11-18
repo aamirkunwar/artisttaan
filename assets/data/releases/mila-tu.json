@@ -1,0 +1,24 @@
+{
+  "artist": "Apoorvv",
+  "spotify_url": "https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE",
+  "external": "true",
+  "artist_id": "apoorvv",
+  "spotify_embed": "https://open.spotify.com/embed/track/4PYWGLbm1bXPA28JauGNbE",
+  "label": "T-Series",
+  "cover": "/assets/images/mila-tu_640x640.jpg",
+  "title": "Mila Tu",
+  "type": "single",
+  "year": "2026",
+  "id": "mila-tu-apoorvv-2026",
+  "slug": "mila-tu",
+  "artist_ids": [
+    "apoorvv"
+  ],
+  "genres": [
+    "Indie"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/4PYWGLbm1bXPA28JauGNbE",
+    "spotify_embed": "https://open.spotify.com/embed/track/4PYWGLbm1bXPA28JauGNbE"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "artist": "Faraz, Abir",
+  "spotify_url": "https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT",
+  "external": false,
+  "artist_id": "faraz",
+  "spotify_embed": "https://open.spotify.com/embed/track/1cOslRbqe0srHqbVi2lanT",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-25-choo-liya-2020.jpg",
+  "title": "Choo Liya",
+  "type": "single",
+  "year": "2020",
+  "slug": "choo-liya",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/1cOslRbqe0srHqbVi2lanT",
+    "spotify_embed": "https://open.spotify.com/embed/track/1cOslRbqe0srHqbVi2lanT"
+  }
+}

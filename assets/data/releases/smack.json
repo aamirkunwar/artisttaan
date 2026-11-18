@@ -1,0 +1,18 @@
+{
+  "artist": "Slay",
+  "spotify_url": "https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H",
+  "external": "true",
+  "artist_id": "slay",
+  "spotify_embed": "https://open.spotify.com/embed/track/3pdRAxpgmtPqEo4ufUfv4H",
+  "label": "Tarun Bisht",
+  "cover": "/assets/images/thoda-aur_640x640.jpg",
+  "title": "Smack",
+  "type": "single",
+  "year": "2025",
+  "host_artist": "Tarun Bisht",
+  "slug": "smack",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/3pdRAxpgmtPqEo4ufUfv4H",
+    "spotify_embed": "https://open.spotify.com/embed/track/3pdRAxpgmtPqEo4ufUfv4H"
+  }
+}

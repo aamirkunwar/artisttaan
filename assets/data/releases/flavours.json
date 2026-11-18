@@ -1,0 +1,171 @@
+{
+  "artist": "Slay",
+  "spotify_url": "https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV",
+  "external": false,
+  "artist_id": "slay",
+  "spotify_embed": "https://open.spotify.com/embed/album/3NMnuPW9pAuMFQsuGKgXzV",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/upcoming/slay-flavours.jpg",
+  "title": "Flavours",
+  "type": "EP",
+  "year": "2026",
+  "id": "flavours-slay-2026",
+  "slug": "flavours",
+  "artist_ids": [
+    "slay"
+  ],
+  "genres": [
+    "Hip-Hop",
+    "Desi Rap",
+    "Indian Hip-Hop"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/3NMnuPW9pAuMFQsuGKgXzV",
+    "spotify_embed": "https://open.spotify.com/embed/album/3NMnuPW9pAuMFQsuGKgXzV"
+  },
+  "description": "Flavours is a 6-track EP by Slay on ARTISTTAAN — desi hip-hop with a different flavour on every cut. Features and production across the project from Maven Music, Tarun, TVZ & iiEE, Shrey, Jai, and Faraz. Includes Nathuli, Classy, Balanced, Meditate, Nightmares, and R.I.P.",
+  "credits": [
+    {
+      "role": "Artist",
+      "name": "Slay"
+    },
+    {
+      "role": "Producer",
+      "name": "Maven Music (Meditate, Nightmares)"
+    },
+    {
+      "role": "Producer",
+      "name": "TVZ & iiEE (Balanced, R.I.P)"
+    },
+    {
+      "role": "Producer",
+      "name": "Jai (Classy)"
+    },
+    {
+      "role": "Producer",
+      "name": "Faraz (Nathuli)"
+    },
+    {
+      "role": "Featured",
+      "name": "Tarun, Shrey, Faraz, Maven Music, TVZ & iiEE"
+    },
+    {
+      "role": "Composer",
+      "name": "Shantanu Bhatt"
+    },
+    {
+      "role": "A&R",
+      "name": "Aamir Kunwar"
+    },
+    {
+      "role": "Label",
+      "name": "ARTISTTAAN"
+    }
+  ],
+  "tracks": [
+    {
+      "track_number": 1,
+      "title": "Meditate",
+      "duration": "2:22",
+      "spotify_url": "https://open.spotify.com/track/7s449nCwLhGVtj2Cr8iCxZ",
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "Maven Music"
+        },
+        {
+          "role": "Featured",
+          "name": "Maven Music"
+        }
+      ]
+    },
+    {
+      "track_number": 2,
+      "title": "Balanced",
+      "duration": "2:32",
+      "spotify_url": "https://open.spotify.com/track/2Yw2MPuEeo7FmnjXBFgNF0",
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "TVZ & iiEE"
+        },
+        {
+          "role": "Featured",
+          "name": "Tarun"
+        },
+        {
+          "role": "Featured",
+          "name": "TVZ & iiEE"
+        }
+      ]
+    },
+    {
+      "track_number": 3,
+      "title": "Classy",
+      "duration": "3:19",
+      "spotify_url": "https://open.spotify.com/track/7nK3JVQ0k3YmWnVFab6WCc",
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "Jai"
+        },
+        {
+          "role": "Featured",
+          "name": "Shrey"
+        }
+      ]
+    },
+    {
+      "track_number": 4,
+      "title": "Nathuli",
+      "duration": "2:56",
+      "spotify_url": "https://open.spotify.com/track/25Tdd3LxbvH2sqhb2ZqHmP",
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "Faraz"
+        },
+        {
+          "role": "Featured",
+          "name": "Faraz"
+        }
+      ]
+    },
+    {
+      "track_number": 5,
+      "title": "Nightmares",
+      "duration": "2:30",
+      "spotify_url": "https://open.spotify.com/track/09UwaZ9E40wdbuA0wJdjTq",
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "Maven Music"
+        },
+        {
+          "role": "Featured",
+          "name": "Maven Music"
+        }
+      ]
+    },
+    {
+      "track_number": 6,
+      "title": "R.I.P",
+      "duration": "1:50",
+      "spotify_url": "https://open.spotify.com/track/6TjCAXXJ1fHdGRXzw2sTJU",
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "TVZ & iiEE"
+        },
+        {
+          "role": "Featured",
+          "name": "TVZ & iiEE"
+        }
+      ]
+    }
+  ],
+  "video": {
+    "youtube_id": "QQZSNUV0fT4"
+  },
+  "youtube_url": "https://www.youtube.com/watch?v=QQZSNUV0fT4"
+}

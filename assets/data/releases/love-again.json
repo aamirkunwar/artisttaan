@@ -1,0 +1,17 @@
+{
+  "artist": "Luck, Manisten",
+  "spotify_url": "https://open.spotify.com/track/2D1Qn9o7CINzFyb96Sd7Yc",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/2D1Qn9o7CINzFyb96Sd7Yc",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-07-love-again-2021.jpg",
+  "title": "Love Again",
+  "type": "single",
+  "year": "2021",
+  "slug": "love-again",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/2D1Qn9o7CINzFyb96Sd7Yc",
+    "spotify_embed": "https://open.spotify.com/embed/track/2D1Qn9o7CINzFyb96Sd7Yc"
+  }
+}

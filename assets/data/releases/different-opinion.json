@@ -1,0 +1,17 @@
+{
+  "artist": "Manisten",
+  "spotify_url": "https://open.spotify.com/track/4drwpq7oMD1kG3iq5j4nUL",
+  "external": false,
+  "artist_id": null,
+  "spotify_embed": "https://open.spotify.com/embed/track/4drwpq7oMD1kG3iq5j4nUL",
+  "label": "ARTISTTAAN",
+  "cover": "assets/images/releases-posters/releases/release-13-different-opinion-2021.jpg",
+  "title": "Different Opinion",
+  "type": "single",
+  "year": "2021",
+  "slug": "different-opinion",
+  "streaming": {
+    "spotify": "https://open.spotify.com/track/4drwpq7oMD1kG3iq5j4nUL",
+    "spotify_embed": "https://open.spotify.com/embed/track/4drwpq7oMD1kG3iq5j4nUL"
+  }
+}
