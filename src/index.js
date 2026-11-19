@@ -586,8 +586,11 @@ async function renderReleaseMeta(assetResponse, slug, origin, env) {
     // Side-card friendly markup used by the new release page
     return items.map(function (r) {
       return '<a class="related-item" href="/release/' + slugify(r.title) + '/">' +
-        '<img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" width="56" height="56" loading="lazy"/>' +
-        '<span><strong>' + escHtml(r.title) + '</strong><em>' + escHtml(r.artist) + (r.year ? ' · ' + escHtml(r.year) : '') + '</em></span></a>';
+        '<img src="' + escHtml(assetUrlPath(r.cover)) + '" alt="' + escHtml(r.title + ' cover art') + '" width="48" height="48" loading="lazy"/>' +
+        '<div class="ri-meta">' +
+          '<div class="ri-title">' + escHtml(r.title) + '</div>' +
+          '<div class="ri-artist">' + escHtml((r.artist || '') + (r.year ? ' · ' + r.year : '')) + '</div>' +
+        '</div></a>';
     }).join('');
   }
   // Same-artist releases get their own heading; other releases are labelled
