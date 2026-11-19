@@ -38,7 +38,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       background: var(--bg);
       color: var(--text);
@@ -267,7 +267,7 @@
       align-items: start;
     }
     .main-col { min-width: 0; }
-    .side-col { position: sticky; top: 88px; }
+    .side-col { position: sticky; top: 88px; min-width: 0; }
 
     .section {
       margin-bottom: 40px;
