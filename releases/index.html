@@ -31,12 +31,35 @@
     .header-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:8px}
     .header-title{font-size:clamp(32px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1}
     .header-count{font-size:13px;color:#888;align-self:flex-end}
-    .filters{padding:18px 32px 14px;border-bottom:1px solid #ebe8e2;background:#fafaf8;position:sticky;top:60px;z-index:90;display:flex;flex-direction:column;gap:12px}
-    .filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;min-width:52px}
-    .filter-btn{padding:7px 14px;font-size:12px;font-weight:600;text-transform:none;letter-spacing:0.02em;border:1px solid #ebe8e2;background:#fff;cursor:pointer;transition:all 0.15s;color:#555;border-radius:999px}
-    .filter-btn:hover{border-color:#0a0a0a;color:#0a0a0a}
-    .filter-btn.active{background:#0a0a0a;color:#fff;border-color:#0a0a0a;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+    .filters{padding:14px 16px 12px;border-bottom:1px solid #ebe8e2;background:#fafaf8;position:sticky;top:60px;z-index:90;display:flex;flex-direction:column;gap:10px}
+    .filter-row{display:flex;flex-direction:column;gap:6px;min-width:0}
+    .filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin:0}
+    .filter-chips{
+      display:flex;flex-wrap:nowrap;gap:8px;align-items:center;
+      overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+      padding-bottom:2px;margin:0 -2px;padding-left:2px;padding-right:2px;
+    }
+    .filter-chips::-webkit-scrollbar{display:none}
+    .filter-btn,.sort-btn{
+      flex:0 0 auto;white-space:nowrap;
+      padding:8px 14px;font-size:12px;font-weight:600;text-transform:none;letter-spacing:0.02em;
+      border:1px solid #ebe8e2;background:#fff;cursor:pointer;transition:all 0.15s;color:#555;border-radius:999px;
+    }
+    .filter-btn:hover,.sort-btn:hover{border-color:#0a0a0a;color:#0a0a0a}
+    .filter-btn.active,.sort-btn.active{background:#0a0a0a;color:#fff;border-color:#0a0a0a;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+    .search-sort-row{display:flex;flex-direction:column;gap:10px}
+    .search-wrap{width:100%}
+    .sort-row{display:flex;flex-direction:column;gap:6px}
+    .sort-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#aaa}
+    @media(min-width:768px){
+      .filters{padding:18px 32px 14px;gap:12px}
+      .filter-row{flex-direction:row;align-items:center;gap:10px}
+      .filter-label{min-width:52px}
+      .filter-chips{flex-wrap:wrap;overflow:visible}
+      .search-sort-row{flex-direction:row;align-items:center;justify-content:space-between;gap:16px}
+      .search-wrap{flex:1;max-width:420px}
+      .sort-row{flex-direction:row;align-items:center;gap:8px}
+    }
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px;padding:28px 32px;max-width:1600px;margin:0 auto}
     .release-card{cursor:pointer;text-decoration:none;display:block}
     .release-card-noLink{cursor:default}
@@ -177,7 +200,6 @@
   </div>
 </div>
 <div class="filters">
-
   <div class="search-sort-row">
     <div class="search-wrap">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
@@ -185,34 +207,72 @@
     </div>
     <div class="sort-row">
       <span class="sort-label">Sort</span>
-      <button type="button" class="sort-btn active" data-sort="latest">Latest</button>
-      <button type="button" class="sort-btn" data-sort="oldest">Oldest</button>
+      <div class="filter-chips">
+        <button type="button" class="sort-btn active" data-sort="latest">Latest</button>
+        <button type="button" class="sort-btn" data-sort="oldest">Oldest</button>
+      </div>
     </div>
   </div>
   <div class="filter-row">
     <span class="filter-label">Type</span>
-    <button class="filter-btn active" data-type="format" data-value="all">All</button>
-    <button class="filter-btn" data-type="format" data-value="single">Single</button>
-    <button class="filter-btn" data-type="format" data-value="ep">EP</button>
-    <button class="filter-btn" data-type="format" data-value="album">Album</button>
-    <button class="filter-btn" data-type="format" data-value="mixtape">Mixtape</button>
+    <div class="filter-chips">
+      <button class="filter-btn active" data-type="format" data-value="all">All</button>
+      <button class="filter-btn" data-type="format" data-value="single">Single</button>
+      <button class="filter-btn" data-type="format" data-value="ep">EP</button>
+      <button class="filter-btn" data-type="format" data-value="album">Album</button>
+      <button class="filter-btn" data-type="format" data-value="mixtape">Mixtape</button>
+    </div>
   </div>
   <div class="filter-row">
     <span class="filter-label">Year</span>
-    <button class="filter-btn active" data-type="year" data-value="all">All</button>
-    <button class="filter-btn" data-type="year" data-value="2026">2026</button><button class="filter-btn" data-type="year" data-value="2025">2025</button><button class="filter-btn" data-type="year" data-value="2024">2024</button><button class="filter-btn" data-type="year" data-value="2023">2023</button><button class="filter-btn" data-type="year" data-value="2021">2021</button><button class="filter-btn" data-type="year" data-value="2020">2020</button><button class="filter-btn" data-type="year" data-value="2019">2019</button><button class="filter-btn" data-type="year" data-value="2018">2018</button><button class="filter-btn" data-type="year" data-value="2017">2017</button><button class="filter-btn" data-type="year" data-value="2016">2016</button>
+    <div class="filter-chips">
+      <button class="filter-btn active" data-type="year" data-value="all">All</button>
+      <button class="filter-btn" data-type="year" data-value="2026">2026</button>
+      <button class="filter-btn" data-type="year" data-value="2025">2025</button>
+      <button class="filter-btn" data-type="year" data-value="2024">2024</button>
+      <button class="filter-btn" data-type="year" data-value="2023">2023</button>
+      <button class="filter-btn" data-type="year" data-value="2021">2021</button>
+      <button class="filter-btn" data-type="year" data-value="2020">2020</button>
+      <button class="filter-btn" data-type="year" data-value="2019">2019</button>
+      <button class="filter-btn" data-type="year" data-value="2018">2018</button>
+      <button class="filter-btn" data-type="year" data-value="2017">2017</button>
+      <button class="filter-btn" data-type="year" data-value="2016">2016</button>
+    </div>
   </div>
   <div class="filter-row">
     <span class="filter-label">Artist</span>
-    <button class="filter-btn active" data-type="artist" data-value="all">All</button>
-    <button class="filter-btn" data-type="artist" data-value="Abir">Abir</button><button class="filter-btn" data-type="artist" data-value="Amie">Amie</button><button class="filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button><button class="filter-btn" data-type="artist" data-value="Faraz">Faraz</button><button class="filter-btn" data-type="artist" data-value="Harjas">Harjas</button><button class="filter-btn" data-type="artist" data-value="Kay J">Kay J</button><button class="filter-btn" data-type="artist" data-value="Luck">Luck</button><button class="filter-btn" data-type="artist" data-value="Lukka">Lukka</button><button class="filter-btn" data-type="artist" data-value="Manisten">Manisten</button><button class="filter-btn" data-type="artist" data-value="Mr A">Mr A</button><button class="filter-btn" data-type="artist" data-value="Muhfaad">Muhfaad</button><button class="filter-btn" data-type="artist" data-value="Newtone">Newtone</button><button class="filter-btn" data-type="artist" data-value="Raga">Raga</button><button class="filter-btn" data-type="artist" data-value="Rigul">Rigul</button><button class="filter-btn" data-type="artist" data-value="Rish">Rish</button><button class="filter-btn" data-type="artist" data-value="Sam Rajput">Sam Rajput</button><button class="filter-btn" data-type="artist" data-value="Shrey">Shrey</button><button class="filter-btn" data-type="artist" data-value="Slay">Slay</button><button class="filter-btn" data-type="artist" data-value="Talwar">Talwar</button><button class="filter-btn" data-type="artist" data-value="Talwiinder">Talwiinder</button><button class="filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
+    <div class="filter-chips">
+      <button class="filter-btn active" data-type="artist" data-value="all">All</button>
+      <button class="filter-btn" data-type="artist" data-value="Abir">Abir</button>
+      <button class="filter-btn" data-type="artist" data-value="Amie">Amie</button>
+      <button class="filter-btn" data-type="artist" data-value="Apoorvv">Apoorvv</button>
+      <button class="filter-btn" data-type="artist" data-value="Faraz">Faraz</button>
+      <button class="filter-btn" data-type="artist" data-value="Harjas">Harjas</button>
+      <button class="filter-btn" data-type="artist" data-value="Kay J">Kay J</button>
+      <button class="filter-btn" data-type="artist" data-value="Luck">Luck</button>
+      <button class="filter-btn" data-type="artist" data-value="Lukka">Lukka</button>
+      <button class="filter-btn" data-type="artist" data-value="Manisten">Manisten</button>
+      <button class="filter-btn" data-type="artist" data-value="Mr A">Mr A</button>
+      <button class="filter-btn" data-type="artist" data-value="Muhfaad">Muhfaad</button>
+      <button class="filter-btn" data-type="artist" data-value="Newtone">Newtone</button>
+      <button class="filter-btn" data-type="artist" data-value="Raga">Raga</button>
+      <button class="filter-btn" data-type="artist" data-value="Rigul">Rigul</button>
+      <button class="filter-btn" data-type="artist" data-value="Rish">Rish</button>
+      <button class="filter-btn" data-type="artist" data-value="Sam Rajput">Sam Rajput</button>
+      <button class="filter-btn" data-type="artist" data-value="Shrey">Shrey</button>
+      <button class="filter-btn" data-type="artist" data-value="Slay">Slay</button>
+      <button class="filter-btn" data-type="artist" data-value="Talwar">Talwar</button>
+      <button class="filter-btn" data-type="artist" data-value="Talwiinder">Talwiinder</button>
+      <button class="filter-btn" data-type="artist" data-value="Yawar">Yawar</button>
+    </div>
   </div>
-
   <div class="filter-row">
     <span class="filter-label">Origin</span>
-    <button class="filter-btn active" data-type="origin" data-value="all">All</button>
-    <button class="filter-btn" data-type="origin" data-value="artisttaan">ARTISTTAAN</button>
-    <button class="filter-btn" data-type="origin" data-value="external">Outside / Features</button>
+    <div class="filter-chips">
+      <button class="filter-btn active" data-type="origin" data-value="all">All</button>
+      <button class="filter-btn" data-type="origin" data-value="artisttaan">ARTISTTAAN</button>
+      <button class="filter-btn" data-type="origin" data-value="external">Outside / Features</button>
+    </div>
   </div>
 </div>
 <div class="grid" id="releases-grid"></div>
