@@ -1141,13 +1141,19 @@
       document.getElementById('video-section').classList.add('has-content');
     }
 
-    // About
+    // About — use CMS/description when set; never say ARTISTTAAN for outside releases
     var aboutEl = document.getElementById('rel-about');
-    var about = (r.description && r.description.trim())
-      ? r.description.trim()
-      : '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist +
-        (year ? ', released in ' + year : '') +
-        ' via ARTISTTAAN — India\'s hip-hop & indie label.';
+    var about = (r.description && String(r.description).trim()) ? String(r.description).trim() : '';
+    if (!about) {
+      var labelName = (r.label && String(r.label).trim()) || '';
+      var isOutside = !!(r.external === true || r.external === 1 || r.external === 'true' ||
+        (labelName && labelName.toUpperCase() !== 'ARTISTTAAN' && labelName.toUpperCase() !== 'ARTIST TAAN'));
+      var viaLine = isOutside
+        ? (' via ' + (labelName || 'another label'))
+        : ' via ARTISTTAAN — India\'s hip-hop & indie label';
+      about = '"' + r.title + '" is a ' + typeLower + ' by ' + r.artist +
+        (year ? ', released in ' + year : '') + viaLine + '.';
+    }
     aboutEl.innerHTML = linkifyPeople(about, peopleMap);
     document.getElementById('about-section').classList.add('has-content');
 
@@ -1271,20 +1277,23 @@
     }
 
     try {
-      // 1) Full detail for this release only
-      // 2) Light index for "More from" (small)
+      // 1) Detail JSON (fast, per-release)
+      // 2) Index for "More from"
       // 3) Artists meta for person links
+      // 4) artists.json — CMS source of truth for description/credits/lyrics
       var detailUrl = '/assets/data/releases/' + encodeURIComponent(releaseSlug || '') + '.json';
       var results = await Promise.all([
         fetch(detailUrl).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
         fetch('/assets/data/releases-index.json').then(function (r) { return r.json(); }).catch(function () { return { releases: [] }; }),
-        fetch('/assets/data/artists-meta.json').then(function (r) { return r.json(); }).catch(function () { return { artists: [], team: [] }; })
+        fetch('/assets/data/artists-meta.json').then(function (r) { return r.json(); }).catch(function () { return { artists: [], team: [] }; }),
+        fetch('/assets/data/artists.json').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
       ]);
 
       var match = results[0];
       var indexList = (results[1] && results[1].releases) || [];
       var artists = (results[2] && results[2].artists) || [];
       var team = (results[2] && results[2].team) || [];
+      var cmsData = results[3];
       var peopleMap = buildPeopleMap(artists, team);
 
       // Fallback: resolve by slugify(title) from index then load that file
@@ -1297,6 +1306,26 @@
             var res2 = await fetch('/assets/data/releases/' + encodeURIComponent(hit.slug) + '.json');
             if (res2.ok) match = await res2.json();
           } catch (e2) {}
+        }
+      }
+
+      // Merge CMS (artists.json) content so Decap/backend edits show up
+      if (cmsData && Array.isArray(cmsData.releases)) {
+        var cmsRel = cmsData.releases.find(function (r) {
+          if (!r) return false;
+          if (r.slug && releaseSlug && r.slug === releaseSlug) return true;
+          return slugify(r.title) === releaseSlug;
+        });
+        if (cmsRel) {
+          match = match || {};
+          // CMS wins for editorial fields
+          ['description', 'credits', 'lyrics', 'tracks', 'label', 'external', 'host_artist',
+            'spotify_url', 'spotify_embed', 'youtube_url', 'video', 'streaming', 'genres', 'cover', 'type', 'year', 'artist', 'title'
+          ].forEach(function (key) {
+            if (cmsRel[key] !== undefined && cmsRel[key] !== null && cmsRel[key] !== '') {
+              match[key] = cmsRel[key];
+            }
+          });
         }
       }
 
