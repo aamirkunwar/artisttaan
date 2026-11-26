@@ -1,11 +1,5 @@
-// Regenerates the /release/<slug>/ and /artist/<id>/ entries in sitemap.xml
-// from assets/data/artists.json, so the sitemap always matches the real data
-// (it was missing some releases and listing one that doesn't exist).
-//
-// Run:  npm run build:sitemap   (or: node scripts/build-sitemap.js)
-// Then commit/upload the updated sitemap.xml.
-//
-// All other URLs (home, about, culture, ...) are kept exactly as they are.
+// Regenerates sitemap.xml from assets/data/artists.json
+// Run: npm run build:sitemap   OR   node scripts/build-sitemap.js
 
 const fs = require('fs');
 const path = require('path');
@@ -23,28 +17,30 @@ function slugify(s) {
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 const xml = fs.readFileSync(sitemapPath, 'utf8');
 
-// Keep every existing <url> block that is NOT an artist/release page.
+// Keep non artist/release URL blocks from existing sitemap (culture posts etc.)
 const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) || [];
 const keep = blocks.filter(function (b) {
-  return !/<loc>[^<]*\/(release|artist)\/[^<]+<\/loc>/.test(b);
+  return !/<loc>[^<]*\/(release|artist)\/[^<]+<\/loc>/.test(b) &&
+         !/<loc>[^<]*\/team-profile\/[^<]*<\/loc>/.test(b);
 });
 
-function entry(loc, priority) {
-  return '  <url>\n    <loc>' + loc + '</loc>\n    <changefreq>monthly</changefreq>\n    <priority>' + priority + '</priority>\n  </url>';
+function entry(loc, priority, changefreq) {
+  changefreq = changefreq || 'monthly';
+  return '  <url>\n    <loc>' + loc + '</loc>\n    <changefreq>' + changefreq + '</changefreq>\n    <priority>' + priority + '</priority>\n  </url>';
 }
 
 const out = keep.map(function (b) { return '  ' + b.trim(); });
 
 (data.artists || []).forEach(function (a) {
-  if (a.id) out.push(entry(ORIGIN + '/artist/' + a.id + '/', '0.7'));
+  if (a.id) out.push(entry(ORIGIN + '/artist/' + a.id + '/', '0.7', 'weekly'));
 });
 
 const seen = {};
 (data.releases || []).forEach(function (r) {
-  const s = slugify(r.title);
-  if (!s || seen[s]) return; // one URL per slug
+  const s = (r.slug && String(r.slug).trim()) || slugify(r.title);
+  if (!s || seen[s]) return;
   seen[s] = true;
-  out.push(entry(ORIGIN + '/release/' + s + '/', '0.6'));
+  out.push(entry(ORIGIN + '/release/' + s + '/', '0.6', 'monthly'));
 });
 
 const result = '<?xml version="1.0" encoding="UTF-8"?>\n' +
