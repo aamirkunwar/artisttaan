@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /thank-you.html
+Disallow: /assets/data/
+Disallow: /embed/
 
 # Explicitly allow major AI / LLM crawlers
 User-agent: GPTBot
