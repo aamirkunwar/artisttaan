@@ -1,6 +1,19 @@
 {
   "releases": [
     {
+      "slug": "chela",
+      "title": "Chela",
+      "artist": "Slay",
+      "artist_id": null,
+      "year": "2026",
+      "type": "single",
+      "cover": "assets/images/logo/og-image.jpg",
+      "label": "ARTISTTAAN",
+      "external": false,
+      "host_artist": null,
+      "spotify_url": "https://open.spotify.com/album/3CcUqz24MVSqRxUnfHa1hI?si=U1OzXVusQAu7Mt0XNaHZaw"
+    },
+    {
       "slug": "flavours",
       "title": "Flavours",
       "artist": "Slay",
