@@ -101,6 +101,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://artisttaanmusic.com/release/chela/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://artisttaanmusic.com/release/flavours/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -569,25 +574,5 @@
     <loc>https://artisttaanmusic.com/release/sautan/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://artisttaanmusic.com/team-profile/?id=aamir-kunwar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://artisttaanmusic.com/team-profile/?id=sahil-akhtar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://artisttaanmusic.com/team-profile/?id=shashank-sharma</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://artisttaanmusic.com/team-profile/?id=nino-rawat</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>
