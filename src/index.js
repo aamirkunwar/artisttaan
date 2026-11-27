@@ -83,6 +83,16 @@ export default {
       });
     }
 
+    // Live releases index. The home page and /releases/ list releases from
+    // /assets/data/releases-index.json. That used to be a static file that
+    // nothing regenerated when a release was added through the CMS (which only
+    // edits artists.json), so new releases never showed up in the lists. It is
+    // now built straight from artists.json on every cache refresh, so a release
+    // added in the backend appears as soon as the deploy is live.
+    if (request.method === 'GET' && url.pathname === '/assets/data/releases-index.json') {
+      return handleReleasesIndex(request, url.origin, env);
+    }
+
     // Clean release URLs: /release/<slug> or /release/<slug>/ -> serve
     // release/index.html directly (same single-page pattern as /artist/:slug/
     // above). The Worker rewrites the meta tags server-side so search engines
@@ -210,6 +220,63 @@ function releaseBelongsTo(r, a) {
   if (!r || !a) return false;
   if (r.artist_id) return r.artist_id === a.id;
   return !!r.artist && !!a.name && String(r.artist).trim().toLowerCase() === String(a.name).trim().toLowerCase();
+}
+
+// ---------- Live /assets/data/releases-index.json ----------
+
+const RELEASE_COVER_FALLBACK = 'assets/images/logo/og-image.jpg';
+
+function buildReleasesIndex(releases) {
+  const seen = {};
+  const out = [];
+  (releases || []).forEach(function (r) {
+    if (!r) return;
+    const base = slugify(r.title);
+    if (!base) return; // skip untitled rows
+    // Two releases with the same title get -2, -3... (matches the old static index)
+    let slug = base;
+    for (let n = 2; seen[slug]; n++) slug = base + '-' + n;
+    seen[slug] = true;
+    out.push({
+      slug: slug,
+      title: r.title,
+      artist: r.artist || '',
+      artist_id: r.artist_id || null,
+      year: r.year == null ? '' : String(r.year),
+      type: r.type || 'single',
+      cover: r.cover || RELEASE_COVER_FALLBACK,
+      label: r.label ? String(r.label) : 'ARTISTTAAN',
+      // The CMS select saves "true"/"false" as text; always emit a real boolean.
+      external: r.external === true || r.external === 1 || r.external === 'true',
+      host_artist: r.host_artist || null,
+      spotify_url: r.spotify_url || ''
+    });
+  });
+  // Newest year first, then A-Z -- the same order the lists were built in.
+  out.sort(function (a, b) {
+    const ya = parseInt(a.year, 10) || 0;
+    const yb = parseInt(b.year, 10) || 0;
+    if (yb !== ya) return yb - ya;
+    const ta = String(a.title).toLowerCase();
+    const tb = String(b.title).toLowerCase();
+    return ta < tb ? -1 : ta > tb ? 1 : 0;
+  });
+  return out;
+}
+
+async function handleReleasesIndex(request, origin, env) {
+  try {
+    const data = await getArtistsData(origin, env);
+    return new Response(JSON.stringify({ releases: buildReleasesIndex(data.releases) }), {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'public, max-age=300, stale-while-revalidate=86400'
+      }
+    });
+  } catch (e) {
+    console.error('handleReleasesIndex: falling back to static file', e);
+    return env.ASSETS.fetch(request);
+  }
 }
 
 function assetUrlPath(p) {
