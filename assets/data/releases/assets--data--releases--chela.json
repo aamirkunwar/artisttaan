@@ -1,0 +1,19 @@
+{
+  "type": "single",
+  "title": "Chela",
+  "artist": "Slay",
+  "year": "2026",
+  "spotify_url": "https://open.spotify.com/album/3CcUqz24MVSqRxUnfHa1hI?si=U1OzXVusQAu7Mt0XNaHZaw",
+  "cover": "assets/images/logo/og-image.jpg",
+  "external": false,
+  "label": "ARTISTTAAN",
+  "id": "chela-slay-2026",
+  "slug": "chela",
+  "artist_ids": [
+    "slay"
+  ],
+  "streaming": {
+    "spotify": "https://open.spotify.com/album/3CcUqz24MVSqRxUnfHa1hI?si=U1OzXVusQAu7Mt0XNaHZaw"
+  },
+  "description": "“Chela” by Slay is a hard-hitting hip-hop track produced by Otis, built around sharp flows, relentless energy, and back-to-back bars. Slay comes through with an aggressive delivery, switching flows and keeping the momentum moving from start to finish.\n\nWith its heavy production and bar-focused approach, “Chela” is a straight-up rap record made for listeners who appreciate raw energy, punchlines, and unapologetic hip-hop."
+}
