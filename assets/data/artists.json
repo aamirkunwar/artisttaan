@@ -178,6 +178,15 @@
   ],
   "releases": [
     {
+      "type": "single",
+      "external": "false",
+      "title": "Chela",
+      "artist": "Slay",
+      "spotify_url": "https://open.spotify.com/album/3CcUqz24MVSqRxUnfHa1hI?si=U1OzXVusQAu7Mt0XNaHZaw",
+      "year": "2026",
+      "description": "“Chela” by Slay is a hard-hitting hip-hop track produced by Otis, built around sharp flows, relentless energy, and back-to-back bars. Slay comes through with an aggressive delivery, switching flows and keeping the momentum moving from start to finish.\n\nWith its heavy production and bar-focused approach, “Chela” is a straight-up rap record made for listeners who appreciate raw energy, punchlines, and unapologetic hip-hop."
+    },
+    {
       "artist_ids": [
         "slay"
       ],
@@ -2277,15 +2286,6 @@
       "title": "Sautan",
       "type": "single",
       "year": "2016"
-    },
-    {
-      "type": "single",
-      "external": "false",
-      "title": "Chela",
-      "artist": "Slay",
-      "spotify_url": "https://open.spotify.com/album/3CcUqz24MVSqRxUnfHa1hI?si=U1OzXVusQAu7Mt0XNaHZaw",
-      "year": "2026",
-      "description": "“Chela” by Slay is a hard-hitting hip-hop track produced by Otis, built around sharp flows, relentless energy, and back-to-back bars. Slay comes through with an aggressive delivery, switching flows and keeping the momentum moving from start to finish.\n\nWith its heavy production and bar-focused approach, “Chela” is a straight-up rap record made for listeners who appreciate raw energy, punchlines, and unapologetic hip-hop."
     }
   ],
   "socials": [
