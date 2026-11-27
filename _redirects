@@ -1,0 +1,13 @@
+# --- Permanent redirects for Google 404s ---
+/embed                          /                       301
+/embed/                         /                       301
+/subscribe                      /contact/               301
+/subscribe/                     /contact/               301
+/assets/data/releases           /releases/              301
+/assets/data/releases/          /releases/              301
+/release/kaanch-ki-tarah-2      /release/kaanch-ki-tarah/  301
+/release/kaanch-ki-tarah-2/     /release/kaanch-ki-tarah/  301
+
+# NOTE: no "200" rewrite rules here on purpose. Cloudflare Workers static
+# assets does not support them and fails the build. /artist/<slug> and
+# /release/<slug> are served by the Worker (src/index.js) instead.
