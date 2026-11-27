@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video Production House | ARTISTTAAN Productions</title>
+  <title>Video Production House | ARTISTTAAN</title>
   <meta name="description" content="Ads, music videos, brand films and social content. ARTISTTAAN has an in-house video production team led by two directors. Tell us what you need and we'll make it." />
-  <meta name="keywords" content="video production house India, music video production, ad film makers, brand film, in-house video production team, ARTISTTAAN Productions, video directors" />
+  <meta name="keywords" content="video production house India, music video production, ad film makers, brand film, in-house video production team, ARTISTTAAN video production, video directors" />
   <link rel="icon" type="image/png" href="../assets/images/logo/logo-icon.png" />
   <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
@@ -13,10 +13,10 @@
   <link rel="canonical" href="https://artisttaanmusic.com/production/" />
   <meta property="og:url" content="https://artisttaanmusic.com/production/" />
   <meta property="og:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
-  <meta property="og:title" content="Video Production House | ARTISTTAAN Productions" />
+  <meta property="og:title" content="Video Production House | ARTISTTAAN" />
   <meta property="og:description" content="Ads, music videos and brand films by an in-house team with two directors. We can fulfil your video production needs." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Video Production House | ARTISTTAAN Productions" />
+  <meta name="twitter:title" content="Video Production House | ARTISTTAAN" />
   <meta name="twitter:description" content="Ads, music videos and brand films by an in-house team with two directors." />
   <meta name="twitter:image" content="https://artisttaanmusic.com/assets/images/logo/og-image.jpg" />
   <link rel="stylesheet" href="../assets/css/tailwind.css" />
@@ -63,6 +63,7 @@
     .process-line { position: absolute; left: 1.125rem; top: 2.25rem; bottom: -2.5rem; width: 1px; background: #e5e5e5; }
     .process-step:last-child .process-line { display: none; }
 
+    section[id] { scroll-margin-top: 4.5rem; }
     .fact { border-top: 1px solid #000; padding-top: 1rem; }
   </style>
   <script type="application/ld+json">
@@ -78,7 +79,7 @@
     },
     {
       "@type": "ProfessionalService",
-      "name": "ARTISTTAAN Productions",
+      "name": "ARTISTTAAN Video Production House",
       "url": "https://artisttaanmusic.com/production/",
       "description": "In-house video production house making ads, music videos and brand films, led by two directors.",
       "email": "info@artisttaanmusic.com",
@@ -132,7 +133,7 @@
       <source src="../assets/videos/hero.mp4" type="video/mp4" />
     </video>
     <div class="prod-hero-inner max-w-4xl mx-auto text-center">
-      <p class="text-caption mb-3" style="color:#999;">ARTISTTAAN Productions</p>
+      <p class="text-caption mb-3" style="color:#999;">Video Production House</p>
       <h1 class="text-hero font-display">Your Story,<br class="hidden md:block" /> On Screen.</h1>
       <p class="text-body max-w-xl mx-auto mt-6">We can fulfil your video production needs. Ads, music videos, brand films and social content, made start to finish by our in-house team and two directors.</p>
       <div class="flex flex-wrap items-center justify-center gap-4 mt-10">
@@ -252,9 +253,85 @@
       <div class="max-w-2xl mb-14">
         <p class="text-caption mb-3">Selected Work</p>
         <h2 class="text-section">Recent Videos From Our Directors</h2>
-        <p class="text-body mt-4">Music videos directed by our team. Tap any film to play it here.</p>
+        <p class="text-body mt-4">Every video below was directed by Shashank Sharma or Sahil Akhtar. Tap a film to play it here.</p>
       </div>
-      <div id="reel-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div class="flex flex-wrap gap-2 mb-8" id="reel-filters">
+        <button type="button" class="release-filter-btn active" data-filter="all">All</button>
+        <button type="button" class="release-filter-btn" data-filter="shashank">Shashank Sharma</button>
+        <button type="button" class="release-filter-btn" data-filter="sahil">Sahil Akhtar</button>
+      </div>
+      <div id="reel-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a class="reel-card" data-dir="shashank" data-id="Z279HSknKmU" href="https://www.youtube.com/watch?v=Z279HSknKmU" target="_blank" rel="noopener noreferrer" aria-label="Play Phataphat">
+          <img src="https://img.youtube.com/vi/Z279HSknKmU/hqdefault.jpg" alt="Phataphat" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Phataphat</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="shashank" data-id="bLTVqTJ1hUQ" href="https://www.youtube.com/watch?v=bLTVqTJ1hUQ" target="_blank" rel="noopener noreferrer" aria-label="Play Namaskar">
+          <img src="https://img.youtube.com/vi/bLTVqTJ1hUQ/hqdefault.jpg" alt="Namaskar" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Namaskar</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Slay · Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="shashank" data-id="QQZSNUV0fT4" href="https://www.youtube.com/watch?v=QQZSNUV0fT4" target="_blank" rel="noopener noreferrer" aria-label="Play Nathuli">
+          <img src="https://img.youtube.com/vi/QQZSNUV0fT4/hqdefault.jpg" alt="Nathuli" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Nathuli</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="shashank" data-id="BsJOe-luhps" href="https://www.youtube.com/watch?v=BsJOe-luhps" target="_blank" rel="noopener noreferrer" aria-label="Play Meditate">
+          <img src="https://img.youtube.com/vi/BsJOe-luhps/hqdefault.jpg" alt="Meditate" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Meditate</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="shashank" data-id="ZYln3iWRxDk" href="https://www.youtube.com/watch?v=ZYln3iWRxDk" target="_blank" rel="noopener noreferrer" aria-label="Play Kaagaz Aur Daag">
+          <img src="https://img.youtube.com/vi/ZYln3iWRxDk/hqdefault.jpg" alt="Kaagaz Aur Daag" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Kaagaz Aur Daag</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Shrey · Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="shashank" data-id="rcKlMq2uDlk" href="https://www.youtube.com/watch?v=rcKlMq2uDlk" target="_blank" rel="noopener noreferrer" aria-label="Play Sifarishein">
+          <img src="https://img.youtube.com/vi/rcKlMq2uDlk/hqdefault.jpg" alt="Sifarishein" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Sifarishein</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Shrey · Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="shashank" data-id="Q5E5t5VbVeo" href="https://www.youtube.com/watch?v=Q5E5t5VbVeo" target="_blank" rel="noopener noreferrer" aria-label="Play Thoda Aur">
+          <img src="https://img.youtube.com/vi/Q5E5t5VbVeo/hqdefault.jpg" alt="Thoda Aur" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Thoda Aur</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Shrey · Dir. Shashank Sharma</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="U0EI7XFkkV4" href="https://www.youtube.com/watch?v=U0EI7XFkkV4" target="_blank" rel="noopener noreferrer" aria-label="Play Taare">
+          <img src="https://img.youtube.com/vi/U0EI7XFkkV4/hqdefault.jpg" alt="Taare" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Taare</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="U7AdDdqJWUg" href="https://www.youtube.com/watch?v=U7AdDdqJWUg" target="_blank" rel="noopener noreferrer" aria-label="Play Marz">
+          <img src="https://img.youtube.com/vi/U7AdDdqJWUg/hqdefault.jpg" alt="Marz" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Marz</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="hUDrfmmDE0Q" href="https://www.youtube.com/watch?v=hUDrfmmDE0Q" target="_blank" rel="noopener noreferrer" aria-label="Play Dooriyan">
+          <img src="https://img.youtube.com/vi/hUDrfmmDE0Q/hqdefault.jpg" alt="Dooriyan" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Dooriyan</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="TrimMQMBc7s" href="https://www.youtube.com/watch?v=TrimMQMBc7s" target="_blank" rel="noopener noreferrer" aria-label="Play Saza">
+          <img src="https://img.youtube.com/vi/TrimMQMBc7s/hqdefault.jpg" alt="Saza" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Saza</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Abir · Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="KiFfXHRu3Sk" href="https://www.youtube.com/watch?v=KiFfXHRu3Sk" target="_blank" rel="noopener noreferrer" aria-label="Play Khaali Ghar">
+          <img src="https://img.youtube.com/vi/KiFfXHRu3Sk/hqdefault.jpg" alt="Khaali Ghar" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Khaali Ghar</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="ZGyEc_iQrFM" href="https://www.youtube.com/watch?v=ZGyEc_iQrFM" target="_blank" rel="noopener noreferrer" aria-label="Play Roll">
+          <img src="https://img.youtube.com/vi/ZGyEc_iQrFM/hqdefault.jpg" alt="Roll" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Roll</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <a class="reel-card" data-dir="sahil" data-id="lvFWHGb4M-w" href="https://www.youtube.com/watch?v=lvFWHGb4M-w" target="_blank" rel="noopener noreferrer" aria-label="Play Cold">
+          <img src="https://img.youtube.com/vi/lvFWHGb4M-w/hqdefault.jpg" alt="Cold" loading="lazy" onerror="this.style.display='none'" />
+          <span class="reel-meta"><span class="text-white font-bold text-sm leading-tight">Cold</span><span class="text-xs mt-1" style="color:rgba(255,255,255,.7);">Dir. Sahil Akhtar</span></span>
+          <span class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+      </div>
       <div class="mt-12 text-center">
         <a href="../videos/" class="btn-outline inline-block">More Videos</a>
       </div>
@@ -297,4 +374,90 @@
         </div>
         <div class="process-step">
           <div class="process-num">5</div>
-          
+          <h3 class="text-lg font-bold mb-2">Deliver</h3>
+          <p class="text-body">Final files in every format you need: YouTube, Instagram, TV or cinema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary text-white section-pad">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="text-caption mb-3" style="color:#999;">Let's Make Something</p>
+      <h2 class="text-section mb-6">Got A Video In Mind?</h2>
+      <p class="text-body mb-8" style="color:#aaa;">Send us a few lines about your idea. An ad, a music video, a brand film or something in between. We'll get back to you with how we'd approach it.</p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="mailto:info@artisttaanmusic.com?subject=Video%20production%20enquiry" class="btn-primary inline-block" style="background:#fff;color:#000;">info@artisttaanmusic.com</a>
+        <a href="../contact/" class="btn-outline inline-block" style="border-color:rgba(255,255,255,.4);color:#fff;">Contact Page</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6 pt-14 pb-4 text-center">
+    <a href="../" class="back-link">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      Back to Home
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <img src="../assets/images/logo/logo-white.png" alt="ARTISTTAAN" class="h-8 w-auto mx-auto mb-4" />
+      <p class="text-sm text-gray-400 mb-6">India's hip-hop &amp; indie powerhouse. Founded in 2016 by Aamir Kunwar.</p>
+      <div class="flex justify-center gap-6">
+        <a href="https://instagram.com/artisttaan" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition">Instagram</a>
+        <a href="https://youtube.com/@artisttaan" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition">YouTube</a>
+        <a href="https://open.spotify.com/playlist/2WvE1wCVJDwSD6Fl53gJkb" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition">Spotify</a>
+      </div>
+      <p class="text-xs text-gray-600 mt-8">&copy; 2026 ARTISTTAAN. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  // Mobile nav
+  var btn=document.getElementById('mobile-nav-toggle');
+  var panel=document.getElementById('mobile-nav-panel');
+  var iconOpen=document.getElementById('icon-open');
+  var iconClose=document.getElementById('icon-close');
+  if(btn&&panel){
+    var setOpen=function(open){
+      panel.classList.toggle('hidden',!open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      if(iconOpen)iconOpen.classList.toggle('hidden',open);
+      if(iconClose)iconClose.classList.toggle('hidden',!open);
+      document.body.style.overflow=open?'hidden':'';
+    };
+    btn.addEventListener('click',function(){setOpen(panel.classList.contains('hidden'));});
+    panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  }
+
+  // Selected work: cards are plain HTML links (work without JS); JS adds inline play + filter
+  var grid=document.getElementById('reel-grid');
+  if(!grid)return;
+  grid.querySelectorAll('.reel-card').forEach(function(c){
+    c.addEventListener('click',function(e){
+      e.preventDefault();
+      var id=c.getAttribute('data-id');
+      c.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1" title="video" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      c.style.cursor='default';
+    },{once:true});
+  });
+  var fb=document.querySelectorAll('#reel-filters button');
+  fb.forEach(function(b){
+    b.addEventListener('click',function(){
+      fb.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var f=b.getAttribute('data-filter');
+      grid.querySelectorAll('.reel-card').forEach(function(c){
+        c.style.display=(f==='all'||c.getAttribute('data-dir')===f)?'block':'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
